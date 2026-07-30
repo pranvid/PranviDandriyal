@@ -1,8 +1,8 @@
 /* =========================================================================
-   Pranvi Dandriyal — Portfolio
+   Pranvi Dandriyal, Portfolio
    Design system
    Thesis: clarity imposed on complexity. The work is about making dense
-   talent data legible, so the site is precise, editorial, and quiet —
+   talent data legible, so the site is precise, editorial, and quiet,
    letting the case studies carry the weight.
 
    Type:   Fraunces (display serif)  · Inter (UI/body) · IBM Plex Mono (data)
@@ -19,7 +19,7 @@
   --faint:      #8B909A;   /* meta, captions */
   --line:       #E4E3DE;   /* hairlines */
   --line-2:     #D6D5CF;
-  --accent:     #4B36E6;   /* iris — links, active states, one hero detail */
+  --accent:     #4B36E6;   /* iris, links, active states, one hero detail */
   --accent-ink: #3826C4;
   --accent-soft:#EFEBFE;
 
