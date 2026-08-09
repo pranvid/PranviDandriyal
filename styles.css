@@ -409,6 +409,59 @@ body[data-case] .foot-legal a:hover { color: var(--ink) !important; }
 /* gallery */
 .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(16px,3vw,28px); }
 
+/* ---- Native data viz (research charts rebuilt in-site) ----------------- */
+.viz {
+  border: 1px solid var(--line-2); border-radius: 10px;
+  background: var(--paper); padding: 22px 20px 20px;
+  box-shadow: 5px 5px 0 color-mix(in srgb, var(--pc) 70%, var(--paper));
+}
+.viz h5 {
+  font-family: var(--f-display); font-weight: 600; font-size: 0.98rem;
+  color: var(--ink); margin: 0 0 4px; letter-spacing: -0.01em;
+}
+.viz .viz__sub { font-family: var(--f-mono); font-size: 0.72rem; color: var(--faint); margin: 0 0 18px; }
+.bar-row { display: grid; grid-template-columns: minmax(0,1fr) 2.2rem; gap: 10px; align-items: center; margin-bottom: 13px; }
+.bar-row:last-child { margin-bottom: 0; }
+.bar-row .bar-label { font-size: 0.85rem; color: var(--body); line-height: 1.3; margin-bottom: 5px; }
+.bar-row .bar-track { height: 9px; background: color-mix(in srgb, var(--pc) 10%, var(--surface)); border-radius: 99px; overflow: hidden; }
+.bar-row .bar { height: 100%; background: var(--pc); border-radius: 99px; }
+.bar-row .bar-num { font-family: var(--f-mono); font-size: 0.78rem; color: var(--pc-ink); font-weight: 500; align-self: end; padding-bottom: 1px; }
+
+/* now vs want scale */
+.scale { margin-bottom: 22px; }
+.scale:last-child { margin-bottom: 0; }
+.scale .scale__label { font-size: 0.85rem; color: var(--body); margin-bottom: 10px; line-height: 1.35; }
+.scale .scale__track { position: relative; height: 5px; border-radius: 99px; background: linear-gradient(90deg, color-mix(in srgb, var(--pc) 14%, var(--surface)), color-mix(in srgb, var(--pc) 55%, var(--surface))); }
+.scale .pin { position: absolute; top: 50%; transform: translate(-50%,-50%); width: 15px; height: 15px; border-radius: 50%; border: 2.5px solid var(--paper); box-shadow: 0 0 0 1px var(--line-2); }
+.scale .pin--now { background: var(--faint); }
+.scale .pin--want { background: var(--pc); }
+.scale .scale__ends { display: flex; justify-content: space-between; margin-top: 8px; font-family: var(--f-mono); font-size: 0.68rem; color: var(--faint); }
+.viz .legend { display: flex; gap: 18px; margin-top: 16px; font-family: var(--f-mono); font-size: 0.7rem; color: var(--muted); }
+.viz .legend i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+
+/* stakeholder quadrant map */
+.quad {
+  position: relative; aspect-ratio: 4 / 3.4;
+  border: 1px solid var(--line-2); border-radius: 10px; background: var(--paper);
+  box-shadow: 5px 5px 0 color-mix(in srgb, var(--pc) 70%, var(--paper));
+  overflow: hidden;
+}
+.quad::before, .quad::after {
+  content: ""; position: absolute; background: var(--line);
+}
+.quad::before { left: 50%; top: 6%; bottom: 6%; width: 1px; }
+.quad::after { top: 50%; left: 4%; right: 4%; height: 1px; }
+.quad .axis { position: absolute; font-family: var(--f-mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); }
+.quad .axis--y { top: 8px; left: 50%; transform: translateX(-50%); }
+.quad .axis--x { top: calc(50% + 8px); right: 10px; }
+.quad .chip {
+  position: absolute; transform: translate(-50%,-50%);
+  font-family: var(--f-mono); font-size: 0.7rem; white-space: nowrap;
+  border: 1px solid var(--line-2); border-radius: 999px; padding: 3px 10px;
+  color: var(--muted); background: var(--paper);
+}
+.quad .chip--hot { background: var(--pc); border-color: var(--pc); color: var(--pc-text); }
+
 /* next case */
 .next-case { border-top: 1px solid var(--line); }
 .next-case a { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding-block: clamp(32px,6vw,64px); }

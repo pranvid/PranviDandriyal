@@ -43,35 +43,9 @@
   </section>
 
   <div class="wrap case-hero-img">
-    <div class="frame"><div class="ph"><span>IMG · the live interview interface (guide · video · scorecard)</span></div></div>
+    <div class="frame"><img src="images/interview-professional.png" alt="The Interview Professional live interview interface: interview guide, candidate video, and scoring in one view" width="1920" height="1080"></div>
     <p class="figcap">The interview surface: guide, candidate video, and scoring in one view, so interviewers evaluate as they listen, not from memory.</p>
   </div>
-
-  <!-- AT A GLANCE -->
-  <section class="section" style="padding-top:0">
-    <div class="wrap">
-      <div class="stats">
-        <div class="stat">
-          <div class="stat__num"><b>20,000+</b></div>
-          <p class="stat__label">candidates screened across 33+ cities for one graduate-hiring program</p>
-        </div>
-        <div class="stat">
-          <div class="stat__num"><b>4,200+</b></div>
-          <p class="stat__label">interviewer hours saved for a single financial-services client</p>
-        </div>
-        <div class="stat">
-          <div class="stat__num"><b>↓ time-to-hire</b></div>
-          <p class="stat__label">reduced across multiple global organizations after rollout</p>
-        </div>
-        <div class="stat">
-          <div class="stat__num">new <b>revenue</b></div>
-          <p class="stat__label">opened a structured-interview line and cross-sell into existing accounts</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule">
 
   <!-- CONTEXT -->
   <section class="section" id="context">
@@ -104,8 +78,22 @@
           </ul>
         </div>
         <div class="split__media">
-          <div class="frame frame--tall"><div class="ph"><span>IMG · stakeholder map (interest × influence)</span></div></div>
-          <p class="figcap">Five external roles to serve: recruiter, TA leader, hiring manager, interviewer, and the candidate as the ultimate beneficiary.</p>
+          <div class="quad" role="img" aria-label="Stakeholder map plotting influence against interest. I worked most closely with the senior product manager, engineering manager, developers, product owner, and AI engineer.">
+            <span class="axis axis--y">Influence</span>
+            <span class="axis axis--x">Interest</span>
+            <span class="chip" style="left:14%; top:16%">Legal</span>
+            <span class="chip" style="left:36%; top:24%">Solutions</span>
+            <span class="chip" style="left:68%; top:15%">Director</span>
+            <span class="chip chip--hot" style="left:80%; top:26%">Sr. PM</span>
+            <span class="chip chip--hot" style="left:62%; top:33%">Engg. Manager</span>
+            <span class="chip" style="left:60%; top:43%">UX Manager</span>
+            <span class="chip chip--hot" style="left:55%; top:60%">Dev</span>
+            <span class="chip chip--hot" style="left:82%; top:68%">PO</span>
+            <span class="chip chip--hot" style="left:67%; top:75%">AI Engineer</span>
+            <span class="chip" style="left:33%; top:70%">Operations</span>
+            <span class="chip" style="left:35%; top:86%">Deployment</span>
+          </div>
+          <p class="figcap">The room I worked in, mapped by interest and influence. Filled chips are the people I collaborated with daily.</p>
         </div>
       </div>
     </div>
@@ -122,9 +110,41 @@
       </div>
 
       <div class="gallery" style="margin-bottom:clamp(28px,5vw,52px)">
-        <div><div class="frame frame--tall"><div class="ph"><span>IMG · note-taking timing chart</span></div></div><p class="figcap">When notes get taken</p></div>
-        <div><div class="frame frame--tall"><div class="ph"><span>IMG · time-allocation study</span></div></div><p class="figcap">Where the time goes vs. where they want it</p></div>
-        <div><div class="frame frame--tall"><div class="ph"><span>IMG · usability heatmap</span></div></div><p class="figcap">Heatmap from unmoderated testing</p></div>
+        <div class="viz">
+          <h5>Time spent vs. time wanted</h5>
+          <p class="viz__sub">where interviewers want their attention to go</p>
+          <div class="scale">
+            <div class="scale__label">Taking notes during the interview</div>
+            <div class="scale__track"><span class="pin pin--want" style="left:12%"></span><span class="pin pin--now" style="left:88%"></span></div>
+            <div class="scale__ends"><span>least time</span><span>most time</span></div>
+          </div>
+          <div class="scale">
+            <div class="scale__label">Discussing the candidate with their team</div>
+            <div class="scale__track"><span class="pin pin--now" style="left:14%"></span><span class="pin pin--want" style="left:86%"></span></div>
+            <div class="scale__ends"><span>least time</span><span>most time</span></div>
+          </div>
+          <div class="legend"><span><i style="background:var(--faint)"></i>today</span><span><i style="background:var(--pc)"></i>where they want to be</span></div>
+        </div>
+        <div class="viz">
+          <h5>What their interview guides look like</h5>
+          <p class="viz__sub">of 50 interviewers surveyed</p>
+          <div class="bar-row"><div><div class="bar-label">Printed hard copy</div><div class="bar-track"><div class="bar" style="width:100%"></div></div></div><span class="bar-num">23</span></div>
+          <div class="bar-row"><div><div class="bar-label">Word document on screen</div><div class="bar-track"><div class="bar" style="width:52%"></div></div></div><span class="bar-num">12</span></div>
+          <div class="bar-row"><div><div class="bar-label">PDF on screen</div><div class="bar-track"><div class="bar" style="width:39%"></div></div></div><span class="bar-num">9</span></div>
+          <div class="bar-row"><div><div class="bar-label">No list of questions at all</div><div class="bar-track"><div class="bar" style="width:13%"></div></div></div><span class="bar-num">3</span></div>
+        </div>
+        <div class="viz">
+          <h5>When do interviewers form an opinion?</h5>
+          <p class="viz__sub">of 50 interviewers surveyed</p>
+          <div class="bar-row"><div><div class="bar-label">While the candidate is speaking</div><div class="bar-track"><div class="bar" style="width:100%"></div></div></div><span class="bar-num">16</span></div>
+          <div class="bar-row"><div><div class="bar-label">Once the candidate has finished</div><div class="bar-track"><div class="bar" style="width:87%"></div></div></div><span class="bar-num">14</span></div>
+          <div class="bar-row"><div><div class="bar-label">After the interview concludes</div><div class="bar-track"><div class="bar" style="width:81%"></div></div></div><span class="bar-num">13</span></div>
+          <div class="bar-row"><div><div class="bar-label">After each answer</div><div class="bar-track"><div class="bar" style="width:44%"></div></div></div><span class="bar-num">7</span></div>
+        </div>
+        <div>
+          <div class="frame frame--tall" style="aspect-ratio:auto"><img src="images/interview-guide-docs.png" alt="SHL interview guides as they existed before the product: Word documents with questions, rating checkboxes, and space for notes" width="832" height="1040"></div>
+          <p class="figcap">The "before" state: interview guides lived in Word docs and printouts, with notes and ratings scribbled in the margins.</p>
+        </div>
       </div>
 
       <div class="prose">
@@ -144,7 +164,7 @@
   <section class="section">
     <div class="wrap">
       <p class="eyebrow" style="text-align:center; margin-bottom:22px">The insight</p>
-      <p style="font-family:var(--f-display); font-weight:420; font-size:var(--step-2); line-height:1.38; color:var(--ink); max-width:44ch; margin-inline:auto; text-align:center; letter-spacing:-0.005em">Interviewers didn't need to be told to be structured. They needed the structure to be <em style="font-style:italic; color:var(--accent)">available in the moment</em>: the guide, the scoring criteria, and their notes in one place, without looking away from the candidate.</p>
+      <p style="font-family:var(--f-display); font-weight:500; font-size:var(--step-2); line-height:1.38; color:var(--ink); max-width:44ch; margin-inline:auto; text-align:center; letter-spacing:-0.005em">Interviewers didn't need to be told to be structured. They needed the structure to be <em style="font-style:italic; color:var(--accent)">available in the moment</em>: the guide, the scoring criteria, and their notes in one place, without looking away from the candidate.</p>
     </div>
   </section>
 
@@ -231,6 +251,7 @@
         <div class="stat"><div class="stat__num"><b>20,000</b></div><p class="stat__label">candidates screened across 33+ cities for a young-bankers program, widening equal opportunity</p></div>
         <div class="stat"><div class="stat__num"><b>4,200+</b> hrs</div><p class="stat__label">saved by automating interview workflow for a leading financial-services firm</p></div>
         <div class="stat"><div class="stat__num"><b>↓</b> time-to-hire</div><p class="stat__label">measurably reduced across multiple global organizations</p></div>
+        <div class="stat"><div class="stat__num">new <b>revenue</b></div><p class="stat__label">opened a structured-interview product line and cross-sell into existing accounts</p></div>
       </div>
     </div>
   </section>
@@ -241,14 +262,9 @@
   <section class="section">
     <div class="wrap">
       <div class="section-label"><span class="n">07</span><h2>Reflection</h2></div>
-      <div class="split split--rev">
-        <div class="prose">
-          <p>This project taught me to design for two audiences at once: the interviewer who has to <em>use</em> the tool under pressure, and the business that needs the tool to <em>pay off</em>. The winning move was small: putting scoring and notes where the interviewer is already looking, but it only worked because the research told me exactly where their attention already was.</p>
-          <p>The work was recognized company-wide for its business impact. The natural next step, which I began scoping, was turning the analytics into customer-facing reports that help clients improve their own interview practices over time.</p>
-        </div>
-        <div class="split__media">
-          <div class="frame frame--tall"><div class="ph"><span>IMG · before / after or key screen</span></div></div>
-        </div>
+      <div class="prose" style="max-width:72ch">
+        <p>This project taught me to design for two audiences at once: the interviewer who has to <em>use</em> the tool under pressure, and the business that needs the tool to <em>pay off</em>. The winning move was small: putting scoring and notes where the interviewer is already looking, but it only worked because the research told me exactly where their attention already was.</p>
+        <p>The work was recognized company-wide for its business impact. The natural next step, which I began scoping, was turning the analytics into customer-facing reports that help clients improve their own interview practices over time.</p>
       </div>
     </div>
   </section>
