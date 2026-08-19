@@ -374,7 +374,7 @@ body[data-case] .foot-legal a:hover { color: var(--ink) !important; }
   box-shadow: 5px 5px 0 color-mix(in srgb, var(--pc) 70%, var(--paper));
 }
 .frame--tall { aspect-ratio: 4/3; }
-.frame img { width:100%; height:100%; object-fit: cover; }
+.frame img, .frame video { width:100%; height:100%; object-fit: cover; display: block; }
 .figcap { margin-top: 14px; font-family: var(--f-mono); font-size: var(--step--1); color: var(--faint); }
 
 /* at-a-glance stats */
