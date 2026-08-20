@@ -74,7 +74,10 @@
     <div class="wrap">
       <div class="section-label"><span class="n">01</span><h2>The problem</h2></div>
       <div class="split">
-        <p class="lead-in">Two platforms, stitched together by an acquisition, and a workflow that punished repeat work.</p>
+        <div>
+          <p class="lead-in">Two platforms, stitched together by an acquisition, and a workflow that punished repeat work.</p>
+          <div class="frame frame--tall" style="aspect-ratio:673/505; margin-top:clamp(20px,3vw,32px)"><img src="images/tc-challenge-venn.png" alt="Venn diagram of the two overlapping systems: Talent Central, with more features, and iAssess, cost effective, forced into one recruiter workflow after the acquisition" width="673" height="505" loading="lazy"></div>
+        </div>
         <div class="prose">
           <p>After an acquisition, recruiters had to run hiring across <strong>two separate systems</strong>: Talent Central for projects and candidates, and iAssess for assessment creation and reporting. Each was capable on its own, but used together, they forced constant context-switching, duplicated effort, and near-identical workflows living in disconnected places.</p>
           <p>When I looked at how recruiters actually worked, three problems kept surfacing:</p>
@@ -105,8 +108,23 @@
           </ul>
         </div>
         <div class="split__media">
-          <div class="frame frame--tall"><div class="ph"><span>IMG · stakeholder map (interest × influence)</span></div></div>
-          <p class="figcap">Aligning a wide group: PM, engineering, QA, operations, deployment, on one workflow change.</p>
+          <div class="quad" role="img" aria-label="Stakeholder map plotting influence against interest. I worked most closely with the senior PM, engineering manager, senior UX, QA, developers, and product owner.">
+            <span class="axis axis--y">Influence</span>
+            <span class="axis axis--x">Interest</span>
+            <span class="chip" style="left:24%; top:21%">Solutions</span>
+            <span class="chip" style="left:68%; top:13%">Director</span>
+            <span class="chip chip--hot" style="left:80%; top:21%">Sr. PM</span>
+            <span class="chip chip--hot" style="left:60%; top:27%">Engg. Manager</span>
+            <span class="chip chip--hot" style="left:85%; top:34%">Sr. UX</span>
+            <span class="chip" style="left:58%; top:36%">UX manager</span>
+            <span class="chip chip--hot" style="left:53%; top:55%">QA</span>
+            <span class="chip chip--hot" style="left:67%; top:55%">Dev</span>
+            <span class="chip chip--hot" style="left:82%; top:62%">PO</span>
+            <span class="chip" style="left:25%; top:64%">Operations</span>
+            <span class="chip" style="left:82%; top:80%">Recruiters</span>
+            <span class="chip" style="left:32%; top:78%">Deployment</span>
+          </div>
+          <p class="figcap">Aligning a wide group: PM, engineering, QA, operations, deployment, on one workflow change. Filled chips are the people I collaborated with daily.</p>
         </div>
       </div>
     </div>
@@ -147,7 +165,7 @@
           <p>Adding participants became optional and revisitable instead of mandatory and upfront. Recruiters can stand up a project now and add or manage people whenever candidates actually arrive, the flow stops forcing decisions before they're due.</p>
         </div>
         <div class="split__media">
-          <div class="frame"><div class="ph"><span>IMG · participant experience · add later</span></div></div>
+          <div class="frame"><img src="images/tc-participant-experience.png" alt="Adding participants to a Project Group in TalentCentral+: the group shows 'No participants added yet' alongside deadline settings, participants can be added any time after setup" width="1600" height="1009" loading="lazy"></div>
         </div>
       </div>
 
@@ -157,7 +175,7 @@
           <p>Because related hiring now lives in one group, scores and statistics can be compared <em>across</em> drives, a capability that simply wasn't possible when every hire was an island. It opened a new roadmap direction for talent analytics.</p>
         </div>
         <div class="split__media">
-          <div class="frame"><div class="ph"><span>IMG · review &amp; publish / group comparison</span></div></div>
+          <div class="frame"><img src="images/tc-group-comparison.png" alt="TalentCentral+ Projects list showing the Participant groups column: each project's groups broken out by status, not started, in progress, or completed" width="1600" height="1009" loading="lazy"></div>
         </div>
       </div>
     </div>
@@ -178,7 +196,7 @@
         <p>A summary card pins every error to the top of the page, each with an icon for screen-reader users and an anchor link that jumps straight to the field.</p>
       </div>
       <div style="margin-bottom:clamp(40px,6vw,72px)">
-        <div class="frame" style="aspect-ratio:2200/1388"><div class="ph"><span>IMG · error summary card</span></div></div>
+        <div class="frame" style="aspect-ratio:1139/339"><img src="images/tc-error-summary.png" alt="Error summary card in TalentCentral+: a banner listing every validation error with anchor links that jump to the affected field, plus an icon for screen-reader accessibility" width="1139" height="339" loading="lazy"></div>
       </div>
 
       <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
@@ -214,13 +232,12 @@
         <div class="stat"><div class="stat__num"><b>↑</b> tracking</div><p class="stat__label">searchability and tracking improved sharply once duplication stopped</p></div>
         <div class="stat"><div class="stat__num">new <b>analytics</b></div><p class="stat__label">cross-group score comparison became a roadmap opportunity</p></div>
       </div>
-      <div class="split">
-        <div class="split__media">
-          <div class="frame"><div class="ph"><span>IMG · old screen → new screen</span></div></div>
-        </div>
-        <div class="prose">
-          <p>Beyond the headline number, the redesign reduced cognitive load, made repetitive tasks faster, and rebuilt confidence in how the system behaves. Recruiters could finally set up once, reuse often, and trust that the same action worked the same way twice.</p>
-        </div>
+      <div style="margin-bottom:clamp(28px,5vw,44px)">
+        <div class="frame" style="aspect-ratio:1681/620"><img src="images/tc-old-new-comparison.png" alt="Old screen versus new screen: the legacy TalentCentral project-creation form, a single long page of basic settings and product selection, next to the new TC+ create-project flow with its accordion steps and product catalogue" width="1681" height="620" loading="lazy"></div>
+        <p class="figcap">The old project-creation form (left) versus the new TC+ create flow (right).</p>
+      </div>
+      <div class="prose" style="max-width:66ch">
+        <p>Beyond the headline number, the redesign reduced cognitive load, made repetitive tasks faster, and rebuilt confidence in how the system behaves. Recruiters could finally set up once, reuse often, and trust that the same action worked the same way twice.</p>
       </div>
     </div>
   </section>
@@ -237,7 +254,8 @@
           <p>It also taught me that a systemic fix has two halves: the structural reframe <em>and</em> the unglamorous consistency work underneath it. Both are what made recruiters trust the platform again.</p>
         </div>
         <div class="split__media">
-          <div class="frame frame--tall"><div class="ph"><span>IMG · key screen or workflow diagram</span></div></div>
+          <div class="frame frame--tall" style="aspect-ratio:744/917"><img src="images/tc-reflection-diagram.png" alt="Before and after diagram: the old flat list of projects, each duplicating its own assessment structure, versus the new model where a Project Group holds one shared assessment as a static parameter while participants and location vary per group as dynamic parameters" width="744" height="917" loading="lazy"></div>
+          <p class="figcap">The reframe, structurally: one shared assessment, many reusable groups.</p>
         </div>
       </div>
     </div>
