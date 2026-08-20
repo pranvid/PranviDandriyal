@@ -76,7 +76,12 @@
       <div class="split">
         <div>
           <p class="lead-in">Two platforms, stitched together by an acquisition, and a workflow that punished repeat work.</p>
-          <div class="frame frame--tall" style="aspect-ratio:673/505; margin-top:clamp(20px,3vw,32px)"><img src="images/tc-challenge-venn.png" alt="Venn diagram of the two overlapping systems: Talent Central, with more features, and iAssess, cost effective, forced into one recruiter workflow after the acquisition" width="673" height="505" loading="lazy"></div>
+          <div class="venn" style="margin-top:clamp(24px,4vw,40px)" role="img" aria-label="Venn diagram of the two overlapping systems: Talent Central, with more features, and iAssess, cost effective, forced into one recruiter workflow after the acquisition">
+            <div class="venn__circle venn__circle--a"></div>
+            <div class="venn__circle venn__circle--b"></div>
+            <div class="venn__label venn__label--a"><h4>Talent Central</h4><p>More features</p></div>
+            <div class="venn__label venn__label--b"><h4>iAssess</h4><p>Cost effective</p></div>
+          </div>
         </div>
         <div class="prose">
           <p>After an acquisition, recruiters had to run hiring across <strong>two separate systems</strong>: Talent Central for projects and candidates, and iAssess for assessment creation and reporting. Each was capable on its own, but used together, they forced constant context-switching, duplicated effort, and near-identical workflows living in disconnected places.</p>
@@ -151,7 +156,7 @@
         <p>I split two things the old flow had fused together: <strong>project structure</strong> and <strong>participant management</strong>. Once those were separate, a project could become a reusable container rather than a one-time event.</p>
       </div>
       <div style="margin-bottom:clamp(32px,5vw,56px)">
-        <div class="frame" style="aspect-ratio:1664/505"><img src="images/tc-flow-overview.png" alt="End-to-end flow diagram: create new project, select solution, select test from the product catalogue, set stages and hurdles, set participant experience settings, publish project, add people to project" width="1664" height="505" loading="lazy"></div>
+        <div class="frame" style="aspect-ratio:4068/1235; background:var(--paper)"><img src="images/tc-flow-overview.svg" alt="End-to-end flow diagram: create new project, select solution, select test from the product catalogue, set stages and hurdles, set participant experience settings, publish project, add people to project" width="4068" height="1235" loading="lazy"></div>
         <p class="figcap">The flow I designed, start to finish: one path that ends in a reusable group, not a one-off project.</p>
       </div>
 
@@ -159,23 +164,31 @@
         <h3>A container you reuse, not recreate</h3>
         <p>Project Groups let a recruiter set up the assessment structure once and reuse it across every similar hiring drive. The same rigorous setup, without rebuilding it each time, and far less clutter to search through later.</p>
       </div>
-      <div style="margin-bottom:clamp(40px,6vw,72px)">
+      <div style="margin-bottom:clamp(24px,4vw,32px)">
         <div class="frame" style="aspect-ratio:2200/1388"><video autoplay muted loop playsinline preload="auto" poster="images/tc-create-project-poster.jpg" width="2200" height="1388" aria-label="Screen recording of creating a project in TalentCentral+: setting up the assessment structure once as a reusable Project Group"><source src="images/tc-create-project.mp4" type="video/mp4"></video></div>
-        <div style="max-width:560px; margin:20px auto 0">
+      </div>
+      <div class="gallery" style="margin-bottom:clamp(40px,6vw,72px)">
+        <div>
+          <div class="frame" style="aspect-ratio:1600/1009"><img src="images/tc-assessment-stages.png" alt="Assessment workflow: Define stages screen in TalentCentral+, showing stage 1 and stage 2 with checkpoint settings" width="1600" height="1009" loading="lazy"></div>
+          <p class="figcap">The shipped screen.</p>
+        </div>
+        <div>
           <div class="frame" style="aspect-ratio:1610/824"><img src="images/tc-wireframe-assessment.png" alt="Wireframe of the assessment workflow steps: selecting products from the catalogue, then defining stages and checkpoints" width="1610" height="824" loading="lazy"></div>
-          <p class="figcap">The wireframe this step started as.</p>
+          <p class="figcap">The wireframe it started as.</p>
         </div>
       </div>
 
-      <div class="split split--rev" style="margin-bottom:clamp(40px,6vw,72px)">
-        <div class="prose">
-          <h3>Add people when you're ready</h3>
-          <p>Adding participants became optional and revisitable instead of mandatory and upfront. Recruiters can stand up a project now and add or manage people whenever candidates actually arrive, the flow stops forcing decisions before they're due.</p>
-        </div>
-        <div class="split__media">
-          <div class="frame"><img src="images/tc-participant-experience.png" alt="Adding participants to a Project Group in TalentCentral+: the group shows 'No participants added yet' alongside deadline settings, participants can be added any time after setup" width="1600" height="1009" loading="lazy"></div>
+      <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
+        <h3>Add people when you're ready</h3>
+        <p>Adding participants became optional and revisitable instead of mandatory and upfront. Recruiters can stand up a project now and add or manage people whenever candidates actually arrive, the flow stops forcing decisions before they're due.</p>
+      </div>
+      <div class="gallery" style="margin-bottom:clamp(40px,6vw,72px)">
+        <div>
+          <div class="frame" style="aspect-ratio:1600/1009"><img src="images/tc-participant-experience.png" alt="Adding participants to a Project Group in TalentCentral+: the group shows 'No participants added yet' alongside deadline settings, participants can be added any time after setup" width="1600" height="1009" loading="lazy"></div>
           <p class="figcap">The shipped screen.</p>
-          <div class="frame frame--tall" style="aspect-ratio:794/1092; margin-top:16px"><img src="images/tc-wireframe-participant.png" alt="Wireframe of the participant experience configuration step: assessment delivery, on-screen messages, and proctoring settings" width="794" height="1092" loading="lazy"></div>
+        </div>
+        <div>
+          <div class="frame" style="aspect-ratio:794/1092"><img src="images/tc-wireframe-participant.png" alt="Wireframe of the participant experience configuration step: assessment delivery, on-screen messages, and proctoring settings" width="794" height="1092" loading="lazy"></div>
           <p class="figcap">The wireframe it started as.</p>
         </div>
       </div>
@@ -217,7 +230,7 @@
         <p>The reuse model fixed the big structural problem. But recruiters also lost trust in a dozen small ways, every module handled the same action differently. So I mapped the shared behaviors, <strong>error handling, Excel uploads, validation</strong>, and standardized them into patterns the whole platform could use.</p>
       </div>
       <div style="margin-bottom:clamp(32px,5vw,56px)">
-        <div class="frame" style="aspect-ratio:1347/557; background:var(--paper)"><img src="images/tc-system-improvements.png" alt="Diagram mapping how Errors, Excel file upload, and Filters are shared common functionality reused across many features and sub-features spanning three workstreams: Authentication, Create and Manage, and General platform" width="1347" height="557" loading="lazy"></div>
+        <div class="frame" style="aspect-ratio:3617/1494; background:var(--paper)"><img src="images/tc-system-improvements.svg" alt="Diagram mapping how Errors, Excel file upload, and Filters are shared common functionality reused across many features and sub-features spanning three workstreams: Authentication, Create and Manage, and General platform" width="3617" height="1494" loading="lazy"></div>
         <p class="figcap">The map that started this work: three behaviors, reused across features spanning three workstreams.</p>
       </div>
 
@@ -226,7 +239,7 @@
         <p>A summary card pins every error to the top of the page, each with an icon for screen-reader users and an anchor link that jumps straight to the field.</p>
       </div>
       <div style="margin-bottom:clamp(40px,6vw,72px)">
-        <div class="frame" style="aspect-ratio:1139/339"><img src="images/tc-error-summary.png" alt="Error summary card in TalentCentral+: a banner listing every validation error with anchor links that jump to the affected field, plus an icon for screen-reader accessibility" width="1139" height="339" loading="lazy"></div>
+        <div class="frame" style="aspect-ratio:1139/339; background:var(--paper)"><img src="images/tc-error-summary.svg" alt="Error summary card in TalentCentral+: a banner listing every validation error with anchor links that jump to the affected field, plus an icon for screen-reader accessibility" width="1139" height="339" loading="lazy"></div>
       </div>
 
       <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
@@ -263,7 +276,7 @@
         <div class="stat"><div class="stat__num">new <b>analytics</b></div><p class="stat__label">cross-group score comparison became a roadmap opportunity</p></div>
       </div>
       <div style="margin-bottom:clamp(28px,5vw,44px)">
-        <div class="frame" style="aspect-ratio:1681/620"><img src="images/tc-old-new-comparison.png" alt="Old screen versus new screen: the legacy TalentCentral project-creation form, a single long page of basic settings and product selection, next to the new TC+ create-project flow with its accordion steps and product catalogue" width="1681" height="620" loading="lazy"></div>
+        <div class="frame" style="aspect-ratio:3362/1240"><img src="images/tc-old-new-comparison.png" alt="Old screen versus new screen: the legacy TalentCentral project-creation form, a single long page of basic settings and product selection, next to the new TC+ create-project flow with its accordion steps and product catalogue" width="3362" height="1240" loading="lazy"></div>
         <p class="figcap">The old project-creation form (left) versus the new TC+ create flow (right).</p>
       </div>
       <div class="prose" style="max-width:66ch">
@@ -284,7 +297,7 @@
           <p>It also taught me that a systemic fix has two halves: the structural reframe <em>and</em> the unglamorous consistency work underneath it. Both are what made recruiters trust the platform again.</p>
         </div>
         <div class="split__media">
-          <div class="frame frame--tall" style="aspect-ratio:744/917"><img src="images/tc-reflection-diagram.png" alt="Before and after diagram: the old flat list of projects, each duplicating its own assessment structure, versus the new model where a Project Group holds one shared assessment as a static parameter while participants and location vary per group as dynamic parameters" width="744" height="917" loading="lazy"></div>
+          <div class="frame frame--tall" style="aspect-ratio:1508/1860; background:var(--paper)"><img src="images/tc-reflection-diagram.svg" alt="Before and after diagram: the old flat list of projects, each duplicating its own assessment structure, versus the new model where a Project Group holds one shared assessment as a static parameter while participants and location vary per group as dynamic parameters" width="1508" height="1860" loading="lazy"></div>
           <p class="figcap">The reframe, structurally: one shared assessment, many reusable groups.</p>
         </div>
       </div>
@@ -324,5 +337,6 @@
     els.forEach(el => io.observe(el));
   } else { els.forEach(el => el.classList.add('in')); }
 </script>
+<script src="lightbox.js" defer></script>
 </body>
 </html>
