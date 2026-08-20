@@ -147,8 +147,12 @@
   <section class="section">
     <div class="wrap">
       <div class="section-label"><span class="n">03</span><h2>The solution: Project Groups</h2></div>
-      <div class="prose" style="margin-bottom:clamp(32px,5vw,56px)">
+      <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
         <p>I split two things the old flow had fused together: <strong>project structure</strong> and <strong>participant management</strong>. Once those were separate, a project could become a reusable container rather than a one-time event.</p>
+      </div>
+      <div style="margin-bottom:clamp(32px,5vw,56px)">
+        <div class="frame" style="aspect-ratio:1664/505"><img src="images/tc-flow-overview.png" alt="End-to-end flow diagram: create new project, select solution, select test from the product catalogue, set stages and hurdles, set participant experience settings, publish project, add people to project" width="1664" height="505" loading="lazy"></div>
+        <p class="figcap">The flow I designed, start to finish: one path that ends in a reusable group, not a one-off project.</p>
       </div>
 
       <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
@@ -157,6 +161,10 @@
       </div>
       <div style="margin-bottom:clamp(40px,6vw,72px)">
         <div class="frame" style="aspect-ratio:2200/1388"><video autoplay muted loop playsinline preload="auto" poster="images/tc-create-project-poster.jpg" width="2200" height="1388" aria-label="Screen recording of creating a project in TalentCentral+: setting up the assessment structure once as a reusable Project Group"><source src="images/tc-create-project.mp4" type="video/mp4"></video></div>
+        <div style="max-width:560px; margin:20px auto 0">
+          <div class="frame" style="aspect-ratio:1610/824"><img src="images/tc-wireframe-assessment.png" alt="Wireframe of the assessment workflow steps: selecting products from the catalogue, then defining stages and checkpoints" width="1610" height="824" loading="lazy"></div>
+          <p class="figcap">The wireframe this step started as.</p>
+        </div>
       </div>
 
       <div class="split split--rev" style="margin-bottom:clamp(40px,6vw,72px)">
@@ -166,6 +174,24 @@
         </div>
         <div class="split__media">
           <div class="frame"><img src="images/tc-participant-experience.png" alt="Adding participants to a Project Group in TalentCentral+: the group shows 'No participants added yet' alongside deadline settings, participants can be added any time after setup" width="1600" height="1009" loading="lazy"></div>
+          <p class="figcap">The shipped screen.</p>
+          <div class="frame frame--tall" style="aspect-ratio:794/1092; margin-top:16px"><img src="images/tc-wireframe-participant.png" alt="Wireframe of the participant experience configuration step: assessment delivery, on-screen messages, and proctoring settings" width="794" height="1092" loading="lazy"></div>
+          <p class="figcap">The wireframe it started as.</p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
+        <h3>Review, publish, then reuse</h3>
+        <p>The old flow buried a project's setup in one long form with no chance to double-check it. The new review step surfaces everything, assessments, delivery settings, admins, before publishing, so nothing is left to be discovered later.</p>
+      </div>
+      <div class="gallery" style="margin-bottom:clamp(40px,6vw,72px)">
+        <div>
+          <div class="frame" style="aspect-ratio:1600/1009"><img src="images/tc-review-publish.png" alt="Review & publish: Additional details screen in TalentCentral+, showing project administrators, notification settings, tags, and description before publishing" width="1600" height="1009" loading="lazy"></div>
+          <p class="figcap">The shipped screen.</p>
+        </div>
+        <div>
+          <div class="frame" style="aspect-ratio:794/565"><img src="images/tc-wireframe-review.png" alt="Wireframe of the Review & publish additional details step" width="794" height="565" loading="lazy"></div>
+          <p class="figcap">The wireframe it started as.</p>
         </div>
       </div>
 
@@ -189,6 +215,10 @@
       <div class="section-label"><span class="n">04</span><h2>Consistency at scale</h2></div>
       <div class="prose" style="max-width:66ch; margin-bottom:clamp(28px,5vw,48px)">
         <p>The reuse model fixed the big structural problem. But recruiters also lost trust in a dozen small ways, every module handled the same action differently. So I mapped the shared behaviors, <strong>error handling, Excel uploads, validation</strong>, and standardized them into patterns the whole platform could use.</p>
+      </div>
+      <div style="margin-bottom:clamp(32px,5vw,56px)">
+        <div class="frame" style="aspect-ratio:1347/557; background:var(--paper)"><img src="images/tc-system-improvements.png" alt="Diagram mapping how Errors, Excel file upload, and Filters are shared common functionality reused across many features and sub-features spanning three workstreams: Authentication, Create and Manage, and General platform" width="1347" height="557" loading="lazy"></div>
+        <p class="figcap">The map that started this work: three behaviors, reused across features spanning three workstreams.</p>
       </div>
 
       <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
