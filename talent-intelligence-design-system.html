@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talent Intelligence Design System | Pranvi Dandriyal</title>
+<meta name="description" content="Unifying SHL's fragmented Talent Intelligence platforms, TC, iAssess, Reporting, Insights, into one scalable design system: shared tokens, a documented component library, and the governance to make consistency stick.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-case="talent-intelligence-design-system" style="--pc:#EEA302; --pc-ink:#8A5F00; --accent:#EEA302; --accent-ink:#8A5F00">
+<a class="skip" href="#context">Skip to case study</a>
+
+<header class="site-head">
+  <div class="wrap site-head__in">
+    <a class="brand" href="index.html">Pranvi Dandriyal<b>.</b></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html#work" data-nav-hide>Work</a>
+      <a href="index.html#about" data-nav-hide>About</a>
+      <a href="pranvidandriyal-resume.pdf">Résumé ↗</a>
+      <a href="index.html#contact" data-cta>Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HEADER -->
+  <section class="case-head wrap">
+    <a class="back" href="index.html#work">← All work</a>
+    <p class="eyebrow" style="margin-top:26px">Talent Intelligence Design System · SHL</p>
+    <h1>Recruiters felt like they'd switched companies mid-task.</h1>
+    <p class="case-head__sub">SHL's Talent Intelligence platform spanned TC, iAssess, Reporting, and Insights, four legacy tools built at different times, each with its own front-end framework and interaction language. I helped build the unified design system that replaced that patchwork: shared tokens, a documented component library, and the governance to keep it consistent as the platform grows.</p>
+
+    <dl class="spec">
+      <div><dt>My role</dt><dd>Design system contributor: audit, tokens, components, docs</dd></div>
+      <div><dt>Team</dt><dd>Product, Design, Engineering, Science &amp; Solutions</dd></div>
+      <div><dt>Scope</dt><dd>Foundations for the new Talent Intelligence (TI) platform</dd></div>
+      <div><dt>Platform</dt><dd>Web · enterprise B2B SaaS</dd></div>
+    </dl>
+  </section>
+
+  <div class="wrap case-hero-img">
+    <div class="frame frame--diagram" style="aspect-ratio:auto"><img src="images/talent-intelligence-design-system.png" alt="SHL Talent Intelligence Design System color token palette: primary, secondary, and tertiary scales, each shade paired with its accessibility contrast ratio" width="1429" height="1207"></div>
+    <p class="figcap">The color foundation the rest of the system was built on, every shade paired with its accessibility contrast score.</p>
+  </div>
+
+  <!-- AT A GLANCE -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat">
+          <div class="stat__num"><b>0→1</b></div>
+          <p class="stat__label">design system built from scratch alongside the new TI platform</p>
+        </div>
+        <div class="stat">
+          <div class="stat__num"><b>WCAG 2.1 AA</b></div>
+          <p class="stat__label">accessibility built into tokens and components, not bolted on after</p>
+        </div>
+        <div class="stat">
+          <div class="stat__num">Carbon <b>+</b> MUI</div>
+          <p class="stat__label">adapted, not reinvented, to save engineering months</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 01 PROBLEM -->
+  <section class="section" id="context">
+    <div class="wrap">
+      <div class="section-label"><span class="n">01</span><h2>The problem</h2></div>
+      <p class="lead-in">Four platforms, four different decades of design decisions, one recruiter stuck switching between all of them.</p>
+      <div style="margin:clamp(24px,4vw,36px) 0">
+        <div class="frame frame--diagram" style="aspect-ratio:1536/1024; max-width:640px; margin-inline:auto"><img src="images/ti-flow-diagram.png" alt="Icon flow diagram of SHL's legacy Talent journey: TC, then iAssess, then Reporting, then Insights, four separate platforms chained into one workflow" width="1536" height="1024" loading="lazy"></div>
+      </div>
+      <div class="prose" style="max-width:70ch; margin-bottom:clamp(24px,4vw,32px)">
+        <p>A customer's digital journey with SHL often spans multiple legacy platforms: TC for projects and candidates, iAssess for assessment delivery, Reporting, and Insights for analytics. Each was built at a different time, on a different front-end framework, with its own design language and interaction patterns. A typical user could hit two or three entirely different interfaces inside a single workflow.</p>
+      </div>
+      <div class="gallery" style="margin-bottom:clamp(28px,5vw,44px)">
+        <div>
+          <div class="frame" style="aspect-ratio:2630/1370"><img src="images/ti-legacy-tc.png" alt="Legacy TalentCentral screen: a candidate results table for a live meeting, blue and red navigation bar" width="2630" height="1370" loading="lazy"></div>
+        </div>
+        <div>
+          <div class="frame" style="aspect-ratio:2642/1478"><img src="images/ti-legacy-iassess.png" alt="Legacy assessment scheduling screen: a green-branded candidate details table with test scores and expiry dates" width="2642" height="1478" loading="lazy"></div>
+        </div>
+        <div>
+          <div class="frame" style="aspect-ratio:2628/1496"><img src="images/ti-legacy-insights.png" alt="Insights platform screen: a purple-branded 360 feedback dashboard with a radar chart of competency factors" width="2628" height="1496" loading="lazy"></div>
+        </div>
+        <div>
+          <div class="frame" style="aspect-ratio:2740/1488"><img src="images/ti-legacy-interview.png" alt="Smart Interview On Demand screen: a candidate's recorded response with AI-based and manual evaluation scores" width="2740" height="1488" loading="lazy"></div>
+        </div>
+      </div>
+      <p class="figcap" style="margin-top:-24px; margin-bottom:clamp(28px,5vw,44px)">Four corners of one workflow, none of which agree on how a table, a button, or a chart should look.</p>
+
+      <div class="prose" style="max-width:70ch">
+        <p>The inherited landscape presented several obstacles:</p>
+        <ul>
+          <li><strong>Multiple independent platforms</strong> with disconnected UI languages.</li>
+          <li><strong>Inconsistent accessibility and interaction patterns</strong> across products.</li>
+          <li><strong>Repeated design and development work</strong>, the same pattern rebuilt from scratch in every team.</li>
+          <li><strong>Confusion for end users</strong> navigating between dramatically different UIs, sometimes serious enough to read as a security concern, the interface changed so much it felt like a different company.</li>
+          <li><strong>Difficulty maintaining and scaling</strong> visual styles across product lines.</li>
+        </ul>
+        <p>The move to a new TI platform was the opening to fix not just one experience, but how every future SHL experience would look, feel, and function.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 02 ROLE -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-label"><span class="n">02</span><h2>My role</h2></div>
+      <div class="prose" style="max-width:70ch; margin-bottom:clamp(28px,5vw,44px)">
+        <p>I joined the design system effort as part of a cross-functional team spanning Product, Design, Engineering, and Science &amp; Solutions. My focus was the foundations recruiters and designers would actually touch every day.</p>
+        <ul>
+          <li>Audited the existing UI across TC, iAssess, Reporting, and Insights, cataloguing every inconsistency, accessibility gap, and duplicated pattern.</li>
+          <li>Contributed to the design principles and token system that became the system's foundation.</li>
+          <li>Built and documented components in the shared library, matched to Storybook so engineering could validate behavior against the design spec.</li>
+          <li>Partnered with a dedicated engineering owner to keep implementation and design in sync as the system scaled.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="frame frame--diagram" style="aspect-ratio:689/2400; max-height:900px; margin-inline:auto"><img src="images/ti-audit.png" alt="Audit table comparing common UI components, buttons, form fields, dropdowns, cards, tabs, tooltips, and more, across the Common UI library, TC+ components, Insights, and Reporting, marking which platform implements each pattern" width="689" height="4096" loading="lazy"></div>
+        <p class="figcap">The audit I ran before writing a single token: every UI pattern across four platforms, mapped side by side.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- THE DECISION -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <p class="eyebrow" style="text-align:center; margin-bottom:22px">The decision</p>
+      <p style="font-family:var(--f-display); font-weight:500; font-size:var(--step-2); line-height:1.38; color:var(--ink); max-width:52ch; margin-inline:auto; text-align:center; letter-spacing:-0.005em">Simply updating the existing platform wouldn't solve the deeper issues of consistency, performance, and scalability. So the call was made: build the new Talent Intelligence platform from scratch, and put a <em style="font-style:italic; color:var(--accent)">unified, scalable design system</em> at its core.</p>
+      <p style="text-align:center; color:var(--muted); max-width:56ch; margin:26px auto 0">Everything downstream, tokens, components, documentation, governance, exists because of that one call.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 03 APPROACH -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-label"><span class="n">03</span><h2>The approach</h2></div>
+      <div class="prose" style="max-width:66ch; margin-bottom:clamp(24px,4vw,32px)">
+        <p>Two moves accelerated the system without sacrificing quality.</p>
+        <h3>Start from what already works</h3>
+        <p>Rather than inventing every pattern from scratch, we adapted <strong>Carbon Design System</strong> for its robust, modular foundations and <strong>Material UI (MUI)</strong> for its flexible component ecosystem, customizing for SHL's brand and workflows instead of reinventing standard UI elements that didn't need reinventing.</p>
+      </div>
+      <div style="margin-bottom:clamp(40px,6vw,64px)">
+        <div class="frame frame--diagram" style="aspect-ratio:1536/1024; max-width:520px; margin-inline:auto"><img src="images/ti-inspiration.png" alt="Carbon Design System and MUI logos, the two open-source design systems adapted as a foundation" width="1536" height="1024" loading="lazy"></div>
+        <p class="figcap" style="text-align:center">The two systems we built on top of, not the two systems we copied.</p>
+      </div>
+
+      <div class="prose" style="max-width:66ch; margin-bottom:clamp(24px,4vw,32px)">
+        <h3>Define what "good" means before building anything</h3>
+        <p>Before any component shipped, we agreed on four principles every part of the system had to meet:</p>
+      </div>
+      <div class="gallery" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <div class="prose">
+          <h4>Accessible</h4>
+          <p>Compliant with WCAG 2.1 AA: color contrast, screen reader semantics, keyboard navigation, and interaction states, built in, not retrofitted.</p>
+        </div>
+        <div class="prose">
+          <h4>Intuitive &amp; human-centric</h4>
+          <p>Minimizes cognitive load with consistent patterns users can rely on.</p>
+        </div>
+        <div class="prose">
+          <h4>Aesthetic &amp; modern</h4>
+          <p>A refreshed visual identity: clean typography hierarchy, a brand-aligned color system, simplified iconography, balanced spacing.</p>
+        </div>
+        <div class="prose">
+          <h4>Scalable &amp; adaptable</h4>
+          <p>Every component modular and reusable, built for mobile, tablet, and desktop, and expandable as TI grows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 04 BUILDING THE SYSTEM -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="section-label"><span class="n">04</span><h2>Building the system</h2></div>
+      <div class="prose" style="max-width:66ch; margin-bottom:clamp(24px,4vw,32px)">
+        <p>With principles set, the system took shape in four layers, live inside the platform, not just documented in Figma.</p>
+      </div>
+      <div style="margin-bottom:clamp(40px,6vw,64px)">
+        <div class="frame" style="aspect-ratio:2884/2268"><img src="images/ti-system-overview.png" alt="TalentCentral+ screen built on the new design system: a Job Profiles recommendations table with skill proficiency, fit percentile, and reskilling potential columns" width="2884" height="2268" loading="lazy"></div>
+        <p class="figcap">The system already live inside TalentCentral+: the same tokens and components carrying through job-profile recommendations.</p>
+      </div>
+
+      <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
+        <h3>Design tokens</h3>
+        <p>A core set of reusable tokens, color, typography, spacing, motion, keeps every product visually aligned and turns a platform-wide update into a token change instead of a re-design.</p>
+      </div>
+      <div style="margin-bottom:clamp(40px,6vw,64px)">
+        <div class="frame frame--diagram" style="aspect-ratio:1255/2400; max-height:900px; margin-inline:auto"><img src="images/ti-tokens.png" alt="Color variables documentation: text, background, and button color tokens listed with their light-mode values and usage notes" width="1255" height="4096" loading="lazy"></div>
+        <p class="figcap">Every color variable documented with its use, its states, and where it's safe to swap.</p>
+      </div>
+
+      <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
+        <h3>Modular component library</h3>
+        <p>Accessible, documented, reusable components engineered against Storybook form the building blocks of the TI platform and every SHL experience after it.</p>
+      </div>
+      <div style="margin-bottom:clamp(40px,6vw,64px)">
+        <div class="frame frame--diagram" style="aspect-ratio:1701/653"><img src="images/ti-components.png" alt="Button component library: every size, state, and variant, primary, secondary, tertiary, and icon buttons, specified in one grid" width="1701" height="653" loading="lazy"></div>
+        <p class="figcap">One button component, every state and variant it needs to ship, documented before an engineer ever touches it.</p>
+      </div>
+
+      <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
+        <h3>Interaction patterns</h3>
+        <p>Standardized behaviors for navigation, forms, feedback, and loading states, so the same input, error, or dropdown behaves identically no matter which product it's in.</p>
+      </div>
+      <div>
+        <div class="frame frame--diagram" style="aspect-ratio:3001/4096; max-height:900px; margin-inline:auto"><img src="images/ti-interaction-patterns.png" alt="Form field and dropdown states matrix: enabled, hover, focus, error, warning, disabled, and skeleton states, specified across large, medium, and small sizes" width="3001" height="4096" loading="lazy"></div>
+        <p class="figcap">Every field, every state, enabled to disabled, error to loading, specified once and reused everywhere.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 05 DOCUMENTATION & ENGINEERING -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-label"><span class="n">05</span><h2>Documentation &amp; engineering</h2></div>
+      <div class="prose" style="max-width:70ch; margin-bottom:clamp(28px,5vw,44px)">
+        <p>A system nobody can find or trust doesn't get used. Every component's documentation covers usage guidelines, variants and states, the prop list, and the tokens it consumes, so designers and engineers understand not just how to use a component, but why it's built that way.</p>
+      </div>
+      <div class="gallery" style="margin-bottom:clamp(40px,6vw,64px)">
+        <div>
+          <div class="frame frame--diagram" style="aspect-ratio:753/1200; max-height:640px; margin-inline:auto"><img src="images/ti-docs-intro.png" alt="Button component documentation: introduction, prop list with types and defaults, and design tokens used by background color, border color, and text color" width="753" height="4096" loading="lazy"></div>
+          <p class="figcap">Props, variants, and container types, specified once so nobody has to guess.</p>
+        </div>
+        <div>
+          <div class="frame frame--diagram" style="aspect-ratio:2717/2516"><img src="images/ti-docs-guidelines.png" alt="Button usage guidelines documentation: do and don't examples for button width and hierarchy of button types" width="2717" height="2516" loading="lazy"></div>
+          <p class="figcap">Usage guidelines: what the button component allows, and what it explicitly doesn't.</p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
+        <h3>Collaboration with engineering</h3>
+        <p>A design system is a cross-functional product, not a design-only project. We aligned tech leadership early to share ownership, set up Storybook as the single source of truth for validating components and interaction behavior, and assigned a dedicated engineering owner, which accelerated implementation and kept governance consistent.</p>
+      </div>
+      <div>
+        <div class="frame" style="aspect-ratio:3590/2012"><img src="images/ti-engineering.png" alt="Storybook documentation for an Alert component: interactive preview, controls for title, description, variant, and bullet type, and a prop table" width="3590" height="2012" loading="lazy"></div>
+        <p class="figcap">Storybook as the shared source of truth: the same component spec designers reviewed and engineers implemented against.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 06 IMPACT -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-label"><span class="n">06</span><h2>Impact</h2></div>
+      <div class="stats" style="margin-bottom:clamp(32px,5vw,56px)">
+        <div class="stat"><div class="stat__num"><b>Unified</b> language</div><p class="stat__label">aligns Product, Design, Engineering, and Science &amp; Solutions on one shared system</p></div>
+        <div class="stat"><div class="stat__num"><b>Faster</b> delivery</div><p class="stat__label">reusable components and predictable patterns shortened build cycles</p></div>
+        <div class="stat"><div class="stat__num"><b>WCAG 2.1 AA</b></div><p class="stat__label">higher quality and accessibility standards, reducing errors and improving long-term stability</p></div>
+      </div>
+      <div class="prose" style="max-width:70ch">
+        <p>SHL needed a unified design system to streamline how products are built, maintained, and scaled across teams. With multiple functions contributing to the Talent Intelligence platform, there was a strong need for shared standards, faster delivery mechanisms, and a cohesive experience foundation that could support future growth.</p>
+        <p>Beyond speed, the system built something harder to quantify: trust. The same button, the same error state, the same filter, behaving identically everywhere a recruiter or candidate encounters it.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 07 REFLECTION -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-label"><span class="n">07</span><h2>Reflection</h2></div>
+      <div class="prose" style="max-width:70ch">
+        <p>A design system is a cross-functional product, not a design-only project, tech leadership alignment turned out to matter as much as any token. Working against a real workflow, Talent Management, kept the system grounded in reality instead of becoming a components-for-their-own-sake exercise. And adapting Carbon and MUI rather than reinventing them was the single biggest accelerant to quality and delivery.</p>
+        <p>The harder lesson was about what happens after launch: governance is crucial. Without clear ownership, a design system deteriorates the moment its authors stop watching it. Consistency is what builds trust, internally between teams, and externally for the people who use what we ship. More than a component library, it became the strategic foundation the rest of SHL's Talent Intelligence ecosystem builds on.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT -->
+  <nav class="next-case" style="--pc:#DF266C; --pc-ink:#B81A55">
+    <div class="wrap">
+      <a href="soulmate.html">
+        <div>
+          <p class="eyebrow">Next case · 04</p>
+          <h2>SoulMate</h2>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </nav>
+
+</main>
+
+<footer>
+  <hr class="rule">
+  <div class="wrap foot-legal">
+    <span>© 2026 Pranvi Dandriyal</span>
+    <span><a href="index.html#contact" style="color:var(--muted)">pranvidandriyal@gmail.com</a></span>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.stat, .split, .prose, .frame, .gallery > div');
+  els.forEach(el => el.classList.add('reveal'));
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    els.forEach(el => io.observe(el));
+  } else { els.forEach(el => el.classList.add('in')); }
+</script>
+<script src="lightbox.js" defer></script>
+<script src="video-controls.js" defer></script>
+</body>
+</html>
