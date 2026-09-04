@@ -375,7 +375,7 @@ body[data-case] .foot-legal a:hover { color: var(--ink) !important; }
 }
 .frame--tall { aspect-ratio: 4/3; }
 .frame img, .frame video { width:100%; height:100%; object-fit: cover; display: block; }
-.frame--diagram { padding: clamp(20px,4vw,40px); box-sizing: border-box; }
+.frame--diagram { padding: clamp(12px,2.2vw,24px); box-sizing: border-box; background: var(--paper); }
 .frame--diagram img { object-fit: contain; }
 .figcap { margin-top: 14px; font-family: var(--f-mono); font-size: var(--step--1); color: var(--faint); }
 
