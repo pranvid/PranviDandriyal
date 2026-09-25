@@ -128,8 +128,9 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -0.01em;
   color: var(--ink);
   font-weight: 600;
-  display: inline-flex; align-items: center; gap: 12px;
+  display: inline-flex; align-items: center;
 }
+.brand .palette { margin-left: 12px; }
 .brand b { color: var(--accent); font-weight: 600; }
 .nav { display: flex; gap: clamp(14px, 3vw, 32px); align-items: center; }
 .nav a {
@@ -274,12 +275,6 @@ a { color: inherit; text-decoration: none; }
 .stretched { position: absolute; inset: 0; }  /* full-row link */
 .stretched:focus-visible { outline-offset: -3px; border-radius: 10px; }
 
-/* project without a published case study yet: no link, quieter hover */
-.work__item--soon:hover { background: none; }
-.work__item--soon:hover .work__title { color: var(--ink); }
-.work__item--soon:hover .work__num { transform: none; }
-.work__item--soon:hover .work__thumb { transform: none; box-shadow: 5px 5px 0 color-mix(in srgb, var(--pc) 80%, var(--paper)); }
-.tag--soon { border-style: dashed; color: var(--faint); }
 
 /* placeholder image frame (swap with real exports) */
 .ph {
