@@ -106,6 +106,61 @@
   .stability text { font-family: var(--f-mono); font-size: 9px; fill: var(--muted); }
 
   .concept .prose h3 { line-height: 1.2; }
+
+  /* padded image frame for charts exported from other tools */
+  .frame--padded { aspect-ratio: auto; padding: clamp(14px,2.4vw,24px); background: var(--paper); }
+  .frame--padded img { height: auto; object-fit: contain; border-radius: 6px; background: #fff; border: 1px solid var(--line); }
+
+  /* archetypes */
+  table.data tr.is-target td { background: color-mix(in srgb, var(--pc) 6%, var(--paper)); }
+  table.data .target { display: inline-block; margin-left: 8px; vertical-align: 2px; font-family: var(--f-mono); font-size: 0.64rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; background: var(--pc); color: var(--pc-text); border-radius: 999px; padding: 2px 8px; }
+
+  /* personas */
+  .personas { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,340px),1fr)); gap: clamp(16px,3vw,28px); }
+  .persona { background: var(--paper); border: 1px solid var(--line-2); border-radius: 10px; padding: clamp(20px,3vw,28px); display: grid; gap: 16px; align-content: start; box-shadow: 5px 5px 0 color-mix(in srgb, var(--pc) 70%, var(--paper)); }
+  .persona__head { display: flex; gap: 14px; align-items: center; }
+  .persona__mono { flex: none; width: 48px; height: 48px; border-radius: 10px; background: var(--pc); color: var(--pc-text); display: grid; place-items: center; font-family: var(--f-display); font-weight: 600; font-size: 1.1rem; }
+  .persona__mono--alt { background: var(--ink); color: var(--paper); }
+  .persona h4 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); color: var(--ink); line-height: 1.15; }
+  .persona__head p { font-family: var(--f-mono); font-size: 0.74rem; color: var(--muted); margin-top: 3px; }
+  .persona__bio { color: var(--body); font-size: 0.95rem; line-height: 1.55; }
+  .persona__grid { display: grid; gap: 12px; margin: 0; }
+  .persona__grid > div { border-top: 1px solid var(--line); padding-top: 12px; }
+  .persona__grid dt { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--pc-ink); margin-bottom: 4px; }
+  .persona__grid dd { margin: 0; color: var(--body); font-size: 0.92rem; line-height: 1.5; }
+  .persona__need dd { color: var(--ink); font-weight: 500; }
+
+  /* journey sentiment chart */
+  .journey { border: 1px solid var(--line-2); border-radius: 10px; background: var(--paper); padding: clamp(12px,2vw,20px); box-shadow: 5px 5px 0 color-mix(in srgb, var(--pc) 70%, var(--paper)); }
+  .journey__chart { overflow-x: auto; }
+  .journey svg { display: block; width: 100%; min-width: 780px; height: auto; }
+  .jm-band { fill: var(--paper); }
+  .jm-band--alt { fill: color-mix(in srgb, var(--pc) 5%, var(--paper)); }
+  .jm-stage { font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; fill: var(--pc-ink); text-transform: uppercase; }
+  .jm-mid { stroke: var(--line-2); stroke-dasharray: 3 4; }
+  .jm-line { fill: none; stroke: var(--pc); stroke-width: 2.5; stroke-linejoin: round; }
+  .jm-dot { fill: var(--paper); stroke: var(--pc); stroke-width: 2.5; }
+  .jm-dot--low { fill: var(--pc); }
+  .jm-label { font-family: var(--f-sans); font-size: 11px; fill: var(--body); }
+
+  .story { border-left: 3px solid var(--pc); padding: 4px 0 4px 22px; max-width: 70ch; }
+  .story p:last-child { font-family: var(--f-display); font-weight: 500; font-size: var(--step-1); line-height: 1.45; color: var(--ink); }
+
+  /* reply ratio before/after */
+  .ratio { border: 1px solid var(--line-2); border-radius: 10px; background: var(--paper); padding: clamp(16px,2.6vw,26px); display: grid; grid-template-columns: auto 1fr 1fr; gap: 12px 14px; align-items: stretch; box-shadow: 5px 5px 0 color-mix(in srgb, var(--pc) 70%, var(--paper)); }
+  .ratio__col-head { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); color: var(--ink); }
+  .ratio__row-head { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--pc-ink); align-self: center; writing-mode: vertical-rl; transform: rotate(180deg); }
+  .ratio__cell { border: 1px solid var(--line); border-radius: 8px; padding: 14px; display: grid; gap: 4px; align-content: start; background: color-mix(in srgb, var(--surface) 45%, var(--paper)); }
+  .ratio__cell b { font-family: var(--f-display); font-weight: 600; font-size: var(--step-2); line-height: 1; font-variant-numeric: tabular-nums; }
+  .ratio__cell b.good { color: #1F6B4A; }
+  .ratio__cell b.bad { color: var(--pc-ink); }
+  .ratio__cell > span { font-family: var(--f-mono); font-size: 0.72rem; color: var(--muted); }
+  .ratio__cell small { font-size: 0.82rem; color: var(--muted); }
+  .ratio__dots, .ratio__legend { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+  .ratio i { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--pc); display: inline-block; }
+  .ratio i.on { background: var(--pc); }
+  .ratio__legend { grid-column: 1 / -1; gap: 18px; margin: 4px 0 0; font-family: var(--f-mono); font-size: 0.72rem; color: var(--muted); }
+  .ratio__legend span { display: inline-flex; gap: 6px; align-items: center; }
   .sources { font-size: 0.8rem; color: var(--faint); line-height: 1.55; max-width: 90ch; }
   .sources li { margin-bottom: 6px; }
 </style>
@@ -420,42 +475,120 @@
         <div class="problem"><span class="tag-n">P5</span><h4>Opaque algorithms</h4><p>Nobody knows how matches are made, so people distrust the results.</p></div>
       </div>
 
-      <div class="split" style="margin-bottom:clamp(32px,5vw,56px)">
-        <div class="prose">
-          <h3>Who we designed for</h3>
-          <p>We sketched four archetypes of dating-app users and wrote a storyboard showing how the current apps fail each of them. Two archetypes became our target users, and we turned them into detailed personas, checking them with additional semi-structured interviews.</p>
-          <p><strong>Emily, the workaholic</strong>, is an ambitious lawyer who loves theatre and has little free time to sift through profiles. <strong>Eric, the techie</strong>, is a thoughtful software engineer who writes scripts in his spare time and is often overlooked because of how he looks.</p>
-        </div>
-        <div class="split__media">
-          <div class="frame" style="aspect-ratio:1996/828"><img src="images/sm-archetypes.webp" alt="Four user archetypes, the diva, the gym guru, the workaholic and the techie, with their goals and satisfaction with current apps; the workaholic and the techie are marked as target users" width="1996" height="828" loading="lazy"></div>
-          <p class="figcap">Four archetypes. The workaholic and the techie are the least satisfied, so they became our target users.</p>
-        </div>
+      <div class="prose" style="margin-bottom:clamp(24px,4vw,36px)">
+        <h3>Who we designed for</h3>
+        <p>We sketched four archetypes of dating-app users and wrote a storyboard showing how the current apps fail each of them. The two least satisfied archetypes became our target users, and we turned them into detailed personas, checking them with additional semi-structured interviews.</p>
       </div>
 
-      <div class="gallery" style="margin-bottom:clamp(32px,5vw,56px)">
-        <div>
-          <div class="frame" style="aspect-ratio:1326/663"><img src="images/sm-persona-emily.webp" alt="Persona: Emily, the workaholic, with goals, strategy, pain points, motivations and needs" width="1326" height="663" loading="lazy"></div>
-          <p class="figcap">Emily needs to filter on personality and shared interests to save time.</p>
-        </div>
-        <div>
-          <div class="frame" style="aspect-ratio:1326/663"><img src="images/sm-persona-eric.webp" alt="Persona: Eric, the techie, with goals, strategy, pain points, motivations and needs" width="1326" height="663" loading="lazy"></div>
-          <p class="figcap">Eric needs a way to show his personality and interests beyond his photos.</p>
-        </div>
+      <div class="table-wrap" style="margin-bottom:clamp(32px,5vw,56px)">
+        <table class="data">
+          <caption class="sr-only" style="position:absolute;left:-9999px">Four archetypes of dating-app users</caption>
+          <thead><tr><th>Archetype</th><th>In their words</th><th>Looking for</th><th>Happy with apps?</th></tr></thead>
+          <tbody>
+            <tr><td>The diva</td><td>"I love to have fun and explore the world, while pursuing my modeling career."</td><td>Something casual</td><td>Satisfied</td></tr>
+            <tr><td>The gym guru</td><td>"I'm a fitness and fun-loving guy who's always up for an adventure on my superbike."</td><td>Something casual</td><td>Satisfied</td></tr>
+            <tr class="is-target"><td>The workaholic <span class="target">Target</span></td><td>"I'm a hard-working and ambitious lawyer who loves acting and drama but don't have enough time to swipe on 100s of profiles."</td><td>A serious relationship</td><td><strong>Not satisfied</strong></td></tr>
+            <tr class="is-target"><td>The techie <span class="target">Target</span></td><td>"I'm a mature software engineer who loves writing scripts for plays. I dislike dating apps as I don't get enough matches."</td><td>Open to serious or casual</td><td><strong>Not satisfied</strong></td></tr>
+          </tbody>
+        </table>
       </div>
 
-      <div style="margin-bottom:clamp(32px,5vw,56px)">
-        <div class="frame frame--diagram" style="aspect-ratio:2600/828"><img src="images/sm-journey-map.webp" alt="Emily's user journey on Tinder across five stages, entice, entry, explore, detach and exit, with her sentiment falling from hopeful to hopeless, plus her actions, thoughts, frustrations and design opportunities" width="2600" height="828" loading="lazy"></div>
-        <p class="figcap">Emily's journey on Tinder. Her mood peaks when she finds someone she likes and bottoms out when she learns they want different things. Each low point is a design opportunity. Click to enlarge.</p>
+      <div class="personas" style="margin-bottom:clamp(40px,6vw,72px)">
+        <article class="persona">
+          <header class="persona__head">
+            <span class="persona__mono" aria-hidden="true">Em</span>
+            <div><h4>Emily</h4><p>The workaholic · 32 · lawyer · San Francisco</p></div>
+          </header>
+          <p class="persona__bio">Ambitious and career-driven, with little free time. Acts part-time in her local theatre and isn't afraid to speak her mind.</p>
+          <dl class="persona__grid">
+            <div><dt>Goals</dt><dd>A serious, committed relationship with someone mature who understands her ambition and shares her interests.</dd></div>
+            <div><dt>Pain points</dt><dd>Matches who won't put in effort or only want something casual. No time to browse endlessly. Overwhelmed by the volume of matches.</dd></div>
+            <div class="persona__need"><dt>Needs</dt><dd>A way to filter on personality and shared interests, to save her time.</dd></div>
+          </dl>
+        </article>
+        <article class="persona">
+          <header class="persona__head">
+            <span class="persona__mono persona__mono--alt" aria-hidden="true">Er</span>
+            <div><h4>Eric</h4><p>The techie · 28 · software engineer · San Francisco</p></div>
+          </header>
+          <p class="persona__bio">Introverted but very thoughtful, mature and ambitious for his age. Writes scripts for plays in his free time.</p>
+          <dl class="persona__grid">
+            <div><dt>Goals</dt><dd>A lifelong partnership with someone confident who shares his interests and ambition.</dd></div>
+            <div><dt>Pain points</dt><dd>Struggles to get matches. Feels overlooked because of his appearance, despite a great personality and many shared interests.</dd></div>
+            <div class="persona__need"><dt>Needs</dt><dd>A way to show his personality and interests, not just his photos.</dd></div>
+          </dl>
+        </article>
       </div>
 
-      <div class="split">
-        <div class="split__media">
-          <div class="frame" style="aspect-ratio:840/511"><img src="images/sm-storyboard-end.webp" alt="Final storyboard frames: Emily realises Luke has nothing in common with her and unmatches, then uninstalls the app" width="840" height="511" loading="lazy"></div>
+      <div class="prose" style="margin-bottom:clamp(20px,3vw,28px)">
+        <h3>Emily's journey today</h3>
+        <p>We mapped Emily's experience on Tinder from first download to uninstall. Her mood peaks when she finally finds someone she likes, then collapses when she learns they want different things.</p>
+      </div>
+      <div class="journey">
+        <div class="journey__chart">
+            <svg viewBox="0 0 980 256" role="img" aria-label="Emily's sentiment across five stages: from lonely and curious, rising to excited while exploring, then falling to devastated and hopeless before she uninstalls">
+            <rect class="jm-band" x="6.0" y="0" width="139.3" height="256" rx="6"></rect>
+            <text class="jm-stage" x="75.7" y="22" text-anchor="middle">1 Entice</text>
+            <rect class="jm-band jm-band--alt" x="145.3" y="0" width="142.1" height="256" rx="6"></rect>
+            <text class="jm-stage" x="216.4" y="22" text-anchor="middle">2 Entry</text>
+            <rect class="jm-band" x="287.4" y="0" width="510.4" height="256" rx="6"></rect>
+            <text class="jm-stage" x="542.6" y="22" text-anchor="middle">3 Explore</text>
+            <rect class="jm-band jm-band--alt" x="797.8" y="0" width="89.5" height="256" rx="6"></rect>
+            <text class="jm-stage" x="842.5" y="22" text-anchor="middle">4 Detach</text>
+            <rect class="jm-band" x="887.3" y="0" width="86.7" height="256" rx="6"></rect>
+            <text class="jm-stage" x="930.6" y="22" text-anchor="middle">5 Exit</text>
+            <line class="jm-mid" x1="6" y1="137" x2="974" y2="137"></line>
+            <path class="jm-line" d="M48.0,154.0 L100.6,128.5 L190.1,128.5 L242.7,140.4 L332.1,128.5 L384.8,109.8 L437.4,125.1 L490.0,137.0 L542.6,92.8 L595.2,106.4 L647.9,79.2 L700.5,89.4 L753.1,191.4 L842.5,184.6 L932.0,205.0"></path>
+            <circle class="jm-dot" cx="48.0" cy="154.0" r="5"></circle>
+            <text class="jm-label" x="48.0" y="175.0" text-anchor="middle">Lonely</text>
+            <circle class="jm-dot" cx="100.6" cy="128.5" r="5"></circle>
+            <text class="jm-label" x="100.6" y="116.5" text-anchor="middle">Curious</text>
+            <circle class="jm-dot" cx="190.1" cy="128.5" r="5"></circle>
+            <text class="jm-label" x="190.1" y="116.5" text-anchor="middle">Curious</text>
+            <circle class="jm-dot" cx="242.7" cy="140.4" r="5"></circle>
+            <text class="jm-label" x="242.7" y="161.4" text-anchor="middle">Annoyed</text>
+            <circle class="jm-dot" cx="332.1" cy="128.5" r="5"></circle>
+            <text class="jm-label" x="332.1" y="149.5" text-anchor="middle">Re-engaged</text>
+            <circle class="jm-dot" cx="384.8" cy="109.8" r="5"></circle>
+            <text class="jm-label" x="384.8" y="97.8" text-anchor="middle">Glad</text>
+            <circle class="jm-dot" cx="437.4" cy="125.1" r="5"></circle>
+            <text class="jm-label" x="437.4" y="146.1" text-anchor="middle">Annoyed</text>
+            <circle class="jm-dot" cx="490.0" cy="137.0" r="5"></circle>
+            <text class="jm-label" x="490.0" y="158.0" text-anchor="middle">Disappointed</text>
+            <circle class="jm-dot" cx="542.6" cy="92.8" r="5"></circle>
+            <text class="jm-label" x="542.6" y="80.8" text-anchor="middle">Hopeful</text>
+            <circle class="jm-dot" cx="595.2" cy="106.4" r="5"></circle>
+            <text class="jm-label" x="595.2" y="127.4" text-anchor="middle">Overwhelmed</text>
+            <circle class="jm-dot" cx="647.9" cy="79.2" r="5"></circle>
+            <text class="jm-label" x="647.9" y="67.2" text-anchor="middle">Excited</text>
+            <circle class="jm-dot" cx="700.5" cy="89.4" r="5"></circle>
+            <text class="jm-label" x="700.5" y="77.4" text-anchor="middle">Nervous</text>
+            <circle class="jm-dot jm-dot--low" cx="753.1" cy="191.4" r="5"></circle>
+            <text class="jm-label" x="753.1" y="212.4" text-anchor="middle">Devastated</text>
+            <circle class="jm-dot jm-dot--low" cx="842.5" cy="184.6" r="5"></circle>
+            <text class="jm-label" x="842.5" y="172.6" text-anchor="middle">Tired</text>
+            <circle class="jm-dot jm-dot--low" cx="932.0" cy="205.0" r="5"></circle>
+            <text class="jm-label" x="932.0" y="226.0" text-anchor="middle">Hopeless</text>
+            </svg>
         </div>
-        <div class="prose">
-          <h4 style="margin-top:0">The storyboard's ending</h4>
-          <p>In our storyboard, Emily spends her limited time on Luke, who has plenty of matches and isn't looking for anything serious. Eric shares her interests but can't get a match, and his confidence drops. Both of them delete the app. The rest of the project was about changing that ending.</p>
-        </div>
+      </div>
+      <div class="table-wrap" style="margin-top:clamp(16px,2.5vw,24px); margin-bottom:clamp(32px,5vw,56px)">
+        <table class="data">
+          <caption class="sr-only" style="position:absolute;left:-9999px">Emily's journey: what happens at each stage and the design opportunity</caption>
+          <thead><tr><th>Stage</th><th>What happens</th><th>Opportunity</th></tr></thead>
+          <tbody>
+            <tr><td>1 · Entice</td><td>Lonely and busy, she tries Tinder on a friend's advice, despite hearing it doesn't work.</td><td>Position SoulMate as an app built for relationships.</td></tr>
+            <tr><td>2 · Entry</td><td>Sign-up asks only basic details. Nothing about who she is.</td><td>Ask personality and interest questions during setup.</td></tr>
+            <tr><td>3 · Explore</td><td>Swipes on photos with no personality to go on, can't filter by interests, gets flooded with matches and doesn't know who to talk to.</td><td>Richer profiles, interest-based filters, conversation prompts and a cap on active chats.</td></tr>
+            <tr><td>4 · Detach</td><td>Learns her match wants something different. Back to talking to strangers.</td><td>Show intentions and preferences on profiles.</td></tr>
+            <tr><td>5 · Exit</td><td>"I've had 100s of matches and spent 100s of dollars." She uninstalls.</td><td>Shorten the path from install to a real connection.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="story">
+        <p class="eyebrow" style="margin-bottom:10px">The storyboard's ending</p>
+        <p>Emily spends her limited time on Luke, who has plenty of matches and isn't looking for anything serious. Eric shares her interests but can't get a match, and his confidence drops. Both of them delete the app. <strong>The rest of the project was about changing that ending.</strong></p>
       </div>
     </div>
   </section>
@@ -494,7 +627,7 @@
             <div class="concept__meta"><span class="tag">Solves P1 · P2</span><span class="tag tag--impact">Proof of concept built</span></div>
           </div>
           <div class="split__media">
-            <div class="frame frame--diagram" style="aspect-ratio:1231/637"><img src="images/sm-use-experiment.webp" alt="Heatmap of semantic similarity between Emily's interests (theatre, acting, law) and Eric's interests (cinema, script writing, technology), computed with Google's Universal Sentence Encoder; theatre and cinema score highest" width="1231" height="637" loading="lazy"></div>
+            <div class="frame frame--padded"><img src="images/sm-use-experiment.webp" alt="Heatmap of semantic similarity between Emily's interests (theatre, acting, law) and Eric's interests (cinema, script writing, technology), computed with Google's Universal Sentence Encoder; theatre and cinema score highest" width="1231" height="637" loading="lazy"></div>
             <p class="figcap">The proof of concept: semantic similarity finds shared ground that keyword matching misses.</p>
           </div>
         </div>
@@ -515,18 +648,14 @@
 
       <!-- 3 -->
       <div class="concept">
-        <div class="split split--rev">
+        <div class="split">
           <div class="prose">
             <h3>3. A short list of recommendations</h3>
             <p>Instead of an endless deck of profiles, people get a short list of recommended profiles with personality information shown upfront. Comparing a few people is still possible, but the damage from endless side-by-side comparison drops sharply.</p>
             <div class="concept__meta"><span class="tag">Solves P1 · P3</span></div>
-            <div class="hypos" style="grid-template-columns:1fr; margin-top:14px">
-              <div class="hypo"><div class="hypo__top"><span>Hypothesis 6</span><span class="hypo__badge hypo__badge--open">To test</span></div><p>People will judge compatibility better when personality information is shown upfront.</p></div>
-            </div>
           </div>
-          <div class="split__media">
-            <div class="frame frame--diagram" style="aspect-ratio:2099/1009"><img src="images/sm-recommended-lists.webp" alt="Before and after matching diagram: today the personas match across incompatible pairs; with recommended lists, Eric and Emily and Luke and Sarah are matched with compatible partners" width="2099" height="1009" loading="lazy"></div>
-            <p class="figcap">Left: today, people often match with someone who wants something different. Right: recommended lists pair compatible people, like Emily and Eric.</p>
+          <div class="hypos" style="grid-template-columns:1fr">
+            <div class="hypo"><div class="hypo__top"><span>Hypothesis 6</span><span class="hypo__badge hypo__badge--open">To test</span></div><p>People will judge compatibility better when personality information is shown upfront.</p></div>
           </div>
         </div>
       </div>
@@ -554,7 +683,19 @@
         </div>
         <div class="split split--rev" style="margin-top:clamp(20px,3vw,32px)">
           <div class="split__media">
-            <div class="frame frame--diagram" style="aspect-ratio:1480/1196"><img src="images/sm-reply-ratio.webp" alt="Before and after: Eric has few matches and a 100% reply ratio, Luke has many matches and a 10% reply ratio; once reply ratios are public, matches even out between them" width="1480" height="1196" loading="lazy"></div>
+            <div class="ratio" role="img" aria-label="Before: Eric has 2 matches and replies to all of them, a 100% reply ratio; Luke has 10 matches and replies to 1, a 10% reply ratio. After reply ratios are public, both have 6 matches: Eric replies to 5 (83%), Luke to 1 (17%).">
+              <div class="ratio__col-head"></div>
+              <div class="ratio__col-head">Eric</div>
+              <div class="ratio__col-head">Luke</div>
+              <div class="ratio__row-head">Before</div>
+              <div class="ratio__cell"><b class="good">100%</b><span>reply ratio</span><div class="ratio__dots"><i class="on"></i><i class="on"></i></div><small>2 matches</small></div>
+              <div class="ratio__cell"><b class="bad">10%</b><span>reply ratio</span><div class="ratio__dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><small>10 matches</small></div>
+              <div class="ratio__row-head">After</div>
+              <div class="ratio__cell"><b class="good">83%</b><span>reply ratio</span><div class="ratio__dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><small>6 matches</small></div>
+              <div class="ratio__cell"><b class="bad">17%</b><span>reply ratio</span><div class="ratio__dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div><small>6 matches</small></div>
+              <p class="ratio__legend"><span><i class="on"></i>replied</span><span><i></i>no reply</span></p>
+            </div>
+            <p class="figcap">Once the ratio is visible, people message Eric more and Luke less, and their matches even out.</p>
           </div>
           <div class="hypos" style="grid-template-columns:1fr; align-self:center">
             <div class="hypo"><div class="hypo__top"><span>Hypothesis 8</span><span class="hypo__badge hypo__badge--open">To test</span></div><p>Metrics shown on a profile will change how people decide who to match with.</p></div>

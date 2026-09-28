@@ -16,8 +16,8 @@
   --surface:    #F3EDE0;   /* sand tint for alternating sections */
   --ink:        #17222E;   /* headings / primary text */
   --body:       #39424E;   /* long-form body */
-  --muted:      #626C79;   /* secondary text */
-  --faint:      #8B95A1;   /* meta, captions */
+  --muted:      #4A5361;   /* secondary text (7.3:1 on paper) */
+  --faint:      #5A6370;   /* meta, captions (5.7:1 on paper) */
   --line:       #E5DECF;   /* hairlines */
   --line-2:     #D5CCB8;
 
