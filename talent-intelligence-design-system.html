@@ -241,6 +241,31 @@
   @media (prefers-reduced-motion: reduce) { .tib.is-loading::after { animation-duration: 2.4s; } }
   .ti-na { font-family: var(--f-mono); font-size: 0.72rem; color: #9AA0A8; }
 
+  /* library inventory */
+  .ti-chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .ti-chips .c { font-family: var(--f-mono); font-size: 0.7rem; line-height: 1.3; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--ink); background: var(--paper); }
+  .ti-chips .c--done { background: var(--pc); border-color: var(--pc); color: var(--pc-text); }
+  .ti-chips .c--wip { border-style: dashed; color: var(--muted); background: transparent; }
+  .ti-chips .c--dep { color: var(--faint); text-decoration: line-through; background: transparent; }
+  .ti-inv-found, .ti-inv__tier { background: var(--paper); border: 1px solid var(--line-2); border-radius: 10px; padding: 16px 18px 18px; }
+  .ti-inv-found { margin-bottom: clamp(12px,2vw,18px); }
+  .ti-inv-found h4, .ti-inv__tier h4 { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--f-display); font-weight: 600; font-size: 1.02rem; color: var(--ink); margin-bottom: 10px; }
+  .ti-inv-found h4 b, .ti-inv__tier h4 b { font-size: var(--step-2); line-height: 1; color: var(--pc-ink); font-variant-numeric: tabular-nums; }
+  .ti-inv { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: clamp(12px,2vw,18px); align-items: start; }
+  .ti-inv__bar { display: flex; gap: 2px; height: 6px; border-radius: 99px; overflow: hidden; margin-bottom: 14px; }
+  .ti-inv__bar i { background: var(--pc); }
+  .ti-inv__bar i.w { background: color-mix(in srgb, var(--pc) 22%, var(--surface)); }
+  .ti-inv__bar i.d { background: var(--line-2); }
+  .ti-inv__legend { list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 0.86rem; color: var(--body); }
+  .ti-inv__legend li { display: inline-flex; align-items: center; gap: 8px; }
+  .ti-inv__legend i { width: 22px; height: 12px; border-radius: 99px; border: 1px solid var(--line-2); }
+  .ti-inv__legend i.c--done { background: var(--pc); border-color: var(--pc); }
+  .ti-inv__legend i.c--wip { border-style: dashed; }
+  .ti-inv__legend i.c--dep { background: linear-gradient(transparent 45%, var(--faint) 45% 58%, transparent 58%); }
+  .ti-inv__legend b { font-family: var(--f-display); color: var(--ink); }
+  @media (max-width: 960px) { .ti-inv { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+  @media (max-width: 520px) { .ti-inv { grid-template-columns: 1fr; } }
+
   /* a11y spec */
   .ti-a11y { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: clamp(14px,2.2vw,22px); }
   .ti-a11y__col { background: var(--paper); border: 1px solid var(--line-2); border-radius: 10px; padding: 18px 20px 20px; }
@@ -458,7 +483,10 @@
           <div class="stat__num"><b>5 → 1</b></div>
           <p class="stat__label">legacy product UIs replaced by one shared design language</p>
         </div>
-        <div class="slot slot--tile"><span class="slot__id">S2 · metric</span><b>—</b><p>Components shipped in the library (e.g. “42 components”)</p></div>
+        <div class="stat">
+          <div class="stat__num"><b>55</b></div>
+          <p class="stat__label">components in the library, atoms to organisms, plus 7 templates</p>
+        </div>
         <div class="slot slot--tile"><span class="slot__id">S3 · metric</span><b>—</b><p>Products or teams building on the system today</p></div>
       </div>
     </div>
@@ -825,10 +853,71 @@
 
   <hr class="rule">
 
-  <!-- 06 COMPONENT DEEP DIVE -->
+  <!-- 06 THE LIBRARY -->
+  <section class="section section--tint" id="library">
+    <div class="wrap">
+      <div class="section-label"><span class="n">06</span><h2>The library</h2></div>
+      <div class="split" style="margin-bottom:clamp(28px,5vw,44px)">
+        <p class="lead-in">From tokens to templates: 8 foundations, 55 components, 7 templates.</p>
+        <div class="prose">
+          <p>The library is organised the way it's built up: foundations, then atoms, molecules, organisms and templates. Every page in the Figma file carries a status, so anyone can see at a glance what's ready to build with, what's still in progress and what's been retired.</p>
+        </div>
+      </div>
+
+      <div class="ti-inv-found">
+        <h4>Foundations <b>8</b></h4>
+        <ul class="ti-chips"><li class="c">Typography</li><li class="c">Colours</li><li class="c">Motion</li><li class="c">Spacing</li><li class="c">Screens</li><li class="c">Utility</li><li class="c">Wireframes</li><li class="c">TI icon set</li></ul>
+      </div>
+      <div class="ti-inv">
+        <div class="ti-inv__tier">
+          <h4>Atoms <b>21</b></h4>
+          <div class="ti-inv__bar" aria-hidden="true"><i style="flex:15"></i><i class="w" style="flex:5"></i><i class="d" style="flex:1"></i></div>
+          <ul class="ti-chips">
+            <li class="c c--done">Button<span class="sr-only">, complete</span></li><li class="c c--done">Badges<span class="sr-only">, complete</span></li><li class="c c--done">Checkbox<span class="sr-only">, complete</span></li><li class="c c--done">Divider<span class="sr-only">, complete</span></li><li class="c c--done">Avatar<span class="sr-only">, complete</span></li><li class="c c--done">Radio<span class="sr-only">, complete</span></li><li class="c c--done">Search<span class="sr-only">, complete</span></li><li class="c c--done">Scroll bar<span class="sr-only">, complete</span></li><li class="c c--done">Select<span class="sr-only">, complete</span></li><li class="c c--done">Slider<span class="sr-only">, complete</span></li><li class="c c--done">Tag<span class="sr-only">, complete</span></li><li class="c c--done">Text area<span class="sr-only">, complete</span></li><li class="c c--done">Text input<span class="sr-only">, complete</span></li><li class="c c--done">Toggle + content switch<span class="sr-only">, complete</span></li><li class="c c--done">Tooltip<span class="sr-only">, complete</span></li>
+            <li class="c c--wip">Counter<span class="sr-only">, in progress</span></li><li class="c c--wip">Number input<span class="sr-only">, in progress</span></li><li class="c c--wip">Combo box<span class="sr-only">, in progress</span></li><li class="c c--wip">Chips<span class="sr-only">, in progress</span></li><li class="c c--wip">Action list item<span class="sr-only">, in progress</span></li>
+            <li class="c c--dep">Link<span class="sr-only">, deprecated</span></li>
+          </ul>
+        </div>
+        <div class="ti-inv__tier">
+          <h4>Molecules <b>11</b></h4>
+          <div class="ti-inv__bar" aria-hidden="true"><i style="flex:9"></i><i class="w" style="flex:2"></i></div>
+          <ul class="ti-chips">
+            <li class="c c--done">Accordion<span class="sr-only">, complete</span></li><li class="c c--done">Alert summary<span class="sr-only">, complete</span></li><li class="c c--done">Breadcrumbs<span class="sr-only">, complete</span></li><li class="c c--done">Date picker<span class="sr-only">, complete</span></li><li class="c c--done">Disclaimer<span class="sr-only">, complete</span></li><li class="c c--done">Menu<span class="sr-only">, complete</span></li><li class="c c--done">Progress bar<span class="sr-only">, complete</span></li><li class="c c--done">Tabs<span class="sr-only">, complete</span></li><li class="c c--done">Toast<span class="sr-only">, complete</span></li>
+            <li class="c c--wip">Tiles<span class="sr-only">, in progress</span></li><li class="c c--wip">Pagination<span class="sr-only">, in progress</span></li>
+          </ul>
+        </div>
+        <div class="ti-inv__tier">
+          <h4>Organisms <b>23</b></h4>
+          <div class="ti-inv__bar" aria-hidden="true"><i style="flex:13"></i><i class="w" style="flex:10"></i></div>
+          <ul class="ti-chips">
+            <li class="c c--done">Advanced filter &amp; manage columns<span class="sr-only">, complete</span></li><li class="c c--done">Data grid<span class="sr-only">, complete</span></li><li class="c c--done">Dialog<span class="sr-only">, complete</span></li><li class="c c--done">File uploader<span class="sr-only">, complete</span></li><li class="c c--done">Footer<span class="sr-only">, complete</span></li><li class="c c--done">Header<span class="sr-only">, complete</span></li><li class="c c--done">List<span class="sr-only">, complete</span></li><li class="c c--done">Loading<span class="sr-only">, complete</span></li><li class="c c--done">Modal<span class="sr-only">, complete</span></li><li class="c c--done">Navigation<span class="sr-only">, complete</span></li><li class="c c--done">Steps<span class="sr-only">, complete</span></li><li class="c c--done">Timeline<span class="sr-only">, complete</span></li><li class="c c--done">Rule builder<span class="sr-only">, complete</span></li>
+            <li class="c c--wip">Inline filters<span class="sr-only">, in progress</span></li><li class="c c--wip">Notification<span class="sr-only">, in progress</span></li><li class="c c--wip">Structured table<span class="sr-only">, in progress</span></li><li class="c c--wip">Data visualisation card<span class="sr-only">, in progress</span></li><li class="c c--wip">Email input<span class="sr-only">, in progress</span></li><li class="c c--wip">Tree navigation<span class="sr-only">, in progress</span></li><li class="c c--wip">Page header<span class="sr-only">, in progress</span></li><li class="c c--wip">Section header<span class="sr-only">, in progress</span></li><li class="c c--wip">Card header<span class="sr-only">, in progress</span></li><li class="c c--wip">Drawer<span class="sr-only">, in progress</span></li>
+          </ul>
+        </div>
+        <div class="ti-inv__tier">
+          <h4>Templates <b>7</b></h4>
+          <div class="ti-inv__bar" aria-hidden="true"><i style="flex:3"></i><i class="w" style="flex:4"></i></div>
+          <ul class="ti-chips">
+            <li class="c c--done">Cards<span class="sr-only">, complete</span></li><li class="c c--done">Charts &amp; graphs<span class="sr-only">, complete</span></li><li class="c c--done">SHL AI card<span class="sr-only">, complete</span></li>
+            <li class="c c--wip">Grid messaging<span class="sr-only">, in progress</span></li><li class="c c--wip">Form<span class="sr-only">, in progress</span></li><li class="c c--wip">Empty state<span class="sr-only">, in progress</span></li><li class="c c--wip">Miscellaneous assets<span class="sr-only">, in progress</span></li>
+          </ul>
+        </div>
+      </div>
+      <ul class="ti-inv__legend">
+        <li><i class="c--done"></i><b>40</b> marked complete</li>
+        <li><i class="c--wip"></i><b>21</b> in progress or not yet marked</li>
+        <li><i class="c--dep"></i><b>1</b> deprecated</li>
+      </ul>
+      <p class="figcap">The library as it stands in Figma, every component page and its status. The Button, deep-dived next, is the first atom.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 07 COMPONENT DEEP DIVE -->
   <section class="section">
     <div class="wrap">
-      <div class="section-label"><span class="n">06</span><h2>Anatomy of a component: the Button</h2></div>
+      <div class="section-label"><span class="n">07</span><h2>Anatomy of a component: the Button</h2></div>
       <div class="split" style="margin-bottom:clamp(32px,5vw,48px)">
         <p class="lead-in">The most-used component is where a system earns trust, or loses it.</p>
         <div class="prose">
@@ -997,7 +1086,7 @@
   <!-- 07 DOCUMENTATION & GOVERNANCE -->
   <section class="section section--tint">
     <div class="wrap">
-      <div class="section-label"><span class="n">07</span><h2>Documentation &amp; governance</h2></div>
+      <div class="section-label"><span class="n">08</span><h2>Documentation &amp; governance</h2></div>
       <div class="prose" style="max-width:70ch; margin-bottom:clamp(28px,5vw,44px)">
         <p>A system nobody can find or trust doesn't get used. Every component ships with the same five documents, each versioned, so designers and engineers learn not just how to use it but why it's built that way. The Button's set is the one quoted throughout this page.</p>
       </div>
@@ -1018,6 +1107,16 @@
         <div class="ti-truth__mid" aria-hidden="true"><b>⇄</b>same names, same tokens, same version</div>
         <div class="ti-truth__box"><span class="kind">Code</span><h4>Storybook</h4><p>The coded components, testable against the spec. What engineers build with and QA checks against.</p></div>
       </div>
+      <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
+        <h3>Governance you can see in the file</h3>
+        <p>A system decays when nobody can tell what's current. So the library itself carries the rules.</p>
+      </div>
+      <div class="ti-cards ti-cards--gov" style="margin-bottom:clamp(40px,6vw,64px)">
+        <div class="ti-card"><span class="kind">Status</span><h4>Every page is marked</h4><p>Complete, work in progress or deprecated, visible in the page list itself, before anyone opens a frame.</p></div>
+        <div class="ti-card"><span class="kind">Lifecycle</span><h4>Deprecate, don't delete</h4><p>A retired component, like the standalone Link, stays in the file, clearly marked deprecated, instead of silently disappearing from under the teams using it.</p></div>
+        <div class="ti-card"><span class="kind">History</span><h4>A change log and versioned docs</h4><p>Changes are logged in the file, and each doc carries its version, from v1 to v2.0, so nobody builds from a stale spec.</p></div>
+        <div class="ti-card"><span class="kind">Handoff</span><h4>Annotations and a playground</h4><p>The file includes a shared design-annotations page for handoff, and a playground page for trying components out.</p></div>
+      </div>
       <div style="margin-bottom:clamp(24px,4vw,32px)">
         <div class="frame" style="aspect-ratio:3590/2012"><img src="images/ti-engineering.png" alt="Storybook documentation for an Alert component: interactive preview, controls for title, description, variant and bullet type, and a prop table" width="3590" height="2012" loading="lazy"></div>
         <p class="figcap">Storybook: the same component spec designers reviewed, rendered live for engineers to build and test against.</p>
@@ -1025,7 +1124,7 @@
       <div class="slot">
         <span class="slot__id">S10 · confirm</span>
         <h4>How changes get into the system</h4>
-        <p>Describe the contribution path: who can propose a new component or variant, who reviews it (design + the engineering owner?), how it's versioned (the docs show v2.0), and how teams hear about releases. I'll turn it into a small flow diagram.</p>
+        <p>Describe the contribution path: who can propose a new component or variant, who reviews it (design + the engineering owner?), what earns the ✅, and how teams hear about releases. I'll turn it into a small flow diagram.</p>
       </div>
     </div>
   </section>
@@ -1035,7 +1134,7 @@
   <!-- 08 IMPACT -->
   <section class="section">
     <div class="wrap">
-      <div class="section-label"><span class="n">08</span><h2>Impact</h2></div>
+      <div class="section-label"><span class="n">09</span><h2>Impact</h2></div>
 
       <div class="gallery" style="margin-bottom:clamp(32px,5vw,56px)">
         <div>
@@ -1072,7 +1171,7 @@
   <!-- 09 REFLECTION -->
   <section class="section section--tint">
     <div class="wrap">
-      <div class="section-label"><span class="n">09</span><h2>Reflection</h2></div>
+      <div class="section-label"><span class="n">10</span><h2>Reflection</h2></div>
       <div class="ti-cards ti-cards--2" style="margin-bottom:clamp(28px,5vw,44px)">
         <div class="ti-card">
           <h4>Measure before you argue</h4>
@@ -1156,7 +1255,7 @@
     apply('shl');
   })();
 
-  const els = document.querySelectorAll('.stat, .split, .prose, .frame, .gallery > div, .viz, .ti-card, .ti-table-wrap, .ti-option, .ti-tier, .ti-own > div, .ti-theme, .ti-anatomy, .ti-states-wrap, .ti-doc, .ti-truth, .ti-tldr');
+  const els = document.querySelectorAll('.stat, .split, .prose, .frame, .gallery > div, .viz, .ti-card, .ti-table-wrap, .ti-option, .ti-tier, .ti-own > div, .ti-theme, .ti-anatomy, .ti-states-wrap, .ti-doc, .ti-truth, .ti-tldr, .ti-inv-found, .ti-inv__tier');
   els.forEach(el => el.classList.add('reveal'));
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
