@@ -4,30 +4,75 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Talent Intelligence Design System | Pranvi Dandriyal</title>
-<meta name="description" content="Unifying SHL's fragmented Talent Intelligence platforms, TC, iAssess, Reporting, Insights, into one scalable design system: shared tokens, a documented component library, and the governance to make consistency stick.">
+<meta name="description" content="How SHL replaced five legacy product UIs with one design system: a 117-pattern audit, a two-layer token architecture built for white-labelling, and components like the Button specified down to the token in every state.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%2317222E%27/%3E%3Crect x=%277%27 y=%277%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%238ADAD6%27/%3E%3Crect x=%2717%27 y=%277%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23135454%27/%3E%3Crect x=%277%27 y=%2717%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23EEA302%27/%3E%3Crect x=%2717%27 y=%2717%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23DF266C%27/%3E%3C/svg%3E">
 <meta name="theme-color" content="#FBF7F0">
 <meta property="og:type" content="article">
+<meta property="og:url" content="https://pranvid.github.io/PranviDandriyal/talent-intelligence-design-system.html">
 <meta property="og:title" content="Talent Intelligence Design System | Pranvi Dandriyal">
-<meta property="og:description" content="Unifying SHL's fragmented Talent Intelligence platforms, TC, iAssess, Reporting, Insights, into one scalable design system: shared tokens, a documented component library, and the governance to make consistency stick.">
-<meta property="og:image" content="images/talent-intelligence-design-system.png">
+<meta property="og:description" content="Five legacy product UIs, one design system: a 117-pattern audit, tokens built for white-labelling, and components specified down to the token in every state.">
+<meta property="og:image" content="https://pranvid.github.io/PranviDandriyal/images/talent-intelligence-design-system.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script>
+  // Draft view: append ?draft to the URL to reveal the asset slots still waiting on material.
+  if (/[?&]draft\b/.test(location.search)) document.documentElement.classList.add('draft');
+</script>
 <style>
   main code { font-family: var(--f-mono); font-size: 0.86em; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 0.1em 0.4em; }
 
-  /* hero: the four legacy products side by side */
+  /* ---- Draft asset slots (hidden on the live page) ------------------- */
+  .slot { display: none !important; }
+  html.draft .slot { display: block !important; }
+  html.draft .slot--tile { display: grid !important; }
+  .slot {
+    border: 1.5px dashed color-mix(in srgb, var(--pc) 70%, var(--line-2)); border-radius: 10px;
+    padding: 18px 20px; color: var(--body);
+    background:
+      repeating-linear-gradient(-45deg, transparent 0 11px, color-mix(in srgb, var(--pc) 10%, transparent) 11px 12px),
+      color-mix(in srgb, var(--pc) 4%, var(--paper));
+  }
+  .slot__id { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--pc-ink); }
+  .slot h4 { font-family: var(--f-display); font-weight: 600; font-size: 1rem; color: var(--ink); margin: 4px 0 6px; }
+  .slot p, .slot li { font-size: 0.86rem; line-height: 1.5; }
+  .slot ul { margin: 6px 0 0; padding-left: 1.1em; }
+  .slot--media { aspect-ratio: 16/9; display: none; align-content: center; }
+  html.draft .slot--media { display: grid !important; place-content: center; text-align: center; }
+  .slot--tile { align-content: start; gap: 6px; }
+  .slot--tile b { font-family: var(--f-display); font-size: var(--step-3); line-height: 1; color: var(--faint); }
+  .draft-bar { display: none; }
+  html.draft .draft-bar {
+    display: flex; position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 50;
+    gap: 10px; align-items: center; padding: 10px 16px; border-radius: 999px;
+    background: var(--ink); color: var(--paper); font-family: var(--f-mono); font-size: 0.74rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,.18); max-width: calc(100vw - 32px);
+  }
+  .draft-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--pc); flex: none; }
+
+  /* ---- TL;DR ---------------------------------------------------------- */
+  .ti-tldr { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); border: 1px solid var(--line-2); border-radius: 10px; background: var(--paper); overflow: hidden; }
+  .ti-tldr > div { padding: clamp(18px,2.6vw,26px); border-right: 1px solid var(--line); }
+  .ti-tldr > div:last-child { border-right: 0; }
+  .ti-tldr h2 { font-family: var(--f-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--pc-ink); margin-bottom: 10px; }
+  .ti-tldr p { font-size: 0.95rem; color: var(--ink); line-height: 1.55; }
+  @media (max-width: 820px) {
+    .ti-tldr { grid-template-columns: 1fr; }
+    .ti-tldr > div { border-right: 0; border-bottom: 1px solid var(--line); }
+    .ti-tldr > div:last-child { border-bottom: 0; }
+  }
+
+  /* hero: legacy products side by side */
   .ti-mosaic { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: clamp(10px,2vw,20px); }
   .ti-mosaic .frame { aspect-ratio: 16/10; }
   .ti-mosaic img { object-position: left top; }
   .ti-mosaic figure { margin: 0; }
   .ti-mosaic figcaption { margin-top: 8px; font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--pc-ink); }
 
-  /* one workflow, four products */
-  .ti-flow { display:flex; align-items:flex-start; justify-content:center; flex-wrap:wrap; gap:8px 4px; padding: clamp(24px,5vw,40px) clamp(12px,3vw,24px); }
+  /* one workflow, many products */
+  .ti-flow { display:flex; align-items:flex-start; justify-content:center; flex-wrap:wrap; gap:8px 4px; padding: clamp(24px,5vw,40px) clamp(12px,3vw,24px) 8px; }
   .ti-flow__node { display:flex; flex-direction:column; align-items:center; gap:10px; width:92px; }
   .ti-flow__icon { display:flex; align-items:center; justify-content:center; width:56px; height:56px; flex:none; border-radius:50%; background: color-mix(in srgb, var(--pc) 14%, var(--paper)); color: var(--pc-ink); }
   .ti-flow__icon svg { width:26px; height:26px; }
@@ -40,6 +85,18 @@
     .ti-flow__icon svg { width: 22px; height: 22px; }
     .ti-flow__arrow { margin-top: 12px; font-size: 0.95rem; }
   }
+
+  /* ownership */
+  .ti-own { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(14px,2.2vw,22px); }
+  .ti-own > div { border-top: 3px solid var(--pc); padding-top: 16px; }
+  .ti-own > div:nth-child(2) { border-top-color: color-mix(in srgb, var(--pc) 50%, var(--paper)); }
+  .ti-own > div:nth-child(3) { border-top-color: var(--line-2); }
+  .ti-own h3 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); color: var(--ink); margin-bottom: 4px; }
+  .ti-own .kind { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); display: block; margin-bottom: 12px; }
+  .ti-own ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .ti-own li { font-size: 0.92rem; color: var(--body); line-height: 1.5; padding-left: 16px; position: relative; }
+  .ti-own li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--pc); }
+  @media (max-width: 820px) { .ti-own { grid-template-columns: 1fr; } }
 
   /* audit: 117 patterns as dots */
   .ti-dots { display: flex; flex-wrap: wrap; gap: 5px; margin: 4px 0 0; }
@@ -75,14 +132,182 @@
     .ti-cell__bar { width: 100%; flex: none; }
   }
 
-  /* numbered cards: foundations and principles */
+  /* options considered */
+  .ti-options { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(14px,2.2vw,22px); }
+  .ti-option { background: var(--paper); border: 1px solid var(--line-2); border-radius: 10px; padding: 18px 20px 20px; display: grid; gap: 10px; align-content: start; }
+  .ti-option.is-chosen { border-color: color-mix(in srgb, var(--pc) 70%, var(--line-2)); box-shadow: 5px 5px 0 color-mix(in srgb, var(--pc) 70%, var(--paper)); }
+  .ti-option__top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .ti-option__top .kind { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); }
+  .ti-badge { font-family: var(--f-mono); font-size: 0.66rem; letter-spacing: .06em; text-transform: uppercase; border-radius: 999px; padding: 2px 9px; }
+  .ti-badge--yes { background: var(--pc); color: var(--pc-text); }
+  .ti-badge--no { border: 1px dashed var(--line-2); color: var(--muted); }
+  .ti-option h3 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); color: var(--ink); line-height: 1.25; }
+  .ti-option p { font-size: 0.9rem; color: var(--body); line-height: 1.55; }
+  .ti-option dl { margin: 0; display: grid; gap: 8px; border-top: 1px solid var(--line); padding-top: 12px; }
+  .ti-option dt { font-family: var(--f-mono); font-size: 0.66rem; letter-spacing: .08em; text-transform: uppercase; color: var(--pc-ink); }
+  .ti-option dd { margin: 2px 0 0; font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+  @media (max-width: 820px) { .ti-options { grid-template-columns: 1fr; } }
+
+  /* numbered cards: principles and reflection */
   .ti-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,240px),1fr)); gap: clamp(14px,2.2vw,22px); }
   .ti-card { background: var(--paper); border: 1px solid var(--line-2); border-radius: 10px; padding: 18px 20px 20px; display: grid; gap: 8px; align-content: start; }
   .ti-card .kind { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--pc-ink); }
   .ti-card h4 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); color: var(--ink); letter-spacing: -0.01em; line-height: 1.25; }
   .ti-card p { font-size: 0.92rem; color: var(--body); line-height: 1.55; }
-  .ti-cards--base .ti-card { border-top: 3px solid var(--pc); }
   .ti-cards--2 { grid-template-columns: repeat(auto-fit, minmax(min(100%,380px),1fr)); }
+
+  /* token tiers */
+  .ti-tiers { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr); gap: 12px; align-items: stretch; }
+  .ti-tier { background: var(--paper); border: 1px solid var(--line-2); border-radius: 10px; padding: 18px 18px 20px; display: grid; gap: 8px; align-content: start; }
+  .ti-tier .kind { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--pc-ink); }
+  .ti-tier h4 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); color: var(--ink); }
+  .ti-tier p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+  .ti-tier ul { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 6px; }
+  .ti-tier li code { display: inline-block; font-size: 0.74rem; overflow-wrap: anywhere; }
+  .ti-tier--who { border-style: dashed; }
+  .ti-tiers__arrow { align-self: center; color: var(--faint); font-size: 1.2rem; }
+  @media (max-width: 820px) {
+    .ti-tiers { grid-template-columns: minmax(0,1fr); }
+    .ti-tiers__arrow { justify-self: center; transform: rotate(90deg); }
+  }
+
+  /* base colour scale, rebuilt from the token spec */
+  .ti-ramps { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(10px,2.4vw,24px); }
+  .ti-ramp h5 { font-family: var(--f-display); font-weight: 600; font-size: 0.98rem; color: var(--ink); margin: 0 0 10px; }
+  .ti-ramp ol { list-style: none; margin: 0; padding: 0; border-radius: 8px; overflow: hidden; }
+  .ti-ramp li { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 9px 12px; font-family: var(--f-mono); font-size: 0.74rem; font-variant-numeric: tabular-nums; }
+  .ti-ramp li span:last-child::after { content: ":1"; }
+  .ti-ramp li:nth-child(6) { font-weight: 600; }
+  @media (max-width: 420px) { .ti-ramp li { padding: 8px 8px; font-size: 0.68rem; } }
+
+  /* ---- Button, rebuilt in HTML from the Figma component (v2.0) ----------
+     Every value below is the resolved value of the token the component uses. */
+  .tib-scope {
+    --b-pri: #006b85;        /* background/button/primary/default   = secondary-700 */
+    --b-pri-hover: #0089aa;  /* background/button/primary/hover·focus·pressed = secondary-600 */
+    --b-ring: #54b9d1;       /* effects/focus-rings/focus-ring       = secondary-300 */
+    --b-faded: #e6f5f8;      /* background/button/secondary/hover    = secondary-50 */
+    --b-text: #006b85;       /* text/brand-primary_subtle */
+    --b-border: #0089aa;     /* border/brand-highlight */
+    --b-neg: #da1e28; --b-neg-hover: #c61b24; --b-neg-faded: #f4b9bc; --b-neg-text: #c61b24;
+    --b-ter: #fafbfb; --b-ter-hover: #f1f1f3; --b-ter-ink: #353535;
+    --b-dis-bg: #f2f2f2; --b-dis-fg: #c4c4c4;
+  }
+  .tib {
+    font-family: "Noto Sans", var(--f-sans); font-weight: 400; font-size: 16px; line-height: 24px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    height: 40px; padding: 0 16px; border-radius: 8px; border: 1px solid transparent;
+    cursor: pointer; white-space: nowrap; transition: background .15s ease, box-shadow .15s ease, border-color .15s ease;
+    background: var(--b-pri); color: #fff;
+  }
+  .tib svg { width: 24px; height: 24px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .tib--m { height: 32px; padding: 0 12px; font-size: 14px; gap: 6px; }
+  .tib--m svg { width: 20px; height: 20px; }
+  .tib--s { height: 24px; padding: 0 8px; font-size: 12px; gap: 4px; }
+  .tib--s svg { width: 16px; height: 16px; }
+  .tib[data-variant="secondary"] { background: transparent; color: var(--b-text); border-color: var(--b-border); }
+  .tib[data-variant="tertiary"]  { background: var(--b-ter); color: var(--b-ter-ink); }
+  .tib[data-variant="subtle"]    { background: transparent; color: var(--b-text); }
+  .tib[data-variant="danger"]    { background: var(--b-neg); color: #fff; }
+  .tib[data-variant="danger-secondary"] { background: transparent; color: var(--b-neg-text); border-color: var(--b-neg); }
+  /* hover · pressed (the component uses the same value for both) */
+  .tib:hover, .tib.is-hover, .tib:active, .tib.is-press { background: var(--b-pri-hover); }
+  .tib[data-variant="secondary"]:hover, .tib[data-variant="secondary"].is-hover,
+  .tib[data-variant="secondary"]:active, .tib[data-variant="secondary"].is-press { background: var(--b-faded); border-color: var(--b-pri); }
+  .tib[data-variant="tertiary"]:hover, .tib[data-variant="tertiary"].is-hover,
+  .tib[data-variant="tertiary"]:active, .tib[data-variant="tertiary"].is-press,
+  .tib[data-variant="subtle"]:hover, .tib[data-variant="subtle"].is-hover,
+  .tib[data-variant="subtle"]:active, .tib[data-variant="subtle"].is-press { background: var(--b-ter-hover); }
+  .tib[data-variant="danger"]:hover, .tib[data-variant="danger"].is-hover,
+  .tib[data-variant="danger"]:active, .tib[data-variant="danger"].is-press { background: var(--b-neg-hover); }
+  .tib[data-variant="danger-secondary"]:hover, .tib[data-variant="danger-secondary"].is-hover,
+  .tib[data-variant="danger-secondary"]:active, .tib[data-variant="danger-secondary"].is-press { background: var(--b-neg-faded); }
+  /* focus: a 2px white gap, then a 2px ring, so it reads on any background */
+  .tib:focus-visible, .tib.is-focus { outline: none; box-shadow: 0 2px 8px rgba(88,88,90,.18), 0 1px 2px rgba(88,88,90,.05), 0 0 0 2px #fff, 0 0 0 4px var(--b-ring); }
+  .tib.is-focus[data-variant="primary"], .tib:focus-visible[data-variant="primary"] { background: var(--b-pri-hover); }
+  .tib.is-focus[data-variant="danger"], .tib:focus-visible[data-variant="danger"] { background: var(--b-neg-hover); }
+  /* static specimens in the matrix don't react to the pointer */
+  .ti-states span.tib { pointer-events: none; }
+  /* disabled */
+  .tib:disabled, .tib.is-disabled { background: var(--b-dis-bg); border-color: transparent; color: var(--b-dis-fg); cursor: not-allowed; box-shadow: none; }
+  .tib[data-variant="secondary"]:disabled, .tib[data-variant="secondary"].is-disabled,
+  .tib[data-variant="danger-secondary"]:disabled, .tib[data-variant="danger-secondary"].is-disabled { border-color: var(--b-dis-fg); }
+  .tib[data-variant="subtle"]:disabled, .tib[data-variant="subtle"].is-disabled { background: transparent; }
+  /* loading: disabled surface, label swapped for a spinner, width held */
+  .tib.is-loading { position: relative; min-width: 140px; color: transparent !important; pointer-events: none; background: var(--b-dis-bg); border-color: transparent; }
+  .tib.is-loading::after { content: ""; position: absolute; left: 50%; top: 50%; width: 14px; height: 14px; margin: -9px 0 0 -9px; border-radius: 50%; border: 2px solid var(--b-text); border-right-color: transparent; animation: tib-spin .8s linear infinite; }
+  .tib.is-loading svg { visibility: hidden; }
+  @keyframes tib-spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .tib.is-loading::after { animation-duration: 2.4s; } }
+  .ti-na { font-family: var(--f-mono); font-size: 0.72rem; color: #9AA0A8; }
+
+  /* a11y spec */
+  .ti-a11y { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: clamp(14px,2.2vw,22px); }
+  .ti-a11y__col { background: var(--paper); border: 1px solid var(--line-2); border-radius: 10px; padding: 18px 20px 20px; }
+  .ti-a11y__col h4 { font-family: var(--f-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--pc-ink); margin-bottom: 12px; }
+  .ti-a11y dl { margin: 0; display: grid; gap: 0; }
+  .ti-a11y dl > div { display: grid; grid-template-columns: minmax(7.5rem, 36%) 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+  .ti-a11y dl > div:first-child { border-top: 0; padding-top: 0; }
+  .ti-a11y dt { font-family: var(--f-display); font-weight: 600; font-size: 0.9rem; color: var(--ink); }
+  .ti-a11y dd { margin: 0; font-size: 0.88rem; color: var(--body); line-height: 1.5; }
+  .ti-a11y kbd { font-family: var(--f-mono); font-size: 0.78em; border: 1px solid var(--line-2); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; background: var(--surface); }
+  @media (max-width: 820px) { .ti-a11y { grid-template-columns: 1fr; } }
+  @media (max-width: 420px) { .ti-a11y dl > div { grid-template-columns: 1fr; gap: 2px; } }
+
+  /* resolved token table swatches */
+  .sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; border: 1px solid rgba(0,0,0,.12); vertical-align: -1px; margin-right: 6px; }
+  .ti-table .hex { font-family: var(--f-mono); font-size: 0.74rem; color: var(--muted); white-space: nowrap; }
+
+  /* state matrix */
+  .ti-states-wrap { border: 1px solid var(--line-2); border-radius: 10px; background: #fff; overflow-x: auto; box-shadow: 5px 5px 0 color-mix(in srgb, var(--pc) 70%, var(--paper)); }
+  .ti-states-wrap:focus-visible { outline: 2px solid var(--pc-ink); outline-offset: 2px; }
+  .ti-states { width: 100%; min-width: 640px; border-collapse: collapse; }
+  .ti-states caption { text-align: left; padding: 18px 20px 6px; font-family: var(--f-display); font-weight: 600; font-size: 0.98rem; color: #17222E; }
+  .ti-states caption span { display: block; font-family: var(--f-mono); font-weight: 400; font-size: 0.72rem; color: #5A6370; margin-top: 2px; }
+  .ti-states th, .ti-states td { padding: 12px 16px; border-top: 1px solid #EEF0F2; text-align: left; vertical-align: middle; }
+  .ti-states thead th { font-family: var(--f-mono); font-size: 0.68rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: #5A6370; }
+  .ti-states tbody th { font-family: var(--f-mono); font-size: 0.72rem; font-weight: 500; color: #39424E; white-space: nowrap; }
+  .ti-states tr.grp th { font-family: var(--f-display); font-size: 0.86rem; font-weight: 600; color: #17222E; background: #F6F7F8; padding-block: 8px; letter-spacing: 0; text-transform: none; }
+
+  /* anatomy */
+  .ti-anatomy { border: 1px solid var(--line-2); border-radius: 10px; background: #fff; padding: clamp(56px,7vw,76px) clamp(16px,3vw,28px) clamp(20px,3vw,28px); display: grid; justify-items: center; gap: clamp(28px,4vw,40px); }
+  .ti-anatomy__stage { display: flex; gap: 64px clamp(28px,6vw,64px); flex-wrap: wrap; justify-content: center; align-items: center; padding-bottom: 44px; }
+  .ti-anatomy .tib { height: 56px; padding: 0 26px; font-size: 1.15rem; gap: 10px; pointer-events: none; }
+  .ti-anatomy .tib svg { width: 20px; height: 20px; }
+  .an { position: relative; display: inline-flex; }
+  .an::before { content: attr(data-n); position: absolute; left: 50%; top: -44px; transform: translateX(-50%); width: 22px; height: 22px; border-radius: 50%; background: #17222E; color: #fff; font: 600 0.72rem/22px var(--f-mono); text-align: center; }
+  .an::after { content: ""; position: absolute; left: 50%; top: -22px; height: 16px; border-left: 1.5px dashed #9AA0A8; }
+  .an--below::before { top: auto; bottom: -44px; }
+  .an--below::after { top: auto; bottom: -22px; }
+  .ti-anatomy__legend { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,210px),1fr)); gap: 10px 22px; width: 100%; border-top: 1px solid #EEF0F2; padding-top: 18px; }
+  .ti-anatomy__legend li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: 0.86rem; color: #39424E; line-height: 1.45; }
+  .ti-anatomy__legend b { width: 22px; height: 22px; border-radius: 50%; background: #17222E; color: #fff; font: 600 0.72rem/22px var(--f-mono); text-align: center; }
+  .ti-anatomy__legend strong { color: #17222E; font-weight: 600; }
+
+  /* white-label demo */
+  .ti-theme { border: 1px solid var(--line-2); border-radius: 10px; background: var(--paper); overflow: hidden; box-shadow: 5px 5px 0 color-mix(in srgb, var(--pc) 70%, var(--paper)); }
+  .ti-theme__bar { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+  .ti-theme__bar > span { font-family: var(--f-mono); font-size: 0.72rem; color: var(--faint); margin-right: 4px; }
+  .ti-theme__chip { font-family: var(--f-mono); font-size: 0.74rem; color: var(--ink); background: var(--paper); border: 1px solid var(--line-2); border-radius: 999px; padding: 5px 12px 5px 8px; display: inline-flex; gap: 7px; align-items: center; cursor: pointer; }
+  .ti-theme__chip i { width: 12px; height: 12px; border-radius: 50%; display: block; }
+  .ti-theme__chip[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+  .ti-theme__body { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); }
+  .ti-theme__screen { background: #F4F5F7; padding: clamp(18px,3vw,28px); }
+  .ti-theme__card { background: #fff; border-radius: 10px; border: 1px solid #E4E7EB; padding: 18px 18px 16px; display: grid; gap: 10px; }
+  .ti-theme__card .brandline { display: flex; align-items: center; gap: 8px; font: 600 0.82rem var(--f-sans); color: #2B3036; }
+  .ti-theme__card .brandline i { width: 18px; height: 18px; border-radius: 5px; background: var(--b-pri); transition: background .2s; }
+  .ti-theme__card h5 { font-family: var(--f-sans); font-weight: 600; font-size: 1rem; color: #17222E; margin: 4px 0 0; }
+  .ti-theme__card p { font-size: 0.84rem; color: #4A5361; line-height: 1.5; }
+  .ti-theme__card .pill { justify-self: start; font: 500 0.72rem var(--f-sans); color: var(--b-pri); background: var(--b-faded); border-radius: 999px; padding: 3px 10px; transition: all .2s; }
+  .ti-theme__actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; margin-top: 6px; }
+  .ti-theme__tokens { padding: clamp(18px,3vw,26px); display: grid; gap: 12px; align-content: start; border-left: 1px solid var(--line); }
+  .ti-theme__tokens h5 { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--pc-ink); margin: 0; }
+  .ti-theme__tokens dl { margin: 0; display: grid; gap: 10px; }
+  .ti-theme__tokens dt { font-family: var(--f-mono); font-size: 0.72rem; color: var(--ink); overflow-wrap: anywhere; }
+  .ti-theme__tokens dd { margin: 3px 0 0; display: flex; align-items: center; gap: 8px; font-family: var(--f-mono); font-size: 0.74rem; color: var(--muted); }
+  .ti-theme__tokens dd i { width: 14px; height: 14px; border-radius: 4px; border: 1px solid rgba(0,0,0,.1); }
+  .ti-theme__tokens p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; border-top: 1px solid var(--line); padding-top: 12px; }
+  @media (max-width: 820px) { .ti-theme__body { grid-template-columns: 1fr; } .ti-theme__tokens { border-left: 0; border-top: 1px solid var(--line); } }
 
   /* documentation: props and tokens as real tables */
   .ti-table-wrap { border: 1px solid var(--line-2); border-radius: 10px; background: var(--paper); overflow: hidden; box-shadow: 5px 5px 0 color-mix(in srgb, var(--pc) 70%, var(--paper)); }
@@ -119,18 +344,32 @@
   .ti-rules { border-left: 3px solid var(--pc); padding: 4px 0 4px 22px; }
   .ti-rules h4 { font-family: var(--f-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--pc-ink); margin-bottom: 14px; }
 
-  /* base colour scale, rebuilt from the token spec */
-  .ti-ramps { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(10px,2.4vw,24px); }
-  .ti-ramp h5 { font-family: var(--f-display); font-weight: 600; font-size: 0.98rem; color: var(--ink); margin: 0 0 10px; }
-  .ti-ramp ol { list-style: none; margin: 0; padding: 0; border-radius: 8px; overflow: hidden; }
-  .ti-ramp li { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 9px 12px; font-family: var(--f-mono); font-size: 0.74rem; font-variant-numeric: tabular-nums; }
-  .ti-ramp li span:last-child::after { content: ":1"; }
-  .ti-ramp li:nth-child(6) { font-weight: 600; }
-  @media (max-width: 420px) { .ti-ramp li { padding: 8px 8px; font-size: 0.68rem; } }
+  /* the doc template */
+  .ti-doc { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 0; border: 1px solid var(--line-2); border-radius: 10px; overflow: hidden; background: var(--paper); }
+  .ti-doc > div { padding: 18px 18px 20px; border-right: 1px solid var(--line); display: grid; gap: 6px; align-content: start; }
+  .ti-doc > div:last-child { border-right: 0; }
+  .ti-doc .n { font-family: var(--f-mono); font-size: 0.7rem; color: var(--pc-ink); letter-spacing: .08em; }
+  .ti-doc h4 { font-family: var(--f-display); font-weight: 600; font-size: 1.02rem; color: var(--ink); }
+  .ti-doc p { font-size: 0.86rem; color: var(--muted); line-height: 1.5; }
+  @media (max-width: 960px) {
+    .ti-doc { grid-template-columns: 1fr; }
+    .ti-doc > div { border-right: 0; border-bottom: 1px solid var(--line); }
+    .ti-doc > div:last-child { border-bottom: 0; }
+  }
+
+  /* where truth lives */
+  .ti-truth { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); gap: 14px; align-items: center; }
+  .ti-truth__box { background: var(--paper); border: 1px solid var(--line-2); border-radius: 10px; padding: 18px 20px; display: grid; gap: 6px; }
+  .ti-truth__box .kind { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--pc-ink); }
+  .ti-truth__box h4 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); color: var(--ink); }
+  .ti-truth__box p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+  .ti-truth__mid { display: grid; justify-items: center; gap: 6px; text-align: center; font-family: var(--f-mono); font-size: 0.7rem; color: var(--faint); max-width: 14ch; }
+  .ti-truth__mid b { font-size: 1.3rem; color: var(--pc-ink); font-weight: 500; }
+  @media (max-width: 820px) { .ti-truth { grid-template-columns: 1fr; } .ti-truth__mid { max-width: none; justify-self: center; } .ti-truth__mid b { transform: rotate(90deg); } }
 </style>
 </head>
 <body data-case="talent-intelligence-design-system" style="--pc:#EEA302; --pc-ink:#8A5F00; --pc-text:#231A00; --accent:#EEA302; --accent-ink:#8A5F00">
-<a class="skip" href="#context">Skip to case study</a>
+<a class="skip" href="#summary">Skip to case study</a>
 
 <header class="site-head">
   <div class="wrap site-head__in">
@@ -151,13 +390,14 @@
     <a class="back" href="index.html#work">← All work</a>
     <p class="eyebrow" style="margin-top:26px">Talent Intelligence Design System · SHL</p>
     <h1>Recruiters felt like they'd switched companies mid-task.</h1>
-    <p class="case-head__sub">TC, iAssess, Reporting, Insights: four legacy tools, four different front-end frameworks, one recruiter workflow. I helped build the design system that replaced that patchwork with one shared language: tokens, components, and the governance to keep it that way.</p>
+    <p class="case-head__sub">SHL's hiring workflow ran across five legacy products, each with its own front end. I measured how fragmented they really were, helped set the principles and tokens for one shared system, and built and documented its components, down to which token a button uses when it's hovered.</p>
 
     <dl class="spec">
-      <div><dt>My role</dt><dd>Design system contributor: audit, tokens, components, docs</dd></div>
+      <div><dt>My role</dt><dd>Product designer on the system team: audit, foundations, components, docs</dd></div>
       <div><dt>Team</dt><dd>Product, Design, Engineering, Science &amp; Solutions</dd></div>
-      <div><dt>Scope</dt><dd>Foundations for the new Talent Intelligence (TI) platform</dd></div>
-      <div><dt>Platform</dt><dd>Web · enterprise B2B SaaS</dd></div>
+      <div><dt>Scope</dt><dd>Foundations and component library for the new Talent Intelligence platform</dd></div>
+      <div><dt>Stack</dt><dd>Figma library · Storybook · MUI + Carbon foundations</dd></div>
+      <div class="slot"><dt>Timeline</dt><dd>S1 · add start–launch dates</dd></div>
     </dl>
   </section>
 
@@ -180,29 +420,46 @@
         <figcaption>Smart Interview On Demand</figcaption>
       </figure>
     </div>
-    <p class="figcap">Four corners of one workflow, none of which agree on how a table, a button, or a chart should look.</p>
+    <p class="figcap">Four of the five legacy products. None of them agree on how a table, a button or a chart should look.</p>
   </div>
 
-  <!-- AT A GLANCE -->
-  <section class="section" style="padding-top:0">
+  <!-- TL;DR -->
+  <section class="section" id="summary" style="padding-top:0">
     <div class="wrap">
-      <div class="stats">
-        <div class="stat">
-          <div class="stat__num"><b>4 → 1</b></div>
-          <p class="stat__label">fragmented platforms unified into one design language</p>
+      <div class="ti-tldr" style="margin-bottom:clamp(36px,5vw,56px)">
+        <div>
+          <h2>The problem</h2>
+          <p>One hiring workflow crossed several products that looked and behaved nothing alike. Users hesitated, some suspected they'd landed on a different company's site, and every team rebuilt the same patterns from scratch.</p>
         </div>
+        <div>
+          <h2>What I did</h2>
+          <p>Audited 117 UI patterns and states across three products to size the gap. Helped define the principles and two-layer token system. Built and documented components in the Figma library, specified against Storybook.</p>
+        </div>
+        <div>
+          <h2>The outcome</h2>
+          <p>One design language for the new Talent Intelligence platform, with accessibility built into the tokens and every component re-themeable for white-label clients. It now runs live in TalentCentral+.</p>
+        </div>
+      </div>
+
+      <div class="stats">
         <div class="stat">
           <div class="stat__num"><b>117</b></div>
           <p class="stat__label">UI patterns and states audited across three products</p>
         </div>
         <div class="stat">
           <div class="stat__num"><b>18%</b></div>
-          <p class="stat__label">of those patterns existed in all three. Half existed in only one.</p>
+          <p class="stat__label">of them existed in all three. Half existed in only one.</p>
         </div>
         <div class="stat">
-          <div class="stat__num"><b>WCAG 2.1 AA</b></div>
-          <p class="stat__label">accessibility built into tokens and components, not bolted on after</p>
+          <div class="stat__num"><b>5.16</b>:1</div>
+          <p class="stat__label">lowest text contrast anywhere in the base colour scale, above the 4.5:1 AA bar</p>
         </div>
+        <div class="stat">
+          <div class="stat__num"><b>5 → 1</b></div>
+          <p class="stat__label">legacy product UIs replaced by one shared design language</p>
+        </div>
+        <div class="slot slot--tile"><span class="slot__id">S2 · metric</span><b>—</b><p>Components shipped in the library (e.g. “42 components”)</p></div>
+        <div class="slot slot--tile"><span class="slot__id">S3 · metric</span><b>—</b><p>Products or teams building on the system today</p></div>
       </div>
     </div>
   </section>
@@ -213,8 +470,8 @@
   <section class="section" id="context">
     <div class="wrap">
       <div class="section-label"><span class="n">01</span><h2>The problem</h2></div>
-      <p class="lead-in">Four platforms, four different decades of design decisions, one recruiter stuck switching between all of them.</p>
-      <div class="ti-flow" role="img" aria-label="Flow diagram: TC, then iAssess, then Reporting, then Insights, four separate platforms chained into one recruiter workflow">
+      <p class="lead-in">Five products, five eras of front-end decisions, one recruiter stuck switching between them.</p>
+      <div class="ti-flow" role="img" aria-label="Flow diagram: a typical hiring workflow moves from TC to iAssess to Reporting to Insights, four separate products chained together">
         <div class="ti-flow__node">
           <span class="ti-flow__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
           <span class="ti-flow__label">TC</span>
@@ -235,18 +492,19 @@
           <span class="ti-flow__label">Insights</span>
         </div>
       </div>
+      <p class="figcap" style="text-align:center; margin:0 0 clamp(28px,5vw,44px)">A typical hiring workflow crossed four of the five products.</p>
       <div class="split">
         <div class="prose">
-          <p>TC for projects and candidates, iAssess for assessment delivery, Reporting and Insights for analytics: four platforms, four different eras of front-end decisions. A single hiring workflow could route a user through two or three entirely different interfaces.</p>
-          <p>The move to a new TI platform was the opening to fix not just one experience, but how every future SHL experience would look, feel, and function.</p>
+          <p>TC for projects and candidates, iAssess for assessment delivery, Reporting and Insights for analytics, Smart Interview for recorded interviews. A single hiring task could route a recruiter through two or three entirely different interfaces.</p>
+          <p>The move to a new Talent Intelligence (TI) platform was the chance to fix more than one experience: it could set how every future SHL product looks, feels and behaves.</p>
         </div>
         <div class="prose">
           <ul>
-            <li><strong>Multiple independent platforms</strong> with disconnected UI languages.</li>
-            <li><strong>Inconsistent accessibility and interaction patterns</strong> across products.</li>
-            <li><strong>Repeated design and development work</strong>, the same pattern rebuilt from scratch in every team.</li>
-            <li><strong>Confusion for end users</strong> moving between dramatically different UIs, sometimes serious enough to read as a security concern: the interface changed so much it felt like a different company.</li>
-            <li><strong>Difficulty maintaining and scaling</strong> visual styles across product lines.</li>
+            <li><strong>Disconnected UI languages.</strong> The same action looked and worked differently in each product.</li>
+            <li><strong>Inconsistent accessibility.</strong> Focus, contrast and keyboard behaviour varied product to product.</li>
+            <li><strong>Repeated work.</strong> Every team rebuilt the same patterns from scratch.</li>
+            <li><strong>Lost trust.</strong> The interface changed so much between products that some users read it as a security concern.</li>
+            <li><strong>No way to scale.</strong> Visual styles couldn't be maintained across product lines, let alone themed per client.</li>
           </ul>
         </div>
       </div>
@@ -255,13 +513,58 @@
 
   <hr class="rule">
 
-  <!-- 02 AUDIT -->
+  <!-- 02 ROLE -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-label"><span class="n">02</span><h2>My role</h2></div>
+      <div class="prose" style="max-width:70ch; margin-bottom:clamp(28px,5vw,44px)">
+        <p>A design system is a team sport, so it's worth being precise about what was mine. I was one of the designers on a cross-functional system team, working alongside a dedicated engineering owner.</p>
+      </div>
+      <div class="ti-own">
+        <div>
+          <h3>I owned</h3>
+          <span class="kind">Led end to end</span>
+          <ul>
+            <li>The cross-product audit: 117 patterns and states, checked in three products.</li>
+            <li>The Button: variants, sizes and states in Figma, its props, its token map and its usage guidelines.</li>
+            <li>Documentation for the components I built, matched against Storybook so engineering could test behaviour against the spec.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>I shaped</h3>
+          <span class="kind">Contributed as part of the team</span>
+          <ul>
+            <li>The design principles for HR software specifically.</li>
+            <li>The two-layer token naming and the base colour scale.</li>
+            <li>Interaction patterns with the hardest edge cases: filters and tables.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>I partnered on</h3>
+          <span class="kind">Owned by others</span>
+          <ul>
+            <li>Implementation in code, led by the system's engineering owner.</li>
+            <li>The call to rebuild on a new platform, made with Product and tech leadership.</li>
+            <li>Science &amp; Solutions input on how assessment content must render.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slot" style="margin-top:24px">
+        <span class="slot__id">S4 · confirm</span>
+        <h4>Check the ownership split</h4>
+        <p>Move anything that sits in the wrong column. Add the other components you built beyond the Button (for example Tag, Alert or Tabs), and say whether you created the doc template.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 03 AUDIT -->
   <section class="section section--tint">
     <div class="wrap">
-      <div class="section-label"><span class="n">02</span><h2>Measuring the patchwork</h2></div>
+      <div class="section-label"><span class="n">03</span><h2>Measuring the patchwork</h2></div>
       <div class="prose" style="max-width:70ch; margin-bottom:clamp(28px,5vw,44px)">
-        <p>I joined the design system effort as part of a cross-functional team spanning Product, Design, Engineering, and Science &amp; Solutions. My focus was the foundations recruiters and designers would actually touch every day, and it started with an audit.</p>
-        <p>I listed every common UI pattern and state, from a primary button's hover to a toast's warning variant, and checked which of them existed in TC+, Insights and Reporting. The result put a number on what recruiters were feeling.</p>
+        <p>“It feels inconsistent” doesn't get a system funded. A number does. I listed every common UI pattern and state, from a primary button's hover to a toast's warning variant, and checked which of them existed in TC+, Insights and Reporting.</p>
       </div>
 
       <div class="gallery" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))">
@@ -321,77 +624,69 @@
       </details>
       <p class="figcap">Rebuilt from my audit table: every count is a row marked “Yes” for that product.</p>
 
-      <div class="prose" style="max-width:70ch; margin-top:clamp(40px,6vw,64px)">
-        <h3>What I did from there</h3>
-        <ul>
-          <li>Catalogued every inconsistency, accessibility gap, and duplicated pattern the audit surfaced.</li>
-          <li>Contributed to the design principles and token system that became the system's foundation.</li>
-          <li>Built and documented components in the shared library, matched to Storybook so engineering could validate behavior against the design spec.</li>
-          <li>Partnered with a dedicated engineering owner to keep implementation and design in sync as the system scaled.</li>
-        </ul>
+      <div class="callout" style="max-width:66ch; margin-top:clamp(36px,5vw,56px)">
+        <p>Only 21 of 117 patterns were shared by all three products. The fix wasn't a style guide pasted on top of the old UIs; it was one system underneath all of them.</p>
       </div>
     </div>
   </section>
 
   <hr class="rule">
 
-  <!-- THE DECISION -->
+  <!-- 04 STRATEGY -->
   <section class="section">
     <div class="wrap">
-      <p class="eyebrow" style="text-align:center; margin-bottom:22px">The decision</p>
-      <p style="font-family:var(--f-display); font-weight:500; font-size:var(--step-2); line-height:1.38; color:var(--ink); max-width:52ch; margin-inline:auto; text-align:center; letter-spacing:-0.005em">Simply updating the existing platform wouldn't solve the deeper issues of consistency, performance, and scalability. So the call was made: build the new Talent Intelligence platform from scratch, and put a <em style="font-style:italic; color:var(--pc-ink)">unified, scalable design system</em> at its core.</p>
-      <p style="text-align:center; color:var(--muted); max-width:56ch; margin:26px auto 0">Everything downstream, tokens, components, documentation, governance, exists because of that one call.</p>
-    </div>
-  </section>
-
-  <hr class="rule">
-
-  <!-- 03 APPROACH -->
-  <section class="section section--tint">
-    <div class="wrap">
-      <div class="section-label"><span class="n">03</span><h2>The approach</h2></div>
-      <div class="prose" style="max-width:66ch; margin-bottom:clamp(24px,4vw,32px)">
-        <p>Two moves accelerated the system without sacrificing quality.</p>
-        <h3>Start from what already works</h3>
-        <p>Instead of reinventing elements that didn't need reinventing, we adapted two open-source systems and customized them for SHL's brand and workflows.</p>
+      <div class="section-label"><span class="n">04</span><h2>The strategy</h2></div>
+      <div class="split" style="margin-bottom:clamp(32px,5vw,48px)">
+        <p class="lead-in">Three ways forward. Only one fixed the cause instead of the symptoms.</p>
+        <div class="prose">
+          <p>Simply updating the existing products wouldn't solve the deeper issues of consistency, performance and scalability. So the call was made to build the new Talent Intelligence platform from scratch, with a unified design system at its core. The open question was how to build the system itself without stalling the platform behind it.</p>
+        </div>
       </div>
-      <div class="ti-cards ti-cards--base" style="margin-bottom:clamp(40px,6vw,64px)">
-        <div class="ti-card">
-          <span class="kind">Adapted for its foundations</span>
-          <h4>Carbon Design System</h4>
-          <p>Modular foundations to build the system's structure on.</p>
-        </div>
-        <div class="ti-card">
-          <span class="kind">Adapted for its components</span>
-          <h4>Material UI (MUI)</h4>
-          <p>Flexible components to customize rather than build from zero.</p>
-        </div>
+      <div class="ti-options" style="margin-bottom:clamp(44px,6vw,72px)">
+        <article class="ti-option">
+          <div class="ti-option__top"><span class="kind">Option A</span><span class="ti-badge ti-badge--no">Rejected</span></div>
+          <h3>Restyle the legacy products</h3>
+          <p>Paint a shared look over each product's existing front end.</p>
+          <dl><div><dt>Why not</dt><dd>Five codebases would keep drifting apart. It fixes how things look, not how they behave, and does nothing for accessibility or theming.</dd></div></dl>
+        </article>
+        <article class="ti-option">
+          <div class="ti-option__top"><span class="kind">Option B</span><span class="ti-badge ti-badge--no">Rejected</span></div>
+          <h3>Build every component from zero</h3>
+          <p>Design and engineer a bespoke library, pattern by pattern.</p>
+          <dl><div><dt>Why not</dt><dd>Months of re-solving problems mature open-source systems had already solved, including the accessibility behaviour, before the platform could ship a screen.</dd></div></dl>
+        </article>
+        <article class="ti-option is-chosen">
+          <div class="ti-option__top"><span class="kind">Option C</span><span class="ti-badge ti-badge--yes">Chosen</span></div>
+          <h3>Adapt proven foundations, own the layer on top</h3>
+          <p><strong>Carbon</strong> for modular foundations, <strong>Material UI</strong> for flexible components, customised through SHL's own tokens.</p>
+          <dl><div><dt>Trade-off we accepted</dt><dd>Living within two libraries' conventions, and tracking their updates, in exchange for speed and battle-tested behaviour. Our tokens sit on top, so the brand never depends on either.</dd></div></dl>
+        </article>
       </div>
 
       <div class="prose" style="max-width:66ch; margin-bottom:clamp(24px,4vw,32px)">
-        <h3>Define what "good" means for HR software, specifically</h3>
-        <p>Generic design-system principles, "be accessible," "be consistent," don't capture what's actually at stake in HR tech. So the principles we set were specific to what SHL sells and who uses it:</p>
+        <h3>Principles written for HR software, not borrowed</h3>
+        <p>“Be accessible” and “be consistent” are true of every system and settle no arguments. We wrote principles specific to what SHL sells and who uses it, so they could actually decide between two designs.</p>
       </div>
       <div class="ti-cards ti-cards--2">
         <div class="ti-card">
           <span class="kind">Principle 01</span>
           <h4>Accessible by necessity, not by audit</h4>
-          <p>Candidates complete assessments under high-stakes, sometimes legally scrutinized conditions. WCAG 2.1 AA had to be built into tokens and components from day one, not caught in a later compliance pass.</p>
+          <p>Candidates complete assessments under high-stakes, sometimes legally scrutinised conditions. WCAG 2.1 AA had to live in the tokens and components from day one, not in a later compliance pass.</p>
         </div>
         <div class="ti-card">
           <span class="kind">Principle 02</span>
           <h4>Credible for high-stakes decisions</h4>
-          <p>Recruiters and candidates make hiring calls on this surface. Every pattern had to read as authoritative and unambiguous: enterprise-grade, not consumer-cute.</p>
+          <p>Recruiters make hiring calls on this surface. Every pattern had to read as authoritative and unambiguous: enterprise-grade, not consumer-cute.</p>
         </div>
         <div class="ti-card">
           <span class="kind">Principle 03</span>
           <h4>White-label ready</h4>
-          <p>SHL's enterprise clients routinely ask for their own branding on top of the platform. Every token and component was built to be re-themed per client, colors, logos, typography, without anyone touching the underlying system.</p>
+          <p>Enterprise clients routinely ask for their own branding. Every token and component had to be re-themeable per client, colours, logos and type, without anyone touching the system underneath.</p>
         </div>
         <div class="ti-card">
           <span class="kind">Principle 04</span>
           <h4>Scalable across a growing platform</h4>
-          <p>Modular and reusable, built for mobile, tablet, and desktop, and expandable as TI absorbs more of SHL's product line.</p>
+          <p>Modular and reusable, built for mobile, tablet and desktop, and ready to expand as TI absorbs more of SHL's product line.</p>
         </div>
       </div>
     </div>
@@ -399,19 +694,43 @@
 
   <hr class="rule">
 
-  <!-- 04 BUILDING THE SYSTEM -->
-  <section class="section">
+  <!-- 05 TOKENS -->
+  <section class="section section--tint">
     <div class="wrap">
-      <div class="section-label"><span class="n">04</span><h2>Building the system</h2></div>
-      <div class="prose" style="max-width:66ch; margin-bottom:clamp(24px,4vw,32px)">
-        <p>With principles set, the system took shape live inside the platform, not just documented in Figma.</p>
+      <div class="section-label"><span class="n">05</span><h2>Tokens: where the principles become code</h2></div>
+      <div class="prose" style="max-width:70ch; margin-bottom:clamp(28px,5vw,44px)">
+        <p>Principle 03 decided the architecture. If a client's brand had to change without anyone touching a screen, then no screen could reference a raw colour. So tokens run in layers, and each layer has one job.</p>
       </div>
 
-      <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
-        <h3>Tokens first</h3>
-        <p>Naming runs two layers deep. A base scale names raw values, <code>primary-500</code>, <code>secondary-200</code>, each shade tagged with its contrast ratio. A semantic layer sits on top and names tokens by <em>purpose</em>: <code>text-brand-primary</code>, <code>bg-button-primary_hover</code>. Designers and engineers only ever consume the semantic layer, so re-theming a client's branding is a remap at the base layer, not a find-and-replace across every screen.</p>
+      <div class="ti-tiers" style="margin-bottom:14px" role="group" aria-label="Token layers, traced for one value: the base colour secondary-700 feeds the semantic token background/button/primary/default, which the Button's default state uses">
+        <div class="ti-tier">
+          <span class="kind">Layer 1 · Base</span>
+          <h4>What the value is</h4>
+          <p>Raw values on a numbered scale, each shade tagged with its contrast ratio.</p>
+          <ul><li><span class="sw" style="background:#006b85"></span><code>secondary-700</code></li><li><span class="sw" style="background:#0089aa"></span><code>secondary-600</code></li><li><span class="sw" style="background:#54b9d1"></span><code>secondary-300</code></li></ul>
+        </div>
+        <span class="ti-tiers__arrow" aria-hidden="true">→</span>
+        <div class="ti-tier">
+          <span class="kind">Layer 2 · Semantic</span>
+          <h4>What the value is for</h4>
+          <p>Named by purpose and state, never by colour. This is the only layer products consume.</p>
+          <ul><li><code>background/button/primary/default</code></li><li><code>background/button/primary/hover</code></li><li><code>effects/focus-rings/focus-ring</code></li></ul>
+        </div>
+        <span class="ti-tiers__arrow" aria-hidden="true">→</span>
+        <div class="ti-tier ti-tier--who">
+          <span class="kind">Consumer</span>
+          <h4>Where it lands</h4>
+          <p>The Figma component and the coded one read the same names, so design and code can't drift.</p>
+          <ul><li><code>Button · Primary · Default</code></li><li><code>Button · Primary · Hover</code></li><li><code>Button · any · Focus</code></li></ul>
+        </div>
       </div>
-      <div class="viz" style="margin-bottom:clamp(40px,6vw,64px)">
+      <p class="figcap" style="margin-bottom:clamp(40px,6vw,64px)">One value traced end to end: the primary button's teal is <code>secondary-700</code>, reached only through its semantic name.</p>
+
+      <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
+        <h3>Accessibility travels with the token</h3>
+        <p>Every step of the base scale ships with the text colour it's paired with, black or white, and its contrast ratio. A designer picking a shade picks a pairing that already passes.</p>
+      </div>
+      <div class="viz" style="margin-bottom:clamp(44px,6vw,72px)">
         <h5>The base colour scale</h5>
         <p class="viz__sub">each step shows its contrast with the text colour it's paired with, black or white</p>
         <div class="ti-ramps">
@@ -461,72 +780,130 @@
             </ol>
           </div>
         </div>
-        <p class="viz__note">Every step, from 50 to 900, has a text colour that clears the 4.5:1 AA threshold. The lowest pairing is 5.16:1, so accessibility travels with the token instead of being checked screen by screen.</p>
+        <p class="viz__note">Every step, from 50 to 900, has a text colour that clears the 4.5:1 AA threshold. The lowest pairing is 5.16:1.</p>
       </div>
 
       <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
-        <h3>Modular component library</h3>
-        <p>Accessible, documented, reusable components engineered against Storybook form the building blocks of the TI platform and every SHL experience after it.</p>
+        <h3>White-labelling is a remap, not a redesign</h3>
+        <p>Because screens only reference semantic tokens, a client theme is a new set of base values. Try it: switch the theme and watch the same semantic tokens resolve to new colours, while the screen itself stays untouched.</p>
       </div>
-      <div style="margin-bottom:clamp(40px,6vw,64px)">
-        <div class="frame frame--diagram" style="aspect-ratio:1701/653"><img src="images/ti-components.png" alt="Button component library: every size, state, and variant, primary, secondary, tertiary, and icon buttons, specified in one grid" width="1701" height="653" loading="lazy"></div>
-        <p class="figcap">One button component, every state and variant it needs to ship, documented before an engineer ever touches it.</p>
-      </div>
-
-      <div class="prose">
-        <h3>Interaction patterns: the hard calls, not the easy ones</h3>
-        <p>Hover, focus, and disabled states were the easy 80%. The harder calls were things like picking <strong>one filter pattern</strong> that had to work whether a product exposed 3 facets or 30, and <strong>one table style</strong> that stayed legible from a 4-row summary card to a 900-row candidate list.</p>
+      <div class="ti-theme tib-scope" id="theme-demo">
+        <div class="ti-theme__bar" role="group" aria-label="Choose a theme">
+          <span>Theme</span>
+          <button type="button" class="ti-theme__chip" aria-pressed="true" data-theme="shl"><i style="background:#006b85"></i>SHL default</button>
+          <button type="button" class="ti-theme__chip" aria-pressed="false" data-theme="a"><i style="background:#3F3D9E"></i>Client A</button>
+          <button type="button" class="ti-theme__chip" aria-pressed="false" data-theme="b"><i style="background:#8C2155"></i>Client B</button>
+        </div>
+        <div class="ti-theme__body">
+          <div class="ti-theme__screen">
+            <div class="ti-theme__card">
+              <div class="brandline"><i></i><span data-brand>Talent Central+</span></div>
+              <h5>Graduate hiring 2025 · London</h5>
+              <span class="pill">Assessment published</span>
+              <p>42 participants invited. Scores will appear here as candidates complete their assessments.</p>
+              <div class="ti-theme__actions">
+                <button type="button" class="tib tib--m" data-variant="tertiary">Cancel</button>
+                <button type="button" class="tib tib--m" data-variant="secondary">Save as draft</button>
+                <button type="button" class="tib tib--m" data-variant="primary">Invite participants</button>
+              </div>
+            </div>
+          </div>
+          <div class="ti-theme__tokens" aria-live="polite">
+            <h5>Resolved semantic tokens</h5>
+            <dl>
+              <div><dt>background/button/primary/default</dt><dd><i data-sw="pri"></i><span data-val="pri">#006b85</span></dd></div>
+              <div><dt>background/button/primary/hover</dt><dd><i data-sw="hover"></i><span data-val="hover">#0089aa</span></dd></div>
+              <div><dt>background/button/secondary/hover</dt><dd><i data-sw="faded"></i><span data-val="faded">#e6f5f8</span></dd></div>
+              <div><dt>effects/focus-rings/focus-ring</dt><dd><i data-sw="ring"></i><span data-val="ring">#54b9d1</span></dd></div>
+            </dl>
+            <p>Components, layouts and copy: unchanged. Only the base layer moved. Client themes here are illustrative.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <hr class="rule">
 
-  <!-- 05 DOCUMENTATION & ENGINEERING -->
-  <section class="section section--tint">
+  <!-- 06 COMPONENT DEEP DIVE -->
+  <section class="section">
     <div class="wrap">
-      <div class="section-label"><span class="n">05</span><h2>Documentation &amp; engineering</h2></div>
-      <div class="prose" style="max-width:70ch; margin-bottom:clamp(28px,5vw,44px)">
-        <p>A system nobody can find or trust doesn't get used. Every component ships with its own documentation, so designers and engineers understand not just how to use it, but why it's built that way. Here's the Button's, section by section.</p>
-      </div>
-
-      <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
-        <h3>Usage guidelines</h3>
-        <p>What a component allows, what it explicitly doesn't, and why, backed by do/don't examples so the rule isn't just a sentence in a doc nobody reads.</p>
-      </div>
-      <div class="split" style="margin-bottom:clamp(40px,6vw,64px); align-items:center">
-        <div class="ti-rules">
-          <h4>Points to remember</h4>
-          <ul class="checklist">
-            <li>Use buttons for the most frequently used or most important actions on the page.</li>
-            <li>Present a primary button no more than once per page.</li>
-            <li>Never use Title Casing in buttons.</li>
-            <li>Don't use buttons to navigate. Use a link when the action takes the user to a new page.</li>
-          </ul>
-        </div>
-        <div class="split__media">
-          <div class="frame frame--diagram" style="aspect-ratio:2717/2516"><img src="images/ti-docs-guidelines.png" alt="Button usage guidelines documentation: do and don't examples for button width and hierarchy of button types" width="2717" height="2516" loading="lazy"></div>
-          <p class="figcap">Do and don't, side by side, not buried in prose.</p>
+      <div class="section-label"><span class="n">06</span><h2>Anatomy of a component: the Button</h2></div>
+      <div class="split" style="margin-bottom:clamp(32px,5vw,48px)">
+        <p class="lead-in">The most-used component is where a system earns trust, or loses it.</p>
+        <div class="prose">
+          <p>The Button appears on nearly every screen in the platform, so every ambiguity in it gets multiplied. Its spec runs to five documents: introduction, props and tokens, usage, accessibility and content. It covers five variants, three sizes, four container types and six states. Everything below is rebuilt in HTML from the Figma component's own values, so you can hover, tab and click it.</p>
         </div>
       </div>
 
+      <div class="ti-anatomy tib-scope" style="margin-bottom:clamp(40px,6vw,64px)">
+        <div class="ti-anatomy__stage" aria-hidden="true">
+          <span class="an an--below" data-n="1"><span class="tib" data-variant="primary"><span class="an" data-n="2"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span><span class="an" data-n="3">Button</span><span class="an" data-n="4"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></span>
+          <span class="an" data-n="5"><span class="tib is-focus" data-variant="primary">Focused</span></span>
+        </div>
+        <ol class="ti-anatomy__legend">
+          <li><b>1</b><span><strong>Container.</strong> 8px radius, 16px side padding. 40, 32 or 24px tall for large, medium and small. Hugs its content; full width only on mobile or stacked layouts.</span></li>
+          <li><b>2</b><span><strong>Leading icon.</strong> Optional, 24px, toggled by <code>leadingIcon</code>. Decorative, so screen readers skip it.</span></li>
+          <li><b>3</b><span><strong>Label.</strong> A verb that predicts the outcome, 1–3 words: “Save changes”, “Download report”.</span></li>
+          <li><b>4</b><span><strong>Trailing icon.</strong> Optional, toggled by <code>trailingIcon</code>. Icon-only buttons drop the label and must carry an <code>aria-label</code>.</span></li>
+          <li><b>5</b><span><strong>Focus ring.</strong> A 2px white gap, then a 2px ring in <code>secondary-300</code>, so it reads on any background.</span></li>
+        </ol>
+      </div>
+
       <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
-        <h3>Variants &amp; props</h3>
-        <p>Every variant, size, and state a component supports, plus the full prop list with types and defaults, specified once so nobody has to guess or reverse-engineer it from the code.</p>
+        <h3>Every variant, every state</h3>
+        <p>States are specified, not left to engineering to guess. Loading reuses the disabled surface and swaps the label for a spinner at a fixed width, so the layout doesn't jump and the button can't be pressed twice. Danger ships in two emphasis levels, primary and secondary, each with an explicit label like “Delete file”.</p>
+      </div>
+      <div class="ti-states-wrap tib-scope" tabindex="0" role="region" aria-label="Button state matrix, scrolls sideways on small screens" style="margin-bottom:14px">
+        <table class="ti-states">
+          <caption>Button · large · every variant and state<span>static states, rebuilt from the Figma component sheet</span></caption>
+          <thead><tr><th scope="col">State</th><th scope="col">Primary</th><th scope="col">Secondary</th><th scope="col">Tertiary</th><th scope="col">Subtle</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Default</th><td><span class="tib" data-variant="primary">Button</span></td><td><span class="tib" data-variant="secondary">Button</span></td><td><span class="tib" data-variant="tertiary">Button</span></td><td><span class="tib" data-variant="subtle">Button</span></td></tr>
+            <tr><th scope="row">Hover</th><td><span class="tib is-hover" data-variant="primary">Button</span></td><td><span class="tib is-hover" data-variant="secondary">Button</span></td><td><span class="tib is-hover" data-variant="tertiary">Button</span></td><td><span class="tib is-hover" data-variant="subtle">Button</span></td></tr>
+            <tr><th scope="row">Focus</th><td><span class="tib is-focus" data-variant="primary">Button</span></td><td><span class="tib is-focus" data-variant="secondary">Button</span></td><td><span class="tib is-focus" data-variant="tertiary">Button</span></td><td><span class="tib is-focus" data-variant="subtle">Button</span></td></tr>
+            <tr><th scope="row">Pressed</th><td><span class="tib is-press" data-variant="primary">Button</span></td><td><span class="tib is-press" data-variant="secondary">Button</span></td><td><span class="tib is-press" data-variant="tertiary">Button</span></td><td><span class="tib is-press" data-variant="subtle">Button</span></td></tr>
+            <tr><th scope="row">Disabled</th><td><span class="tib is-disabled" data-variant="primary">Button</span></td><td><span class="tib is-disabled" data-variant="secondary">Button</span></td><td><span class="tib is-disabled" data-variant="tertiary">Button</span></td><td><span class="tib is-disabled" data-variant="subtle">Button</span></td></tr>
+            <tr><th scope="row">Loading</th><td><span class="tib is-loading" data-variant="primary">Button</span></td><td><span class="tib is-loading" data-variant="secondary">Button</span></td><td><span class="tib is-loading" data-variant="tertiary">Button</span></td><td><span class="tib is-loading" data-variant="subtle">Button</span></td></tr>
+            <tr class="grp"><th scope="rowgroup" colspan="5">Danger, for destructive actions: primary and secondary only</th></tr>
+            <tr><th scope="row">Default</th><td><span class="tib" data-variant="danger">Delete file</span></td><td><span class="tib" data-variant="danger-secondary">Delete file</span></td><td><span class="ti-na">—</span></td><td><span class="ti-na">—</span></td></tr>
+            <tr><th scope="row">Hover</th><td><span class="tib is-hover" data-variant="danger">Delete file</span></td><td><span class="tib is-hover" data-variant="danger-secondary">Delete file</span></td><td><span class="ti-na">—</span></td><td><span class="ti-na">—</span></td></tr>
+            <tr><th scope="row">Focus</th><td><span class="tib is-focus" data-variant="danger">Delete file</span></td><td><span class="tib is-focus" data-variant="danger-secondary">Delete file</span></td><td><span class="ti-na">—</span></td><td><span class="ti-na">—</span></td></tr>
+            <tr><th scope="row">Disabled</th><td><span class="tib is-disabled" data-variant="danger">Delete file</span></td><td><span class="tib is-disabled" data-variant="danger-secondary">Delete file</span></td><td><span class="ti-na">—</span></td><td><span class="ti-na">—</span></td></tr>
+            <tr class="grp"><th scope="rowgroup" colspan="5">Try it: real buttons. Hover them, or tab to them</th></tr>
+            <tr><th scope="row">Live</th><td><button type="button" class="tib" data-variant="primary">Save changes</button></td><td><button type="button" class="tib" data-variant="secondary">Save as draft</button></td><td><button type="button" class="tib" data-variant="tertiary">Cancel</button></td><td><button type="button" class="tib" data-variant="subtle">Back</button></td></tr>
+            <tr><th scope="row">Live</th><td><button type="button" class="tib" data-variant="danger">Delete file</button></td><td><button type="button" class="tib" data-variant="danger-secondary">Remove file</button></td><td><button type="button" class="tib" data-variant="tertiary" aria-label="Download report" style="width:40px;padding:0"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></button></td><td><button type="button" class="tib" data-variant="primary" disabled>Disabled</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="figcap" style="margin-bottom:clamp(40px,6vw,64px)">The icon-only button above is announced as “Download report”, from its <code>aria-label</code>. The disabled one is skipped in the tab order. The full component in Figma also covers medium and small sizes.</p>
+
+      <div style="margin-bottom:clamp(40px,6vw,64px)">
+        <div class="frame frame--diagram" style="aspect-ratio:1701/653"><img src="images/ti-components.png" alt="The Button component sheet in Figma: primary, secondary, tertiary and subtle variants in large, medium and small sizes, each with default, hover, focus, pressed, disabled and loading states, plus a danger colour set and a separate icon button" width="1701" height="653" loading="lazy"></div>
+        <p class="figcap">The source: the Button component sheet in Figma, every cell a variant a designer can pull straight into a file.</p>
+      </div>
+      <div class="slot slot--media" style="margin-bottom:clamp(40px,6vw,64px)">
+        <span class="slot__id">S6 · image</span>
+        <h4>Button doc export from Figma</h4>
+        <p>Export node 138-7095 (the Button doc) as PNG at 2×, plus any spec page showing padding, height and radius per size. The current sheet image is too small to read the labels.</p>
+      </div>
+
+      <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
+        <h3>Props: the contract with engineering</h3>
+        <p>Every variant, size and state becomes a prop with a type and a default, specified once so nobody has to reverse-engineer it from the code.</p>
       </div>
       <div class="ti-table-wrap" style="margin-bottom:clamp(40px,6vw,64px)">
         <table class="ti-table ti-table--props">
           <caption>Button props<span>* required · highlighted value is the default</span></caption>
           <thead><tr><th scope="col">Prop</th><th scope="col">Type</th><th scope="col">Values</th><th scope="col">What it does</th></tr></thead>
           <tbody>
-            <tr><td class="prop">variant<span class="req">*</span></td><td class="type" data-label="Type">string</td><td data-label="Values"><span class="ti-vals"><span class="is-default">Primary</span><span>Secondary</span><span>Tertiary</span><span>Link</span></span></td><td data-label="What it does">Sets the variant of the button</td></tr>
-            <tr><td class="prop">color<span class="req">*</span></td><td class="type" data-label="Type">string</td><td data-label="Values"><span class="ti-vals"><span>Primary</span><span>White</span><span>Positive</span><span>Negative</span></span></td><td data-label="What it does">Sets the color variant of the button</td></tr>
-            <tr><td class="prop">state<span class="req">*</span></td><td class="type" data-label="Type">string</td><td data-label="Values"><span class="ti-vals"><span class="is-default">Default</span><span>Hover</span><span>Focus</span><span>Active</span><span>Disabled</span></span></td><td data-label="What it does">Shows the current state of the button</td></tr>
-            <tr><td class="prop">size<span class="req">*</span></td><td class="type" data-label="Type">string</td><td data-label="Values"><span class="ti-vals"><span>XSmall</span><span>Small</span><span>Medium</span><span class="is-default">Large</span></span></td><td data-label="What it does">Sets the size of the button</td></tr>
+            <tr><td class="prop">variant<span class="req">*</span></td><td class="type" data-label="Type">string</td><td data-label="Values"><span class="ti-vals"><span class="is-default">Primary</span><span>Secondary</span><span>Tertiary</span><span>Subtle</span><span>Danger</span></span></td><td data-label="What it does">Sets the variant, and with it the action's level of importance</td></tr>
+            <tr><td class="prop">color<span class="req">*</span></td><td class="type" data-label="Type">string</td><td data-label="Values"><span class="ti-vals"><span class="is-default">Primary</span><span>Negative</span></span></td><td data-label="What it does">Sets the colour set; Negative is for destructive actions</td></tr>
+            <tr><td class="prop">state<span class="req">*</span></td><td class="type" data-label="Type">string</td><td data-label="Values"><span class="ti-vals"><span class="is-default">Default</span><span>Hover</span><span>Focus</span><span>Active</span></span></td><td data-label="What it does">Shows the current interaction state</td></tr>
+            <tr><td class="prop">size<span class="req">*</span></td><td class="type" data-label="Type">string</td><td data-label="Values"><span class="ti-vals"><span>Small</span><span>Medium</span><span class="is-default">Large</span></span></td><td data-label="What it does">24, 32 or 40px tall</td></tr>
             <tr><td class="prop">label<span class="req">*</span></td><td class="type" data-label="Type">string</td><td data-label="Values"><span class="ti-vals"><span>1–2 words</span></span></td><td data-label="What it does">Text describing the button's action</td></tr>
             <tr><td class="prop">isDisabled</td><td class="type" data-label="Type">boolean</td><td data-label="Values"><span class="ti-vals"><span>True</span><span class="is-default">False</span></span></td><td data-label="What it does">Turns on the disabled state</td></tr>
             <tr><td class="prop">isLoading</td><td class="type" data-label="Type">boolean</td><td data-label="Values"><span class="ti-vals"><span>True</span><span class="is-default">False</span></span></td><td data-label="What it does">Turns on the loading state</td></tr>
-            <tr><td class="prop">isFullWidth</td><td class="type" data-label="Type">boolean</td><td data-label="Values"><span class="ti-vals"><span>True</span><span class="is-default">False</span></span></td><td data-label="What it does">Stretches the button to its container's width</td></tr>
             <tr><td class="prop">iconOnly</td><td class="type" data-label="Type">boolean</td><td data-label="Values"><span class="ti-vals"><span>True</span><span class="is-default">False</span></span></td><td data-label="What it does">Turns on the icon-only variant</td></tr>
             <tr><td class="prop">leadingIcon</td><td class="type" data-label="Type">boolean</td><td data-label="Values"><span class="ti-vals"><span>True</span><span class="is-default">False</span></span></td><td data-label="What it does">Shows or hides the leading icon</td></tr>
             <tr><td class="prop">trailingIcon</td><td class="type" data-label="Type">boolean</td><td data-label="Values"><span class="ti-vals"><span>True</span><span class="is-default">False</span></span></td><td data-label="What it does">Shows or hides the trailing icon</td></tr>
@@ -536,83 +913,174 @@
 
       <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
         <h3>Tokens per state</h3>
-        <p>The docs also say which token every property uses in every state, so no one hard-codes a hex value. This is the map for a primary-colour button.</p>
+        <p>The spec names the token every property uses in every state, so no one hard-codes a hex value. Here they are for the two most-used variants, resolved to the values they ship with.</p>
       </div>
       <div class="ti-table-wrap" style="margin-bottom:clamp(40px,6vw,64px)">
         <table class="ti-table">
-          <caption>Button tokens · color = Primary<span>border radius for every variant: theme.global.borderRadius.medium</span></caption>
-          <thead><tr><th scope="col">State</th><th scope="col">Background</th><th scope="col">Label text</th></tr></thead>
+          <caption>Button tokens, resolved<span>radius: radius/radius-md (8px) · padding: spacing-md / spacing-xl (8px / 16px)</span></caption>
+          <thead><tr><th scope="col">State</th><th scope="col">Background</th><th scope="col">Label</th></tr></thead>
           <tbody>
-            <tr class="grp"><th scope="rowgroup" colspan="3">Primary variant</th></tr>
-            <tr><td class="prop">Default</td><td class="tok" data-label="Background">interactive.<wbr>background.<wbr>primary.<wbr>default</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>onPrimary.<wbr>normal</td></tr>
-            <tr><td class="prop">Hover &amp; focus</td><td class="tok" data-label="Background">interactive.<wbr>background.<wbr>primary.<wbr>highlighted</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>onPrimary.<wbr>normal</td></tr>
-            <tr><td class="prop">Disabled</td><td class="tok" data-label="Background">interactive.<wbr>background.<wbr>primary.<wbr>disabled</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>primary.<wbr>disabled</td></tr>
-            <tr class="grp"><th scope="rowgroup" colspan="3">Secondary variant</th></tr>
-            <tr><td class="prop">Default</td><td class="tok" data-label="Background">transparent</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>primary.<wbr>normal</td></tr>
-            <tr><td class="prop">Hover &amp; focus</td><td class="tok" data-label="Background">interactive.<wbr>background.<wbr>primary.<wbr>faded</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>primary.<wbr>normal</td></tr>
-            <tr><td class="prop">Disabled</td><td class="tok" data-label="Background">transparent</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>primary.<wbr>disabled</td></tr>
-            <tr class="grp"><th scope="rowgroup" colspan="3">Tertiary variant</th></tr>
-            <tr><td class="prop">Default</td><td class="tok" data-label="Background">interactive.<wbr>background.<wbr>gray.<wbr>default</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>gray.<wbr>normal</td></tr>
-            <tr><td class="prop">Hover &amp; focus</td><td class="tok" data-label="Background">interactive.<wbr>background.<wbr>gray.<wbr>highlighted</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>gray.<wbr>normal</td></tr>
-            <tr><td class="prop">Disabled</td><td class="tok" data-label="Background">interactive.<wbr>background.<wbr>gray.<wbr>disabled</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>gray.<wbr>disabled</td></tr>
+            <tr class="grp"><th scope="rowgroup" colspan="3">Primary</th></tr>
+            <tr><td class="prop">Default</td><td class="tok" data-label="Background">background/<wbr>button/<wbr>primary/<wbr>default <span class="hex"><span class="sw" style="background:#006b85"></span>#006b85</span></td><td class="tok" data-label="Label">text/<wbr>white <span class="hex"><span class="sw" style="background:#fff"></span>#ffffff</span></td></tr>
+            <tr><td class="prop">Hover · focus · pressed</td><td class="tok" data-label="Background">background/<wbr>button/<wbr>primary/<wbr>{hover, focus, pressed} <span class="hex"><span class="sw" style="background:#0089aa"></span>#0089aa</span></td><td class="tok" data-label="Label">text/<wbr>white <span class="hex"><span class="sw" style="background:#fff"></span>#ffffff</span></td></tr>
+            <tr><td class="prop">Disabled · loading</td><td class="tok" data-label="Background">background/<wbr>button/<wbr>disabled/<wbr>disabled <span class="hex"><span class="sw" style="background:#f2f2f2"></span>#f2f2f2</span></td><td class="tok" data-label="Label">text/<wbr>disabled <span class="hex"><span class="sw" style="background:#c4c4c4"></span>#c4c4c4</span></td></tr>
+            <tr class="grp"><th scope="rowgroup" colspan="3">Secondary · plus a 1px border</th></tr>
+            <tr><td class="prop">Default</td><td class="tok" data-label="Background">transparent · border/<wbr>brand-highlight <span class="hex"><span class="sw" style="background:#0089aa"></span>#0089aa</span></td><td class="tok" data-label="Label">text/<wbr>brand-primary_subtle <span class="hex"><span class="sw" style="background:#006b85"></span>#006b85</span></td></tr>
+            <tr><td class="prop">Hover · pressed</td><td class="tok" data-label="Background">background/<wbr>button/<wbr>secondary/<wbr>hover <span class="hex"><span class="sw" style="background:#e6f5f8"></span>#e6f5f8</span> · border/<wbr>brand-hover <span class="hex"><span class="sw" style="background:#006b85"></span>#006b85</span></td><td class="tok" data-label="Label">text/<wbr>brand-primary_subtle <span class="hex"><span class="sw" style="background:#006b85"></span>#006b85</span></td></tr>
+            <tr><td class="prop">Disabled</td><td class="tok" data-label="Background">background/<wbr>button/<wbr>disabled/<wbr>disabled · border/<wbr>disabled <span class="hex"><span class="sw" style="background:#c4c4c4"></span>#c4c4c4</span></td><td class="tok" data-label="Label">text/<wbr>disabled <span class="hex"><span class="sw" style="background:#c4c4c4"></span>#c4c4c4</span></td></tr>
+            <tr class="grp"><th scope="rowgroup" colspan="3">Every variant, on focus</th></tr>
+            <tr><td class="prop">Focus ring</td><td class="tok" data-label="Background">effects/<wbr>focus-rings/<wbr>focus-ring <span class="hex"><span class="sw" style="background:#54b9d1"></span>#54b9d1</span>, outside a 2px base/<wbr>white gap</td><td class="tok" data-label="Label">unchanged</td></tr>
           </tbody>
         </table>
       </div>
 
-      <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
-        <h3>Collaboration with engineering</h3>
-        <p>A design system is a cross-functional product, not a design-only project. We aligned tech leadership early to share ownership, set up Storybook as the single source of truth for validating components and interaction behavior, and assigned a dedicated engineering owner, which accelerated implementation and kept governance consistent.</p>
+      <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
+        <h3>Usage guidelines</h3>
+        <p>What the component allows, what it explicitly doesn't, and why, backed by do and don't examples so the rule isn't just a sentence nobody reads.</p>
       </div>
-      <div>
-        <div class="frame" style="aspect-ratio:3590/2012"><img src="images/ti-engineering.png" alt="Storybook documentation for an Alert component: interactive preview, controls for title, description, variant, and bullet type, and a prop table" width="3590" height="2012" loading="lazy"></div>
-        <p class="figcap">Storybook as the shared source of truth: the same component spec designers reviewed and engineers implemented against.</p>
+      <div class="split" style="margin-bottom:clamp(40px,6vw,64px); align-items:center">
+        <div class="ti-rules">
+          <h4>Points to remember</h4>
+          <ul class="checklist">
+            <li>One primary per section. The app header, modals and side panels may carry their own.</li>
+            <li>The primary action sits on the right, at the outermost edge; others line up beside it, or stack above it at full width.</li>
+            <li>Auto width on large screens. Full width only on mobile or where a layout needs a consistent column.</li>
+            <li>Labels are verbs that predict the outcome: “Save changes”, not “Submit”. Destructive ones say what they destroy: “Delete account”.</li>
+            <li>Don't use buttons to navigate. If the action takes the user to a new page, it's a link.</li>
+          </ul>
+        </div>
+        <div class="split__media">
+          <div class="frame frame--diagram" style="aspect-ratio:2717/2516"><img src="images/ti-docs-guidelines.png" alt="Button usage guidelines: do and don't examples for button width, and for the hierarchy and placement of primary, secondary and tertiary buttons" width="2717" height="2516" loading="lazy"></div>
+          <p class="figcap">Do and don't, side by side, not buried in prose.</p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
+        <h3>Accessibility, specified rather than assumed</h3>
+        <p>The Button has its own accessibility doc, so engineers don't have to infer keyboard behaviour or what a screen reader should say. The rules, as written:</p>
+      </div>
+      <div class="ti-a11y">
+        <div class="ti-a11y__col">
+          <h4>Keyboard</h4>
+          <dl>
+            <div><dt>Tab order</dt><dd>Reachable with <kbd>Tab</kbd> in logical DOM order, left to right, top to bottom. Disabled buttons are skipped.</dd></div>
+            <div><dt>Activate</dt><dd><kbd>Enter</kbd> triggers the action. <kbd>Space</kbd> triggers it too, on key up.</dd></div>
+            <div><dt>Escape</dt><dd>No effect on the button itself. Inside a modal it closes the container and returns focus to the element that opened it.</dd></div>
+            <div><dt>Focus</dt><dd>A visible ring on every variant, with a white gap so it holds up on any background.</dd></div>
+          </dl>
+        </div>
+        <div class="ti-a11y__col">
+          <h4>Screen readers</h4>
+          <dl>
+            <div><dt>Role</dt><dd>Native <code>&lt;button&gt;</code> wherever possible, so no extra ARIA. Otherwise <code>role="button"</code>.</dd></div>
+            <div><dt>Name</dt><dd>The visible label is the accessible name. Icons beside text are decorative and ignored.</dd></div>
+            <div><dt>Icon only</dt><dd>Must name the action: <code>aria-label="Download report"</code>.</dd></div>
+            <div><dt>Disabled</dt><dd>Native <code>disabled</code>, announced as “Button, disabled”.</dd></div>
+            <div><dt>Loading</dt><dd><code>aria-busy="true"</code>, announced as “Loading…”.</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:clamp(44px,6vw,72px)">
+        <h3>Beyond the Button: the hard calls</h3>
+        <p>The Button is one of a family: Icon Button, Link Button and Split Button each have their own spec built on the same tokens. But hover, focus and disabled states were the easy 80%. The harder calls were picking <strong>one filter pattern</strong> that had to work whether a product exposed 3 facets or 30, and <strong>one table style</strong> that stayed legible from a 4-row summary card to a 900-row candidate list.</p>
+      </div>
+      <div class="gallery slot-gallery" style="margin-top:clamp(20px,3vw,28px)">
+        <div class="slot slot--media"><span class="slot__id">S8 · image</span><h4>Filter pattern</h4><p>The filter spec, ideally showing the 3-facet and 30-facet cases side by side.</p></div>
+        <div class="slot slot--media"><span class="slot__id">S9 · image</span><h4>Table pattern</h4><p>The table spec: density, sticky header, row states, and small versus large data sets.</p></div>
       </div>
     </div>
   </section>
 
   <hr class="rule">
 
-  <!-- 06 IMPACT -->
+  <!-- 07 DOCUMENTATION & GOVERNANCE -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="section-label"><span class="n">07</span><h2>Documentation &amp; governance</h2></div>
+      <div class="prose" style="max-width:70ch; margin-bottom:clamp(28px,5vw,44px)">
+        <p>A system nobody can find or trust doesn't get used. Every component ships with the same five documents, each versioned, so designers and engineers learn not just how to use it but why it's built that way. The Button's set is the one quoted throughout this page.</p>
+      </div>
+      <div class="ti-doc" style="margin-bottom:clamp(40px,6vw,64px)">
+        <div><span class="n">01</span><h4>Introduction</h4><p>What it's for, its variants and anatomy, and what goes wrong when it's misused.</p></div>
+        <div><span class="n">02</span><h4>Props &amp; tokens</h4><p>Every prop with type and default, and the token behind every property in every state.</p></div>
+        <div><span class="n">03</span><h4>Usage</h4><p>When to use it, when not to, with do and don't examples.</p></div>
+        <div><span class="n">04</span><h4>Accessibility</h4><p>Keyboard behaviour, focus, and what a screen reader announces.</p></div>
+        <div><span class="n">05</span><h4>Content</h4><p>How to write the label: length, clarity, casing, destructive actions.</p></div>
+      </div>
+
+      <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
+        <h3>Two sources of truth, kept in sync on purpose</h3>
+        <p>We aligned tech leadership early so ownership was shared, not handed over. A dedicated engineering owner, paired with the design side, kept the Figma library and the coded library moving together as the system scaled.</p>
+      </div>
+      <div class="ti-truth" style="margin-bottom:clamp(32px,5vw,48px)">
+        <div class="ti-truth__box"><span class="kind">Design</span><h4>Figma library</h4><p>Components, variants and docs. What designers pull into every file.</p></div>
+        <div class="ti-truth__mid" aria-hidden="true"><b>⇄</b>same names, same tokens, same version</div>
+        <div class="ti-truth__box"><span class="kind">Code</span><h4>Storybook</h4><p>The coded components, testable against the spec. What engineers build with and QA checks against.</p></div>
+      </div>
+      <div style="margin-bottom:clamp(24px,4vw,32px)">
+        <div class="frame" style="aspect-ratio:3590/2012"><img src="images/ti-engineering.png" alt="Storybook documentation for an Alert component: interactive preview, controls for title, description, variant and bullet type, and a prop table" width="3590" height="2012" loading="lazy"></div>
+        <p class="figcap">Storybook: the same component spec designers reviewed, rendered live for engineers to build and test against.</p>
+      </div>
+      <div class="slot">
+        <span class="slot__id">S10 · confirm</span>
+        <h4>How changes get into the system</h4>
+        <p>Describe the contribution path: who can propose a new component or variant, who reviews it (design + the engineering owner?), how it's versioned (the docs show v2.0), and how teams hear about releases. I'll turn it into a small flow diagram.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 08 IMPACT -->
   <section class="section">
     <div class="wrap">
-      <div class="section-label"><span class="n">06</span><h2>Impact</h2></div>
+      <div class="section-label"><span class="n">08</span><h2>Impact</h2></div>
 
       <div class="gallery" style="margin-bottom:clamp(32px,5vw,56px)">
         <div>
-          <div class="frame" style="aspect-ratio:2642/1478"><img src="images/ti-legacy-iassess.png" alt="Before: legacy assessment scheduling screen, green-branded, disconnected from every other platform's visual language" width="2642" height="1478" loading="lazy"></div>
-          <p class="figcap"><strong>Before</strong>: every platform its own visual language, its own rules.</p>
+          <div class="frame" style="aspect-ratio:2642/1478"><img src="images/ti-legacy-iassess.png" alt="Before: legacy assessment scheduling screen, green-branded, disconnected from every other product's visual language" width="2642" height="1478" loading="lazy"></div>
+          <p class="figcap"><strong>Before</strong>: every product its own visual language, its own rules.</p>
         </div>
         <div>
-          <div class="frame" style="aspect-ratio:2884/2268"><img src="images/ti-system-overview.png" alt="After: TalentCentral+ Job Profiles screen, built on the new shared token and component system, with skill proficiency, fit percentile, and reskilling potential columns" width="2884" height="2268" loading="lazy"></div>
-          <p class="figcap"><strong>After</strong>: one token set, one component library, running live in TalentCentral+.</p>
+          <div class="frame" style="aspect-ratio:2884/2268"><img src="images/ti-system-overview.png" alt="After: TalentCentral+ Job Profiles screen, built on the shared token and component system, with skill proficiency, fit percentile and reskilling potential columns" width="2884" height="2268" loading="lazy"></div>
+          <p class="figcap"><strong>After</strong>: one token set and one component library, running live in TalentCentral+.</p>
         </div>
+      </div>
+      <div class="slot slot--media" style="margin-bottom:clamp(32px,5vw,56px)">
+        <span class="slot__id">S11 · image</span>
+        <h4>Same screen, before and after</h4>
+        <p>The strongest proof is one screen rebuilt: for example a candidate list in legacy TC next to the same list in TC+. Two PNGs at the same size and crop.</p>
       </div>
 
       <div class="stats" style="margin-bottom:clamp(32px,5vw,56px)">
-        <div class="stat"><div class="stat__num"><b>Unified</b> language</div><p class="stat__label">aligns Product, Design, Engineering, and Science &amp; Solutions on one shared system</p></div>
+        <div class="stat"><div class="stat__num"><b>One</b> language</div><p class="stat__label">shared by Product, Design, Engineering, and Science &amp; Solutions</p></div>
         <div class="stat"><div class="stat__num"><b>Faster</b> delivery</div><p class="stat__label">reusable components and predictable patterns shortened build cycles</p></div>
-        <div class="stat"><div class="stat__num"><b>WCAG 2.1 AA</b></div><p class="stat__label">higher quality and accessibility standards, reducing errors and improving long-term stability</p></div>
+        <div class="stat"><div class="stat__num"><b>AA</b> by default</div><p class="stat__label">accessibility inherited from tokens, not re-checked screen by screen</p></div>
+        <div class="slot slot--tile"><span class="slot__id">S12 · metric</span><b>—</b><p>Build time: e.g. “a new screen went from X days to Y”, or sprint points saved</p></div>
+        <div class="slot slot--tile"><span class="slot__id">S13 · metric</span><b>—</b><p>Quality: UI bugs, a11y defects or design-QA issues before versus after</p></div>
+        <div class="slot slot--tile"><span class="slot__id">S14 · metric</span><b>—</b><p>Adoption: share of TI screens built from system components</p></div>
       </div>
       <div class="prose" style="max-width:70ch">
-        <p>Beyond speed, the system built something harder to quantify: trust. The same button, the same error state, the same filter, now behaving identically everywhere a recruiter or candidate encounters it.</p>
+        <p>Beyond speed, the system built something harder to measure: trust. The same button, the same error state, the same filter, now behaving identically everywhere a recruiter or candidate meets it.</p>
       </div>
     </div>
   </section>
 
   <hr class="rule">
 
-  <!-- 07 REFLECTION -->
+  <!-- 09 REFLECTION -->
   <section class="section section--tint">
     <div class="wrap">
-      <div class="section-label"><span class="n">07</span><h2>Reflection</h2></div>
+      <div class="section-label"><span class="n">09</span><h2>Reflection</h2></div>
       <div class="ti-cards ti-cards--2" style="margin-bottom:clamp(28px,5vw,44px)">
         <div class="ti-card">
-          <h4>Cross-functional, not design-only</h4>
-          <p>Tech leadership alignment mattered as much as any token.</p>
+          <h4>Measure before you argue</h4>
+          <p>The audit turned “it feels inconsistent” into 21 of 117. That number did more for buy-in than any mock-up.</p>
         </div>
         <div class="ti-card">
-          <h4>Real workflows, not hypothetical ones</h4>
-          <p>Building against Talent Management kept the system grounded, not a components-for-their-own-sake exercise.</p>
+          <h4>Cross-functional, not design-only</h4>
+          <p>Tech leadership alignment and a named engineering owner mattered as much as any token.</p>
         </div>
         <div class="ti-card">
           <h4>Adapt, don't reinvent</h4>
@@ -620,11 +1088,16 @@
         </div>
         <div class="ti-card">
           <h4>Governance is the hard part</h4>
-          <p>Without clear ownership, a design system deteriorates the moment its authors stop watching it.</p>
+          <p>Without clear ownership, a design system decays the moment its authors stop watching it.</p>
         </div>
       </div>
+      <div class="slot" style="margin-bottom:clamp(28px,5vw,44px)">
+        <span class="slot__id">S15 · write</span>
+        <h4>What I'd do differently</h4>
+        <p>One or two honest sentences: something that didn't go to plan (adoption, a pattern you had to rework, a decision you'd revisit). Senior reviewers look for this.</p>
+      </div>
       <div class="callout" style="max-width:66ch">
-        <p>Consistency is what builds trust, internally between teams, externally for whoever uses what we ship. More than a component library, it became the strategic foundation the rest of SHL's Talent Intelligence ecosystem builds on.</p>
+        <p>Consistency is what builds trust: internally between teams, and externally for whoever uses what we ship. More than a component library, the system became the foundation the rest of SHL's Talent Intelligence platform builds on.</p>
       </div>
     </div>
   </section>
@@ -652,8 +1125,38 @@
   </div>
 </footer>
 
+<div class="draft-bar" role="status"><i></i><span>Draft view · dashed boxes (S1–S15) are asset slots, hidden on the live page</span></div>
+
 <script>
-  const els = document.querySelectorAll('.stat, .split, .prose, .frame, .gallery > div, .viz, .ti-card, .ti-table-wrap');
+  // White-label demo: a theme only swaps base values; every component reads the same semantic names.
+  (function () {
+    var demo = document.getElementById('theme-demo');
+    if (!demo) return;
+    var themes = {
+      shl: { name: 'Talent Central+', pri: '#006b85', hover: '#0089aa', ring: '#54b9d1', faded: '#e6f5f8' },
+      a:   { name: 'Client A Careers', pri: '#3f3d9e', hover: '#5553b8', ring: '#9d9be6', faded: '#ecebfa' },
+      b:   { name: 'Client B Talent', pri: '#8c2155', hover: '#a8326b', ring: '#e28cb4', faded: '#f9e7ef' }
+    };
+    function apply(key) {
+      var t = themes[key];
+      demo.style.setProperty('--b-pri', t.pri);
+      demo.style.setProperty('--b-text', t.pri);
+      demo.style.setProperty('--b-pri-hover', t.hover);
+      demo.style.setProperty('--b-border', t.hover);
+      demo.style.setProperty('--b-ring', t.ring);
+      demo.style.setProperty('--b-faded', t.faded);
+      demo.querySelector('[data-brand]').textContent = t.name;
+      [['pri', t.pri], ['hover', t.hover], ['faded', t.faded], ['ring', t.ring]].forEach(function (p) {
+        demo.querySelector('[data-val="' + p[0] + '"]').textContent = p[1];
+        demo.querySelector('[data-sw="' + p[0] + '"]').style.background = p[1];
+      });
+      demo.querySelectorAll('.ti-theme__chip').forEach(function (c) { c.setAttribute('aria-pressed', c.dataset.theme === key ? 'true' : 'false'); });
+    }
+    demo.querySelectorAll('.ti-theme__chip').forEach(function (c) { c.addEventListener('click', function () { apply(c.dataset.theme); }); });
+    apply('shl');
+  })();
+
+  const els = document.querySelectorAll('.stat, .split, .prose, .frame, .gallery > div, .viz, .ti-card, .ti-table-wrap, .ti-option, .ti-tier, .ti-own > div, .ti-theme, .ti-anatomy, .ti-states-wrap, .ti-doc, .ti-truth, .ti-tldr');
   els.forEach(el => el.classList.add('reveal'));
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
@@ -663,6 +1166,5 @@
   } else { els.forEach(el => el.classList.add('in')); }
 </script>
 <script src="lightbox.js" defer></script>
-<script src="video-controls.js" defer></script>
 </body>
 </html>
