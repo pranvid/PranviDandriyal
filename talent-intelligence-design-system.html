@@ -269,6 +269,8 @@
   .ti-process p { font-size: 0.88rem; color: var(--body); line-height: 1.5; }
   @media (max-width: 960px) { .ti-process { grid-template-columns: repeat(2, minmax(0,1fr)); } .ti-process li:last-child { grid-column: 1 / -1; } }
   @media (max-width: 520px) { .ti-process { grid-template-columns: 1fr; } }
+  @media (min-width: 961px) { .ti-process--4 { grid-template-columns: repeat(4, minmax(0,1fr)); } }
+  @media (max-width: 960px) { .ti-process--4 li:last-child { grid-column: auto; } }
 
   /* library inventory */
   .ti-chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
@@ -1220,8 +1222,38 @@
         <li><span class="ti-process__n">4</span><h4>Compositions</h4><p>Card, Modal, Drawer, Table</p></li>
         <li><span class="ti-process__n">5</span><h4>Patterns</h4><p>Product-ready usage guidance</p></li>
       </ol>
+      <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
+        <h3>Adopt incrementally; fix the highest-value gaps first</h3>
+        <p>The rollout has to reduce disruption while making the most painful components reliable, accessible and reusable. So not every component gets touched.</p>
+      </div>
+      <div class="ti-options" style="margin-bottom:clamp(32px,5vw,48px)">
+        <article class="ti-option">
+          <div class="ti-option__top"><span class="kind">Stable</span></div>
+          <h3>Leave untouched for now</h3>
+          <p>Components that work and aren't blocking squads.</p>
+          <dl><div><dt>Approach</dt><dd>No forced migration. Keep current usage until a natural change.</dd></div></dl>
+        </article>
+        <article class="ti-option">
+          <div class="ti-option__top"><span class="kind">Needs work</span></div>
+          <h3>Align when touched</h3>
+          <p>Components that need improvement but aren't urgent.</p>
+          <dl><div><dt>Approach</dt><dd>Update them when product work already touches them.</dd></div></dl>
+        </article>
+        <article class="ti-option is-chosen">
+          <div class="ti-option__top"><span class="kind">High friction</span><span class="ti-badge ti-badge--yes">First</span></div>
+          <h3>Immediate value set</h3>
+          <p>Components causing repeated fixes.</p>
+          <dl><div><dt>Approach</dt><dd>Prioritise Link Button, Tags and Chips, Table, Text Input and Select.</dd></div></dl>
+        </article>
+      </div>
+      <ol class="ti-process ti-process--4" aria-label="Proposed V2 rollout" style="margin-bottom:clamp(32px,5vw,48px)">
+        <li><span class="ti-process__n">0</span><h4>Baseline</h4><p>Audit current components with engineering; confirm the affected set.</p></li>
+        <li><span class="ti-process__n">1</span><h4>Foundations</h4><p>Lock tokens, variables, motion, accessibility and Storybook docs.</p></li>
+        <li><span class="ti-process__n">2</span><h4>High-value components</h4><p>Fix the components with the most reuse and recurring issues.</p></li>
+        <li><span class="ti-process__n">3</span><h4>Governance</h4><p>Adoption rules, a QA checklist, versioning and a contribution model.</p></li>
+      </ol>
       <div class="callout" style="max-width:70ch">
-        <p>The ask: a representative from tech with a veto over what enters the system, so design and code are governed together, not reconciled after the fact.</p>
+        <p>The ask: approve a phased V2 programme, not a forced rewrite, with a representative from tech who has a veto over what enters the system, so design and code are governed together instead of reconciled after the fact.</p>
       </div>
     </div>
   </section>
