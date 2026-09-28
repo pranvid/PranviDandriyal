@@ -71,6 +71,25 @@
   .ti-mosaic figure { margin: 0; }
   .ti-mosaic figcaption { margin-top: 8px; font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--pc-ink); }
 
+  /* one task, four products */
+  .ti-journey { list-style: none; padding: 0; margin: clamp(28px,4vw,40px) 0 14px; display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: clamp(22px,3vw,36px); counter-reset: none; }
+  .ti-journey__step { position: relative; background: var(--paper); border: 1px solid var(--line-2); border-top: 6px solid var(--brand); border-radius: 10px; padding: 20px 20px 22px; display: grid; gap: 8px; align-content: start; min-height: 190px; }
+  .ti-journey__step + .ti-journey__step::before { content: "→"; position: absolute; left: calc(-1 * clamp(22px,3vw,36px)); width: clamp(22px,3vw,36px); top: 50%; transform: translateY(-50%); text-align: center; color: var(--faint); font-size: 1.2rem; }
+  .ti-journey__n { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); }
+  .ti-journey h3 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); color: var(--ink); }
+  .ti-journey p { font-size: 0.92rem; color: var(--body); line-height: 1.5; }
+  .ti-journey__btn { justify-self: start; margin-top: auto; font: 500 0.84rem/1 system-ui, sans-serif; padding: 9px 16px; background: var(--brand); color: #fff; border: 2px solid var(--brand); }
+  .ti-journey__btn--outline { background: transparent; color: var(--brand); letter-spacing: .06em; font-size: 0.74rem; }
+  @media (max-width: 960px) {
+    .ti-journey { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .ti-journey__step:nth-child(3)::before { display: none; }
+  }
+  @media (max-width: 560px) {
+    .ti-journey { grid-template-columns: 1fr; }
+    .ti-journey__step { min-height: 0; }
+    .ti-journey__step + .ti-journey__step::before { display: block; left: 50%; top: calc(-1 * clamp(22px,3vw,36px)); height: clamp(22px,3vw,36px); width: auto; transform: translateX(-50%) rotate(90deg); line-height: clamp(22px,3vw,36px); }
+  }
+
   /* one workflow, many products */
   .ti-flow { display:flex; align-items:flex-start; justify-content:center; flex-wrap:wrap; gap:8px 4px; padding: clamp(24px,5vw,40px) clamp(12px,3vw,24px) 8px; }
   .ti-flow__node { display:flex; flex-direction:column; align-items:center; gap:10px; width:92px; }
@@ -240,6 +259,16 @@
   @keyframes tib-spin { to { transform: rotate(360deg); } }
   @media (prefers-reduced-motion: reduce) { .tib.is-loading::after { animation-duration: 2.4s; } }
   .ti-na { font-family: var(--f-mono); font-size: 0.72rem; color: #9AA0A8; }
+
+  /* build process */
+  .ti-process { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: clamp(12px,2vw,18px); }
+  .ti-process li { position: relative; background: var(--paper); border: 1px solid var(--line-2); border-radius: 10px; padding: 18px 18px 20px; display: grid; gap: 8px; align-content: start; }
+  .ti-process li:last-child { border-color: color-mix(in srgb, var(--pc) 70%, var(--line-2)); box-shadow: 5px 5px 0 color-mix(in srgb, var(--pc) 70%, var(--paper)); }
+  .ti-process__n { width: 28px; height: 28px; border-radius: 50%; background: var(--pc); color: var(--pc-text); font: 600 0.8rem/28px var(--f-mono); text-align: center; }
+  .ti-process h4 { font-family: var(--f-display); font-weight: 600; font-size: 1.02rem; color: var(--ink); }
+  .ti-process p { font-size: 0.88rem; color: var(--body); line-height: 1.5; }
+  @media (max-width: 960px) { .ti-process { grid-template-columns: repeat(2, minmax(0,1fr)); } .ti-process li:last-child { grid-column: 1 / -1; } }
+  @media (max-width: 520px) { .ti-process { grid-template-columns: 1fr; } }
 
   /* library inventory */
   .ti-chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
@@ -499,28 +528,33 @@
     <div class="wrap">
       <div class="section-label"><span class="n">01</span><h2>The problem</h2></div>
       <p class="lead-in">Five products, five eras of front-end decisions, one recruiter stuck switching between them.</p>
-      <div class="ti-flow" role="img" aria-label="Flow diagram: a typical hiring workflow moves from TC to iAssess to Reporting to Insights, four separate products chained together">
-        <div class="ti-flow__node">
-          <span class="ti-flow__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
-          <span class="ti-flow__label">TC</span>
-        </div>
-        <span class="ti-flow__arrow">→</span>
-        <div class="ti-flow__node">
-          <span class="ti-flow__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 3V2a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M9 12l2 2 4-4"/></svg></span>
-          <span class="ti-flow__label">iAssess</span>
-        </div>
-        <span class="ti-flow__arrow">→</span>
-        <div class="ti-flow__node">
-          <span class="ti-flow__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="3.5" height="8" rx="0.5"/><rect x="10.25" y="7" width="3.5" height="13" rx="0.5"/><rect x="16.5" y="3" width="3.5" height="17" rx="0.5"/></svg></span>
-          <span class="ti-flow__label">Reporting</span>
-        </div>
-        <span class="ti-flow__arrow">→</span>
-        <div class="ti-flow__node">
-          <span class="ti-flow__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><path d="M20 20l-4.35-4.35"/></svg></span>
-          <span class="ti-flow__label">Insights</span>
-        </div>
-      </div>
-      <p class="figcap" style="text-align:center; margin:0 0 clamp(28px,5vw,44px)">A typical hiring workflow crossed four of the five products.</p>
+      <ol class="ti-journey" aria-label="One recruiter task crossing four products, each with its own interface">
+        <li class="ti-journey__step" style="--brand:#1f4e8c">
+          <span class="ti-journey__n">Step 1</span>
+          <h3>TalentCentral</h3>
+          <p>Set up the hiring project and add candidates</p>
+          <span class="ti-journey__btn" style="border-radius:2px">Continue</span>
+        </li>
+        <li class="ti-journey__step" style="--brand:#2e8540">
+          <span class="ti-journey__n">Step 2</span>
+          <h3>iAssess</h3>
+          <p>Schedule and deliver the assessments</p>
+          <span class="ti-journey__btn" style="border-radius:6px">Next</span>
+        </li>
+        <li class="ti-journey__step" style="--brand:#4a5568">
+          <span class="ti-journey__n">Step 3</span>
+          <h3>Reporting</h3>
+          <p>Pull candidate scores and reports</p>
+          <span class="ti-journey__btn ti-journey__btn--outline" style="border-radius:0">PROCEED</span>
+        </li>
+        <li class="ti-journey__step" style="--brand:#6b3fa0">
+          <span class="ti-journey__n">Step 4</span>
+          <h3>Insights</h3>
+          <p>Compare people against the role</p>
+          <span class="ti-journey__btn" style="border-radius:999px">Go →</span>
+        </li>
+      </ol>
+      <p class="figcap" style="margin:0 0 clamp(28px,5vw,44px)">One recruiter task, four products, four answers to “what does the next button look like”. Colours from the legacy products; buttons illustrative.</p>
       <div class="split">
         <div class="prose">
           <p>TC for projects and candidates, iAssess for assessment delivery, Reporting and Insights for analytics, Smart Interview for recorded interviews. A single hiring task could route a recruiter through two or three entirely different interfaces.</p>
@@ -546,7 +580,7 @@
     <div class="wrap">
       <div class="section-label"><span class="n">02</span><h2>My role</h2></div>
       <div class="prose" style="max-width:70ch; margin-bottom:clamp(28px,5vw,44px)">
-        <p>A design system is a team sport, so it's worth being precise about what was mine. I was one of the designers on a cross-functional system team, working alongside a dedicated engineering owner.</p>
+        <p>A design system is a team sport, so it's worth being precise about what was mine. Around five squads built the system together while building SHL's new talent mobility platform, and I was one of the designers across them.</p>
       </div>
       <div class="ti-own">
         <div>
@@ -554,8 +588,8 @@
           <span class="kind">Led end to end</span>
           <ul>
             <li>The cross-product audit: 117 patterns and states, checked in three products.</li>
-            <li>The Button: variants, sizes and states in Figma, its props, its token map and its usage guidelines.</li>
-            <li>Documentation for the components I built, matched against Storybook so engineering could test behaviour against the spec.</li>
+            <li>The components assigned to my squad, from Figma spec to hand-off, each documented to the library's five-doc standard.</li>
+            <li>Design review of components built by other squads, with feedback before they could be published.</li>
           </ul>
         </div>
         <div>
@@ -571,7 +605,7 @@
           <h3>I partnered on</h3>
           <span class="kind">Owned by others</span>
           <ul>
-            <li>Implementation in code, led by the system's engineering owner.</li>
+            <li>Implementation in code, by each squad's engineers, and impact testing by QA.</li>
             <li>The call to rebuild on a new platform, made with Product and tech leadership.</li>
             <li>Science &amp; Solutions input on how assessment content must render.</li>
           </ul>
@@ -580,7 +614,7 @@
       <div class="slot" style="margin-top:24px">
         <span class="slot__id">S4 · confirm</span>
         <h4>Check the ownership split</h4>
-        <p>Move anything that sits in the wrong column. Add the other components you built beyond the Button (for example Tag, Alert or Tabs), and say whether you created the doc template.</p>
+        <p>Move anything that sits in the wrong column. Name the components your squad built, confirm you did design review for other squads, and say whether you created the doc template.</p>
       </div>
     </div>
   </section>
@@ -873,7 +907,7 @@
           <h4>Atoms <b>21</b></h4>
           <div class="ti-inv__bar" aria-hidden="true"><i style="flex:15"></i><i class="w" style="flex:5"></i><i class="d" style="flex:1"></i></div>
           <ul class="ti-chips">
-            <li class="c c--done">Button<span class="sr-only">, complete</span></li><li class="c c--done">Badges<span class="sr-only">, complete</span></li><li class="c c--done">Checkbox<span class="sr-only">, complete</span></li><li class="c c--done">Divider<span class="sr-only">, complete</span></li><li class="c c--done">Avatar<span class="sr-only">, complete</span></li><li class="c c--done">Radio<span class="sr-only">, complete</span></li><li class="c c--done">Search<span class="sr-only">, complete</span></li><li class="c c--done">Scroll bar<span class="sr-only">, complete</span></li><li class="c c--done">Select<span class="sr-only">, complete</span></li><li class="c c--done">Slider<span class="sr-only">, complete</span></li><li class="c c--done">Tag<span class="sr-only">, complete</span></li><li class="c c--done">Text area<span class="sr-only">, complete</span></li><li class="c c--done">Text input<span class="sr-only">, complete</span></li><li class="c c--done">Toggle + content switch<span class="sr-only">, complete</span></li><li class="c c--done">Tooltip<span class="sr-only">, complete</span></li>
+            <li class="c c--done">Button<span class="sr-only">, ready for dev</span></li><li class="c c--done">Badges<span class="sr-only">, ready for dev</span></li><li class="c c--done">Checkbox<span class="sr-only">, ready for dev</span></li><li class="c c--done">Divider<span class="sr-only">, ready for dev</span></li><li class="c c--done">Avatar<span class="sr-only">, ready for dev</span></li><li class="c c--done">Radio<span class="sr-only">, ready for dev</span></li><li class="c c--done">Search<span class="sr-only">, ready for dev</span></li><li class="c c--done">Scroll bar<span class="sr-only">, ready for dev</span></li><li class="c c--done">Select<span class="sr-only">, ready for dev</span></li><li class="c c--done">Slider<span class="sr-only">, ready for dev</span></li><li class="c c--done">Tag<span class="sr-only">, ready for dev</span></li><li class="c c--done">Text area<span class="sr-only">, ready for dev</span></li><li class="c c--done">Text input<span class="sr-only">, ready for dev</span></li><li class="c c--done">Toggle + content switch<span class="sr-only">, ready for dev</span></li><li class="c c--done">Tooltip<span class="sr-only">, ready for dev</span></li>
             <li class="c c--wip">Counter<span class="sr-only">, in progress</span></li><li class="c c--wip">Number input<span class="sr-only">, in progress</span></li><li class="c c--wip">Combo box<span class="sr-only">, in progress</span></li><li class="c c--wip">Chips<span class="sr-only">, in progress</span></li><li class="c c--wip">Action list item<span class="sr-only">, in progress</span></li>
             <li class="c c--dep">Link<span class="sr-only">, deprecated</span></li>
           </ul>
@@ -882,7 +916,7 @@
           <h4>Molecules <b>11</b></h4>
           <div class="ti-inv__bar" aria-hidden="true"><i style="flex:9"></i><i class="w" style="flex:2"></i></div>
           <ul class="ti-chips">
-            <li class="c c--done">Accordion<span class="sr-only">, complete</span></li><li class="c c--done">Alert summary<span class="sr-only">, complete</span></li><li class="c c--done">Breadcrumbs<span class="sr-only">, complete</span></li><li class="c c--done">Date picker<span class="sr-only">, complete</span></li><li class="c c--done">Disclaimer<span class="sr-only">, complete</span></li><li class="c c--done">Menu<span class="sr-only">, complete</span></li><li class="c c--done">Progress bar<span class="sr-only">, complete</span></li><li class="c c--done">Tabs<span class="sr-only">, complete</span></li><li class="c c--done">Toast<span class="sr-only">, complete</span></li>
+            <li class="c c--done">Accordion<span class="sr-only">, ready for dev</span></li><li class="c c--done">Alert summary<span class="sr-only">, ready for dev</span></li><li class="c c--done">Breadcrumbs<span class="sr-only">, ready for dev</span></li><li class="c c--done">Date picker<span class="sr-only">, ready for dev</span></li><li class="c c--done">Disclaimer<span class="sr-only">, ready for dev</span></li><li class="c c--done">Menu<span class="sr-only">, ready for dev</span></li><li class="c c--done">Progress bar<span class="sr-only">, ready for dev</span></li><li class="c c--done">Tabs<span class="sr-only">, ready for dev</span></li><li class="c c--done">Toast<span class="sr-only">, ready for dev</span></li>
             <li class="c c--wip">Tiles<span class="sr-only">, in progress</span></li><li class="c c--wip">Pagination<span class="sr-only">, in progress</span></li>
           </ul>
         </div>
@@ -890,7 +924,7 @@
           <h4>Organisms <b>23</b></h4>
           <div class="ti-inv__bar" aria-hidden="true"><i style="flex:13"></i><i class="w" style="flex:10"></i></div>
           <ul class="ti-chips">
-            <li class="c c--done">Advanced filter &amp; manage columns<span class="sr-only">, complete</span></li><li class="c c--done">Data grid<span class="sr-only">, complete</span></li><li class="c c--done">Dialog<span class="sr-only">, complete</span></li><li class="c c--done">File uploader<span class="sr-only">, complete</span></li><li class="c c--done">Footer<span class="sr-only">, complete</span></li><li class="c c--done">Header<span class="sr-only">, complete</span></li><li class="c c--done">List<span class="sr-only">, complete</span></li><li class="c c--done">Loading<span class="sr-only">, complete</span></li><li class="c c--done">Modal<span class="sr-only">, complete</span></li><li class="c c--done">Navigation<span class="sr-only">, complete</span></li><li class="c c--done">Steps<span class="sr-only">, complete</span></li><li class="c c--done">Timeline<span class="sr-only">, complete</span></li><li class="c c--done">Rule builder<span class="sr-only">, complete</span></li>
+            <li class="c c--done">Advanced filter &amp; manage columns<span class="sr-only">, ready for dev</span></li><li class="c c--done">Data grid<span class="sr-only">, ready for dev</span></li><li class="c c--done">Dialog<span class="sr-only">, ready for dev</span></li><li class="c c--done">File uploader<span class="sr-only">, ready for dev</span></li><li class="c c--done">Footer<span class="sr-only">, ready for dev</span></li><li class="c c--done">Header<span class="sr-only">, ready for dev</span></li><li class="c c--done">List<span class="sr-only">, ready for dev</span></li><li class="c c--done">Loading<span class="sr-only">, ready for dev</span></li><li class="c c--done">Modal<span class="sr-only">, ready for dev</span></li><li class="c c--done">Navigation<span class="sr-only">, ready for dev</span></li><li class="c c--done">Steps<span class="sr-only">, ready for dev</span></li><li class="c c--done">Timeline<span class="sr-only">, ready for dev</span></li><li class="c c--done">Rule builder<span class="sr-only">, ready for dev</span></li>
             <li class="c c--wip">Inline filters<span class="sr-only">, in progress</span></li><li class="c c--wip">Notification<span class="sr-only">, in progress</span></li><li class="c c--wip">Structured table<span class="sr-only">, in progress</span></li><li class="c c--wip">Data visualisation card<span class="sr-only">, in progress</span></li><li class="c c--wip">Email input<span class="sr-only">, in progress</span></li><li class="c c--wip">Tree navigation<span class="sr-only">, in progress</span></li><li class="c c--wip">Page header<span class="sr-only">, in progress</span></li><li class="c c--wip">Section header<span class="sr-only">, in progress</span></li><li class="c c--wip">Card header<span class="sr-only">, in progress</span></li><li class="c c--wip">Drawer<span class="sr-only">, in progress</span></li>
           </ul>
         </div>
@@ -898,17 +932,17 @@
           <h4>Templates <b>7</b></h4>
           <div class="ti-inv__bar" aria-hidden="true"><i style="flex:3"></i><i class="w" style="flex:4"></i></div>
           <ul class="ti-chips">
-            <li class="c c--done">Cards<span class="sr-only">, complete</span></li><li class="c c--done">Charts &amp; graphs<span class="sr-only">, complete</span></li><li class="c c--done">SHL AI card<span class="sr-only">, complete</span></li>
+            <li class="c c--done">Cards<span class="sr-only">, ready for dev</span></li><li class="c c--done">Charts &amp; graphs<span class="sr-only">, ready for dev</span></li><li class="c c--done">SHL AI card<span class="sr-only">, ready for dev</span></li>
             <li class="c c--wip">Grid messaging<span class="sr-only">, in progress</span></li><li class="c c--wip">Form<span class="sr-only">, in progress</span></li><li class="c c--wip">Empty state<span class="sr-only">, in progress</span></li><li class="c c--wip">Miscellaneous assets<span class="sr-only">, in progress</span></li>
           </ul>
         </div>
       </div>
       <ul class="ti-inv__legend">
-        <li><i class="c--done"></i><b>40</b> marked complete</li>
-        <li><i class="c--wip"></i><b>21</b> in progress or not yet marked</li>
+        <li><i class="c--done"></i><b>40</b> ready for dev</li>
+        <li><i class="c--wip"></i><b>21</b> in progress</li>
         <li><i class="c--dep"></i><b>1</b> deprecated</li>
       </ul>
-      <p class="figcap">The library as it stands in Figma, every component page and its status. The Button, deep-dived next, is the first atom.</p>
+      <p class="figcap">The library as it stands in Figma: every component page and its status, as marked in the file.</p>
     </div>
   </section>
 
@@ -917,30 +951,38 @@
   <!-- 07 COMPONENT DEEP DIVE -->
   <section class="section">
     <div class="wrap">
-      <div class="section-label"><span class="n">07</span><h2>Anatomy of a component: the Button</h2></div>
+      <div class="section-label"><span class="n">07</span><h2>How every component is documented</h2></div>
       <div class="split" style="margin-bottom:clamp(32px,5vw,48px)">
-        <p class="lead-in">The most-used component is where a system earns trust, or loses it.</p>
+        <p class="lead-in">Five squads building one library only works if every component is specified the same way.</p>
         <div class="prose">
-          <p>The Button appears on nearly every screen in the platform, so every ambiguity in it gets multiplied. Its spec runs to five documents: introduction, props and tokens, usage, accessibility and content. It covers five variants, three sizes, four container types and six states. Everything below is rebuilt in HTML from the Figma component's own values, so you can hover, tab and click it.</p>
+          <p>So every component ships with the same five documents, each versioned. Designers and engineers learn not just how to use it, but why it's built that way and what “done” means. Below is one full set, using the Button as the example.</p>
         </div>
       </div>
-
-      <div class="ti-anatomy tib-scope" style="margin-bottom:clamp(40px,6vw,64px)">
-        <div class="ti-anatomy__stage" aria-hidden="true">
-          <span class="an an--below" data-n="1"><span class="tib" data-variant="primary"><span class="an" data-n="2"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></span><span class="an" data-n="3">Button</span><span class="an" data-n="4"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></span>
-          <span class="an" data-n="5"><span class="tib is-focus" data-variant="primary">Focused</span></span>
-        </div>
-        <ol class="ti-anatomy__legend">
-          <li><b>1</b><span><strong>Container.</strong> 8px radius, 16px side padding. 40, 32 or 24px tall for large, medium and small. Hugs its content; full width only on mobile or stacked layouts.</span></li>
-          <li><b>2</b><span><strong>Leading icon.</strong> Optional, 24px, toggled by <code>leadingIcon</code>. Decorative, so screen readers skip it.</span></li>
-          <li><b>3</b><span><strong>Label.</strong> A verb that predicts the outcome, 1–3 words: “Save changes”, “Download report”.</span></li>
-          <li><b>4</b><span><strong>Trailing icon.</strong> Optional, toggled by <code>trailingIcon</code>. Icon-only buttons drop the label and must carry an <code>aria-label</code>.</span></li>
-          <li><b>5</b><span><strong>Focus ring.</strong> A 2px white gap, then a 2px ring in <code>secondary-300</code>, so it reads on any background.</span></li>
-        </ol>
+      <div class="ti-doc" style="margin-bottom:clamp(40px,6vw,64px)">
+        <div><span class="n">01</span><h4>Introduction</h4><p>What it's for, its variants and anatomy, and what goes wrong when it's misused.</p></div>
+        <div><span class="n">02</span><h4>Props &amp; tokens</h4><p>Every prop with type and default, and the token behind every property in every state.</p></div>
+        <div><span class="n">03</span><h4>Usage</h4><p>When to use it, when not to, with do and don't examples.</p></div>
+        <div><span class="n">04</span><h4>Accessibility</h4><p>Keyboard behaviour, focus, and what a screen reader announces.</p></div>
+        <div><span class="n">05</span><h4>Content</h4><p>How to write the label: length, clarity, casing, destructive actions.</p></div>
       </div>
 
       <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
-        <h3>Every variant, every state</h3>
+        <h3>01 · Introduction: anatomy and structure</h3>
+        <p>Every part is named, so design reviews and tickets use the same words. An icon-only button has no label, so its icon has to say exactly what the button does.</p>
+      </div>
+      <div class="gallery" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr)); margin-bottom:clamp(40px,6vw,64px)">
+        <div>
+          <div class="frame frame--diagram" style="aspect-ratio:2000/707"><img src="images/ti-doc-anatomy.webp" alt="Button anatomy from the documentation: left icon, label and right icon called out on a text button, and the single icon called out on an icon-only button" width="2000" height="707" loading="lazy"></div>
+          <p class="figcap">Anatomy: left icon, label, right icon; and the icon-only case.</p>
+        </div>
+        <div>
+          <div class="frame frame--diagram" style="aspect-ratio:2000/644"><img src="images/ti-doc-containers.webp" alt="The four button container types from the documentation: text only, leading icon plus text, text plus trailing icon, and icon only, shown for both buttons and links" width="2000" height="644" loading="lazy"></div>
+          <p class="figcap">Four container types, shared by buttons and links.</p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
+        <h3>02 · Props &amp; tokens: every variant, every state</h3>
         <p>States are specified, not left to engineering to guess. Loading reuses the disabled surface and swaps the label for a spinner at a fixed width, so the layout doesn't jump and the button can't be pressed twice. Danger ships in two emphasis levels, primary and secondary, each with an explicit label like “Delete file”.</p>
       </div>
       <div class="ti-states-wrap tib-scope" tabindex="0" role="region" aria-label="Button state matrix, scrolls sideways on small screens" style="margin-bottom:14px">
@@ -965,23 +1007,12 @@
           </tbody>
         </table>
       </div>
-      <p class="figcap" style="margin-bottom:clamp(40px,6vw,64px)">The icon-only button above is announced as “Download report”, from its <code>aria-label</code>. The disabled one is skipped in the tab order. The full component in Figma also covers medium and small sizes.</p>
+      <p class="figcap">The icon-only button above is announced as “Download report”, from its <code>aria-label</code>. The disabled one is skipped in the tab order. The full component in Figma also covers medium and small sizes.</p>
 
-      <div style="margin-bottom:clamp(40px,6vw,64px)">
-        <div class="frame frame--diagram" style="aspect-ratio:1701/653"><img src="images/ti-components.png" alt="The Button component sheet in Figma: primary, secondary, tertiary and subtle variants in large, medium and small sizes, each with default, hover, focus, pressed, disabled and loading states, plus a danger colour set and a separate icon button" width="1701" height="653" loading="lazy"></div>
-        <p class="figcap">The source: the Button component sheet in Figma, every cell a variant a designer can pull straight into a file.</p>
-      </div>
-      <div class="slot slot--media" style="margin-bottom:clamp(40px,6vw,64px)">
-        <span class="slot__id">S6 · image</span>
-        <h4>Button doc export from Figma</h4>
-        <p>Export node 138-7095 (the Button doc) as PNG at 2×, plus any spec page showing padding, height and radius per size. The current sheet image is too small to read the labels.</p>
-      </div>
-
-      <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
-        <h3>Props: the contract with engineering</h3>
-        <p>Every variant, size and state becomes a prop with a type and a default, specified once so nobody has to reverse-engineer it from the code.</p>
-      </div>
-      <div class="ti-table-wrap" style="margin-bottom:clamp(40px,6vw,64px)">
+      <details class="ti-details" style="margin-bottom:clamp(40px,6vw,64px)">
+        <summary>See the full props and token spec</summary>
+        <div style="padding:0 clamp(12px,2vw,20px) clamp(16px,2.5vw,24px); display:grid; gap:clamp(20px,3vw,28px)">
+      <div class="ti-table-wrap">
         <table class="ti-table ti-table--props">
           <caption>Button props<span>* required · highlighted value is the default</span></caption>
           <thead><tr><th scope="col">Prop</th><th scope="col">Type</th><th scope="col">Values</th><th scope="col">What it does</th></tr></thead>
@@ -999,12 +1030,7 @@
           </tbody>
         </table>
       </div>
-
-      <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
-        <h3>Tokens per state</h3>
-        <p>The spec names the token every property uses in every state, so no one hard-codes a hex value. Here they are for the two most-used variants, resolved to the values they ship with.</p>
-      </div>
-      <div class="ti-table-wrap" style="margin-bottom:clamp(40px,6vw,64px)">
+      <div class="ti-table-wrap">
         <table class="ti-table">
           <caption>Button tokens, resolved<span>radius: radius/radius-md (8px) · padding: spacing-md / spacing-xl (8px / 16px)</span></caption>
           <thead><tr><th scope="col">State</th><th scope="col">Background</th><th scope="col">Label</th></tr></thead>
@@ -1022,9 +1048,11 @@
           </tbody>
         </table>
       </div>
+        </div>
+      </details>
 
       <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
-        <h3>Usage guidelines</h3>
+        <h3>03 · Usage and 05 · Content</h3>
         <p>What the component allows, what it explicitly doesn't, and why, backed by do and don't examples so the rule isn't just a sentence nobody reads.</p>
       </div>
       <div class="split" style="margin-bottom:clamp(40px,6vw,64px); align-items:center">
@@ -1045,8 +1073,8 @@
       </div>
 
       <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
-        <h3>Accessibility, specified rather than assumed</h3>
-        <p>The Button has its own accessibility doc, so engineers don't have to infer keyboard behaviour or what a screen reader should say. The rules, as written:</p>
+        <h3>04 · Accessibility, specified rather than assumed</h3>
+        <p>Engineers don't have to infer keyboard behaviour or what a screen reader should say. The Button's rules, as written:</p>
       </div>
       <div class="ti-a11y">
         <div class="ti-a11y__col">
@@ -1071,8 +1099,8 @@
       </div>
 
       <div class="prose" style="margin-top:clamp(44px,6vw,72px)">
-        <h3>Beyond the Button: the hard calls</h3>
-        <p>The Button is one of a family: Icon Button, Link Button and Split Button each have their own spec built on the same tokens. But hover, focus and disabled states were the easy 80%. The harder calls were picking <strong>one filter pattern</strong> that had to work whether a product exposed 3 facets or 30, and <strong>one table style</strong> that stayed legible from a 4-row summary card to a 900-row candidate list.</p>
+        <h3>The hard calls</h3>
+        <p>A spec like this is the easy 80%. The harder calls were picking <strong>one filter pattern</strong> that had to work whether a product exposed 3 facets or 30, and <strong>one table style</strong> that stayed legible from a 4-row summary card to a 900-row candidate list.</p>
       </div>
       <div class="gallery slot-gallery" style="margin-top:clamp(20px,3vw,28px)">
         <div class="slot slot--media"><span class="slot__id">S8 · image</span><h4>Filter pattern</h4><p>The filter spec, ideally showing the 3-facet and 30-facet cases side by side.</p></div>
@@ -1083,24 +1111,27 @@
 
   <hr class="rule">
 
-  <!-- 07 DOCUMENTATION & GOVERNANCE -->
+  <!-- 08 PROCESS & GOVERNANCE -->
   <section class="section section--tint">
     <div class="wrap">
-      <div class="section-label"><span class="n">08</span><h2>Documentation &amp; governance</h2></div>
-      <div class="prose" style="max-width:70ch; margin-bottom:clamp(28px,5vw,44px)">
-        <p>A system nobody can find or trust doesn't get used. Every component ships with the same five documents, each versioned, so designers and engineers learn not just how to use it but why it's built that way. The Button's set is the one quoted throughout this page.</p>
+      <div class="section-label"><span class="n">08</span><h2>Built squad by squad</h2></div>
+      <div class="split" style="margin-bottom:clamp(28px,5vw,44px)">
+        <p class="lead-in">We didn't build the library first and the platform second. We built both at once.</p>
+        <div class="prose">
+          <p>Around five squads were building SHL's new talent mobility platform. Whenever a squad picked up a screen, the components it needed were shared out across the squads, built, and put through the same checks before anyone else could use them. The library grew exactly as fast as the product needed it.</p>
+        </div>
       </div>
-      <div class="ti-doc" style="margin-bottom:clamp(40px,6vw,64px)">
-        <div><span class="n">01</span><h4>Introduction</h4><p>What it's for, its variants and anatomy, and what goes wrong when it's misused.</p></div>
-        <div><span class="n">02</span><h4>Props &amp; tokens</h4><p>Every prop with type and default, and the token behind every property in every state.</p></div>
-        <div><span class="n">03</span><h4>Usage</h4><p>When to use it, when not to, with do and don't examples.</p></div>
-        <div><span class="n">04</span><h4>Accessibility</h4><p>Keyboard behaviour, focus, and what a screen reader announces.</p></div>
-        <div><span class="n">05</span><h4>Content</h4><p>How to write the label: length, clarity, casing, destructive actions.</p></div>
-      </div>
+      <ol class="ti-process" aria-label="How a component got into the library">
+        <li><span class="ti-process__n">1</span><h4>A screen is picked up</h4><p>A squad starts a platform screen and lists the components it needs.</p></li>
+        <li><span class="ti-process__n">2</span><h4>Components are shared out</h4><p>Each missing component is assigned to a squad to design and build.</p></li>
+        <li><span class="ti-process__n">3</span><h4>Design review</h4><p>Design tests the build against the spec, and feedback goes back to whoever built it.</p></li>
+        <li><span class="ti-process__n">4</span><h4>QA and impact</h4><p>QA tests it, and the team checks how it's consumed in the application and what it affects.</p></li>
+        <li><span class="ti-process__n">5</span><h4>Published</h4><p>Handed off as the main version and marked ✅ ready for dev in the library.</p></li>
+      </ol>
 
-      <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
-        <h3>Two sources of truth, kept in sync on purpose</h3>
-        <p>We aligned tech leadership early so ownership was shared, not handed over. A dedicated engineering owner, paired with the design side, kept the Figma library and the coded library moving together as the system scaled.</p>
+      <div class="prose" style="margin:clamp(40px,6vw,64px) 0 clamp(24px,4vw,32px)">
+        <h3>Two sources of truth, kept in step</h3>
+        <p>Every component lived twice, in the Figma library and in code, with the same names and tokens. Keeping the two in step was the work the review steps above existed for.</p>
       </div>
       <div class="ti-truth" style="margin-bottom:clamp(32px,5vw,48px)">
         <div class="ti-truth__box"><span class="kind">Design</span><h4>Figma library</h4><p>Components, variants and docs. What designers pull into every file.</p></div>
@@ -1112,7 +1143,7 @@
         <p>A system decays when nobody can tell what's current. So the library itself carries the rules.</p>
       </div>
       <div class="ti-cards ti-cards--gov" style="margin-bottom:clamp(40px,6vw,64px)">
-        <div class="ti-card"><span class="kind">Status</span><h4>Every page is marked</h4><p>Complete, work in progress or deprecated, visible in the page list itself, before anyone opens a frame.</p></div>
+        <div class="ti-card"><span class="kind">Status</span><h4>Every page is marked</h4><p>Ready for dev, work in progress or deprecated, visible in the page list itself, before anyone opens a frame.</p></div>
         <div class="ti-card"><span class="kind">Lifecycle</span><h4>Deprecate, don't delete</h4><p>A retired component, like the standalone Link, stays in the file, clearly marked deprecated, instead of silently disappearing from under the teams using it.</p></div>
         <div class="ti-card"><span class="kind">History</span><h4>A change log and versioned docs</h4><p>Changes are logged in the file, and each doc carries its version, from v1 to v2.0, so nobody builds from a stale spec.</p></div>
         <div class="ti-card"><span class="kind">Handoff</span><h4>Annotations and a playground</h4><p>The file includes a shared design-annotations page for handoff, and a playground page for trying components out.</p></div>
@@ -1120,11 +1151,6 @@
       <div style="margin-bottom:clamp(24px,4vw,32px)">
         <div class="frame" style="aspect-ratio:3590/2012"><img src="images/ti-engineering.png" alt="Storybook documentation for an Alert component: interactive preview, controls for title, description, variant and bullet type, and a prop table" width="3590" height="2012" loading="lazy"></div>
         <p class="figcap">Storybook: the same component spec designers reviewed, rendered live for engineers to build and test against.</p>
-      </div>
-      <div class="slot">
-        <span class="slot__id">S10 · confirm</span>
-        <h4>How changes get into the system</h4>
-        <p>Describe the contribution path: who can propose a new component or variant, who reviews it (design + the engineering owner?), what earns the ✅, and how teams hear about releases. I'll turn it into a small flow diagram.</p>
       </div>
     </div>
   </section>
@@ -1146,11 +1172,6 @@
           <p class="figcap"><strong>After</strong>: one token set and one component library, running live in TalentCentral+.</p>
         </div>
       </div>
-      <div class="slot slot--media" style="margin-bottom:clamp(32px,5vw,56px)">
-        <span class="slot__id">S11 · image</span>
-        <h4>Same screen, before and after</h4>
-        <p>The strongest proof is one screen rebuilt: for example a candidate list in legacy TC next to the same list in TC+. Two PNGs at the same size and crop.</p>
-      </div>
 
       <div class="stats" style="margin-bottom:clamp(32px,5vw,56px)">
         <div class="stat"><div class="stat__num"><b>One</b> language</div><p class="stat__label">shared by Product, Design, Engineering, and Science &amp; Solutions</p></div>
@@ -1168,32 +1189,66 @@
 
   <hr class="rule">
 
-  <!-- 09 REFLECTION -->
+  <!-- 10 WHERE IT STANDS NOW -->
   <section class="section section--tint">
     <div class="wrap">
-      <div class="section-label"><span class="n">10</span><h2>Reflection</h2></div>
+      <div class="section-label"><span class="n">10</span><h2>Where it stands now: Spectra V2</h2></div>
+      <div class="split" style="margin-bottom:clamp(28px,5vw,44px)">
+        <p class="lead-in">Building squad by squad got us a library fast. It never got an owner on the tech side.</p>
+        <div class="prose">
+          <p>Without someone in engineering who owned the system, the gaps compounded. The same missing piece was patched in five places and raised as five tickets. Every squad paid the same component tax, and the cost stayed invisible because it was spread across everyone's sprint.</p>
+          <p>So we're making the case for V2: a governed foundation, not another UI refresh, adopted incrementally rather than in a big-bang migration. This part of the story is still being written.</p>
+        </div>
+      </div>
+
+      <ol class="ti-journey" aria-label="How the lack of tech ownership compounded" style="margin-top:0">
+        <li class="ti-journey__step" style="--brand:#d9822b"><span class="ti-journey__n">01</span><h3>Figma and code drift</h3><p>Components aren't consistently built as designed.</p></li>
+        <li class="ti-journey__step" style="--brand:#c0392b"><span class="ti-journey__n">02</span><h3>No foundation layer</h3><p>Tokens, states, motion and theming aren't defined centrally.</p></li>
+        <li class="ti-journey__step" style="--brand:#7a4fb5"><span class="ti-journey__n">03</span><h3>Local overrides</h3><p>Teams edit components locally to unblock themselves.</p></li>
+        <li class="ti-journey__step" style="--brand:#1f7a99"><span class="ti-journey__n">04</span><h3>Repeated tickets</h3><p>The same component gaps become new dev work, again and again.</p></li>
+      </ol>
+      <p class="figcap" style="margin-bottom:clamp(40px,6vw,64px)">From the V2 proposal deck: why the current system isn't neutral. It keeps compounding inconsistency, accessibility gaps and delivery overhead.</p>
+
+      <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
+        <h3>What V2 changes</h3>
+        <p>A layered architecture, so change happens once at the right level instead of in every product.</p>
+      </div>
+      <ol class="ti-process" aria-label="Spectra V2 architecture, from foundations to patterns" style="margin-bottom:clamp(32px,5vw,48px)">
+        <li><span class="ti-process__n">1</span><h4>Foundations</h4><p>Variables, tokens, motion, type, spacing</p></li>
+        <li><span class="ti-process__n">2</span><h4>Primitives</h4><p>Button, Link, Icon, Text, Tag</p></li>
+        <li><span class="ti-process__n">3</span><h4>Components</h4><p>Input, Select, Menu, Tooltip</p></li>
+        <li><span class="ti-process__n">4</span><h4>Compositions</h4><p>Card, Modal, Drawer, Table</p></li>
+        <li><span class="ti-process__n">5</span><h4>Patterns</h4><p>Product-ready usage guidance</p></li>
+      </ol>
+      <div class="callout" style="max-width:70ch">
+        <p>The ask: a representative from tech with a veto over what enters the system, so design and code are governed together, not reconciled after the fact.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 11 REFLECTION -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-label"><span class="n">11</span><h2>Reflection</h2></div>
       <div class="ti-cards ti-cards--2" style="margin-bottom:clamp(28px,5vw,44px)">
         <div class="ti-card">
           <h4>Measure before you argue</h4>
           <p>The audit turned “it feels inconsistent” into 21 of 117. That number did more for buy-in than any mock-up.</p>
         </div>
         <div class="ti-card">
-          <h4>Cross-functional, not design-only</h4>
-          <p>Tech leadership alignment and a named engineering owner mattered as much as any token.</p>
-        </div>
-        <div class="ti-card">
           <h4>Adapt, don't reinvent</h4>
           <p>Carbon and MUI were the single biggest accelerant to quality and delivery speed.</p>
         </div>
         <div class="ti-card">
-          <h4>Governance is the hard part</h4>
-          <p>Without clear ownership, a design system decays the moment its authors stop watching it.</p>
+          <h4>Build as you go works, until it doesn't</h4>
+          <p>Growing the library with the product kept it grounded in real screens. But five squads contributing means five interpretations, unless someone owns the whole.</p>
         </div>
-      </div>
-      <div class="slot" style="margin-bottom:clamp(28px,5vw,44px)">
-        <span class="slot__id">S15 · write</span>
-        <h4>What I'd do differently</h4>
-        <p>One or two honest sentences: something that didn't go to plan (adoption, a pattern you had to rework, a decision you'd revisit). Senior reviewers look for this.</p>
+        <div class="ti-card">
+          <h4>What I'd do differently</h4>
+          <p>Secure an owner on the tech side before the first component, not after the fiftieth. Status markers and review steps help, but only if someone on each side can say no.</p>
+        </div>
       </div>
       <div class="callout" style="max-width:66ch">
         <p>Consistency is what builds trust: internally between teams, and externally for whoever uses what we ship. More than a component library, the system became the foundation the rest of SHL's Talent Intelligence platform builds on.</p>
