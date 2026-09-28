@@ -7,7 +7,7 @@
 <meta name="description" content="A self-initiated UX research project on why dating apps fail people looking for relationships: a 107-person survey, a month of fieldwork on four apps, a literature review, and a concept that matches on personality and rewards effort over volume.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%2317222E%27/%3E%3Crect x=%277%27 y=%277%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%238ADAD6%27/%3E%3Crect x=%2717%27 y=%277%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23135454%27/%3E%3Crect x=%277%27 y=%2717%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23EEA302%27/%3E%3Crect x=%2717%27 y=%2717%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23DF266C%27/%3E%3C/svg%3E">
 <meta name="theme-color" content="#101116">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="SoulMate | Pranvi Dandriyal">
 <meta property="og:description" content="Dating apps don't have a match problem. They have a choice problem. A research-led concept, from a 107-person survey to an AI matching proof of concept.">
 <meta property="og:image" content="images/soulmate.png">
@@ -63,6 +63,7 @@
   table.data .num { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); color: var(--ink); font-variant-numeric: tabular-nums; }
   table.data .num--hot { color: var(--pc-ink); }
   table.data--compact { min-width: 0; }
+  @media (max-width: 420px) { table.data--compact th, table.data--compact td { padding: 12px 10px; } }
   @media (max-width: 640px) {
     table.data:not(.data--compact) { min-width: 0; }
     table.data:not(.data--compact) thead { display: none; }
@@ -434,7 +435,7 @@
         <div class="split__media">
           <div class="table-wrap">
             <table class="data data--compact">
-              <caption class="sr-only" style="position:absolute;left:-9999px">Our own month on the apps: matches, chats and dates</caption>
+              <caption class="sr-only">Our own month on the apps: matches, chats and dates</caption>
               <thead><tr><th>One month</th><th>Matches</th><th>Chats</th><th>Dates</th></tr></thead>
               <tbody>
                 <tr><td>Me</td><td class="num">35</td><td class="num">15</td><td class="num num--hot">1</td></tr>
@@ -508,7 +509,7 @@
       </div>
       <div class="table-wrap">
         <table class="data">
-          <caption class="sr-only" style="position:absolute;left:-9999px">Competitor comparison of Tinder, Bumble, Badoo and Hinge</caption>
+          <caption class="sr-only">Competitor comparison of Tinder, Bumble, Badoo and Hinge</caption>
           <thead><tr><th>App</th><th>What it does well</th><th>Where it falls short</th></tr></thead>
           <tbody>
             <tr><td>Tinder</td><td>The largest user base. Interest tags and interest-based groups.</td><td>Interests aren't verified or used in matching. Whistleblowers report a hidden score that shows people with fewer matches less often. About 13% of users find a long-term relationship.</td></tr>
@@ -683,7 +684,7 @@
       </div>
       <div class="table-wrap" style="margin-top:clamp(16px,2.5vw,24px); margin-bottom:clamp(32px,5vw,56px)">
         <table class="data">
-          <caption class="sr-only" style="position:absolute;left:-9999px">Emily's journey: what happens at each stage and the design opportunity</caption>
+          <caption class="sr-only">Emily's journey: what happens at each stage and the design opportunity</caption>
           <thead><tr><th>Stage</th><th>What happens</th><th>Opportunity</th></tr></thead>
           <tbody>
             <tr><td>1 · Entice</td><td>Lonely and busy, she tries Tinder on a friend's advice, despite hearing it doesn't work.</td><td>Position SoulMate as an app built for relationships.</td></tr>
@@ -925,7 +926,7 @@
   <hr class="rule">
   <div class="wrap foot-legal">
     <span>© 2026 Pranvi Dandriyal</span>
-    <span><a href="index.html#contact" style="color:var(--muted)">pranvidandriyal@gmail.com</a></span>
+    <span><a href="mailto:pranvidandriyal@gmail.com">pranvidandriyal@gmail.com</a></span>
   </div>
 </footer>
 
