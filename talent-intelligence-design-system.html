@@ -18,20 +18,118 @@
 <link rel="stylesheet" href="styles.css">
 <style>
   main code { font-family: var(--f-mono); font-size: 0.86em; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 0.1em 0.4em; }
+
+  /* hero: the four legacy products side by side */
+  .ti-mosaic { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: clamp(10px,2vw,20px); }
+  .ti-mosaic .frame { aspect-ratio: 16/10; }
+  .ti-mosaic img { object-position: left top; }
+  .ti-mosaic figure { margin: 0; }
+  .ti-mosaic figcaption { margin-top: 8px; font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--pc-ink); }
+
+  /* one workflow, four products */
   .ti-flow { display:flex; align-items:flex-start; justify-content:center; flex-wrap:wrap; gap:8px 4px; padding: clamp(24px,5vw,40px) clamp(12px,3vw,24px); }
   .ti-flow__node { display:flex; flex-direction:column; align-items:center; gap:10px; width:92px; }
   .ti-flow__icon { display:flex; align-items:center; justify-content:center; width:56px; height:56px; flex:none; border-radius:50%; background: color-mix(in srgb, var(--pc) 14%, var(--paper)); color: var(--pc-ink); }
   .ti-flow__icon svg { width:26px; height:26px; }
   .ti-flow__label { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing:0.02em; color: var(--ink); text-align:center; }
   .ti-flow__arrow { color: var(--faint); font-size: 1.1rem; flex:none; margin: 16px 0 0; }
-  .ti-placeholder { display:flex; align-items:center; justify-content:center; height:100%; }
-  .ti-placeholder__box { border:1.5px dashed var(--line-2); border-radius:8px; padding:22px 26px; text-align:center; max-width:36ch; }
-  .ti-placeholder__box p { font-family:var(--f-mono); font-size:var(--step--1); margin:0; }
-  .ti-placeholder__box p:first-child { color:var(--muted); letter-spacing:0.04em; text-transform:uppercase; font-size:0.68rem; }
-  .ti-placeholder__box p + p { color:var(--faint); margin-top:8px; }
+  @media (max-width: 560px) {
+    .ti-flow { flex-wrap: nowrap; gap: 4px 2px; padding-inline: 0; }
+    .ti-flow__node { width: 70px; }
+    .ti-flow__icon { width: 48px; height: 48px; }
+    .ti-flow__icon svg { width: 22px; height: 22px; }
+    .ti-flow__arrow { margin-top: 12px; font-size: 0.95rem; }
+  }
+
+  /* audit: 117 patterns as dots */
+  .ti-dots { display: flex; flex-wrap: wrap; gap: 5px; margin: 4px 0 0; }
+  .ti-dots i { width: 12px; height: 12px; border-radius: 50%; display: block; }
+  .ti-k3 { background: var(--pc); }
+  .ti-k2 { background: color-mix(in srgb, var(--pc) 45%, var(--paper)); }
+  .ti-k1 { background: color-mix(in srgb, var(--pc) 16%, var(--surface)); }
+  .ti-k0 { border: 1.5px solid var(--line-2); }
+  .ti-key { list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px 16px; }
+  .ti-key li { display: flex; gap: 10px; align-items: baseline; font-size: 0.85rem; color: var(--body); line-height: 1.35; }
+  .ti-key i { flex: none; width: 12px; height: 12px; border-radius: 50%; transform: translateY(1px); }
+  .ti-key b { font-family: var(--f-display); font-weight: 600; font-size: 1.15rem; color: var(--ink); font-variant-numeric: tabular-nums; min-width: 2ch; }
+  .viz .viz__note { font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 18px 0 0; }
+
+  /* audit by category */
+  .ti-details { margin-top: clamp(20px,3vw,28px); border: 1px solid var(--line-2); border-radius: 10px; background: var(--paper); }
+  .ti-details summary { cursor: pointer; padding: 16px 20px; font-family: var(--f-mono); font-size: var(--step--1); color: var(--ink); list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+  .ti-details summary::-webkit-details-marker { display: none; }
+  .ti-details summary::after { content: "+"; color: var(--pc-ink); font-weight: 600; }
+  .ti-details[open] summary::after { content: "−"; }
+  .ti-details summary:focus-visible { outline-offset: -3px; border-radius: 10px; }
+  .ti-matrix { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .ti-matrix th, .ti-matrix td { padding: 9px 20px; text-align: left; border-top: 1px solid var(--line); }
+  .ti-matrix thead th { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--pc-ink); background: color-mix(in srgb, var(--pc) 6%, var(--paper)); }
+  .ti-matrix tbody th { font-weight: 500; color: var(--ink); }
+  .ti-cell { display: flex; align-items: center; gap: 10px; font-family: var(--f-mono); font-size: 0.78rem; color: var(--body); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .ti-cell__bar { flex: 1; min-width: 28px; max-width: 120px; height: 7px; border-radius: 99px; background: color-mix(in srgb, var(--pc) 12%, var(--surface)); overflow: hidden; }
+  .ti-cell__bar i { display: block; height: 100%; background: var(--pc); border-radius: 99px; }
+  @media (max-width: 560px) {
+    .ti-matrix th, .ti-matrix td { padding: 8px 10px; }
+    .ti-matrix th:first-child { padding-left: 14px; }
+    .ti-cell { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .ti-cell__bar { width: 100%; flex: none; }
+  }
+
+  /* numbered cards: foundations and principles */
+  .ti-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,240px),1fr)); gap: clamp(14px,2.2vw,22px); }
+  .ti-card { background: var(--paper); border: 1px solid var(--line-2); border-radius: 10px; padding: 18px 20px 20px; display: grid; gap: 8px; align-content: start; }
+  .ti-card .kind { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--pc-ink); }
+  .ti-card h4 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); color: var(--ink); letter-spacing: -0.01em; line-height: 1.25; }
+  .ti-card p { font-size: 0.92rem; color: var(--body); line-height: 1.55; }
+  .ti-cards--base .ti-card { border-top: 3px solid var(--pc); }
+  .ti-cards--2 { grid-template-columns: repeat(auto-fit, minmax(min(100%,380px),1fr)); }
+
+  /* documentation: props and tokens as real tables */
+  .ti-table-wrap { border: 1px solid var(--line-2); border-radius: 10px; background: var(--paper); overflow: hidden; box-shadow: 5px 5px 0 color-mix(in srgb, var(--pc) 70%, var(--paper)); }
+  .ti-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .ti-table caption { text-align: left; padding: 18px 20px 4px; font-family: var(--f-display); font-weight: 600; font-size: 0.98rem; color: var(--ink); }
+  .ti-table caption span { display: block; font-family: var(--f-mono); font-weight: 400; font-size: 0.72rem; color: var(--faint); margin-top: 2px; }
+  .ti-table th, .ti-table td { text-align: left; vertical-align: top; padding: 12px 20px; border-top: 1px solid var(--line); }
+  .ti-table thead th { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--pc-ink); background: color-mix(in srgb, var(--pc) 6%, var(--paper)); }
+  .ti-table td { color: var(--body); line-height: 1.5; }
+  .ti-table .prop { font-family: var(--f-mono); font-size: 0.84rem; color: var(--ink); font-weight: 500; white-space: nowrap; }
+  .ti-table .req { color: var(--pc-ink); margin-left: 2px; }
+  .ti-table .type { font-family: var(--f-mono); font-size: 0.8rem; color: var(--muted); }
+  .ti-table .tok { font-family: var(--f-mono); font-size: 0.8rem; color: var(--ink); }
+  .ti-table .grp th { font-family: var(--f-display); font-weight: 600; font-size: 0.92rem; color: var(--ink); background: var(--surface); padding-block: 9px; }
+  .ti-vals { display: flex; flex-wrap: wrap; gap: 5px; }
+  .ti-vals span { font-family: var(--f-mono); font-size: 0.72rem; border: 1px solid var(--line-2); border-radius: 999px; padding: 1px 8px; color: var(--body); white-space: nowrap; }
+  .ti-vals span.is-default { border-color: color-mix(in srgb, var(--pc) 55%, var(--line-2)); background: color-mix(in srgb, var(--pc) 12%, var(--paper)); color: var(--ink); }
+  @media (max-width: 640px) {
+    .ti-table thead { display: none; }
+    .ti-table tr { display: grid; gap: 6px; padding: 14px 16px; border-top: 1px solid var(--line); }
+    .ti-table th, .ti-table td { display: block; padding: 0; border: 0; }
+    .ti-table caption { padding: 16px 16px 4px; }
+    .ti-table .grp { padding: 0; }
+    .ti-table .grp th { padding: 9px 16px; }
+    .ti-table td[data-label]::before { content: attr(data-label); display: block; font-family: var(--f-mono); font-size: 0.66rem; letter-spacing: .08em; text-transform: uppercase; color: var(--pc-ink); margin-bottom: 2px; }
+    .ti-table--props tr:not(.grp) { grid-template-columns: auto 1fr; column-gap: 10px; align-items: baseline; }
+    .ti-table--props td:not(.prop):not(.type) { grid-column: 1 / -1; }
+    .ti-table--props td[data-label]::before { display: none; }
+    .ti-table--props td[data-label="What it does"] { font-size: 0.86rem; color: var(--muted); }
+    .ti-table .tok { font-size: 0.74rem; }
+  }
+
+  /* usage rules next to the do/don't board */
+  .ti-rules { border-left: 3px solid var(--pc); padding: 4px 0 4px 22px; }
+  .ti-rules h4 { font-family: var(--f-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--pc-ink); margin-bottom: 14px; }
+
+  /* base colour scale, rebuilt from the token spec */
+  .ti-ramps { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(10px,2.4vw,24px); }
+  .ti-ramp h5 { font-family: var(--f-display); font-weight: 600; font-size: 0.98rem; color: var(--ink); margin: 0 0 10px; }
+  .ti-ramp ol { list-style: none; margin: 0; padding: 0; border-radius: 8px; overflow: hidden; }
+  .ti-ramp li { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 9px 12px; font-family: var(--f-mono); font-size: 0.74rem; font-variant-numeric: tabular-nums; }
+  .ti-ramp li span:last-child::after { content: ":1"; }
+  .ti-ramp li:nth-child(6) { font-weight: 600; }
+  @media (max-width: 420px) { .ti-ramp li { padding: 8px 8px; font-size: 0.68rem; } }
 </style>
 </head>
-<body data-case="talent-intelligence-design-system" style="--pc:#EEA302; --pc-ink:#8A5F00; --accent:#EEA302; --accent-ink:#8A5F00">
+<body data-case="talent-intelligence-design-system" style="--pc:#EEA302; --pc-ink:#8A5F00; --pc-text:#231A00; --accent:#EEA302; --accent-ink:#8A5F00">
 <a class="skip" href="#context">Skip to case study</a>
 
 <header class="site-head">
@@ -53,7 +151,7 @@
     <a class="back" href="index.html#work">← All work</a>
     <p class="eyebrow" style="margin-top:26px">Talent Intelligence Design System · SHL</p>
     <h1>Recruiters felt like they'd switched companies mid-task.</h1>
-    <p class="case-head__sub">TC, iAssess, Reporting, Insights: four legacy tools, four different front-end frameworks, one recruiter workflow. I helped build the design system that replaced that patchwork with one shared language, tokens, components, and the governance to keep it that way.</p>
+    <p class="case-head__sub">TC, iAssess, Reporting, Insights: four legacy tools, four different front-end frameworks, one recruiter workflow. I helped build the design system that replaced that patchwork with one shared language: tokens, components, and the governance to keep it that way.</p>
 
     <dl class="spec">
       <div><dt>My role</dt><dd>Design system contributor: audit, tokens, components, docs</dd></div>
@@ -64,8 +162,25 @@
   </section>
 
   <div class="wrap case-hero-img">
-    <div class="frame frame--diagram" style="aspect-ratio:auto"><img src="images/talent-intelligence-design-system.png" alt="SHL Talent Intelligence Design System color token palette: primary, secondary, and tertiary scales, each shade paired with its accessibility contrast ratio" width="1429" height="1207"></div>
-    <p class="figcap">The color foundation the rest of the system was built on, every shade paired with its accessibility contrast score.</p>
+    <div class="ti-mosaic">
+      <figure>
+        <div class="frame"><img src="images/ti-legacy-tc.png" alt="Legacy TalentCentral screen: a candidate results table for a live meeting, blue and red navigation bar" width="2630" height="1370"></div>
+        <figcaption>TalentCentral</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="images/ti-legacy-iassess.png" alt="Legacy assessment scheduling screen: a green-branded candidate details table with test scores and expiry dates" width="2642" height="1478"></div>
+        <figcaption>iAssess</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="images/ti-legacy-insights.png" alt="Insights platform screen: a purple-branded 360 feedback dashboard with a radar chart of competency factors" width="2628" height="1496"></div>
+        <figcaption>Insights</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="images/ti-legacy-interview.png" alt="Smart Interview On Demand screen: a candidate's recorded response with AI-based and manual evaluation scores" width="2740" height="1488"></div>
+        <figcaption>Smart Interview On Demand</figcaption>
+      </figure>
+    </div>
+    <p class="figcap">Four corners of one workflow, none of which agree on how a table, a button, or a chart should look.</p>
   </div>
 
   <!-- AT A GLANCE -->
@@ -77,16 +192,16 @@
           <p class="stat__label">fragmented platforms unified into one design language</p>
         </div>
         <div class="stat">
-          <div class="stat__num"><b>0→1</b></div>
-          <p class="stat__label">design system built from scratch alongside the new TI platform</p>
+          <div class="stat__num"><b>117</b></div>
+          <p class="stat__label">UI patterns and states audited across three products</p>
+        </div>
+        <div class="stat">
+          <div class="stat__num"><b>18%</b></div>
+          <p class="stat__label">of those patterns existed in all three. Half existed in only one.</p>
         </div>
         <div class="stat">
           <div class="stat__num"><b>WCAG 2.1 AA</b></div>
           <p class="stat__label">accessibility built into tokens and components, not bolted on after</p>
-        </div>
-        <div class="stat">
-          <div class="stat__num">Carbon <b>+</b> MUI</div>
-          <p class="stat__label">adapted, not reinvented, to save engineering months</p>
         </div>
       </div>
     </div>
@@ -120,57 +235,100 @@
           <span class="ti-flow__label">Insights</span>
         </div>
       </div>
-      <div class="prose" style="max-width:70ch; margin-bottom:clamp(24px,4vw,32px)">
-        <p>TC for projects and candidates, iAssess for assessment delivery, Reporting, Insights for analytics: four platforms, four different eras of front-end decisions. A single hiring workflow could route a user through two or three entirely different interfaces.</p>
-      </div>
-      <div class="gallery" style="margin-bottom:clamp(28px,5vw,44px)">
-        <div>
-          <div class="frame" style="aspect-ratio:2630/1370"><img src="images/ti-legacy-tc.png" alt="Legacy TalentCentral screen: a candidate results table for a live meeting, blue and red navigation bar" width="2630" height="1370" loading="lazy"></div>
+      <div class="split">
+        <div class="prose">
+          <p>TC for projects and candidates, iAssess for assessment delivery, Reporting and Insights for analytics: four platforms, four different eras of front-end decisions. A single hiring workflow could route a user through two or three entirely different interfaces.</p>
+          <p>The move to a new TI platform was the opening to fix not just one experience, but how every future SHL experience would look, feel, and function.</p>
         </div>
-        <div>
-          <div class="frame" style="aspect-ratio:2642/1478"><img src="images/ti-legacy-iassess.png" alt="Legacy assessment scheduling screen: a green-branded candidate details table with test scores and expiry dates" width="2642" height="1478" loading="lazy"></div>
+        <div class="prose">
+          <ul>
+            <li><strong>Multiple independent platforms</strong> with disconnected UI languages.</li>
+            <li><strong>Inconsistent accessibility and interaction patterns</strong> across products.</li>
+            <li><strong>Repeated design and development work</strong>, the same pattern rebuilt from scratch in every team.</li>
+            <li><strong>Confusion for end users</strong> moving between dramatically different UIs, sometimes serious enough to read as a security concern: the interface changed so much it felt like a different company.</li>
+            <li><strong>Difficulty maintaining and scaling</strong> visual styles across product lines.</li>
+          </ul>
         </div>
-        <div>
-          <div class="frame" style="aspect-ratio:2628/1496"><img src="images/ti-legacy-insights.png" alt="Insights platform screen: a purple-branded 360 feedback dashboard with a radar chart of competency factors" width="2628" height="1496" loading="lazy"></div>
-        </div>
-        <div>
-          <div class="frame" style="aspect-ratio:2740/1488"><img src="images/ti-legacy-interview.png" alt="Smart Interview On Demand screen: a candidate's recorded response with AI-based and manual evaluation scores" width="2740" height="1488" loading="lazy"></div>
-        </div>
-      </div>
-      <p class="figcap" style="margin-top:-24px; margin-bottom:clamp(28px,5vw,44px)">Four corners of one workflow, none of which agree on how a table, a button, or a chart should look.</p>
-
-      <div class="prose" style="max-width:70ch">
-        <p>The inherited landscape presented several obstacles:</p>
-        <ul>
-          <li><strong>Multiple independent platforms</strong> with disconnected UI languages.</li>
-          <li><strong>Inconsistent accessibility and interaction patterns</strong> across products.</li>
-          <li><strong>Repeated design and development work</strong>, the same pattern rebuilt from scratch in every team.</li>
-          <li><strong>Confusion for end users</strong> navigating between dramatically different UIs, sometimes serious enough to read as a security concern, the interface changed so much it felt like a different company.</li>
-          <li><strong>Difficulty maintaining and scaling</strong> visual styles across product lines.</li>
-        </ul>
-        <p>The move to a new TI platform was the opening to fix not just one experience, but how every future SHL experience would look, feel, and function.</p>
       </div>
     </div>
   </section>
 
   <hr class="rule">
 
-  <!-- 02 ROLE -->
-  <section class="section">
+  <!-- 02 AUDIT -->
+  <section class="section section--tint">
     <div class="wrap">
-      <div class="section-label"><span class="n">02</span><h2>My role</h2></div>
+      <div class="section-label"><span class="n">02</span><h2>Measuring the patchwork</h2></div>
       <div class="prose" style="max-width:70ch; margin-bottom:clamp(28px,5vw,44px)">
-        <p>I joined the design system effort as part of a cross-functional team spanning Product, Design, Engineering, and Science &amp; Solutions. My focus was the foundations recruiters and designers would actually touch every day.</p>
+        <p>I joined the design system effort as part of a cross-functional team spanning Product, Design, Engineering, and Science &amp; Solutions. My focus was the foundations recruiters and designers would actually touch every day, and it started with an audit.</p>
+        <p>I listed every common UI pattern and state, from a primary button's hover to a toast's warning variant, and checked which of them existed in TC+, Insights and Reporting. The result put a number on what recruiters were feeling.</p>
+      </div>
+
+      <div class="gallery" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))">
+        <div class="viz">
+          <h5>Where each audited pattern existed</h5>
+          <p class="viz__sub">117 patterns and states · one dot each</p>
+          <div class="ti-dots" role="img" aria-label="Of 117 audited patterns, 21 existed in all three products, 33 in two, 59 in only one, and 4 in none.">
+            <i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k3"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k2"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k1"></i><i class="ti-k0"></i><i class="ti-k0"></i><i class="ti-k0"></i><i class="ti-k0"></i>
+          </div>
+          <ul class="ti-key">
+            <li><i class="ti-k3"></i><span><b>21</b> in all three</span></li>
+            <li><i class="ti-k2"></i><span><b>33</b> in two</span></li>
+            <li><i class="ti-k1"></i><span><b>59</b> in only one</span></li>
+            <li><i class="ti-k0"></i><span><b>4</b> in none</span></li>
+          </ul>
+        </div>
+        <div class="viz">
+          <h5>How much each product covered</h5>
+          <p class="viz__sub">patterns present, of 117</p>
+          <div class="bar-row"><div><div class="bar-label">TC+</div><div class="bar-track"><div class="bar" style="width:90.6%"></div></div></div><span class="bar-num">106</span></div>
+          <div class="bar-row"><div><div class="bar-label">Insights</div><div class="bar-track"><div class="bar" style="width:40.2%"></div></div></div><span class="bar-num">47</span></div>
+          <div class="bar-row"><div><div class="bar-label">Reporting</div><div class="bar-track"><div class="bar" style="width:29.9%"></div></div></div><span class="bar-num">35</span></div>
+          <p class="viz__note">Only the tooltip was complete everywhere. None of the three had a desktop or tablet grid, and branding controls existed in just one.</p>
+        </div>
+      </div>
+
+      <details class="ti-details">
+        <summary>See the audit by category</summary>
+        <div style="overflow-x:auto">
+          <table class="ti-matrix">
+            <caption class="sr-only" style="position:absolute;left:-9999px">Audited patterns present in each product, by category</caption>
+            <thead><tr><th scope="col">Category</th><th scope="col">TC+</th><th scope="col">Insights</th><th scope="col">Reporting</th></tr></thead>
+            <tbody>
+                <tr><th scope="row">Buttons (large)</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:90%"></i></span>9/10</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:70%"></i></span>7/10</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:20%"></i></span>2/10</span></td></tr>
+                <tr><th scope="row">Buttons (medium)</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:90%"></i></span>9/10</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:90%"></i></span>9/10</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:30%"></i></span>3/10</span></td></tr>
+                <tr><th scope="row">Form fields</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>13/13</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:23%"></i></span>3/13</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:0%"></i></span>0/13</span></td></tr>
+                <tr><th scope="row">Search fields</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>3/3</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>3/3</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:0%"></i></span>0/3</span></td></tr>
+                <tr><th scope="row">Dropdowns</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:80%"></i></span>4/5</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:60%"></i></span>3/5</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:80%"></i></span>4/5</span></td></tr>
+                <tr><th scope="row">Pagination</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>2/2</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:0%"></i></span>0/2</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:0%"></i></span>0/2</span></td></tr>
+                <tr><th scope="row">Radio</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>4/4</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:50%"></i></span>2/4</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:0%"></i></span>0/4</span></td></tr>
+                <tr><th scope="row">Checkbox</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:80%"></i></span>4/5</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:40%"></i></span>2/5</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:60%"></i></span>3/5</span></td></tr>
+                <tr><th scope="row">Toggle</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>4/4</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:50%"></i></span>2/4</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:0%"></i></span>0/4</span></td></tr>
+                <tr><th scope="row">Tags &amp; chips</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:88%"></i></span>7/8</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:0%"></i></span>0/8</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:38%"></i></span>3/8</span></td></tr>
+                <tr><th scope="row">Cards</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>9/9</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:11%"></i></span>1/9</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:22%"></i></span>2/9</span></td></tr>
+                <tr><th scope="row">Tabs</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>3/3</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:33%"></i></span>1/3</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:33%"></i></span>1/3</span></td></tr>
+                <tr><th scope="row">Menus</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>4/4</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:0%"></i></span>0/4</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:0%"></i></span>0/4</span></td></tr>
+                <tr><th scope="row">Toasts</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>3/3</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:0%"></i></span>0/3</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:67%"></i></span>2/3</span></td></tr>
+                <tr><th scope="row">Tooltip</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>1/1</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>1/1</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>1/1</span></td></tr>
+                <tr><th scope="row">Icons</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>2/2</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>2/2</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:50%"></i></span>1/2</span></td></tr>
+                <tr><th scope="row">Scroll bars</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>2/2</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>2/2</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:50%"></i></span>1/2</span></td></tr>
+                <tr><th scope="row">Grids &amp; layouts</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:0%"></i></span>0/2</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:0%"></i></span>0/2</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:0%"></i></span>0/2</span></td></tr>
+                <tr><th scope="row">Examples</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:81%"></i></span>17/21</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:43%"></i></span>9/21</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:57%"></i></span>12/21</span></td></tr>
+                <tr><th scope="row">Branding</th><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:100%"></i></span>6/6</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:0%"></i></span>0/6</span></td><td><span class="ti-cell"><span class="ti-cell__bar"><i style="width:0%"></i></span>0/6</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+      <p class="figcap">Rebuilt from my audit table: every count is a row marked “Yes” for that product.</p>
+
+      <div class="prose" style="max-width:70ch; margin-top:clamp(40px,6vw,64px)">
+        <h3>What I did from there</h3>
         <ul>
-          <li>Audited the existing UI across TC, iAssess, Reporting, and Insights, cataloguing every inconsistency, accessibility gap, and duplicated pattern.</li>
+          <li>Catalogued every inconsistency, accessibility gap, and duplicated pattern the audit surfaced.</li>
           <li>Contributed to the design principles and token system that became the system's foundation.</li>
           <li>Built and documented components in the shared library, matched to Storybook so engineering could validate behavior against the design spec.</li>
           <li>Partnered with a dedicated engineering owner to keep implementation and design in sync as the system scaled.</li>
         </ul>
-      </div>
-      <div>
-        <div class="frame frame--diagram" style="aspect-ratio:689/2400; max-height:900px; margin-inline:auto"><img src="images/ti-audit.png" alt="Audit table comparing common UI components, buttons, form fields, dropdowns, cards, tabs, tooltips, and more, across the Common UI library, TC+ components, Insights, and Reporting, marking which platform implements each pattern" width="689" height="4096" loading="lazy"></div>
-        <p class="figcap">The audit I ran before writing a single token: every UI pattern across four platforms, mapped side by side.</p>
       </div>
     </div>
   </section>
@@ -178,10 +336,10 @@
   <hr class="rule">
 
   <!-- THE DECISION -->
-  <section class="section section--tint">
+  <section class="section">
     <div class="wrap">
       <p class="eyebrow" style="text-align:center; margin-bottom:22px">The decision</p>
-      <p style="font-family:var(--f-display); font-weight:500; font-size:var(--step-2); line-height:1.38; color:var(--ink); max-width:52ch; margin-inline:auto; text-align:center; letter-spacing:-0.005em">Simply updating the existing platform wouldn't solve the deeper issues of consistency, performance, and scalability. So the call was made: build the new Talent Intelligence platform from scratch, and put a <em style="font-style:italic; color:var(--accent)">unified, scalable design system</em> at its core.</p>
+      <p style="font-family:var(--f-display); font-weight:500; font-size:var(--step-2); line-height:1.38; color:var(--ink); max-width:52ch; margin-inline:auto; text-align:center; letter-spacing:-0.005em">Simply updating the existing platform wouldn't solve the deeper issues of consistency, performance, and scalability. So the call was made: build the new Talent Intelligence platform from scratch, and put a <em style="font-style:italic; color:var(--pc-ink)">unified, scalable design system</em> at its core.</p>
       <p style="text-align:center; color:var(--muted); max-width:56ch; margin:26px auto 0">Everything downstream, tokens, components, documentation, governance, exists because of that one call.</p>
     </div>
   </section>
@@ -189,37 +347,49 @@
   <hr class="rule">
 
   <!-- 03 APPROACH -->
-  <section class="section">
+  <section class="section section--tint">
     <div class="wrap">
       <div class="section-label"><span class="n">03</span><h2>The approach</h2></div>
       <div class="prose" style="max-width:66ch; margin-bottom:clamp(24px,4vw,32px)">
         <p>Two moves accelerated the system without sacrificing quality.</p>
         <h3>Start from what already works</h3>
-        <p>We adapted <strong>Carbon Design System</strong> for its modular foundations and <strong>Material UI (MUI)</strong> for its flexible components, customizing for SHL's brand and workflows instead of reinventing elements that didn't need reinventing.</p>
+        <p>Instead of reinventing elements that didn't need reinventing, we adapted two open-source systems and customized them for SHL's brand and workflows.</p>
       </div>
-      <div style="margin-bottom:clamp(40px,6vw,64px)">
-        <div class="frame frame--diagram" style="aspect-ratio:1536/1024; max-width:520px; margin-inline:auto"><img src="images/ti-inspiration.png" alt="Carbon Design System and MUI logos, the two open-source design systems adapted as a foundation" width="1536" height="1024" loading="lazy"></div>
-        <p class="figcap" style="text-align:center">The two systems we built on top of, not the two systems we copied.</p>
+      <div class="ti-cards ti-cards--base" style="margin-bottom:clamp(40px,6vw,64px)">
+        <div class="ti-card">
+          <span class="kind">Adapted for its foundations</span>
+          <h4>Carbon Design System</h4>
+          <p>Modular foundations to build the system's structure on.</p>
+        </div>
+        <div class="ti-card">
+          <span class="kind">Adapted for its components</span>
+          <h4>Material UI (MUI)</h4>
+          <p>Flexible components to customize rather than build from zero.</p>
+        </div>
       </div>
 
       <div class="prose" style="max-width:66ch; margin-bottom:clamp(24px,4vw,32px)">
         <h3>Define what "good" means for HR software, specifically</h3>
         <p>Generic design-system principles, "be accessible," "be consistent," don't capture what's actually at stake in HR tech. So the principles we set were specific to what SHL sells and who uses it:</p>
       </div>
-      <div class="gallery" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
-        <div class="prose">
+      <div class="ti-cards ti-cards--2">
+        <div class="ti-card">
+          <span class="kind">Principle 01</span>
           <h4>Accessible by necessity, not by audit</h4>
-          <p>Candidates complete assessments under high-stakes, sometimes legally-scrutinized conditions. WCAG 2.1 AA had to be built into tokens and components from day one, not caught in a later compliance pass.</p>
+          <p>Candidates complete assessments under high-stakes, sometimes legally scrutinized conditions. WCAG 2.1 AA had to be built into tokens and components from day one, not caught in a later compliance pass.</p>
         </div>
-        <div class="prose">
+        <div class="ti-card">
+          <span class="kind">Principle 02</span>
           <h4>Credible for high-stakes decisions</h4>
-          <p>Recruiters and candidates make hiring calls on this surface. Every pattern had to read as authoritative and unambiguous, enterprise-grade, not consumer-cute.</p>
+          <p>Recruiters and candidates make hiring calls on this surface. Every pattern had to read as authoritative and unambiguous: enterprise-grade, not consumer-cute.</p>
         </div>
-        <div class="prose">
+        <div class="ti-card">
+          <span class="kind">Principle 03</span>
           <h4>White-label ready</h4>
           <p>SHL's enterprise clients routinely ask for their own branding on top of the platform. Every token and component was built to be re-themed per client, colors, logos, typography, without anyone touching the underlying system.</p>
         </div>
-        <div class="prose">
+        <div class="ti-card">
+          <span class="kind">Principle 04</span>
           <h4>Scalable across a growing platform</h4>
           <p>Modular and reusable, built for mobile, tablet, and desktop, and expandable as TI absorbs more of SHL's product line.</p>
         </div>
@@ -230,15 +400,68 @@
   <hr class="rule">
 
   <!-- 04 BUILDING THE SYSTEM -->
-  <section class="section section--tint">
+  <section class="section">
     <div class="wrap">
       <div class="section-label"><span class="n">04</span><h2>Building the system</h2></div>
       <div class="prose" style="max-width:66ch; margin-bottom:clamp(24px,4vw,32px)">
         <p>With principles set, the system took shape live inside the platform, not just documented in Figma.</p>
       </div>
-      <div style="margin-bottom:clamp(40px,6vw,64px)">
-        <div class="frame" style="aspect-ratio:2884/2268"><img src="images/ti-system-overview.png" alt="TalentCentral+ screen built on the new design system: a Job Profiles recommendations table with skill proficiency, fit percentile, and reskilling potential columns" width="2884" height="2268" loading="lazy"></div>
-        <p class="figcap">The system live inside TalentCentral+: the same tokens and components carrying through job-profile recommendations.</p>
+
+      <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
+        <h3>Tokens first</h3>
+        <p>Naming runs two layers deep. A base scale names raw values, <code>primary-500</code>, <code>secondary-200</code>, each shade tagged with its contrast ratio. A semantic layer sits on top and names tokens by <em>purpose</em>: <code>text-brand-primary</code>, <code>bg-button-primary_hover</code>. Designers and engineers only ever consume the semantic layer, so re-theming a client's branding is a remap at the base layer, not a find-and-replace across every screen.</p>
+      </div>
+      <div class="viz" style="margin-bottom:clamp(40px,6vw,64px)">
+        <h5>The base colour scale</h5>
+        <p class="viz__sub">each step shows its contrast with the text colour it's paired with, black or white</p>
+        <div class="ti-ramps">
+          <div class="ti-ramp">
+            <h5>Primary</h5>
+            <ol>
+              <li style="background:#e8f6e6; color:#000"><span>50</span><span>18.76</span></li>
+              <li style="background:#b8e4b2; color:#000"><span>100</span><span>14.78</span></li>
+              <li style="background:#96d78c; color:#000"><span>200</span><span>12.40</span></li>
+              <li style="background:#66c558; color:#000"><span>300</span><span>9.69</span></li>
+              <li style="background:#49b937; color:#000"><span>400</span><span>8.28</span></li>
+              <li style="background:#1ba805; color:#000"><span>500</span><span>6.65</span></li>
+              <li style="background:#199905; color:#000"><span>600</span><span>5.60</span></li>
+              <li style="background:#137704; color:#fff"><span>700</span><span>5.72</span></li>
+              <li style="background:#0f5c03; color:#fff"><span>800</span><span>8.23</span></li>
+              <li style="background:#0b4702; color:#fff"><span>900</span><span>10.96</span></li>
+            </ol>
+          </div>
+          <div class="ti-ramp">
+            <h5>Secondary</h5>
+            <ol>
+              <li style="background:#e6f5f8; color:#000"><span>50</span><span>18.78</span></li>
+              <li style="background:#b0dfea; color:#000"><span>100</span><span>14.59</span></li>
+              <li style="background:#8acfe0; color:#000"><span>200</span><span>12.08</span></li>
+              <li style="background:#54b9d1; color:#000"><span>300</span><span>9.24</span></li>
+              <li style="background:#33acc9; color:#000"><span>400</span><span>7.89</span></li>
+              <li style="background:#0097bb; color:#000"><span>500</span><span>6.14</span></li>
+              <li style="background:#0089aa; color:#000"><span>600</span><span>5.16</span></li>
+              <li style="background:#006b85; color:#fff"><span>700</span><span>6.10</span></li>
+              <li style="background:#005367; color:#fff"><span>800</span><span>8.63</span></li>
+              <li style="background:#003f4f; color:#fff"><span>900</span><span>11.51</span></li>
+            </ol>
+          </div>
+          <div class="ti-ramp">
+            <h5>Tertiary</h5>
+            <ol>
+              <li style="background:#fceef8; color:#000"><span>50</span><span>18.72</span></li>
+              <li style="background:#f7c9e8; color:#000"><span>100</span><span>14.47</span></li>
+              <li style="background:#f3afdd; color:#000"><span>200</span><span>11.99</span></li>
+              <li style="background:#ee8acd; color:#000"><span>300</span><span>9.15</span></li>
+              <li style="background:#ea73c3; color:#000"><span>400</span><span>7.74</span></li>
+              <li style="background:#e550b4; color:#000"><span>500</span><span>6.14</span></li>
+              <li style="background:#d049a4; color:#000"><span>600</span><span>5.17</span></li>
+              <li style="background:#a33980; color:#fff"><span>700</span><span>6.08</span></li>
+              <li style="background:#7e2c63; color:#fff"><span>800</span><span>8.65</span></li>
+              <li style="background:#60224c; color:#fff"><span>900</span><span>11.47</span></li>
+            </ol>
+          </div>
+        </div>
+        <p class="viz__note">Every step, from 50 to 900, has a text colour that clears the 4.5:1 AA threshold. The lowest pairing is 5.16:1, so accessibility travels with the token instead of being checked screen by screen.</p>
       </div>
 
       <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
@@ -250,17 +473,9 @@
         <p class="figcap">One button component, every state and variant it needs to ship, documented before an engineer ever touches it.</p>
       </div>
 
-      <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
+      <div class="prose">
         <h3>Interaction patterns: the hard calls, not the easy ones</h3>
         <p>Hover, focus, and disabled states were the easy 80%. The harder calls were things like picking <strong>one filter pattern</strong> that had to work whether a product exposed 3 facets or 30, and <strong>one table style</strong> that stayed legible from a 4-row summary card to a 900-row candidate list.</p>
-      </div>
-      <div>
-        <div class="frame ti-placeholder" style="aspect-ratio:16/9">
-          <div class="ti-placeholder__box">
-            <p>Component capture pending</p>
-            <p>Real filter-pattern / table-density comparison to replace this placeholder</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -268,42 +483,80 @@
   <hr class="rule">
 
   <!-- 05 DOCUMENTATION & ENGINEERING -->
-  <section class="section">
+  <section class="section section--tint">
     <div class="wrap">
       <div class="section-label"><span class="n">05</span><h2>Documentation &amp; engineering</h2></div>
       <div class="prose" style="max-width:70ch; margin-bottom:clamp(28px,5vw,44px)">
-        <p>A system nobody can find or trust doesn't get used. Every component ships with its own documentation, so designers and engineers understand not just how to use it, but why it's built that way.</p>
+        <p>A system nobody can find or trust doesn't get used. Every component ships with its own documentation, so designers and engineers understand not just how to use it, but why it's built that way. Here's the Button's, section by section.</p>
       </div>
 
       <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
         <h3>Usage guidelines</h3>
         <p>What a component allows, what it explicitly doesn't, and why, backed by do/don't examples so the rule isn't just a sentence in a doc nobody reads.</p>
       </div>
-      <div style="margin-bottom:clamp(40px,6vw,64px)">
-        <div class="frame frame--diagram" style="aspect-ratio:2717/2516; max-width:600px; margin-inline:auto"><img src="images/ti-docs-guidelines.png" alt="Button usage guidelines documentation: do and don't examples for button width and hierarchy of button types" width="2717" height="2516" loading="lazy"></div>
-        <p class="figcap">Do and don't, side by side, not buried in prose.</p>
+      <div class="split" style="margin-bottom:clamp(40px,6vw,64px); align-items:center">
+        <div class="ti-rules">
+          <h4>Points to remember</h4>
+          <ul class="checklist">
+            <li>Use buttons for the most frequently used or most important actions on the page.</li>
+            <li>Present a primary button no more than once per page.</li>
+            <li>Never use Title Casing in buttons.</li>
+            <li>Don't use buttons to navigate. Use a link when the action takes the user to a new page.</li>
+          </ul>
+        </div>
+        <div class="split__media">
+          <div class="frame frame--diagram" style="aspect-ratio:2717/2516"><img src="images/ti-docs-guidelines.png" alt="Button usage guidelines documentation: do and don't examples for button width and hierarchy of button types" width="2717" height="2516" loading="lazy"></div>
+          <p class="figcap">Do and don't, side by side, not buried in prose.</p>
+        </div>
       </div>
 
       <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
         <h3>Variants &amp; props</h3>
         <p>Every variant, size, and state a component supports, plus the full prop list with types and defaults, specified once so nobody has to guess or reverse-engineer it from the code.</p>
       </div>
-      <div style="margin-bottom:clamp(40px,6vw,64px)">
-        <div class="frame frame--diagram" style="aspect-ratio:753/1200; max-height:640px; margin-inline:auto"><img src="images/ti-docs-intro.png" alt="Button component documentation: introduction, prop list with types and defaults, and design tokens used by background color, border color, and text color" width="753" height="4096" loading="lazy"></div>
-        <p class="figcap">Props, variants, and container types in one reference.</p>
+      <div class="ti-table-wrap" style="margin-bottom:clamp(40px,6vw,64px)">
+        <table class="ti-table ti-table--props">
+          <caption>Button props<span>* required · highlighted value is the default</span></caption>
+          <thead><tr><th scope="col">Prop</th><th scope="col">Type</th><th scope="col">Values</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr><td class="prop">variant<span class="req">*</span></td><td class="type" data-label="Type">string</td><td data-label="Values"><span class="ti-vals"><span class="is-default">Primary</span><span>Secondary</span><span>Tertiary</span><span>Link</span></span></td><td data-label="What it does">Sets the variant of the button</td></tr>
+            <tr><td class="prop">color<span class="req">*</span></td><td class="type" data-label="Type">string</td><td data-label="Values"><span class="ti-vals"><span>Primary</span><span>White</span><span>Positive</span><span>Negative</span></span></td><td data-label="What it does">Sets the color variant of the button</td></tr>
+            <tr><td class="prop">state<span class="req">*</span></td><td class="type" data-label="Type">string</td><td data-label="Values"><span class="ti-vals"><span class="is-default">Default</span><span>Hover</span><span>Focus</span><span>Active</span><span>Disabled</span></span></td><td data-label="What it does">Shows the current state of the button</td></tr>
+            <tr><td class="prop">size<span class="req">*</span></td><td class="type" data-label="Type">string</td><td data-label="Values"><span class="ti-vals"><span>XSmall</span><span>Small</span><span>Medium</span><span class="is-default">Large</span></span></td><td data-label="What it does">Sets the size of the button</td></tr>
+            <tr><td class="prop">label<span class="req">*</span></td><td class="type" data-label="Type">string</td><td data-label="Values"><span class="ti-vals"><span>1–2 words</span></span></td><td data-label="What it does">Text describing the button's action</td></tr>
+            <tr><td class="prop">isDisabled</td><td class="type" data-label="Type">boolean</td><td data-label="Values"><span class="ti-vals"><span>True</span><span class="is-default">False</span></span></td><td data-label="What it does">Turns on the disabled state</td></tr>
+            <tr><td class="prop">isLoading</td><td class="type" data-label="Type">boolean</td><td data-label="Values"><span class="ti-vals"><span>True</span><span class="is-default">False</span></span></td><td data-label="What it does">Turns on the loading state</td></tr>
+            <tr><td class="prop">isFullWidth</td><td class="type" data-label="Type">boolean</td><td data-label="Values"><span class="ti-vals"><span>True</span><span class="is-default">False</span></span></td><td data-label="What it does">Stretches the button to its container's width</td></tr>
+            <tr><td class="prop">iconOnly</td><td class="type" data-label="Type">boolean</td><td data-label="Values"><span class="ti-vals"><span>True</span><span class="is-default">False</span></span></td><td data-label="What it does">Turns on the icon-only variant</td></tr>
+            <tr><td class="prop">leadingIcon</td><td class="type" data-label="Type">boolean</td><td data-label="Values"><span class="ti-vals"><span>True</span><span class="is-default">False</span></span></td><td data-label="What it does">Shows or hides the leading icon</td></tr>
+            <tr><td class="prop">trailingIcon</td><td class="type" data-label="Type">boolean</td><td data-label="Values"><span class="ti-vals"><span>True</span><span class="is-default">False</span></span></td><td data-label="What it does">Shows or hides the trailing icon</td></tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
-        <h3>Tokens</h3>
-        <p>Naming runs two layers deep. A base scale names raw values, <code>primary-500</code>, <code>secondary-200</code>, each shade tagged with its contrast ratio. A semantic layer sits on top and names tokens by <em>purpose</em>: <code>text-brand-primary</code>, <code>bg-button-primary_hover</code>. Designers and engineers only ever consume the semantic layer, so re-theming a client's branding is a remap at the base layer, not a find-and-replace across every screen.</p>
+        <h3>Tokens per state</h3>
+        <p>The docs also say which token every property uses in every state, so no one hard-codes a hex value. This is the map for a primary-colour button.</p>
       </div>
-      <div style="margin-bottom:clamp(40px,6vw,64px)">
-        <div class="frame ti-placeholder" style="aspect-ratio:16/9">
-          <div class="ti-placeholder__box">
-            <p>Component capture pending</p>
-            <p>Real token specification screenshot to replace this placeholder</p>
-          </div>
-        </div>
+      <div class="ti-table-wrap" style="margin-bottom:clamp(40px,6vw,64px)">
+        <table class="ti-table">
+          <caption>Button tokens · color = Primary<span>border radius for every variant: theme.global.borderRadius.medium</span></caption>
+          <thead><tr><th scope="col">State</th><th scope="col">Background</th><th scope="col">Label text</th></tr></thead>
+          <tbody>
+            <tr class="grp"><th scope="rowgroup" colspan="3">Primary variant</th></tr>
+            <tr><td class="prop">Default</td><td class="tok" data-label="Background">interactive.<wbr>background.<wbr>primary.<wbr>default</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>onPrimary.<wbr>normal</td></tr>
+            <tr><td class="prop">Hover &amp; focus</td><td class="tok" data-label="Background">interactive.<wbr>background.<wbr>primary.<wbr>highlighted</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>onPrimary.<wbr>normal</td></tr>
+            <tr><td class="prop">Disabled</td><td class="tok" data-label="Background">interactive.<wbr>background.<wbr>primary.<wbr>disabled</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>primary.<wbr>disabled</td></tr>
+            <tr class="grp"><th scope="rowgroup" colspan="3">Secondary variant</th></tr>
+            <tr><td class="prop">Default</td><td class="tok" data-label="Background">transparent</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>primary.<wbr>normal</td></tr>
+            <tr><td class="prop">Hover &amp; focus</td><td class="tok" data-label="Background">interactive.<wbr>background.<wbr>primary.<wbr>faded</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>primary.<wbr>normal</td></tr>
+            <tr><td class="prop">Disabled</td><td class="tok" data-label="Background">transparent</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>primary.<wbr>disabled</td></tr>
+            <tr class="grp"><th scope="rowgroup" colspan="3">Tertiary variant</th></tr>
+            <tr><td class="prop">Default</td><td class="tok" data-label="Background">interactive.<wbr>background.<wbr>gray.<wbr>default</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>gray.<wbr>normal</td></tr>
+            <tr><td class="prop">Hover &amp; focus</td><td class="tok" data-label="Background">interactive.<wbr>background.<wbr>gray.<wbr>highlighted</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>gray.<wbr>normal</td></tr>
+            <tr><td class="prop">Disabled</td><td class="tok" data-label="Background">interactive.<wbr>background.<wbr>gray.<wbr>disabled</td><td class="tok" data-label="Label text">interactive.<wbr>text.<wbr>gray.<wbr>disabled</td></tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
@@ -324,14 +577,14 @@
     <div class="wrap">
       <div class="section-label"><span class="n">06</span><h2>Impact</h2></div>
 
-      <div class="gallery" style="margin-bottom:clamp(16px,3vw,20px)">
+      <div class="gallery" style="margin-bottom:clamp(32px,5vw,56px)">
         <div>
           <div class="frame" style="aspect-ratio:2642/1478"><img src="images/ti-legacy-iassess.png" alt="Before: legacy assessment scheduling screen, green-branded, disconnected from every other platform's visual language" width="2642" height="1478" loading="lazy"></div>
-          <p class="figcap"><strong>Before</strong> — every platform its own visual language, its own rules.</p>
+          <p class="figcap"><strong>Before</strong>: every platform its own visual language, its own rules.</p>
         </div>
         <div>
-          <div class="frame" style="aspect-ratio:2884/2268"><img src="images/ti-system-overview.png" alt="After: TalentCentral+ Job Profiles screen, built entirely on the new shared token and component system" width="2884" height="2268" loading="lazy"></div>
-          <p class="figcap"><strong>After</strong> — one token set, one component library, running live in TalentCentral+.</p>
+          <div class="frame" style="aspect-ratio:2884/2268"><img src="images/ti-system-overview.png" alt="After: TalentCentral+ Job Profiles screen, built on the new shared token and component system, with skill proficiency, fit percentile, and reskilling potential columns" width="2884" height="2268" loading="lazy"></div>
+          <p class="figcap"><strong>After</strong>: one token set, one component library, running live in TalentCentral+.</p>
         </div>
       </div>
 
@@ -349,29 +602,29 @@
   <hr class="rule">
 
   <!-- 07 REFLECTION -->
-  <section class="section">
+  <section class="section section--tint">
     <div class="wrap">
       <div class="section-label"><span class="n">07</span><h2>Reflection</h2></div>
-      <div class="gallery" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); margin-bottom:clamp(24px,4vw,32px)">
-        <div class="prose">
+      <div class="ti-cards ti-cards--2" style="margin-bottom:clamp(28px,5vw,44px)">
+        <div class="ti-card">
           <h4>Cross-functional, not design-only</h4>
           <p>Tech leadership alignment mattered as much as any token.</p>
         </div>
-        <div class="prose">
+        <div class="ti-card">
           <h4>Real workflows, not hypothetical ones</h4>
           <p>Building against Talent Management kept the system grounded, not a components-for-their-own-sake exercise.</p>
         </div>
-        <div class="prose">
+        <div class="ti-card">
           <h4>Adapt, don't reinvent</h4>
           <p>Carbon and MUI were the single biggest accelerant to quality and delivery speed.</p>
         </div>
-        <div class="prose">
+        <div class="ti-card">
           <h4>Governance is the hard part</h4>
           <p>Without clear ownership, a design system deteriorates the moment its authors stop watching it.</p>
         </div>
       </div>
-      <div class="prose" style="max-width:66ch">
-        <p class="lead-in" style="font-size:var(--step-1)">Consistency is what builds trust, internally between teams, externally for whoever uses what we ship. More than a component library, it became the strategic foundation the rest of SHL's Talent Intelligence ecosystem builds on.</p>
+      <div class="callout" style="max-width:66ch">
+        <p>Consistency is what builds trust, internally between teams, externally for whoever uses what we ship. More than a component library, it became the strategic foundation the rest of SHL's Talent Intelligence ecosystem builds on.</p>
       </div>
     </div>
   </section>
@@ -400,7 +653,7 @@
 </footer>
 
 <script>
-  const els = document.querySelectorAll('.stat, .split, .prose, .frame, .gallery > div');
+  const els = document.querySelectorAll('.stat, .split, .prose, .frame, .gallery > div, .viz, .ti-card, .ti-table-wrap');
   els.forEach(el => el.classList.add('reveal'));
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
