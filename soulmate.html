@@ -6,7 +6,7 @@
 <title>SoulMate | Pranvi Dandriyal</title>
 <meta name="description" content="A self-initiated UX research project on why dating apps fail people looking for relationships: a 107-person survey, a month of fieldwork on four apps, a literature review, and a concept that matches on personality and rewards effort over volume.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%2317222E%27/%3E%3Crect x=%277%27 y=%277%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%238ADAD6%27/%3E%3Crect x=%2717%27 y=%277%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23135454%27/%3E%3Crect x=%277%27 y=%2717%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23EEA302%27/%3E%3Crect x=%2717%27 y=%2717%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23DF266C%27/%3E%3C/svg%3E">
-<meta name="theme-color" content="#FBF7F0">
+<meta name="theme-color" content="#101116">
 <meta property="og:type" content="website">
 <meta property="og:title" content="SoulMate | Pranvi Dandriyal">
 <meta property="og:description" content="Dating apps don't have a match problem. They have a choice problem. A research-led concept, from a 107-person survey to an AI matching proof of concept.">
@@ -161,11 +161,74 @@
   .ratio i.on { background: var(--pc); }
   .ratio__legend { grid-column: 1 / -1; gap: 18px; margin: 4px 0 0; font-family: var(--f-mono); font-size: 0.72rem; color: var(--muted); }
   .ratio__legend span { display: inline-flex; gap: 6px; align-items: center; }
+
+  /* ---- Dark theme: this case study is told through dark storyboard art ---- */
+  body[data-case="soulmate"] {
+    --paper:   #101116;
+    --surface: #17191F;
+    --ink:     #F5F2EC;
+    --body:    #D6D8DE;
+    --muted:   #B6BBC5;
+    --faint:   #A1A7B2;
+    --line:    #2A2D36;
+    --line-2:  #3A3E49;
+    --pc:      #FF4D8D;
+    --pc-ink:  #FF8DB5;
+    --pc-text: #1A0710;
+    --accent:  #FF4D8D;
+    --accent-ink: #FF8DB5;
+    color-scheme: dark;
+  }
+  body[data-case="soulmate"] .ratio__cell b.good { color: #5FD69E; }
+
+  /* cast */
+  .cast { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,230px),1fr)); gap: clamp(14px,2.2vw,22px); margin-bottom: clamp(44px,6vw,72px); }
+  .cast__card { background: var(--paper); border: 1px solid var(--line-2); border-radius: 12px; padding: 22px 20px 20px; display: grid; gap: 10px; align-content: start; }
+  .cast__card.is-target { border-color: color-mix(in srgb, var(--pc) 60%, var(--line-2)); box-shadow: 5px 5px 0 color-mix(in srgb, var(--pc) 70%, var(--paper)); }
+  .cast__face { width: 112px; height: 112px; border-radius: 50%; }
+  .cast__name { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+  .cast__name h4 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); color: var(--ink); }
+  .cast .target, .persona .target { font-family: var(--f-mono); font-size: 0.64rem; letter-spacing: .06em; text-transform: uppercase; background: var(--pc); color: var(--pc-text); border-radius: 999px; padding: 2px 8px; }
+  .cast__arch { font-family: var(--f-mono); font-size: 0.74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--pc-ink); }
+  .cast__quote { font-size: 0.92rem; color: var(--body); line-height: 1.5; font-style: italic; }
+  .cast__facts { display: grid; gap: 8px; margin: 6px 0 0; border-top: 1px solid var(--line); padding-top: 12px; }
+  .cast__facts div { display: grid; gap: 2px; }
+  .cast__facts dt { font-family: var(--f-mono); font-size: 0.7rem; color: var(--faint); text-transform: uppercase; letter-spacing: .06em; }
+  .cast__facts dd { margin: 0; font-size: 0.9rem; color: var(--ink); }
+
+  /* storyboard reels */
+  .act + .act { margin-top: clamp(32px,5vw,48px); }
+  .act__head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+  .act__head h3 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-2); color: var(--ink); letter-spacing: -0.015em; }
+  .act__hint { margin-left: auto; font-family: var(--f-mono); font-size: 0.74rem; color: var(--faint); }
+  .reel { display: grid; grid-auto-flow: column; grid-auto-columns: clamp(220px, 24vw, 270px); gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 4px 16px; scrollbar-color: var(--line-2) transparent; }
+  .reel:focus-visible { outline: 2px solid var(--pc); outline-offset: 2px; border-radius: 12px; }
+  .panel { margin: 0; scroll-snap-align: start; background: var(--paper); border: 1px solid var(--line-2); border-radius: 12px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; }
+  .panel img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+  .panel figcaption { padding: 12px 14px 14px; font-size: 0.88rem; line-height: 1.45; color: var(--body); }
+  .panel figcaption span { display: block; font-family: var(--f-mono); font-size: 0.68rem; color: var(--pc-ink); letter-spacing: .08em; margin-bottom: 4px; }
+
+  /* story callouts with faces */
+  .story { display: flex; gap: clamp(16px,3vw,28px); align-items: center; border-left: 0; padding: clamp(18px,3vw,26px); border: 1px solid var(--line-2); border-radius: 12px; background: var(--paper); max-width: none; }
+  .story__faces { display: flex; flex: none; }
+  .story__faces img { width: clamp(56px,8vw,84px); height: auto; border-radius: 50%; }
+  .story__faces img + img { margin-left: -14px; }
+  @media (max-width: 560px) { .story { flex-direction: column; align-items: flex-start; } }
+
+  /* matching diagram */
+  .matching { margin-block: clamp(22px,4vw,36px); border: 1px solid var(--line-2); border-radius: 12px; background: #000; padding: clamp(14px,2.5vw,26px); }
+  .matching__labels { display: grid; grid-template-columns: 1fr 1fr; font-family: var(--f-mono); font-size: 0.74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--pc-ink); margin-bottom: 10px; }
+  .matching__labels span + span { padding-left: 4%; }
+  .matching img { width: 100%; height: auto; }
+
+  .persona__face { flex: none; width: 56px; height: 56px; border-radius: 50%; }
+  .ratio__col-head { display: flex; align-items: center; gap: 10px; }
+  .ratio__col-head img { width: 40px; height: 40px; border-radius: 50%; }
   .sources { font-size: 0.8rem; color: var(--faint); line-height: 1.55; max-width: 90ch; }
   .sources li { margin-bottom: 6px; }
 </style>
 </head>
-<body data-case="soulmate" style="--pc:#DF266C; --pc-ink:#B81A55; --accent:#DF266C; --accent-ink:#B81A55">
+<body data-case="soulmate">
 <a class="skip" href="#context">Skip to case study</a>
 
 <header class="site-head">
@@ -460,43 +523,89 @@
 
   <hr class="rule">
 
-  <!-- DEFINE -->
+  <!-- PEOPLE -->
   <section class="section section--tint">
     <div class="wrap">
-      <div class="section-label"><span class="n">07</span><h2>Defining the problem</h2></div>
-      <div class="prose" style="margin-bottom:clamp(24px,4vw,40px)">
-        <p>I brought the research together into a revised problem statement with five parts. Each part is specific enough to design against.</p>
+      <div class="section-label"><span class="n">07</span><h2>Meet the people</h2></div>
+      <div class="split" style="margin-bottom:clamp(28px,5vw,48px)">
+        <p class="lead-in">Numbers show the problem. A story makes people feel it.</p>
+        <div class="prose">
+          <p>From the research, we drew four archetypes of dating-app users and gave each one a face. Two of them, Emily and Eric, are the least happy with today's apps, so they became our target users.</p>
+          <p>We then wrote a storyboard of one ordinary week on a swipe-based app, showing how it lets each of them down.</p>
+        </div>
       </div>
-      <div class="problems" style="margin-bottom:clamp(40px,6vw,72px)">
-        <div class="problem"><span class="tag-n">P1</span><h4>Superficial matching</h4><p>Matching and filters run on looks, age and location, so compatibility is low.</p></div>
-        <div class="problem"><span class="tag-n">P2</span><h4>Thin profiles</h4><p>Profiles don't show personality, and misrepresenting yourself is easy.</p></div>
-        <div class="problem"><span class="tag-n">P3</span><h4>Choice overload</h4><p>Endless options lead to constant comparison and a hunt for someone "better".</p></div>
-        <div class="problem"><span class="tag-n">P4</span><h4>Lopsided matching</h4><p>A few people get flooded with matches while many get almost none, and both sides lose out.</p></div>
-        <div class="problem"><span class="tag-n">P5</span><h4>Opaque algorithms</h4><p>Nobody knows how matches are made, so people distrust the results.</p></div>
+      <div class="cast">
+        <article class="cast__card">
+          <img class="cast__face" src="images/sm-face-sarah.webp" alt="Sarah" width="320" height="320" loading="lazy">
+          <div class="cast__name"><h4>I am Sarah</h4></div>
+          <p class="cast__arch">The diva</p>
+          <p class="cast__quote">"I love to have fun and explore the world, while pursuing my modeling career."</p>
+          <dl class="cast__facts"><div><dt>Looking for</dt><dd>Something casual</dd></div><div><dt>Happy with apps?</dt><dd>Satisfied</dd></div></dl>
+        </article>
+        <article class="cast__card">
+          <img class="cast__face" src="images/sm-face-luke.webp" alt="Luke" width="320" height="320" loading="lazy">
+          <div class="cast__name"><h4>I am Luke</h4></div>
+          <p class="cast__arch">The gym guru</p>
+          <p class="cast__quote">"I'm a fitness and fun-loving guy who's always up for an adventure on my superbike."</p>
+          <dl class="cast__facts"><div><dt>Looking for</dt><dd>Something casual</dd></div><div><dt>Happy with apps?</dt><dd>Satisfied</dd></div></dl>
+        </article>
+        <article class="cast__card is-target">
+          <img class="cast__face" src="images/sm-face-emily.webp" alt="Emily" width="320" height="320" loading="lazy">
+          <div class="cast__name"><h4>I am Emily</h4><span class="target">Target user</span></div>
+          <p class="cast__arch">The workaholic</p>
+          <p class="cast__quote">"I'm a hard-working and ambitious lawyer who loves acting and drama but don't have enough time to swipe on 100s of profiles."</p>
+          <dl class="cast__facts"><div><dt>Looking for</dt><dd>A serious relationship</dd></div><div><dt>Happy with apps?</dt><dd><strong>Not satisfied</strong></dd></div></dl>
+        </article>
+        <article class="cast__card is-target">
+          <img class="cast__face" src="images/sm-face-eric.webp" alt="Eric" width="320" height="320" loading="lazy">
+          <div class="cast__name"><h4>I am Eric</h4><span class="target">Target user</span></div>
+          <p class="cast__arch">The techie</p>
+          <p class="cast__quote">"I'm a mature software engineer who loves writing scripts for plays. I dislike dating apps as I don't get enough matches."</p>
+          <dl class="cast__facts"><div><dt>Looking for</dt><dd>Open to serious or casual</dd></div><div><dt>Happy with apps?</dt><dd><strong>Not satisfied</strong></dd></div></dl>
+        </article>
       </div>
 
+      <div class="act">
+        <div class="act__head"><span class="eyebrow">Act 1</span><h3>Emily meets the swipe</h3><span class="act__hint" aria-hidden="true">Scroll →</span></div>
+        <div class="reel" tabindex="0" role="region" aria-label="Act 1: Emily meets the swipe, storyboard panels 1 to 7">
+          <figure class="panel"><img src="images/sm-story-01.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>01</span>Luke gets home from work. He isn't ready for a long-term relationship and wants something casual instead.</figcaption></figure><figure class="panel"><img src="images/sm-story-02.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>02</span>Luke is bored. He opens the app and sends likes to 10 women, including Sarah and Emily.</figcaption></figure><figure class="panel"><img src="images/sm-story-03.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>03</span>Emily gets home from work, exhausted.</figcaption></figure><figure class="panel"><img src="images/sm-story-04.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>04</span>A notification says she has new likes. At first, she's happy.</figcaption></figure><figure class="panel"><img src="images/sm-story-05.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>05</span>She's quickly overwhelmed. There are too many likes and no time to compare each one.</figcaption></figure><figure class="panel"><img src="images/sm-story-06.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>06</span>Neither profile says much, so she picks Luke. He's her age, so she assumes he must be mature.</figcaption></figure><figure class="panel"><img src="images/sm-story-07.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>07</span>Emily goes to bed hoping Luke also likes theatre and wants something long-term, just like her.</figcaption></figure>
+        </div>
+      </div>
+      <div class="act">
+        <div class="act__head"><span class="eyebrow">Act 2</span><h3>Eric is invisible</h3><span class="act__hint" aria-hidden="true">Scroll →</span></div>
+        <div class="reel" tabindex="0" role="region" aria-label="Act 2: Eric is invisible, storyboard panels 8 to 12">
+          <figure class="panel"><img src="images/sm-story-08.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>08</span>Before heading back to work, Eric opens a dating app and swipes right on 50 profiles, including Emily's and Sarah's.</figcaption></figure><figure class="panel"><img src="images/sm-story-09.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>09</span>Eric gets home and starts writing a new script for a play.</figcaption></figure><figure class="panel"><img src="images/sm-story-10.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>10</span>He opens the app again. No matches.</figcaption></figure><figure class="panel"><img src="images/sm-story-11.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>11</span>His self-esteem drops. He's frustrated that the algorithm never shows him anyone compatible.</figcaption></figure><figure class="panel"><img src="images/sm-story-12.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>12</span>Eric gives up and uninstalls the app.</figcaption></figure>
+        </div>
+      </div>
+      <div class="act">
+        <div class="act__head"><span class="eyebrow">Act 3</span><h3>Luke has too many options</h3><span class="act__hint" aria-hidden="true">Scroll →</span></div>
+        <div class="reel" tabindex="0" role="region" aria-label="Act 3: Luke has too many options, storyboard panels 13 to 26">
+          <figure class="panel"><img src="images/sm-story-13.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>13</span>Sarah has just finished a photo shoot in a new city and wants someone to show her around before she leaves.</figcaption></figure><figure class="panel"><img src="images/sm-story-14.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>14</span>She sees a like from Luke and a photo of him in a pub, so she likes him back.</figcaption></figure><figure class="panel"><img src="images/sm-story-15.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>15</span>Sarah texts Luke hi.</figcaption></figure><figure class="panel"><img src="images/sm-story-16.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>16</span>Luke is on his lunch break.</figcaption></figure><figure class="panel"><img src="images/sm-story-17.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>17</span>Luke sees texts from both Sarah and Emily, and starts chatting with both.</figcaption></figure><figure class="panel"><img src="images/sm-story-18.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>18</span>He suggests a date at the local pub to both of them.</figcaption></figure><figure class="panel"><img src="images/sm-story-19.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>19</span>Sarah happily agrees and is excited to meet Luke.</figcaption></figure><figure class="panel"><img src="images/sm-story-20.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>20</span>Emily is swamped when Luke's invite arrives.</figcaption></figure><figure class="panel"><img src="images/sm-story-21.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>21</span>She wants to get to know him before a date, so she declines and offers to chat on the phone.</figcaption></figure><figure class="panel"><img src="images/sm-story-22.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>22</span>Luke sees that Emily has declined and Sarah has accepted.</figcaption></figure><figure class="panel"><img src="images/sm-story-23.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>23</span>Luke and Sarah go to the pub and have a great time.</figcaption></figure><figure class="panel"><img src="images/sm-story-24.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>24</span>With plenty of matches like Sarah, Luke puts little effort into getting to know Emily.</figcaption></figure><figure class="panel"><img src="images/sm-story-25.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>25</span>Emily realises Luke has nothing in common with her and isn't looking for anything long-term, so she unmatches.</figcaption></figure><figure class="panel"><img src="images/sm-story-26.webp" alt="" width="400" height="400" loading="lazy"><figcaption><span>26</span>Emily is heartbroken. She'd hoped this would finally be it. She uninstalls the app.</figcaption></figure>
+        </div>
+      </div>
+      <div class="story" style="margin-top:clamp(36px,5vw,56px)">
+        <div class="story__faces"><img src="images/sm-face-emily-sad.webp" alt="" width="320" height="320" loading="lazy"><img src="images/sm-face-eric-sad.webp" alt="" width="320" height="320" loading="lazy"></div>
+        <div>
+          <p class="eyebrow" style="margin-bottom:10px">How the week ends</p>
+          <p>Emily and Eric share a love of theatre and cinema, and both want something serious. Eric even swiped right on Emily, but she only ever saw a photo, and they never matched. Both deleted the app. <strong>The rest of the project was about changing that ending.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- DEFINE -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-label"><span class="n">08</span><h2>Defining the problem</h2></div>
       <div class="prose" style="margin-bottom:clamp(24px,4vw,36px)">
-        <h3>Who we designed for</h3>
-        <p>We sketched four archetypes of dating-app users and wrote a storyboard showing how the current apps fail each of them. The two least satisfied archetypes became our target users, and we turned them into detailed personas, checking them with additional semi-structured interviews.</p>
+        <p>We turned Emily and Eric into detailed personas, checked them with more semi-structured interviews, and mapped Emily's journey from download to uninstall.</p>
       </div>
-
-      <div class="table-wrap" style="margin-bottom:clamp(32px,5vw,56px)">
-        <table class="data">
-          <caption class="sr-only" style="position:absolute;left:-9999px">Four archetypes of dating-app users</caption>
-          <thead><tr><th>Archetype</th><th>In their words</th><th>Looking for</th><th>Happy with apps?</th></tr></thead>
-          <tbody>
-            <tr><td>The diva</td><td>"I love to have fun and explore the world, while pursuing my modeling career."</td><td>Something casual</td><td>Satisfied</td></tr>
-            <tr><td>The gym guru</td><td>"I'm a fitness and fun-loving guy who's always up for an adventure on my superbike."</td><td>Something casual</td><td>Satisfied</td></tr>
-            <tr class="is-target"><td>The workaholic <span class="target">Target</span></td><td>"I'm a hard-working and ambitious lawyer who loves acting and drama but don't have enough time to swipe on 100s of profiles."</td><td>A serious relationship</td><td><strong>Not satisfied</strong></td></tr>
-            <tr class="is-target"><td>The techie <span class="target">Target</span></td><td>"I'm a mature software engineer who loves writing scripts for plays. I dislike dating apps as I don't get enough matches."</td><td>Open to serious or casual</td><td><strong>Not satisfied</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-
       <div class="personas" style="margin-bottom:clamp(40px,6vw,72px)">
         <article class="persona">
           <header class="persona__head">
-            <span class="persona__mono" aria-hidden="true">Em</span>
+            <img class="persona__face" src="images/sm-face-emily.webp" alt="" width="320" height="320" loading="lazy">
             <div><h4>Emily</h4><p>The workaholic · 32 · lawyer · San Francisco</p></div>
           </header>
           <p class="persona__bio">Ambitious and career-driven, with little free time. Acts part-time in her local theatre and isn't afraid to speak her mind.</p>
@@ -508,7 +617,7 @@
         </article>
         <article class="persona">
           <header class="persona__head">
-            <span class="persona__mono persona__mono--alt" aria-hidden="true">Er</span>
+            <img class="persona__face" src="images/sm-face-eric.webp" alt="" width="320" height="320" loading="lazy">
             <div><h4>Eric</h4><p>The techie · 28 · software engineer · San Francisco</p></div>
           </header>
           <p class="persona__bio">Introverted but very thoughtful, mature and ambitious for his age. Writes scripts for plays in his free time.</p>
@@ -586,10 +695,18 @@
         </table>
       </div>
 
-      <div class="story">
-        <p class="eyebrow" style="margin-bottom:10px">The storyboard's ending</p>
-        <p>Emily spends her limited time on Luke, who has plenty of matches and isn't looking for anything serious. Eric shares her interests but can't get a match, and his confidence drops. Both of them delete the app. <strong>The rest of the project was about changing that ending.</strong></p>
+      <div class="prose" style="margin-bottom:clamp(24px,4vw,36px)">
+        <h3>Five problems to solve</h3>
+        <p>Putting the research and the story together gave us a revised problem statement with five parts, each specific enough to design against.</p>
       </div>
+      <div class="problems" >
+        <div class="problem"><span class="tag-n">P1</span><h4>Superficial matching</h4><p>Matching and filters run on looks, age and location, so compatibility is low.</p></div>
+        <div class="problem"><span class="tag-n">P2</span><h4>Thin profiles</h4><p>Profiles don't show personality, and misrepresenting yourself is easy.</p></div>
+        <div class="problem"><span class="tag-n">P3</span><h4>Choice overload</h4><p>Endless options lead to constant comparison and a hunt for someone "better".</p></div>
+        <div class="problem"><span class="tag-n">P4</span><h4>Lopsided matching</h4><p>A few people get flooded with matches while many get almost none, and both sides lose out.</p></div>
+        <div class="problem"><span class="tag-n">P5</span><h4>Opaque algorithms</h4><p>Nobody knows how matches are made, so people distrust the results.</p></div>
+      </div>
+
     </div>
   </section>
 
@@ -598,7 +715,7 @@
   <!-- CONCEPT -->
   <section class="section">
     <div class="wrap">
-      <div class="section-label"><span class="n">08</span><h2>The concept</h2></div>
+      <div class="section-label"><span class="n">09</span><h2>The concept</h2></div>
       <div class="prose" style="margin-bottom:clamp(32px,5vw,56px)">
         <p>We turned the journey map's opportunities into five solutions in a series of workshops. Each one addresses a specific problem from the statement and comes with a testable hypothesis.</p>
       </div>
@@ -658,6 +775,17 @@
             <div class="hypo"><div class="hypo__top"><span>Hypothesis 6</span><span class="hypo__badge hypo__badge--open">To test</span></div><p>People will judge compatibility better when personality information is shown upfront.</p></div>
           </div>
         </div>
+        <div class="matching">
+          <div class="matching__labels"><span>Today</span><span>With SoulMate</span></div>
+          <img src="images/sm-matching.webp" alt="Left, today: Luke, Sarah, Eric and Emily match across incompatible lines and Emily and Eric are in tears. Right, with SoulMate: Luke matches with Sarah and Eric matches with Emily, and everyone is smiling." width="2099" height="1009" loading="lazy">
+        </div>
+        <div class="story">
+          <div class="story__faces"><img src="images/sm-face-emily.webp" alt="" width="320" height="320" loading="lazy"><img src="images/sm-face-eric.webp" alt="" width="320" height="320" loading="lazy"></div>
+          <div>
+            <p class="eyebrow" style="margin-bottom:10px">A new ending</p>
+            <p>With personality and interests driving the list, Emily and Eric find each other. Luke and Sarah, who both want something casual, find each other too. <strong>Nobody wastes their week.</strong></p>
+          </div>
+        </div>
       </div>
 
       <!-- 4 -->
@@ -685,8 +813,8 @@
           <div class="split__media">
             <div class="ratio" role="img" aria-label="Before: Eric has 2 matches and replies to all of them, a 100% reply ratio; Luke has 10 matches and replies to 1, a 10% reply ratio. After reply ratios are public, both have 6 matches: Eric replies to 5 (83%), Luke to 1 (17%).">
               <div class="ratio__col-head"></div>
-              <div class="ratio__col-head">Eric</div>
-              <div class="ratio__col-head">Luke</div>
+              <div class="ratio__col-head"><img src="images/sm-face-eric.webp" alt="" width="320" height="320" loading="lazy">Eric</div>
+              <div class="ratio__col-head"><img src="images/sm-face-luke.webp" alt="" width="320" height="320" loading="lazy">Luke</div>
               <div class="ratio__row-head">Before</div>
               <div class="ratio__cell"><b class="good">100%</b><span>reply ratio</span><div class="ratio__dots"><i class="on"></i><i class="on"></i></div><small>2 matches</small></div>
               <div class="ratio__cell"><b class="bad">10%</b><span>reply ratio</span><div class="ratio__dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><small>10 matches</small></div>
@@ -739,7 +867,7 @@
   <!-- OUTCOME -->
   <section class="section section--tint">
     <div class="wrap">
-      <div class="section-label"><span class="n">09</span><h2>Where it landed</h2></div>
+      <div class="section-label"><span class="n">10</span><h2>Where it landed</h2></div>
       <div class="split">
         <div class="prose">
           <p>SoulMate was a concept, not a shipped product. What it produced was a clearly defined, evidence-backed opportunity:</p>
@@ -779,7 +907,7 @@
   </section>
 
   <!-- NEXT -->
-  <nav class="next-case" style="--pc:#00305B; --pc-ink:#00305B">
+  <nav class="next-case" style="--pc:#4F86C6; --pc-ink:#9CC2EE">
     <div class="wrap">
       <a href="interview-professional.html">
         <div>
