@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Talent Intelligence Design System | Pranvi Dandriyal</title>
+<title>Talent Management Design System | Pranvi Dandriyal</title>
 <meta name="description" content="How SHL replaced five legacy product UIs with one design system: a 117-pattern audit, a two-layer token architecture built for white-labelling, and components like the Button specified down to the token in every state.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%2317222E%27/%3E%3Crect x=%277%27 y=%277%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%238ADAD6%27/%3E%3Crect x=%2717%27 y=%277%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23135454%27/%3E%3Crect x=%277%27 y=%2717%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23EEA302%27/%3E%3Crect x=%2717%27 y=%2717%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23DF266C%27/%3E%3C/svg%3E">
 <meta name="theme-color" content="#FBF7F0">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://pranvid.github.io/PranviDandriyal/talent-intelligence-design-system.html">
-<meta property="og:title" content="Talent Intelligence Design System | Pranvi Dandriyal">
+<meta property="og:title" content="Talent Management Design System | Pranvi Dandriyal">
 <meta property="og:description" content="Five legacy product UIs, one design system: a 117-pattern audit, tokens built for white-labelling, and components specified down to the token in every state.">
 <meta property="og:image" content="https://pranvid.github.io/PranviDandriyal/images/talent-intelligence-design-system.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -444,7 +444,7 @@
   <!-- HEADER -->
   <section class="case-head wrap">
     <a class="back" href="index.html#work">← All work</a>
-    <p class="eyebrow" style="margin-top:26px">Talent Intelligence Design System · SHL</p>
+    <p class="eyebrow" style="margin-top:26px">Talent Management Design System · SHL</p>
     <h1>Recruiters felt like they'd switched companies mid-task.</h1>
     <p class="case-head__sub">SHL's hiring workflow ran across five legacy products, each with its own front end. I owned the design system that replaced them: I measured the fragmentation, set the documentation standard, and ran the review of every component five squads built into it.</p>
 
@@ -484,7 +484,7 @@
       <div class="ti-tldr" style="margin-bottom:clamp(36px,5vw,56px)">
         <div>
           <h2>The problem</h2>
-          <p>One hiring workflow crossed several products that looked and behaved nothing alike. Users hesitated, some suspected they'd landed on a different company's site, and every team rebuilt the same patterns from scratch.</p>
+          <p>One hiring workflow crossed several products that looked and behaved nothing alike. In customer feedback, some users said it felt like landing on a different company's site, and every team rebuilt the same patterns from scratch.</p>
         </div>
         <div>
           <h2>What I did</h2>
@@ -492,14 +492,14 @@
         </div>
         <div>
           <h2>The outcome</h2>
-          <p>A 55-component library, core pieces ready for dev in a month, now used by 7–8 squads and beyond the TI domain. Teams deliver about four times the work they used to in a sprint.</p>
+          <p>A 55-component library, core pieces ready for dev in a month, now used by 7–8 squads and beyond the TI domain. Delivery managers reported squads delivering about twice the work per sprint after adopting it.</p>
         </div>
       </div>
 
       <div class="stats">
         <div class="stat">
-          <div class="stat__num"><b>4×</b></div>
-          <p class="stat__label">the work delivered in a sprint, compared with building without the system</p>
+          <div class="stat__num"><b>2×</b></div>
+          <p class="stat__label">work delivered per sprint after adoption, as reported by delivery managers</p>
         </div>
         <div class="stat">
           <div class="stat__num"><b>1</b> month</div>
@@ -561,7 +561,7 @@
             <li><strong>Disconnected UI languages.</strong> The same action looked and worked differently in each product.</li>
             <li><strong>Inconsistent accessibility.</strong> Focus, contrast and keyboard behaviour varied product to product.</li>
             <li><strong>Repeated work.</strong> Every team rebuilt the same patterns from scratch.</li>
-            <li><strong>Lost trust.</strong> The interface changed so much between products that some users read it as a security concern.</li>
+            <li><strong>Lost trust.</strong> In customer feedback, the interface changed so much between products that some users read it as a security concern.</li>
             <li><strong>No way to scale.</strong> Visual styles couldn't be maintained across product lines, let alone themed per client.</li>
           </ul>
         </div>
@@ -618,7 +618,7 @@
     <div class="wrap">
       <div class="section-label"><span class="n">03</span><h2>Measuring the patchwork</h2></div>
       <div class="prose" style="max-width:70ch; margin-bottom:clamp(28px,5vw,44px)">
-        <p>“It feels inconsistent” doesn't get a system funded. A number does. I listed every common UI pattern and state, from a primary button's hover to a toast's warning variant, and checked which of them existed in TC+, Insights and Reporting.</p>
+        <p>“It feels inconsistent” doesn't get a system funded. A number does. I listed every common UI pattern and state, from a primary button's hover to a toast's warning variant, and checked which of them existed in the three existing platforms: TC+, Insights and Reporting. The audit came before the new system, so it measures what each platform already had.</p>
       </div>
 
       <div class="gallery" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))">
@@ -774,7 +774,7 @@
         <div class="ti-tier ti-tier--who">
           <span class="kind">Consumer</span>
           <h4>Where it lands</h4>
-          <p>The Figma component and the coded one read the same names, so design and code can't drift.</p>
+          <p>Every Figma component reads these names, and the specs hand the same names to engineering, so design and code share one vocabulary.</p>
           <ul><li><code>Button · Primary · Default</code></li><li><code>Button · Primary · Hover</code></li><li><code>Button · any · Focus</code></li></ul>
         </div>
       </div>
@@ -947,7 +947,7 @@
       <div class="split" style="margin-bottom:clamp(32px,5vw,48px)">
         <p class="lead-in">Five squads building one library only works if every component is specified the same way.</p>
         <div class="prose">
-          <p>So every component ships with the same five documents, each versioned. Designers and engineers learn not just how to use it, but why it's built that way and what “done” means. Below is one full set, using the Button as the example.</p>
+          <p>So every component ships with the same five documents, each versioned. Designers and engineers learn not just how to use it, but why it's built that way and what “done” means. Below, each document is shown with a real page from the library.</p>
         </div>
       </div>
       <div class="ti-doc" style="margin-bottom:clamp(40px,6vw,64px)">
@@ -974,35 +974,16 @@
       </div>
 
       <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
-        <h3>02 · Props &amp; tokens: every variant, every state</h3>
-        <p>States are specified, not left to engineering to guess. Loading reuses the disabled surface and swaps the label for a spinner at a fixed width, so the layout doesn't jump and the button can't be pressed twice. Danger ships in two emphasis levels, primary and secondary, each with an explicit label like “Delete file”.</p>
+        <h3>02 · Props &amp; tokens</h3>
+        <p>Every variant, size and state becomes a prop with a type and a default, and every property in every state names the token it uses. Engineers never have to guess a value, and nobody hard-codes a hex.</p>
       </div>
-      <div class="ti-states-wrap tib-scope" tabindex="0" role="region" aria-label="Button state matrix, scrolls sideways on small screens" style="margin-bottom:14px">
-        <table class="ti-states">
-          <caption>Button · large · every variant and state<span>static states, rebuilt from the Figma component sheet</span></caption>
-          <thead><tr><th scope="col">State</th><th scope="col">Primary</th><th scope="col">Secondary</th><th scope="col">Tertiary</th><th scope="col">Subtle</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Default</th><td><span class="tib" data-variant="primary">Button</span></td><td><span class="tib" data-variant="secondary">Button</span></td><td><span class="tib" data-variant="tertiary">Button</span></td><td><span class="tib" data-variant="subtle">Button</span></td></tr>
-            <tr><th scope="row">Hover</th><td><span class="tib is-hover" data-variant="primary">Button</span></td><td><span class="tib is-hover" data-variant="secondary">Button</span></td><td><span class="tib is-hover" data-variant="tertiary">Button</span></td><td><span class="tib is-hover" data-variant="subtle">Button</span></td></tr>
-            <tr><th scope="row">Focus</th><td><span class="tib is-focus" data-variant="primary">Button</span></td><td><span class="tib is-focus" data-variant="secondary">Button</span></td><td><span class="tib is-focus" data-variant="tertiary">Button</span></td><td><span class="tib is-focus" data-variant="subtle">Button</span></td></tr>
-            <tr><th scope="row">Pressed</th><td><span class="tib is-press" data-variant="primary">Button</span></td><td><span class="tib is-press" data-variant="secondary">Button</span></td><td><span class="tib is-press" data-variant="tertiary">Button</span></td><td><span class="tib is-press" data-variant="subtle">Button</span></td></tr>
-            <tr><th scope="row">Disabled</th><td><span class="tib is-disabled" data-variant="primary">Button</span></td><td><span class="tib is-disabled" data-variant="secondary">Button</span></td><td><span class="tib is-disabled" data-variant="tertiary">Button</span></td><td><span class="tib is-disabled" data-variant="subtle">Button</span></td></tr>
-            <tr><th scope="row">Loading</th><td><span class="tib is-loading" data-variant="primary">Button</span></td><td><span class="tib is-loading" data-variant="secondary">Button</span></td><td><span class="tib is-loading" data-variant="tertiary">Button</span></td><td><span class="tib is-loading" data-variant="subtle">Button</span></td></tr>
-            <tr class="grp"><th scope="rowgroup" colspan="5">Danger, for destructive actions: primary and secondary only</th></tr>
-            <tr><th scope="row">Default</th><td><span class="tib" data-variant="danger">Delete file</span></td><td><span class="tib" data-variant="danger-secondary">Delete file</span></td><td><span class="ti-na">—</span></td><td><span class="ti-na">—</span></td></tr>
-            <tr><th scope="row">Hover</th><td><span class="tib is-hover" data-variant="danger">Delete file</span></td><td><span class="tib is-hover" data-variant="danger-secondary">Delete file</span></td><td><span class="ti-na">—</span></td><td><span class="ti-na">—</span></td></tr>
-            <tr><th scope="row">Focus</th><td><span class="tib is-focus" data-variant="danger">Delete file</span></td><td><span class="tib is-focus" data-variant="danger-secondary">Delete file</span></td><td><span class="ti-na">—</span></td><td><span class="ti-na">—</span></td></tr>
-            <tr><th scope="row">Disabled</th><td><span class="tib is-disabled" data-variant="danger">Delete file</span></td><td><span class="tib is-disabled" data-variant="danger-secondary">Delete file</span></td><td><span class="ti-na">—</span></td><td><span class="ti-na">—</span></td></tr>
-            <tr class="grp"><th scope="rowgroup" colspan="5">Try it: real buttons. Hover them, or tab to them</th></tr>
-            <tr><th scope="row">Live</th><td><button type="button" class="tib" data-variant="primary">Save changes</button></td><td><button type="button" class="tib" data-variant="secondary">Save as draft</button></td><td><button type="button" class="tib" data-variant="tertiary">Cancel</button></td><td><button type="button" class="tib" data-variant="subtle">Back</button></td></tr>
-            <tr><th scope="row">Live</th><td><button type="button" class="tib" data-variant="danger">Delete file</button></td><td><button type="button" class="tib" data-variant="danger-secondary">Remove file</button></td><td><button type="button" class="tib" data-variant="tertiary" aria-label="Download report" style="width:40px;padding:0"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></button></td><td><button type="button" class="tib" data-variant="primary" disabled>Disabled</button></td></tr>
-          </tbody>
-        </table>
+      <div style="margin-bottom:clamp(20px,3vw,28px)">
+        <div class="frame frame--diagram" style="aspect-ratio:2000/1228"><img src="images/ti-doc-tokens.webp" alt="A token map from the documentation: for each property, such as background colour, the token used for every variant and state, from default and hover to disabled and loading" width="2000" height="1228" loading="lazy"></div>
+        <p class="figcap">A token map page: every property, for every variant and state.</p>
       </div>
-      <p class="figcap">The icon-only button above is announced as “Download report”, from its <code>aria-label</code>. The disabled one is skipped in the tab order. The full component in Figma also covers medium and small sizes.</p>
 
       <details class="ti-details" style="margin-bottom:clamp(40px,6vw,64px)">
-        <summary>See the full props and token spec</summary>
+        <summary>Example: the Button's props and resolved tokens</summary>
         <div style="padding:0 clamp(12px,2vw,20px) clamp(16px,2.5vw,24px); display:grid; gap:clamp(20px,3vw,28px)">
       <div class="ti-table-wrap">
         <table class="ti-table ti-table--props">
@@ -1045,47 +1026,32 @@
 
       <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
         <h3>03 · Usage and 05 · Content</h3>
-        <p>What the component allows, what it explicitly doesn't, and why, backed by do and don't examples so the rule isn't just a sentence nobody reads.</p>
+        <p>When to use a component, when not to, and how to write for it, shown as do and don't examples so the rule isn't just a sentence nobody reads. The content doc covers label length, clarity, casing and how destructive actions are worded.</p>
       </div>
-      <div class="split" style="margin-bottom:clamp(40px,6vw,64px); align-items:center">
-        <div class="ti-rules">
-          <h4>Points to remember</h4>
-          <ul class="checklist">
-            <li>One primary per section. The app header, modals and side panels may carry their own.</li>
-            <li>The primary action sits on the right, at the outermost edge; others line up beside it, or stack above it at full width.</li>
-            <li>Auto width on large screens. Full width only on mobile or where a layout needs a consistent column.</li>
-            <li>Labels are verbs that predict the outcome: “Save changes”, not “Submit”. Destructive ones say what they destroy: “Delete account”.</li>
-            <li>Don't use buttons to navigate. If the action takes the user to a new page, it's a link.</li>
-          </ul>
-        </div>
-        <div class="split__media">
-          <div class="frame frame--diagram" style="aspect-ratio:2717/2516"><img src="images/ti-docs-guidelines.png" alt="Button usage guidelines: do and don't examples for button width, and for the hierarchy and placement of primary, secondary and tertiary buttons" width="2717" height="2516" loading="lazy"></div>
-          <p class="figcap">Do and don't, side by side, not buried in prose.</p>
-        </div>
+      <div style="margin-bottom:clamp(40px,6vw,64px)">
+        <div class="frame frame--diagram" style="aspect-ratio:2717/2516"><img src="images/ti-docs-guidelines.png" alt="Usage guidelines from the documentation: do and don't examples for width, and for the hierarchy and placement of primary, secondary and tertiary actions" width="2717" height="2516" loading="lazy"></div>
+        <p class="figcap">A usage guideline page: width, hierarchy and placement, each with a do and a don't.</p>
       </div>
 
       <div class="prose" style="margin-bottom:clamp(20px,3vw,24px)">
         <h3>04 · Accessibility, specified rather than assumed</h3>
-        <p>Engineers don't have to infer keyboard behaviour or what a screen reader should say. The Button's rules, as written:</p>
+        <p>Every accessibility doc answers the same questions, so engineers never have to infer behaviour.</p>
       </div>
       <div class="ti-a11y">
         <div class="ti-a11y__col">
           <h4>Keyboard</h4>
           <dl>
-            <div><dt>Tab order</dt><dd>Reachable with <kbd>Tab</kbd> in logical DOM order, left to right, top to bottom. Disabled buttons are skipped.</dd></div>
-            <div><dt>Activate</dt><dd><kbd>Enter</kbd> triggers the action. <kbd>Space</kbd> triggers it too, on key up.</dd></div>
-            <div><dt>Escape</dt><dd>No effect on the button itself. Inside a modal it closes the container and returns focus to the element that opened it.</dd></div>
-            <div><dt>Focus</dt><dd>A visible ring on every variant, with a white gap so it holds up on any background.</dd></div>
+            <div><dt>Tab order</dt><dd>How the component is reached, in what order, and what's skipped.</dd></div>
+            <div><dt>Activation</dt><dd>Which keys trigger it, for example <kbd>Enter</kbd> and <kbd>Space</kbd> on a button.</dd></div>
+            <div><dt>Escape and focus</dt><dd>What Escape does, where focus returns, and a visible focus ring on every variant.</dd></div>
           </dl>
         </div>
         <div class="ti-a11y__col">
           <h4>Screen readers</h4>
           <dl>
-            <div><dt>Role</dt><dd>Native <code>&lt;button&gt;</code> wherever possible, so no extra ARIA. Otherwise <code>role="button"</code>.</dd></div>
-            <div><dt>Name</dt><dd>The visible label is the accessible name. Icons beside text are decorative and ignored.</dd></div>
-            <div><dt>Icon only</dt><dd>Must name the action: <code>aria-label="Download report"</code>.</dd></div>
-            <div><dt>Disabled</dt><dd>Native <code>disabled</code>, announced as “Button, disabled”.</dd></div>
-            <div><dt>Loading</dt><dd><code>aria-busy="true"</code>, announced as “Loading…”.</dd></div>
+            <div><dt>Role and name</dt><dd>Native elements first. The visible label is the accessible name.</dd></div>
+            <div><dt>Icons</dt><dd>Decorative icons are ignored. Icon-only controls must carry a label, like <code>aria-label="Download report"</code>.</dd></div>
+            <div><dt>States</dt><dd>What's announced when disabled, loading or in error, for example “Loading…” through <code>aria-busy</code>.</dd></div>
           </dl>
         </div>
       </div>
@@ -1126,13 +1092,13 @@
       </ol>
 
       <div class="prose" style="margin:clamp(40px,6vw,64px) 0 clamp(24px,4vw,32px)">
-        <h3>Two sources of truth, kept in step</h3>
-        <p>Every component lived twice, in the Figma library and in code, with the same names and tokens. Keeping the two in step was the work the review steps above existed for.</p>
+        <h3>Two libraries, two owners</h3>
+        <p>Every component lives twice: in the Figma library, owned by design, and in Spectra, the coded library in Storybook, owned by engineering. The review steps above were how we kept the two in step, and they're also where the gap between them first showed.</p>
       </div>
       <div class="ti-truth" style="margin-bottom:clamp(32px,5vw,48px)">
         <div class="ti-truth__box"><span class="kind">Design</span><h4>Figma library</h4><p>Components, variants and docs. What designers pull into every file.</p></div>
-        <div class="ti-truth__mid" aria-hidden="true"><b>⇄</b>same names, same tokens, same version</div>
-        <div class="ti-truth__box"><span class="kind">Code</span><h4>Storybook</h4><p>The coded components, testable against the spec. What engineers build with and QA checks against.</p></div>
+        <div class="ti-truth__mid" aria-hidden="true"><b>⇄</b>meant to match: same names, same tokens</div>
+        <div class="ti-truth__box"><span class="kind">Code</span><h4>Spectra, in Storybook</h4><p>The coded components, testable against the spec. What engineers build with and QA checks against.</p></div>
       </div>
       <div class="prose" style="margin-bottom:clamp(24px,4vw,32px)">
         <h3>Governance you can see in the file</h3>
@@ -1170,10 +1136,10 @@
       </div>
 
       <div class="stats" style="margin-bottom:clamp(32px,5vw,56px)">
-        <div class="stat"><div class="stat__num"><b>4×</b></div><p class="stat__label">the work delivered in a sprint. What used to take a whole sprint to build now takes about a quarter of one.</p></div>
+        <div class="stat"><div class="stat__num"><b>2×</b></div><p class="stat__label">work delivered per sprint after adoption, as reported by delivery managers. A conservative figure, since the coded library still lags the design.</p></div>
         <div class="stat"><div class="stat__num"><b>7–8</b> squads</div><p class="stat__label">building with it, and teams outside the TI domain adopting it too</p></div>
         <div class="stat"><div class="stat__num"><b>1</b> month</div><p class="stat__label">from start to core components ready for dev</p></div>
-        <div class="stat"><div class="stat__num"><b>AA</b> by default</div><p class="stat__label">accessibility inherited from tokens, not re-checked screen by screen</p></div>
+        <div class="stat"><div class="stat__num"><b>AA</b> by default</div><p class="stat__label">in the design library: every colour pairing in the tokens clears 4.5:1</p></div>
       </div>
       <div class="prose" style="max-width:70ch">
         <p>Beyond speed, the system built something harder to measure: trust. The same button, the same error state, the same filter, now behaving identically everywhere a recruiter or candidate meets it.</p>
@@ -1186,18 +1152,18 @@
   <!-- 10 WHERE IT STANDS NOW -->
   <section class="section section--tint">
     <div class="wrap">
-      <div class="section-label"><span class="n">10</span><h2>Where it stands now: Spectra V2</h2></div>
+      <div class="section-label"><span class="n">10</span><h2>Where it stands now: V2</h2></div>
       <div class="split" style="margin-bottom:clamp(28px,5vw,44px)">
-        <p class="lead-in">Building squad by squad got us a library fast. It never got an owner on the tech side.</p>
+        <p class="lead-in">We set up ownership for the design library. We never agreed a matching owner for the code.</p>
         <div class="prose">
-          <p>Without someone in engineering who owned the system, the gaps compounded. Missing pieces were patched locally, squad by squad, and around 30 tickets were raised for component gaps alone. Every squad paid the same component tax, and the cost stayed invisible because it was spread across everyone's sprint.</p>
+          <p>Design defined the foundations in full: tokens, states, motion and theming, all documented in the Figma library. The coded library, Spectra, was built squad by squad, and without shared ownership across design and engineering those foundations were never implemented centrally in code. Missing pieces were patched locally, and around 30 tickets were raised for component gaps alone. Every squad paid the same component tax, and the cost stayed invisible because it was spread across everyone's sprint.</p>
           <p>So we're pitching a full V2: a governed foundation, not another UI refresh, adopted incrementally rather than in a big-bang migration. In the meantime we fix components one at a time, as tickets inside current sprints.</p>
         </div>
       </div>
 
-      <ol class="ti-journey" aria-label="How the lack of tech ownership compounded" style="margin-top:0">
+      <ol class="ti-journey" aria-label="How the gap between design and code compounded" style="margin-top:0">
         <li class="ti-journey__step" style="--brand:#d9822b"><span class="ti-journey__n">01</span><h3>Figma and code drift</h3><p>Components aren't consistently built as designed.</p></li>
-        <li class="ti-journey__step" style="--brand:#c0392b"><span class="ti-journey__n">02</span><h3>No foundation layer</h3><p>Tokens, states, motion and theming aren't defined centrally.</p></li>
+        <li class="ti-journey__step" style="--brand:#c0392b"><span class="ti-journey__n">02</span><h3>No foundation layer in code</h3><p>Tokens, states, motion and theming exist in Figma but aren't defined centrally in Spectra.</p></li>
         <li class="ti-journey__step" style="--brand:#7a4fb5"><span class="ti-journey__n">03</span><h3>Local overrides</h3><p>Teams edit components locally to unblock themselves.</p></li>
         <li class="ti-journey__step" style="--brand:#1f7a99"><span class="ti-journey__n">04</span><h3>Repeated tickets</h3><p>The same component gaps become new dev work, again and again.</p></li>
       </ol>
@@ -1207,7 +1173,7 @@
         <h3>What V2 changes</h3>
         <p>A layered architecture, so change happens once at the right level instead of in every product.</p>
       </div>
-      <ol class="ti-process" aria-label="Spectra V2 architecture, from foundations to patterns" style="margin-bottom:clamp(32px,5vw,48px)">
+      <ol class="ti-process" aria-label="V2 architecture, from foundations to patterns" style="margin-bottom:clamp(32px,5vw,48px)">
         <li><span class="ti-process__n">1</span><h4>Foundations</h4><p>Variables, tokens, motion, type, spacing</p></li>
         <li><span class="ti-process__n">2</span><h4>Primitives</h4><p>Button, Link, Icon, Text, Tag</p></li>
         <li><span class="ti-process__n">3</span><h4>Components</h4><p>Input, Select, Menu, Tooltip</p></li>
@@ -1245,7 +1211,7 @@
         <li><span class="ti-process__n">3</span><h4>Governance</h4><p>Adoption rules, a QA checklist, versioning and a contribution model.</p></li>
       </ol>
       <div class="callout" style="max-width:70ch">
-        <p>The ask: approve a phased V2 programme, not a forced rewrite, with a representative from tech who has a veto over what enters the system, so design and code are governed together instead of reconciled after the fact.</p>
+        <p>The ask: approve a phased V2 programme, not a forced rewrite, owned jointly by design and engineering, with an engineering representative who has a veto over what enters the system. Design and code governed together, instead of reconciled after the fact.</p>
       </div>
     </div>
   </section>
@@ -1271,7 +1237,7 @@
         </div>
         <div class="ti-card">
           <h4>What I'd do differently</h4>
-          <p>Secure an owner on the tech side before the first component, not after the fiftieth. Status markers and review steps help, but only if someone on each side can say no.</p>
+          <p>Agree joint design and engineering ownership before the first component, not after the fiftieth. Status markers and review steps help, but only if someone on each side can say no.</p>
         </div>
       </div>
       <div class="callout" style="max-width:66ch">
