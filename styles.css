@@ -404,7 +404,8 @@ body[data-case] .foot-legal a:hover { color: var(--ink) !important; }
 .prose li { margin-bottom: 0.5em; }
 .prose li::marker { color: var(--pc-ink); }
 .prose strong { color: var(--ink); font-weight: 600; }
-.lead-in { font-family: var(--f-display); font-weight: 500; font-size: var(--step-2); line-height: 1.32; color: var(--ink); letter-spacing:-0.01em; max-width: 24ch; }
+.lead-in { font-family: var(--f-display); font-weight: 500; font-size: var(--step-2); line-height: 1.32; color: var(--ink); letter-spacing:-0.01em; max-width: 40ch; text-wrap: balance; }
+.split .lead-in { max-width: 24ch; }  /* narrow left column of a two-column row */
 
 /* two-column content row */
 .split { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(28px,5vw,64px); align-items: start; }
