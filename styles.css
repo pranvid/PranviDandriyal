@@ -5,7 +5,7 @@
    (navy, teal, amber, magenta). The system is warm paper, geometric type,
    colored index chips, chunky offset shadows, and an aqua marker highlight.
 
-   Type:   Space Grotesk (display) · Work Sans (body) · IBM Plex Mono (data)
+   Type:   Space Grotesk (display) · Work Sans (body and labels)
    Color:  ink on warm cream; red-orange pop for site chrome;
            per-project color carried through cards and case pages via --pc
    ========================================================================= */
@@ -44,7 +44,8 @@
 
   --f-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
   --f-sans: "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --f-mono: "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;  /* labels: same family as body */
+  --f-code: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;   /* genuine code only */
 
   /* type scale */
   --step--1: clamp(0.80rem, 0.77rem + 0.14vw, 0.88rem);
@@ -70,6 +71,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 img { display: block; max-width: 100%; height: auto; }
+code, kbd { font-family: var(--f-code); }
 a { color: inherit; text-decoration: none; }
 
 /* ---- Accessibility --------------------------------------------------- */

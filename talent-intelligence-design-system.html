@@ -15,14 +15,14 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>
   // Draft view: append ?draft to the URL to reveal the asset slots still waiting on material.
   if (/[?&]draft\b/.test(location.search)) document.documentElement.classList.add('draft');
 </script>
 <style>
-  main code { font-family: var(--f-mono); font-size: 0.86em; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 0.1em 0.4em; }
+  main code { font-family: var(--f-code); font-size: 0.86em; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 0.1em 0.4em; }
 
   /* ---- Draft asset slots (hidden on the live page) ------------------- */
   .slot { display: none !important; }
@@ -306,7 +306,7 @@
   .ti-a11y dl > div:first-child { border-top: 0; padding-top: 0; }
   .ti-a11y dt { font-family: var(--f-display); font-weight: 600; font-size: 0.9rem; color: var(--ink); }
   .ti-a11y dd { margin: 0; font-size: 0.88rem; color: var(--body); line-height: 1.5; }
-  .ti-a11y kbd { font-family: var(--f-mono); font-size: 0.78em; border: 1px solid var(--line-2); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; background: var(--surface); }
+  .ti-a11y kbd { font-family: var(--f-code); font-size: 0.78em; border: 1px solid var(--line-2); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; background: var(--surface); }
   @media (max-width: 820px) { .ti-a11y { grid-template-columns: 1fr; } }
   @media (max-width: 420px) { .ti-a11y dl > div { grid-template-columns: 1fr; gap: 2px; } }
 
