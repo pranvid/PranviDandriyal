@@ -1,6 +1,7 @@
 /* Site behaviour: theme toggle, scroll progress, scribble marks, headline reveal,
    cursor, work index preview. Everything is progressive: with JS off the page is
-   fully readable and every reveal starts visible. */
+   fully readable and every reveal starts visible. The animation loop only runs
+   while something is moving, so an idle page costs no CPU. */
 (function () {
   var root = document.documentElement;
   root.classList.add('js');
@@ -21,13 +22,12 @@
     sync();
   }
 
-  /* ---- sticky header border ---- */
   var head = document.querySelector('.site-head');
 
   /* tighten a loop that is directly followed by punctuation */
   document.querySelectorAll('.hl').forEach(function (h) {
     var n = h.nextSibling;
-    if (n && n.nodeType === 3 && /^[.,;:!?)\u2019\u201d]/.test(n.textContent)) h.classList.add('hl-tight');
+    if (n && n.nodeType === 3 && /^[.,;:!?)’”]/.test(n.textContent)) h.classList.add('hl-tight');
   });
 
   /* ---- scribble marks ---- */
@@ -59,21 +59,20 @@
       v.style.strokeWidth = (px / k).toFixed(3);
     });
   }
-  fit(); addEventListener('resize', fit); setTimeout(fit, 2000);
+  fit(); addEventListener('resize', function () { fit(); kick(); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 
-  /* ---- headline word reveal ---- */
+  /* ---- headline word reveal (opacity + rise, never clipped) ---- */
   var h1 = document.querySelector('main h1');
-  var inH1 = function (el) { return h1 && h1.contains(el); };
   if (h1 && !rm) {
     var idx = 0;
-    var mkw = function (node) { var w = document.createElement('span'); w.className = 'hw'; var inn = document.createElement('span'); inn.style.setProperty('--i', idx++); w.appendChild(inn); return { w: w, inn: inn }; };
+    var mkw = function () { var w = document.createElement('span'); w.className = 'hw'; var inn = document.createElement('span'); inn.style.setProperty('--i', idx++); w.appendChild(inn); return { w: w, inn: inn }; };
     var lastInn = null;
     [].slice.call(h1.childNodes).forEach(function (n) {
       if (n.nodeType === 3) {
         var txt = n.textContent, f = document.createDocumentFragment();
-        var pm = lastInn && txt.match(/^[.,;:!?)\u2019\u201d]+/);   /* keep trailing punctuation attached to the word before it */
-        if (pm) { var le = lastInn.lastElementChild; if (le && le.classList.contains('hl')) le.classList.add('hl-tight'); lastInn.appendChild(document.createTextNode(pm[0])); txt = txt.slice(pm[0].length); }
+        var pm = lastInn && txt.match(/^[.,;:!?)’”]+/);   /* keep trailing punctuation attached to the word before it */
+        if (pm) { lastInn.appendChild(document.createTextNode(pm[0])); txt = txt.slice(pm[0].length); }
         txt.split(/(\s+)/).forEach(function (t) {
           if (!t) return;
           if (/^\s+$/.test(t)) { f.appendChild(document.createTextNode(' ')); lastInn = null; }
@@ -86,20 +85,39 @@
     });
     h1.classList.add('h1-anim');
     requestAnimationFrame(function () { requestAnimationFrame(function () { h1.classList.add('go'); }); });
-    setTimeout(function () { h1.classList.remove('h1-anim', 'go'); fit(); }, 1900);
+    setTimeout(function () { h1.classList.remove('h1-anim', 'go'); fit(); }, 1400);
   }
 
-  /* ---- marks draw in when visible ---- */
+  /* ---- marks draw as soon as they are on screen ---- */
+  var live = [];                        /* scribbles that finished drawing and may react */
+  function goLive(mark) {
+    var svg = mark.querySelector('.sc');
+    if (!svg || rm) return;
+    svg.classList.add('live');
+    live.push({ mark: mark, svg: svg, x: 0, y: 0, r: 0, s: 1, vis: true });
+    kick();
+  }
+  function draw(t, delay) {
+    setTimeout(function () { t.classList.add('mk-on'); setTimeout(function () { goLive(t); }, 950); }, delay);
+  }
   var marks = document.querySelectorAll('.hl, .mm');
   if (rm || !('IntersectionObserver' in window)) marks.forEach(function (m) { m.classList.add('mk-on'); });
   else {
     var mio = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
-        if (e.isIntersecting) { var t = e.target; setTimeout(function () { t.classList.add('mk-on'); }, inH1(t) ? 2000 : 80); mio.unobserve(t); }
+        if (!e.isIntersecting) return;
+        var t = e.target; mio.unobserve(t);
+        draw(t, h1 && h1.contains(t) ? 350 : 0);   /* the hero loop starts while the words are still rising */
       });
-    }, { threshold: 0.9 });
+    }, { rootMargin: '0px 0px 8% 0px', threshold: 0.2 });
     marks.forEach(function (m) { mio.observe(m); });
   }
+  /* only animate scribbles that are on screen */
+  var vio = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) { live.forEach(function (l) { if (l.mark === e.target) l.vis = e.isIntersecting; }); });
+    kick();
+  }) : null;
+  if (vio) marks.forEach(function (m) { vio.observe(m); });
 
   /* ---- word-by-word reading emphasis on the about lead ---- */
   var lead = document.querySelector('.about__lead'), rw = [];
@@ -133,46 +151,80 @@
     row.addEventListener('focusin', function () { act(i); });
   });
 
-  /* ---- progress bar, cursor, portrait tilt ---- */
+  /* ---- progress bar, cursor, portrait tilt, scribble life ---- */
   var pg = document.createElement('div'); pg.className = 'pg'; pg.setAttribute('aria-hidden', 'true'); document.body.appendChild(pg);
   var cur = null;
   if (fine && !rm) {
     cur = document.createElement('div'); cur.className = 'cur'; cur.setAttribute('aria-hidden', 'true'); cur.innerHTML = '<span>View</span>';
     document.body.appendChild(cur); root.classList.add('cur-on');
   }
-  var pill = document.querySelector('.portrait'), pimg = pill && pill.querySelector('img');
-  var mx = -100, my = -100, cx = -100, cy = -100, rot = 0, px = 0, py = 0;
+  var portrait = document.querySelector('.portrait'), pimg = portrait && portrait.querySelector('img');
+  var mx = -100, my = -100, cx = -100, cy = -100, rot = 0, px = 0, py = 0, lastY = scrollY, vel = 0;
+  var running = false, idleUntil = 0;
+
   function tgt(t) {
     if (!cur) return;
     t = t && t.closest ? t.closest('.row, a, button') : null;
     cur.classList.toggle('lg', !!(t && t.closest('.row')));
     cur.classList.toggle('sm', !!(t && !t.closest('.row')));
   }
-  addEventListener('pointermove', function (e) { mx = e.clientX; my = e.clientY; if (cur) { cur.classList.add('show'); tgt(e.target); } }, { passive: true });
-  addEventListener('scroll', function () { if (cur && mx > 0) tgt(document.elementFromPoint(mx, my)); }, { passive: true });
+  function kick() { idleUntil = performance.now() + 1200; if (!running) { running = true; requestAnimationFrame(frame); } }
+  addEventListener('pointermove', function (e) { mx = e.clientX; my = e.clientY; if (cur) { cur.classList.add('show'); tgt(e.target); } kick(); }, { passive: true });
+  addEventListener('scroll', function () { if (cur && mx > 0) tgt(document.elementFromPoint(mx, my)); kick(); }, { passive: true });
   document.addEventListener('mouseleave', function () { if (cur) cur.classList.remove('show'); });
 
-  function frame() {
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+  function frame(now) {
+    var moving = now < idleUntil;
     var max = root.scrollHeight - innerHeight;
     pg.style.setProperty('--p', max > 0 ? (scrollY / max).toFixed(4) : 0);
     if (head) head.classList.toggle('stuck', scrollY > 8);
+    vel += ((scrollY - lastY) - vel) * 0.25; lastY = scrollY;          /* smoothed scroll velocity */
+
     if (rw.length) {
-      var b = lead.getBoundingClientRect(), prog = (innerHeight * 0.82 - b.top) / (b.height + innerHeight * 0.22), k = Math.max(0, Math.min(1, prog)) * rw.length;
+      var b = lead.getBoundingClientRect(), prog = (innerHeight * 0.82 - b.top) / (b.height + innerHeight * 0.22), k = clamp(prog, 0, 1) * rw.length;
       rw.forEach(function (w, j) { w.classList.toggle('on', j < k); });
     }
     if (cur) {
-      cx += (mx - cx) * 0.2; cy += (my - cy) * 0.2; cur.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
-      if (pill) {
-        var pb = pill.getBoundingClientRect(), dx = mx - (pb.left + pb.width / 2), dy = my - (pb.top + pb.height / 2);
-        rot += (Math.max(-10, Math.min(10, dx / 60)) - rot) * 0.12;
-        px += (Math.max(-5, Math.min(5, dx / 90)) - px) * 0.12; py += (Math.max(-5, Math.min(5, dy / 90)) - py) * 0.12;
-        pill.style.setProperty('--r', rot.toFixed(2) + 'deg');
+      cx += (mx - cx) * 0.2; cy += (my - cy) * 0.2; cur.style.transform = 'translate(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px)';
+      if (Math.abs(mx - cx) + Math.abs(my - cy) > 0.4) moving = true;
+      if (portrait) {
+        var pb = portrait.getBoundingClientRect(), dx = mx - (pb.left + pb.width / 2), dy = my - (pb.top + pb.height / 2);
+        var tr = clamp(dx / 60, -10, 10), tx = clamp(dx / 90, -5, 5), ty = clamp(dy / 90, -5, 5);
+        rot += (tr - rot) * 0.12; px += (tx - px) * 0.12; py += (ty - py) * 0.12;
+        portrait.style.setProperty('--r', rot.toFixed(2) + 'deg');
         pimg.style.setProperty('--px', px.toFixed(2) + 'px'); pimg.style.setProperty('--py', py.toFixed(2) + 'px');
+        if (Math.abs(tr - rot) > 0.02) moving = true;
       }
     }
-    requestAnimationFrame(frame);
+
+    /* subtle life in the scribbles: they lean toward the cursor, tilt with scroll speed,
+       and settle back when the page is still */
+    var reads = [];
+    for (var i = 0; i < live.length; i++) {
+      var l = live[i]; if (!l.vis) continue;
+      reads.push({ l: l, b: l.mark.getBoundingClientRect() });
+    }
+    reads.forEach(function (o) {
+      var l = o.l, b = o.b, isLoop = l.svg.classList.contains('o');
+      var tx = 0, ty = 0, near = 0;
+      if (fine) {
+        var ddx = mx - (b.left + b.width / 2), ddy = my - (b.top + b.height / 2), d = Math.sqrt(ddx * ddx + ddy * ddy);
+        near = clamp(1 - d / 420, 0, 1);
+        tx = clamp(ddx / 120, -1, 1) * near * (isLoop ? 4 : 3);
+        ty = clamp(ddy / 120, -1, 1) * near * (isLoop ? 3 : 1.5);
+      }
+      var tr2 = clamp(vel * 0.06, -1.6, 1.6) * (isLoop ? 1 : 0.5);
+      var ts = 1 + near * (isLoop ? 0.02 : 0.01);
+      l.x += (tx - l.x) * 0.14; l.y += (ty - l.y) * 0.14; l.r += (tr2 - l.r) * 0.14; l.s += (ts - l.s) * 0.14;
+      l.svg.style.transform = 'translate(' + l.x.toFixed(2) + 'px,' + l.y.toFixed(2) + 'px) rotate(' + l.r.toFixed(2) + 'deg) scale(' + l.s.toFixed(4) + ')';
+      if (Math.abs(tx - l.x) + Math.abs(ty - l.y) + Math.abs(tr2 - l.r) + Math.abs(ts - l.s) * 50 > 0.02) moving = true;
+    });
+
+    if (moving) requestAnimationFrame(frame); else running = false;
   }
-  frame();
+  kick();
 
   /* ---- generic reveal for index sections ---- */
   var rv = document.querySelectorAll('[data-reveal]');

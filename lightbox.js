@@ -12,7 +12,7 @@
 
   function open(el) {
     opener = el;
-    img.src = el.currentSrc || el.src;
+    img.src = el.dataset.full || el.currentSrc || el.src;
     img.alt = el.alt || '';
     overlay.classList.add('is-open');
     document.body.style.overflow = 'hidden';

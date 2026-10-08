@@ -13,11 +13,11 @@
 <meta property="og:url" content="https://pranvid.github.io/PranviDandriyal/talentcentral-project-groups.html">
 <meta property="og:image" content="https://pranvid.github.io/PranviDandriyal/images/talentcentral-project-groups.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="styles.css?v=6">
+<link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body data-case="talentcentral">
 <a class="skip" href="#context">Skip to case study</a>
@@ -53,7 +53,7 @@
   </section>
 
   <div class="wrap case-hero-img">
-    <div class="frame" style="aspect-ratio:auto"><img src="images/talentcentral-project-groups.png" alt="The TalentCentral+ home: bookmarked hiring projects with active groups, participant activity, and project creation in one dashboard" width="1670" height="936"></div>
+    <div class="frame" style="aspect-ratio:auto"><img src="images/talentcentral-project-groups.webp" alt="The TalentCentral+ home: bookmarked hiring projects with active groups, participant activity, and project creation in one dashboard" width="1670" height="936" fetchpriority="high" decoding="async"></div>
     <p class="figcap">TalentCentral+ brings project and candidate management into one place, the surface recruiters live in every day.</p>
   </div>
 
@@ -304,7 +304,7 @@
         <div class="stat"><div class="stat__num"><b>Special</b> mention</div><p class="stat__label">at SHL's annual awards, for my work on this project</p></div>
       </div>
       <div style="margin-bottom:clamp(28px,5vw,44px)">
-        <div class="frame frame--diagram" style="aspect-ratio:3362/1240"><img src="images/tc-old-new-comparison.png" alt="Old screen versus new screen: the legacy TalentCentral project-creation form, a single long page of basic settings and product selection, next to the new TC+ create-project flow with its accordion steps and product catalogue" width="3362" height="1240" loading="lazy"></div>
+        <div class="frame frame--diagram" style="aspect-ratio:3362/1240"><img src="images/tc-old-new-comparison.webp" srcset="images/tc-old-new-comparison-800.webp 800w, images/tc-old-new-comparison-1400.webp 1400w, images/tc-old-new-comparison.webp 3362w" sizes="(min-width: 1400px) 1232px, calc(100vw - 32px)" data-full="images/tc-old-new-comparison.webp" alt="Old screen versus new screen: the legacy TalentCentral project-creation form, a single long page of basic settings and product selection, next to the new TC+ create-project flow with its accordion steps and product catalogue" width="3362" height="1240" loading="lazy" decoding="async"></div>
         <p class="figcap">The old project-creation form (left) versus the new TC+ create flow (right).</p>
       </div>
       <div class="prose" style="max-width:66ch">
@@ -365,7 +365,7 @@
     els.forEach(el => io.observe(el));
   } else { els.forEach(el => el.classList.add('in')); }
 </script>
-<script src="site.js" defer></script>
+<script src="site.js?v=7" defer></script>
 <script src="lightbox.js" defer></script>
 <script src="video-controls.js" defer></script>
 </body>
