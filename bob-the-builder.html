@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bob the Builder | Pranvi Dandriyal</title>
 <meta name="description" content="A two-day AI hackathon at SHL: an AI implementation consultant that turns 4–7 weeks of manual template branding into a conversation. Top 10 of 35 teams, results awaited.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%2317222E%27/%3E%3Crect x=%277%27 y=%277%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%238ADAD6%27/%3E%3Crect x=%2717%27 y=%277%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23135454%27/%3E%3Crect x=%277%27 y=%2717%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23EEA302%27/%3E%3Crect x=%2717%27 y=%2717%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23DF266C%27/%3E%3C/svg%3E">
-<meta name="theme-color" content="#FBF7F0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%230F0F0F%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%276.5%27 fill=%27%23F5B82E%27/%3E%3C/svg%3E">
+<meta name="theme-color" content="#FAF9F6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bob the Builder | Pranvi Dandriyal">
 <meta property="og:description" content="A two-day AI hackathon at SHL: an AI implementation consultant that turns 4–7 weeks of manual template branding into a conversation. Top 10 of 35 teams, results awaited.">
@@ -15,8 +15,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=5">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="styles.css?v=6">
 <style>
 .jr{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:12px;counter-reset:j;margin:0;padding:0;list-style:none}
 .jr li{counter-increment:j;position:relative;border:1px solid var(--line-2);border-radius:10px;background:var(--paper);padding:16px 16px 14px}
@@ -36,7 +37,7 @@
 .cmp tbody th{font-weight:600;color:var(--ink);width:26%}
 .cmp td{color:var(--muted)}
 .cmp td:last-child{color:var(--ink);font-weight:600;background:color-mix(in srgb,var(--pc) 7%,var(--paper))}
-.cmpwrap{border:1px solid var(--line-2);border-radius:10px;overflow:hidden;box-shadow:5px 5px 0 color-mix(in srgb,var(--pc) 70%,var(--paper));background:var(--paper)}
+.cmpwrap{border:1px solid var(--line-2);border-radius:10px;overflow:hidden;box-shadow: none;background:var(--paper)}
 .loopfig{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
 .loopfig div{border:1px solid var(--line-2);border-radius:10px;padding:18px;background:var(--paper)}
 .loopfig i{font:600 .78rem var(--f-display);font-style:normal;color:var(--pc-ink);letter-spacing:.08em}
@@ -47,17 +48,18 @@
 .phase.now{background:color-mix(in srgb,var(--pc) 9%,var(--paper));border-color:var(--pc)}
 </style>
 </head>
-<body data-case="bob" style="--pc:#8C3A26; --pc-ink:#8C3A26; --accent:#8C3A26; --accent-ink:#6E2B1A">
+<body data-case="bob">
 <a class="skip" href="#context">Skip to case study</a>
 
 <header class="site-head">
   <div class="wrap site-head__in">
-    <a class="brand" href="./">Pranvi Dandriyal<b>.</b></a>
+    <a class="brand" href="./">Pranvi Dandriyal</a>
     <nav class="nav" aria-label="Primary">
       <a href="./#work" data-nav-hide>Work</a>
       <a href="./#about" data-nav-hide>About</a>
       <a href="pranvidandriyal-resume.pdf">Résumé ↗</a>
-      <a href="./#contact" data-cta>Contact</a>
+      <a href="./#contact">Contact</a>
+      <button class="tbtn" id="tog" type="button" aria-label="Toggle light and dark theme" aria-pressed="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="5.6"/><path d="M8 2.4a5.6 5.6 0 0 1 0 11.2z" fill="currentColor"/></svg></button>
     </nav>
   </div>
 </header>
@@ -66,7 +68,7 @@
   <section class="case-head wrap">
     <a class="back" href="./#work">← All work</a>
     <p class="eyebrow" style="margin-top:26px">SHL · AI hackathon · Team "Prompt and Pixels"</p>
-    <h1>Bob the Builder: weeks of manual branding, turned into a conversation.</h1>
+    <h1>Bob the Builder: weeks of manual branding, turned into <span class="hl">a conversation</span>.</h1>
     <p class="case-head__sub">An AI implementation consultant for SHL's Advanced SHLE candidate experiences. Clients describe their brand once, and it builds, live-previews and publishes the template pages a deployment team used to hand-build.</p>
     <dl class="spec">
       <div><dt>My role</dt><dd>Product &amp; UX design</dd></div>
@@ -76,7 +78,7 @@
     </dl>
   </section>
   <div class="wrap case-hero-img"><div class="frame" style="aspect-ratio:auto"><img src="images/bob-hero.webp" alt="Bob the Builder landing screen" width="1172" height="586"></div></div>
-  <section class="section" style="padding-top:0"><div class="wrap"><div class="stats"><div class="stat"><div class="stat__num"><b>4–7 wks</b></div><p class="stat__label">to deploy one Advanced SHLE template today</p></div><div class="stat"><div class="stat__num"><b>60 pg</b></div><p class="stat__label">branding specification, completed by hand</p></div><div class="stat"><div class="stat__num"><b>5+</b></div><p class="stat__label">review cycles, each one a rebuild</p></div></div></div></section>
+  <section class="section" style="padding-top:0"><div class="wrap"><div class="stats"><div class="stat"><div class="stat__num"><b class="mm">4–7 wks</b></div><p class="stat__label">to deploy one Advanced SHLE template today</p></div><div class="stat"><div class="stat__num"><b>60 pg</b></div><p class="stat__label">branding specification, completed by hand</p></div><div class="stat"><div class="stat__num"><b>5+</b></div><p class="stat__label">review cycles, each one a rebuild</p></div></div></div></section>
   <hr class="rule">
 <section class="section"><div class="wrap"><div class="section-label"><span class="n">01</span><h2>The problem</h2></div><div class="prose" style="max-width:66ch;margin-bottom:clamp(24px,4vw,36px)"><p>SHL sells two candidate-experience tiers. <strong>Essential</strong> is off-the-shelf with limited branding. <strong>Advanced SHLE</strong> is fully bespoke, and the deployment team builds every template by hand.</p><p>There is no draft mode and no live preview, so a client only sees the result once it is built and published. Every round of feedback sends the work back to the start, and <strong>each loop adds 2–3 weeks.</strong></p></div><ol class="jr" style="margin-bottom:clamp(32px,5vw,56px)"><li class=""><b>Client request</b><span>A client asks for an Advanced SHLE experience.</span></li><li class=""><b>Consultant</b><span>Shares the 60-page branding specification.</span></li><li class=""><b>Customer branding</b><span>The client fills it in and sends it back.</span></li><li class=""><b>Deployment team</b><span>Translates the spec into a template by hand.</span></li><li class=""><b>Review</b><span>QA and the client review, only after publishing.</span></li><li class=""><b>Feedback</b><span>Changes come back as a list.</span></li><li class="loop"><b>Rebuild</b><span>Back to step 4. +2–3 weeks, every time.</span></li></ol><p class="lead-in" style="max-width:none;margin-bottom:22px">We spoke to the people who run this process:</p><div class="qgrid" style="margin-bottom:clamp(32px,5vw,56px)"><div class="q"><p>“Since there is no preview, every client revision means rebuilding the template from scratch.”</p><small>Deployment team</small></div><div class="q"><p>“A two-week change request can derail the entire delivery plan.”</p><small>Implementation consultants</small></div><div class="q"><p>“Customers can't see the journey until it's published.”</p><small>Project managers</small></div><div class="q"><p>“Deployment delays are the top reason clients hesitate to upgrade.”</p><small>Presales &amp; commercial</small></div></div><div class="callout" style="max-width:66ch"><p>The real blocker to SHLE Advance adoption was not the product. It was how slowly a branded version could ship.</p></div></div></section>
 <hr class="rule">
@@ -101,7 +103,7 @@
 <p><strong>Get the hierarchy right before the UI.</strong> The template, page and workflow structure was corrected several times as we built. I'd pressure-test the data model earlier.</p>
 <p><strong>Prototype fast, even roughly.</strong> A clickable flow surfaced disagreements about scope far faster than static screens would have.</p></div></div></section>
 
-  <nav class="next-case" style="--pc:#DF266C; --pc-ink:#B81A55"><div class="wrap"><a href="soulmate.html"><div><p class="eyebrow">Next case · 05</p><h2>SoulMate</h2></div><span class="arrow">→</span></a></div></nav>
+  <nav class="next-case"><div class="wrap"><a href="soulmate.html"><div><p class="eyebrow">Next case · 05</p><h2>SoulMate</h2></div><span class="arrow">→</span></a></div></nav>
 </main>
 
 <footer>
@@ -122,6 +124,7 @@
     els.forEach(el => io.observe(el));
   } else { els.forEach(el => el.classList.add('in')); }
 </script>
+<script src="site.js" defer></script>
 <script src="lightbox.js" defer></script>
 <script src="video-controls.js" defer></script>
 </body>

@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TalentCentral+ Project Groups | Pranvi Dandriyal</title>
 <meta name="description" content="Reframing project creation in SHL's recruiting platform from 'more projects' to 'reuse': a Project Groups model that cut duplicate projects 10× and brought consistency to a fragmented workflow.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%2317222E%27/%3E%3Crect x=%277%27 y=%277%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%238ADAD6%27/%3E%3Crect x=%2717%27 y=%277%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23135454%27/%3E%3Crect x=%277%27 y=%2717%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23EEA302%27/%3E%3Crect x=%2717%27 y=%2717%27 width=%278%27 height=%278%27 rx=%271.5%27 fill=%27%23DF266C%27/%3E%3C/svg%3E">
-<meta name="theme-color" content="#FBF7F0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%230F0F0F%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%276.5%27 fill=%27%23F5B82E%27/%3E%3C/svg%3E">
+<meta name="theme-color" content="#FAF9F6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TalentCentral+ Project Groups | Pranvi Dandriyal">
 <meta property="og:description" content="Reframing project creation in SHL's recruiting platform from 'more projects' to 'reuse': a Project Groups model that cut duplicate projects 10× and brought consistency to a fragmented workflow.">
@@ -15,20 +15,22 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=5">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="styles.css?v=6">
 </head>
-<body data-case="talentcentral" style="--pc:#135454; --pc-ink:#0F4A4A; --accent:#135454; --accent-ink:#0B3A3A">
+<body data-case="talentcentral">
 <a class="skip" href="#context">Skip to case study</a>
 
 <header class="site-head">
   <div class="wrap site-head__in">
-    <a class="brand" href="./">Pranvi Dandriyal<b>.</b></a>
+    <a class="brand" href="./">Pranvi Dandriyal</a>
     <nav class="nav" aria-label="Primary">
       <a href="./#work" data-nav-hide>Work</a>
       <a href="./#about" data-nav-hide>About</a>
       <a href="pranvidandriyal-resume.pdf">Résumé ↗</a>
-      <a href="./#contact" data-cta>Contact</a>
+      <a href="./#contact">Contact</a>
+      <button class="tbtn" id="tog" type="button" aria-label="Toggle light and dark theme" aria-pressed="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="5.6"/><path d="M8 2.4a5.6 5.6 0 0 1 0 11.2z" fill="currentColor"/></svg></button>
     </nav>
   </div>
 </header>
@@ -39,7 +41,7 @@
   <section class="case-head wrap">
     <a class="back" href="./#work">← All work</a>
     <p class="eyebrow" style="margin-top:26px">TalentCentral+ · SHL</p>
-    <h1>Recruiters didn't need more projects. They needed reuse.</h1>
+    <h1>Recruiters didn't need more projects. They needed <span class="hl">reuse</span>.</h1>
     <p class="case-head__sub">Rebuilding the core project-creation workflow in SHL's recruiting platform, so high-volume hiring teams stop duplicating work, and the system finally behaves consistently.</p>
 
     <dl class="spec">
@@ -60,7 +62,7 @@
     <div class="wrap">
       <div class="stats">
         <div class="stat">
-          <div class="stat__num"><b>10×</b></div>
+          <div class="stat__num"><b class="mm">10×</b></div>
           <p class="stat__label">fewer projects for the same number of participants, measured per company account</p>
         </div>
         <div class="stat">
@@ -188,7 +190,7 @@
   <section class="section section--tint">
     <div class="wrap">
       <p class="eyebrow" style="text-align:center; margin-bottom:22px">The reframe</p>
-      <p style="font-family:var(--f-display); font-weight:500; font-size:var(--step-2); line-height:1.38; color:var(--ink); max-width:46ch; margin-inline:auto; text-align:center; letter-spacing:-0.005em">The request was "make it faster to create projects." The real problem was that recruiters were creating projects at all. They didn't need more projects, they needed to <em style="font-style:italic; color:var(--accent)">reuse and extend</em> the ones they already had.</p>
+      <p style="font-family:var(--f-display); font-weight:500; font-size:var(--step-2); line-height:1.38; color:var(--ink); max-width:46ch; margin-inline:auto; text-align:center; letter-spacing:-0.005em">The request was "make it faster to create projects." The real problem was that recruiters were creating projects at all. They didn't need more projects, they needed to <em class="emph">reuse and extend</em> the ones they already had.</p>
       <p style="text-align:center; color:var(--muted); max-width:52ch; margin:26px auto 0">That shift, from speeding up duplication to eliminating it, is what the whole design turned on.</p>
     </div>
   </section>
@@ -331,7 +333,7 @@
   </section>
 
   <!-- NEXT -->
-  <nav class="next-case" style="--pc:#EEA302; --pc-ink:#8A5F00">
+  <nav class="next-case">
     <div class="wrap">
       <a href="talent-intelligence-design-system.html">
         <div>
@@ -363,6 +365,7 @@
     els.forEach(el => io.observe(el));
   } else { els.forEach(el => el.classList.add('in')); }
 </script>
+<script src="site.js" defer></script>
 <script src="lightbox.js" defer></script>
 <script src="video-controls.js" defer></script>
 </body>
