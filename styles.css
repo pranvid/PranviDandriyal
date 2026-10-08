@@ -145,6 +145,30 @@ a { color: inherit; text-decoration: none; }
 .cur.sm { width: 30px; height: 30px; margin: -15px 0 0 -15px; opacity: .55; }
 @media (hover: hover) and (pointer: fine) { .cur { display: grid; } .cur-on .row { cursor: none; } }
 
+
+/* ---- Floating jump control: top / bottom ------------------------------- */
+.jump {
+  position: fixed; z-index: 70; display: flex; flex-direction: column;
+  right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  background: color-mix(in srgb, var(--paper) 94%, transparent); border: 1px solid var(--ink); border-radius: 999px; overflow: hidden;
+  box-shadow: 0 6px 20px -10px rgba(0,0,0,.45);
+}
+.jump button {
+  width: 44px; height: 44px; display: grid; place-items: center; background: none; border: 0; color: var(--ink); cursor: pointer; padding: 0;
+  transition: background .2s ease, color .2s ease, opacity .2s ease;
+}
+.jump button + button { border-top: 1px solid var(--line-2); }
+.jump button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.jump button:hover:not(:disabled), .jump button:focus-visible:not(:disabled) { background: var(--pop); color: #0F0F0F; }
+.jump button:disabled { opacity: .3; cursor: default; }
+.jump .jt svg { transition: transform .2s ease; }
+.jump .jt:hover:not(:disabled) svg { transform: translateY(-2px); }
+.jump .jb:hover:not(:disabled) svg { transform: translateY(2px); }
+.jump:focus-within { outline: none; }
+@media (max-width: 640px) { .jump { right: max(12px, env(safe-area-inset-right, 0px)); bottom: max(12px, env(safe-area-inset-bottom, 0px)); } }
+@media (prefers-reduced-motion: reduce) { .jump button, .jump svg { transition: none !important; } }
+@media print { .jump { display: none !important; } }
+
 /* ---- Header ---------------------------------------------------------- */
 .site-head {
   position: sticky; top: 0; z-index: 40;

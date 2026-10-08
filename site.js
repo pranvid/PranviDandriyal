@@ -151,6 +151,23 @@
     row.addEventListener('focusin', function () { act(i); });
   });
 
+  /* ---- floating jump control: top / bottom ---- */
+  var jump = document.createElement('div'); jump.className = 'jump'; jump.setAttribute('role', 'group'); jump.setAttribute('aria-label', 'Page navigation');
+  var AR = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">';
+  jump.innerHTML = '<button type="button" class="jt" aria-label="Scroll to top">' + AR + '<path d="M12 19V5M5 12l7-7 7 7"/></svg></button>' +
+                   '<button type="button" class="jb" aria-label="Scroll to bottom">' + AR + '<path d="M12 5v14M5 12l7 7 7-7"/></svg></button>';
+  document.body.appendChild(jump);
+  var jt = jump.querySelector('.jt'), jb = jump.querySelector('.jb');
+  function jumpTo(y) { scrollTo({ top: y, behavior: rm ? 'auto' : 'smooth' }); }
+  jt.addEventListener('click', function () { jumpTo(0); });
+  jb.addEventListener('click', function () { jumpTo(root.scrollHeight); });
+  function jumpState() {
+    var max = root.scrollHeight - innerHeight;
+    var atTop = scrollY < 24, atEnd = scrollY > max - 24;
+    if (jt.disabled !== atTop) jt.disabled = atTop;
+    if (jb.disabled !== atEnd) jb.disabled = atEnd;
+  }
+
   /* ---- progress bar, cursor, portrait tilt, scribble life ---- */
   var pg = document.createElement('div'); pg.className = 'pg'; pg.setAttribute('aria-hidden', 'true'); document.body.appendChild(pg);
   var cur = null;
@@ -181,6 +198,7 @@
     pg.style.setProperty('--p', max > 0 ? (scrollY / max).toFixed(4) : 0);
     if (head) head.classList.toggle('stuck', scrollY > 8);
     vel += ((scrollY - lastY) - vel) * 0.25; lastY = scrollY;          /* smoothed scroll velocity */
+    jumpState();
 
     if (rw.length) {
       var b = lead.getBoundingClientRect(), prog = (innerHeight * 0.82 - b.top) / (b.height + innerHeight * 0.22), k = clamp(prog, 0, 1) * rw.length;
@@ -224,7 +242,9 @@
 
     if (moving) requestAnimationFrame(frame); else running = false;
   }
-  kick();
+  jumpState(); kick();
+  addEventListener('load', jumpState);
+  if ('ResizeObserver' in window) new ResizeObserver(jumpState).observe(document.body);
 
   /* ---- generic reveal for index sections ---- */
   var rv = document.querySelectorAll('[data-reveal]');
