@@ -209,7 +209,7 @@
       if (Math.abs(mx - cx) + Math.abs(my - cy) > 0.4) moving = true;
       if (portrait) {
         var pb = portrait.getBoundingClientRect(), dx = mx - (pb.left + pb.width / 2), dy = my - (pb.top + pb.height / 2);
-        var tr = clamp(dx / 900, -1, 1), tx = clamp(dx / 300, -3, 3), ty = clamp(dy / 300, -3, 3);
+        var tr = clamp(dx / 400, -2, 2), tx = clamp(dx / 400, -1.5, 1.5), ty = clamp(dy / 400, -1.5, 1.5);
         rot += (tr - rot) * 0.06; px += (tx - px) * 0.06; py += (ty - py) * 0.06;
         portrait.style.setProperty('--r', rot.toFixed(2) + 'deg');
         pimg.style.setProperty('--px', px.toFixed(2) + 'px'); pimg.style.setProperty('--py', py.toFixed(2) + 'px');
