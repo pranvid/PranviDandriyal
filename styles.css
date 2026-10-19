@@ -1,8 +1,8 @@
 /* =========================================================================
    Pranvi Dandriyal, Portfolio
    Design language: type-led and minimal. Near-white paper, black ink, one
-   serif for statements (Instrument Serif), one grotesque for reading
-   (Inter Tight). A single marigold "pop" appears on a few elements only, and
+   serif for statements (Newsreader), one grotesque for reading
+   (Inter). A single marigold "pop" appears on a few elements only, and
    the signature mark is a hand-drawn yellow scribble (loop around a key
    word, wavy line under a key figure). Light and dark themes share one set
    of tokens; text always stays ink or grey, yellow is decoration or a fill
@@ -10,9 +10,9 @@
    ========================================================================= */
 
 /* ---- Fonts (self-hosted, latin subset, preloaded from each page) ------ */
-@font-face { font-family: "Instrument Serif"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/instrument-serif.woff2") format("woff2"); }
-@font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; font-display: swap; src: url("fonts/instrument-serif-italic.woff2") format("woff2"); }
-@font-face { font-family: "Inter Tight"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("fonts/inter-tight.woff2") format("woff2"); }
+@font-face { font-family: "Newsreader"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/newsreader.woff2") format("woff2"); }
+@font-face { font-family: "Newsreader"; font-style: italic; font-weight: 400; font-display: swap; src: url("fonts/newsreader-italic.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("fonts/inter.woff2") format("woff2"); }
 @font-face { font-family: "Noto Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/noto-sans.woff2") format("woff2"); }
 
 /* ---- Tokens ---------------------------------------------------------- */
@@ -35,10 +35,10 @@
   --mk:       var(--pop);
   --dark:     #0F0F0F;
 
-  --f-serif: "Instrument Serif", "Times New Roman", serif;
-  --f-display: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
-  --f-sans: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
-  --f-mono: "Inter Tight", "Helvetica Neue", Arial, sans-serif;   /* labels share the body family */
+  --f-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --f-display: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "Inter", "Helvetica Neue", Arial, sans-serif;   /* labels share the body family */
   --f-code: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
   --maxw: 1360px;
@@ -49,9 +49,9 @@
   --step-0:  clamp(1.00rem, 0.95rem + 0.25vw, 1.125rem);
   --step-1:  clamp(1.25rem, 1.12rem + 0.60vw, 1.625rem);
   --step-2:  clamp(1.75rem, 1.35rem + 1.80vw, 2.75rem);
-  --step-3:  clamp(2.10rem, 1.40rem + 3.20vw, 4.00rem);
-  --step-4:  clamp(2.60rem, 1.30rem + 5.60vw, 6.00rem);
-  --step-5:  clamp(2.70rem, 1.10rem + 7.40vw, 8.00rem);
+  --step-3:  clamp(2.00rem, 1.40rem + 2.60vw, 3.50rem);
+  --step-4:  clamp(2.40rem, 1.30rem + 4.40vw, 4.75rem);
+  --step-5:  clamp(2.50rem, 1.10rem + 5.60vw, 6.00rem);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -75,7 +75,7 @@ body {
   color: var(--body);
   font-family: var(--f-sans);
   font-size: var(--step-0);
-  line-height: 1.6;
+  line-height: 1.7;
   font-feature-settings: "kern", "liga";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -178,7 +178,7 @@ a { color: inherit; text-decoration: none; }
 }
 .site-head.stuck { border-bottom-color: var(--line); }
 .site-head__in { display: flex; align-items: center; justify-content: space-between; min-height: 72px; gap: 16px; }
-.brand { font-family: var(--f-serif); font-size: 1.55rem; line-height: 1; letter-spacing: -0.01em; color: var(--ink); display: inline-flex; align-items: center; min-height: 44px; }
+.brand { font-family: var(--f-serif); font-size: 1.55rem; line-height: 1; letter-spacing: -0.006em; color: var(--ink); display: inline-flex; align-items: center; min-height: 44px; }
 .nav { display: flex; gap: clamp(14px, 2.4vw, 32px); align-items: center; }
 .nav a {
   font-weight: 500; font-size: var(--step--1); color: var(--ink);
@@ -199,11 +199,11 @@ a { color: inherit; text-decoration: none; }
 .hero { padding-block: clamp(36px, 7vw, 104px) clamp(36px, 6vw, 80px); }
 .hero h1 {
   font-family: var(--f-serif); font-weight: 400; font-size: var(--step-5);
-  line-height: 1.04; letter-spacing: -0.025em; color: var(--ink);
+  line-height: 1.12; letter-spacing: -0.006em; color: var(--ink);
   max-width: 15.5em; text-wrap: balance; margin-top: .35em;
 }
 .portrait {
-  display: inline-block; height: .88em; aspect-ratio: .6; border-radius: 999px; vertical-align: -.1em; margin-inline: .06em;
+  display: inline-block; height: .96em; aspect-ratio: .6; border-radius: 999px; vertical-align: -.14em; margin-inline: .06em;
   background: var(--pop); position: relative; overflow: hidden; transform: rotate(var(--r, 0deg)); will-change: transform;
 }
 .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; transform: translate(var(--px,0px), var(--py,0px)) scale(1.08); }
@@ -224,7 +224,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ---- Section headings ------------------------------------------------ */
 .sec-head { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--ink); }
-.sec-head h2 { font-family: var(--f-serif); font-weight: 400; font-size: var(--step-3); line-height: 1; letter-spacing: -0.02em; color: var(--ink); }
+.sec-head h2 { font-family: var(--f-serif); font-weight: 400; font-size: var(--step-3); line-height: 1; letter-spacing: -0.006em; color: var(--ink); }
 .sec-head .count { font-size: var(--step--1); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
 
 /* ---- Work index + sticky preview -------------------------------------- */
@@ -238,7 +238,7 @@ ul.idx { list-style: none; padding: 0; }
 .row::before { content: ""; position: absolute; inset: 0 -16px; background: var(--pop); transform: scaleY(0); transform-origin: bottom; transition: transform .35s cubic-bezier(.2,.7,.2,1); z-index: -1; }
 .row > a { position: absolute; inset: 0; z-index: 2; }
 .row .th { grid-row: 1 / 3; width: 72px; height: 72px; object-fit: cover; border-radius: 4px; display: block; align-self: start; }
-.row .t { font-family: var(--f-serif); font-weight: 400; font-size: var(--step-2); line-height: 1.02; letter-spacing: -0.015em; color: var(--ink); display: block; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+.row .t { font-family: var(--f-serif); font-weight: 400; font-size: var(--step-2); line-height: 1.12; letter-spacing: -0.006em; color: var(--ink); display: block; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
 .row .t small { font: 500 var(--step--1)/1 var(--f-sans); color: var(--muted); letter-spacing: .04em; margin-right: 10px; vertical-align: .5em; font-variant-numeric: tabular-nums; }
 .tt { position: relative; display: inline-block; }
 .row .m { font-size: var(--step--1); font-weight: 500; color: var(--ink); display: flex; flex-wrap: wrap; gap: 4px 18px; align-items: center; }
@@ -269,7 +269,7 @@ ul.idx { list-style: none; padding: 0; }
 
 /* ---- About ----------------------------------------------------------- */
 .about { display: grid; gap: 28px; padding-block: clamp(40px, 6vw, 88px); border-top: 1px solid var(--line-2); }
-.about__lead { font-family: var(--f-serif); font-weight: 400; font-size: var(--step-2); line-height: 1.18; letter-spacing: -0.012em; color: var(--ink); text-wrap: pretty; margin-bottom: .8em; }
+.about__lead { font-family: var(--f-serif); font-weight: 400; font-size: var(--step-2); line-height: 1.18; letter-spacing: -0.006em; color: var(--ink); text-wrap: pretty; margin-bottom: .8em; }
 .about__body p { margin-bottom: 1.1em; color: var(--muted); max-width: 60ch; }
 .about__facts { margin-top: 28px; display: grid; gap: 0; }
 .about__facts dl { border-top: 1px solid var(--line-2); padding: 12px 0; font-size: var(--step--1); margin: 0; }
@@ -287,8 +287,8 @@ ul.idx { list-style: none; padding: 0; }
 
 /* ---- Contact ---------------------------------------------------------- */
 .contact { padding-block: clamp(48px, 8vw, 120px) 40px; border-top: 1px solid var(--ink); }
-.contact h2 { font-family: var(--f-serif); font-weight: 400; font-size: var(--step-5); line-height: 1.04; letter-spacing: -0.025em; color: var(--ink); margin: .2em 0 .4em; text-wrap: balance; }
-.contact__mail { font-family: var(--f-serif); font-size: var(--step-3); line-height: 1.1; letter-spacing: -0.015em; color: var(--ink); display: inline-block; overflow-wrap: anywhere; border-bottom: 2px solid var(--ink); transition: border-color .2s; }
+.contact h2 { font-family: var(--f-serif); font-weight: 400; font-size: var(--step-5); line-height: 1.12; letter-spacing: -0.006em; color: var(--ink); margin: .2em 0 .4em; text-wrap: balance; }
+.contact__mail { font-family: var(--f-serif); font-size: var(--step-3); line-height: 1.1; letter-spacing: -0.006em; color: var(--ink); display: inline-block; overflow-wrap: anywhere; border-bottom: 2px solid var(--ink); transition: border-color .2s; }
 .contact__mail:hover { border-color: var(--pop); }
 .contact__links { display: flex; flex-wrap: wrap; gap: 4px 28px; margin-top: 28px; font-weight: 500; color: var(--ink); }
 .contact__links a { display: inline-flex; align-items: center; min-height: 44px; background: linear-gradient(currentColor, currentColor) 0 calc(50% + .75em) / 0 1px no-repeat; background-origin: content-box; transition: background-size .25s; }
@@ -558,7 +558,7 @@ footer { background: transparent; }
 }
 
 /* ---- Case page theme overrides ---------------------------------------- */
-.case-head h1 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(2.4rem, 1.2rem + 4.6vw, 5rem); line-height: 1.04; letter-spacing: -0.025em; max-width: 20ch; }
+.case-head h1 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(2.2rem, 1.2rem + 3.4vw, 3.9rem); line-height: 1.12; letter-spacing: -0.006em; max-width: 20ch; }
 .back { color: var(--muted); font-weight: 500; font-size: var(--step--1); min-height: 44px; }
 .back:hover { color: var(--ink); }
 .case-head__sub { color: var(--muted); }
@@ -568,9 +568,9 @@ footer { background: transparent; }
 .spec dt { color: var(--muted); letter-spacing: .08em; font-weight: 500; }
 .frame--diagram { background: #FFFFFF; }
 .stat { border-top: 1px solid var(--ink); }
-.stat__num { font-family: var(--f-serif); font-weight: 400; font-size: var(--step-4); letter-spacing: -0.02em; }
+.stat__num { font-family: var(--f-serif); font-weight: 400; font-size: var(--step-4); letter-spacing: -0.006em; }
 .section-label .n { background: none; color: var(--ink); border: 1px solid var(--ink); border-radius: 50%; font-weight: 500; }
-.section-label h2, .prose h3, .lead-in, .next-case h2 { font-family: var(--f-serif); font-weight: 400; letter-spacing: -0.015em; }
+.section-label h2, .prose h3, .lead-in, .next-case h2 { font-family: var(--f-serif); font-weight: 400; letter-spacing: -0.006em; }
 .section-label h2 { font-size: var(--step-3); line-height: 1.05; }
 .prose h3 { font-size: var(--step-2); line-height: 1.1; }
 .lead-in { line-height: 1.22; }
@@ -609,4 +609,4 @@ footer { background: transparent; }
 .stat__num { font-size: var(--step-3); line-height: 1.05; white-space: nowrap; }
 .stat__num .u { font-family: var(--f-sans); font-size: .36em; font-weight: 500; letter-spacing: 0; margin-left: .25em; color: var(--muted); }
 .stat__label { font-size: var(--step--1); line-height: 1.5; max-width: 30ch; }
-.insight { font-family: var(--f-serif); font-weight: 400; font-size: var(--step-2); line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); max-width: 34ch; text-wrap: balance; }
+.insight { font-family: var(--f-serif); font-weight: 400; font-size: var(--step-2); line-height: 1.2; letter-spacing: -0.006em; color: var(--ink); max-width: 34ch; text-wrap: balance; }
