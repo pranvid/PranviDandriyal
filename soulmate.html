@@ -17,7 +17,7 @@
 <link rel="preload" href="fonts/newsreader-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="styles.css?v=17">
+<link rel="stylesheet" href="styles.css?v=18">
 <style>
   /* the dating funnel: 100 matches -> chats -> dates */
   .funnel {
@@ -107,6 +107,26 @@
   .stability .arrow { stroke: var(--ink); stroke-width: 2; fill: none; }
   .stability .arrow-head { fill: var(--ink); }
   .stability text { font-family: var(--f-mono); font-size: 9px; fill: var(--muted); }
+
+
+  /* why it happens */
+  .facts3 { display: grid; gap: 14px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .facts3 div { border-top: 1px solid var(--ink); padding-top: 12px; display: grid; gap: 6px; align-content: start; }
+  .facts3 b { font-family: var(--f-serif); font-weight: 400; font-size: var(--step-1); line-height: 1.2; color: var(--ink); }
+  .facts3 span { font-size: 0.92rem; color: var(--muted); line-height: 1.5; }
+  @media (max-width: 640px) { .facts3 { grid-template-columns: 1fr; } }
+  .fx-bridge { font-size: var(--step-1); line-height: 1.4; color: var(--ink); max-width: 46ch; margin-bottom: clamp(20px, 3vw, 32px); }
+  .fx { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 22px); align-items: stretch; }
+  .fx__card { background: var(--paper); border: 1px solid var(--line-2); border-radius: 8px; padding: clamp(18px, 2.4vw, 26px); display: flex; flex-direction: column; gap: 14px; }
+  .fx__card h3 { font-family: var(--f-sans); font-weight: 600; font-size: 0.95rem; letter-spacing: 0; color: var(--ink); margin: 0; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .fx__claim { font-family: var(--f-serif); font-size: clamp(1.3rem, 1.15rem + 0.6vw, 1.6rem) !important; line-height: 1.25; color: var(--ink) !important; margin: 0; }
+  .fx__card p { margin: 0; font-size: 0.95rem; line-height: 1.55; color: var(--body); }
+  .fx__card strong { color: var(--ink); font-weight: 600; }
+  .fx__seen { margin-top: auto !important; padding-top: 12px; border-top: 1px dashed var(--line-2); color: var(--muted) !important; }
+  .fx__stat { margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--line-2); display: flex; flex-wrap: wrap; gap: 4px 20px; align-items: baseline; font-size: 0.9rem; color: var(--muted); }
+  .fx__stat b { font-family: var(--f-serif); font-weight: 400; font-size: var(--step-1); color: var(--ink); margin-right: 4px; }
+  .fx__stat em { font-style: normal; flex-basis: 100%; }
+  @media (max-width: 900px) { .fx { grid-template-columns: 1fr; } }
 
   .concept .prose h3 { line-height: 1.2; }
   /* each concept: text, then (figure), then its hypothesis, all on one left-aligned column */
@@ -460,21 +480,35 @@
   <section class="section section--tint">
     <div class="wrap">
       <div class="section-label"><h2>Why it happens</h2></div>
-      <div class="split" style="margin-bottom:clamp(32px,5vw,56px)">
-        <p class="lead-in">We knew what people said and what they did. The research literature explained why.</p>
-        <div class="prose">
-          <p>Published data shows the same imbalance we found: women get far more matches than men. Yet women looking for a relationship are just as dissatisfied as men. On average, it takes about 57 matches to lead to a single meet-up.</p>
-          <p><strong>So the number of matches isn't the problem.</strong> Three well-studied effects explain what is.</p>
+      <p class="lead-in" style="margin-bottom:clamp(20px,3vw,32px)">We knew what people said and what they did. The research literature explained why.</p>
+      <div style="margin-bottom:clamp(28px,4vw,44px)">
+        <div class="facts3">
+          <div><b>More matches for women</b><span>Published data shows women get far more matches than men.</span></div>
+          <div><b>Same dissatisfaction</b><span>Yet women looking for a relationship are just as dissatisfied as men.</span></div>
+          <div><b>~57</b><span>matches, on average, to lead to a single meet-up.</span></div>
         </div>
       </div>
+      <p class="fx-bridge"><strong>So the number of matches isn't the problem.</strong> Three well-studied effects explain what is.</p>
 
-      <div class="prose">
-        <h4 style="margin-top:0">Too much choice</h4>
-        <p>In Iyengar and Lepper's jam study, shoppers offered fewer options were happier with what they picked. Dating apps show the same effect: when the pool feels endless, every person feels replaceable, people spend less time on each profile and ghost more easily, which is exactly what we saw in the field.</p>
-        <h4>The wrong way of comparing</h4>
-        <p>Finkel and colleagues describe how online daters compare many profiles side by side on traits like looks and height, while offline people judge one person at a time, closer to how relationships actually work. Filters make it worse: women filter out up to 70% of potential matches and men up to 55%, mostly on height and age.</p>
-        <h4>A cost to self-esteem</h4>
-        <p>Research links the sense of endless options to lower self-esteem and more fear of being single. Getting few matches or constantly comparing yourself to others makes it worse, and the people who most want a relationship feel it the most.</p>
+      <div class="fx">
+        <article class="fx__card">
+          <h3>Too much choice</h3>
+          <p class="fx__claim">When the pool feels endless, every person feels replaceable.</p>
+          <p><strong>Iyengar and Lepper's jam study:</strong> shoppers offered fewer options were happier with what they picked. Dating apps show the same effect.</p>
+          <p class="fx__seen">In the field, people spent less time on each profile and ghosted more easily.</p>
+        </article>
+        <article class="fx__card">
+          <h3>The wrong way of comparing</h3>
+          <p class="fx__claim">Apps make people compare many profiles side by side.</p>
+          <p><strong>Finkel and colleagues:</strong> online daters compare many profiles on traits like looks and height, while offline people judge one person at a time, closer to how relationships actually work.</p>
+          <div class="fx__stat"><span><b>70%</b> of women</span><span><b>55%</b> of men</span><em>filter out potential matches, mostly on height and age.</em></div>
+        </article>
+        <article class="fx__card">
+          <h3>A cost to self-esteem</h3>
+          <p class="fx__claim">Few matches, or constant comparison, wears people down.</p>
+          <p>Research links the sense of endless options to lower self-esteem and more fear of being single.</p>
+          <p class="fx__seen">The people who most want a relationship feel it the most.</p>
+        </article>
       </div>
     </div>
   </section>
