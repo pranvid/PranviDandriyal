@@ -17,7 +17,7 @@
 <link rel="preload" href="fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body data-case="interview">
 <a class="skip" href="#context">Skip to case study</a>
@@ -40,7 +40,6 @@
   <!-- HEADER -->
   <section class="case-head wrap">
     <a class="back" href="./#work">← All work</a>
-    <p class="eyebrow" style="margin-top:26px">Interview Professional · SHL</p>
     <h1>Making the interview <span class="hl">fair</span> for candidates, and insightful for interviewers.</h1>
     <p class="case-head__sub">A live video-interview and interview-intelligence platform for enterprises hiring professionals at scale, designed from field research through shipped analytics.</p>
 
@@ -61,22 +60,11 @@
   <section class="section" style="padding-top:0">
     <div class="wrap">
       <div class="stats">
-        <div class="stat">
-          <div class="stat__num"><b class="mm">20,000+</b></div>
-          <p class="stat__label">candidates screened across 33+ cities for one hiring program</p>
-        </div>
-        <div class="stat">
-          <div class="stat__num"><b>4,200+</b> hrs</div>
-          <p class="stat__label">of interviewer time saved for a leading financial-services firm</p>
-        </div>
-        <div class="stat">
-          <div class="stat__num"><b>50</b></div>
-          <p class="stat__label">experienced interviewers surveyed in the US and UK to shape the design</p>
-        </div>
-        <div class="stat">
-          <div class="stat__num"><b>~9</b> months</div>
-          <p class="stat__label">from field research to a launched product</p>
-        </div>
+        <div class="stat"><div class="stat__num"><b class="mm">20,000+</b></div><p class="stat__label">candidates screened across 33+ cities for a young-bankers program, widening equal opportunity</p></div>
+        <div class="stat"><div class="stat__num"><b>4,200+</b> <span class="u">hrs</span></div><p class="stat__label">saved by automating interview workflow for a leading financial-services firm</p></div>
+        <div class="stat"><div class="stat__num"><b>60%</b></div><p class="stat__label">reduction in time to hire for organisations that implemented it</p></div>
+        <div class="stat"><div class="stat__num"><b>89%</b></div><p class="stat__label">of candidates rated their interview experience as excellent</p></div>
+        <div class="stat"><div class="stat__num"><b>5</b> <span class="u">deals</span></div><p class="stat__label">signed on the new structured-interview product line, worth about $10M in total</p></div>
       </div>
     </div>
   </section>
@@ -199,8 +187,7 @@
   <!-- INSIGHT -->
   <section class="section">
     <div class="wrap">
-      <p class="eyebrow" style="text-align:center; margin-bottom:22px">The insight</p>
-      <p style="font-family:var(--f-display); font-weight:500; font-size:var(--step-2); line-height:1.38; color:var(--ink); max-width:44ch; margin-inline:auto; text-align:center; letter-spacing:-0.005em">Interviewers didn't need to be told to be structured. They needed the structure to be <em class="emph">available in the moment</em>: the guide, the scoring criteria, and their notes in one place, without looking away from the candidate.</p>
+      <p class="insight">Interviewers didn't need to be told to be structured. They needed the structure to be <em class="emph">available in the moment</em>: the guide, the scoring criteria, and their notes in one place, without looking away from the candidate.</p>
     </div>
   </section>
 
@@ -332,26 +319,10 @@
 
   <hr class="rule">
 
-  <!-- IMPACT -->
-  <section class="section">
-    <div class="wrap">
-      <div class="section-label"><span class="n">07</span><h2>Impact</h2></div>
-      <div class="stats">
-        <div class="stat"><div class="stat__num"><b>20,000+</b></div><p class="stat__label">candidates screened across 33+ cities for a young-bankers program, widening equal opportunity</p></div>
-        <div class="stat"><div class="stat__num"><b>4,200+</b> hrs</div><p class="stat__label">saved by automating interview workflow for a leading financial-services firm</p></div>
-        <div class="stat"><div class="stat__num"><b>60%</b></div><p class="stat__label">reduction in time to hire for organisations that implemented it</p></div>
-        <div class="stat"><div class="stat__num"><b>89%</b></div><p class="stat__label">of candidates rated their interview experience as excellent</p></div>
-        <div class="stat"><div class="stat__num"><b>5</b> deals</div><p class="stat__label">signed on the new structured-interview product line, worth about $10M in total</p></div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule">
-
   <!-- REFLECTION -->
   <section class="section">
     <div class="wrap">
-      <div class="section-label"><span class="n">08</span><h2>Reflection</h2></div>
+      <div class="section-label"><span class="n">07</span><h2>Reflection</h2></div>
       <div class="prose" style="max-width:72ch">
         <p>This project taught me to design for two audiences at once: the interviewer who has to <em>use</em> the tool under pressure, and the business that needs the tool to <em>pay off</em>. The winning move was small: putting scoring and notes where the interviewer is already looking, but it only worked because the research told me exactly where their attention already was.</p>
         <p>The work was recognized company-wide for its business impact. The natural next step, which I began scoping, was turning the analytics into customer-facing reports that help clients improve their own interview practices over time.</p>
@@ -364,7 +335,7 @@
     <div class="wrap">
       <a href="talentcentral-project-groups.html">
         <div>
-          <p class="eyebrow">Next case · 02</p>
+          <p class="eyebrow">Next case</p>
           <h2>TalentCentral+ Project Groups</h2>
         </div>
         <span class="arrow">→</span>
@@ -392,7 +363,7 @@
     els.forEach(el => io.observe(el));
   } else { els.forEach(el => el.classList.add('in')); }
 </script>
-<script src="site.js?v=8" defer></script>
+<script src="site.js?v=9" defer></script>
 <script src="lightbox.js" defer></script>
 <script src="video-controls.js" defer></script>
 </body>

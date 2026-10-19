@@ -139,13 +139,13 @@
   /* ---- work index: active row + sticky preview ---- */
   var rows = [].slice.call(document.querySelectorAll('.row')),
       imgs = document.querySelectorAll('.prev img'),
-      pc = document.getElementById('pc'), pm = document.getElementById('pm');
+      pd = document.getElementById('pd');
   function act(i) {
     rows.forEach(function (x, j) { x.classList.toggle('on', i === j); });
     imgs.forEach(function (x, j) { x.classList.toggle('on', i === j); });
-    if (pc) pc.textContent = rows[i].querySelector('.tt').textContent;
-    if (pm) pm.textContent = '0' + (i + 1) + ' / 0' + rows.length;
+    if (pd) pd.textContent = rows[i].querySelector('.d').textContent;
   }
+  if (rows.length) act(0);
   rows.forEach(function (row, i) {
     row.addEventListener('mouseenter', function () { act(i); });
     row.addEventListener('focusin', function () { act(i); });
@@ -209,8 +209,8 @@
       if (Math.abs(mx - cx) + Math.abs(my - cy) > 0.4) moving = true;
       if (portrait) {
         var pb = portrait.getBoundingClientRect(), dx = mx - (pb.left + pb.width / 2), dy = my - (pb.top + pb.height / 2);
-        var tr = clamp(dx / 60, -10, 10), tx = clamp(dx / 90, -5, 5), ty = clamp(dy / 90, -5, 5);
-        rot += (tr - rot) * 0.12; px += (tx - px) * 0.12; py += (ty - py) * 0.12;
+        var tr = clamp(dx / 220, -3, 3), tx = clamp(dx / 260, -1.5, 1.5), ty = clamp(dy / 260, -1.5, 1.5);
+        rot += (tr - rot) * 0.06; px += (tx - px) * 0.06; py += (ty - py) * 0.06;
         portrait.style.setProperty('--r', rot.toFixed(2) + 'deg');
         pimg.style.setProperty('--px', px.toFixed(2) + 'px'); pimg.style.setProperty('--py', py.toFixed(2) + 'px');
         if (Math.abs(tr - rot) > 0.02) moving = true;

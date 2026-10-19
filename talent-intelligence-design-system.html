@@ -17,7 +17,7 @@
 <link rel="preload" href="fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 <script>
   // Draft view: append ?draft to the URL to reveal the asset slots still waiting on material.
   if (/[?&]draft\b/.test(location.search)) document.documentElement.classList.add('draft');
@@ -446,7 +446,6 @@
   <!-- HEADER -->
   <section class="case-head wrap">
     <a class="back" href="./#work">← All work</a>
-    <p class="eyebrow" style="margin-top:26px">Talent Management Design System · SHL</p>
     <h1>Recruiters felt like they'd switched <span class="hl">companies</span> mid-task.</h1>
     <p class="case-head__sub">SHL's hiring workflow ran across five legacy products, each with its own front end. I owned the design system that replaced them: I measured the fragmentation, set the documentation standard, and ran the review of every component five squads built into it.</p>
 
@@ -501,10 +500,10 @@
       <div class="stats">
         <div class="stat">
           <div class="stat__num"><b class="mm">2×</b></div>
-          <p class="stat__label">work delivered per sprint after adoption, as reported by delivery managers</p>
+          <p class="stat__label">work delivered per sprint after adoption, as reported by delivery managers. A conservative figure, since the coded library still lags the design.</p>
         </div>
         <div class="stat">
-          <div class="stat__num"><b>1</b> month</div>
+          <div class="stat__num"><b>1</b> <span class="u">month</span></div>
           <p class="stat__label">to get the core components ready for dev, by building on Carbon and MUI</p>
         </div>
         <div class="stat">
@@ -512,7 +511,7 @@
           <p class="stat__label">components in the library, atoms to organisms, plus 7 templates</p>
         </div>
         <div class="stat">
-          <div class="stat__num"><b>7</b> squads</div>
+          <div class="stat__num"><b>7</b> <span class="u">squads</span></div>
           <p class="stat__label">adopted it first, before it was rolled out company-wide</p>
         </div>
       </div>
@@ -1137,10 +1136,7 @@
       </div>
 
       <div class="stats" style="margin-bottom:clamp(32px,5vw,56px)">
-        <div class="stat"><div class="stat__num"><b>2×</b></div><p class="stat__label">work delivered per sprint after adoption, as reported by delivery managers. A conservative figure, since the coded library still lags the design.</p></div>
-        <div class="stat"><div class="stat__num"><b>7</b> squads</div><p class="stat__label">adopted it first, then it was rolled out company-wide</p></div>
-        <div class="stat"><div class="stat__num"><b>1</b> month</div><p class="stat__label">from start to core components ready for dev</p></div>
-        <div class="stat"><div class="stat__num"><b>AA</b> by default</div><p class="stat__label">in the design library: every colour pairing in the tokens clears 4.5:1</p></div>
+        <div class="stat"><div class="stat__num"><b>AA</b> <span class="u">by default</span></div><p class="stat__label">in the design library: every colour pairing in the tokens clears 4.5:1</p></div>
       </div>
       <div class="prose" style="max-width:70ch">
         <p>Beyond speed, the system built something harder to measure: trust. The same button, the same error state, the same filter, now behaving identically everywhere a recruiter or candidate meets it.</p>
@@ -1252,7 +1248,7 @@
     <div class="wrap">
       <a href="bob-the-builder.html">
         <div>
-          <p class="eyebrow">Next case · 04</p>
+          <p class="eyebrow">Next case</p>
           <h2>Bob the Builder</h2>
         </div>
         <span class="arrow">→</span>
@@ -1310,7 +1306,7 @@
     els.forEach(el => io.observe(el));
   } else { els.forEach(el => el.classList.add('in')); }
 </script>
-<script src="site.js?v=8" defer></script>
+<script src="site.js?v=9" defer></script>
 <script src="lightbox.js" defer></script>
 </body>
 </html>
