@@ -17,7 +17,7 @@
 <link rel="preload" href="fonts/newsreader-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="styles.css?v=10">
+<link rel="stylesheet" href="styles.css?v=11">
 <script>
   // Draft view: append ?draft to the URL to reveal the asset slots still waiting on material.
   if (/[?&]draft\b/.test(location.search)) document.documentElement.classList.add('draft');
@@ -54,7 +54,7 @@
   .draft-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--pc); flex: none; }
 
   /* ---- TL;DR ---------------------------------------------------------- */
-  .ti-tldr { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); border: 1px solid var(--line-2); border-radius: 10px; background: var(--paper); overflow: hidden; }
+  .ti-tldr { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); border: 1px solid var(--line-2); border-radius: 10px; background: var(--paper); overflow: hidden; }
   .ti-tldr > div { padding: clamp(18px,2.6vw,26px); border-right: 1px solid var(--line); }
   .ti-tldr > div:last-child { border-right: 0; }
   .ti-tldr h2 { font-family: var(--f-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--pc-ink); margin-bottom: 10px; }
@@ -283,7 +283,13 @@
   .ti-inv-found { margin-bottom: clamp(12px,2vw,18px); }
   .ti-inv-found h4, .ti-inv__tier h4 { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--f-display); font-weight: 600; font-size: 1.02rem; color: var(--ink); margin-bottom: 10px; }
   .ti-inv-found h4 b, .ti-inv__tier h4 b { font-size: var(--step-2); line-height: 1; color: var(--pc-ink); font-variant-numeric: tabular-nums; }
-  .ti-inv { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: clamp(12px,2vw,18px); align-items: start; }
+  .ti-inv { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: clamp(12px,2vw,18px); align-items: stretch; }
+  .ti-inv__tier { display: flex; flex-direction: column; }
+  .ti-chips .is-hidden { display: none; }
+  .ti-more { align-self: flex-start; margin-top: 14px; background: none; border: 1px solid var(--line-2); border-radius: 999px; color: var(--ink); font: 500 0.78rem/1 var(--f-sans); padding: 9px 14px; cursor: pointer; transition: background .2s, border-color .2s; }
+  .ti-more:hover { background: var(--pop); border-color: var(--pop); color: #0F0F0F; }
+  .gallery--ba { grid-template-columns: 1.79fr 1.24fr; align-items: start; }
+  @media (max-width: 760px) { .gallery--ba { grid-template-columns: 1fr; } }
   .ti-inv__bar { display: flex; gap: 2px; height: 6px; border-radius: 99px; overflow: hidden; margin-bottom: 14px; }
   .ti-inv__bar i { background: var(--pc); }
   .ti-inv__bar i.w { background: color-mix(in srgb, var(--pc) 22%, var(--surface)); }
@@ -491,11 +497,7 @@
           <h2>What I did</h2>
           <p>Owned the system on the design side. Audited 117 UI patterns to size the gap, created the five-doc standard and templates every component follows, and assigned and ran design review for each component the squads built.</p>
         </div>
-        <div>
-          <h2>The outcome</h2>
-          <p>A 55-component library, core pieces ready for dev in a month, adopted first by 7 squads and then company-wide. Delivery managers reported squads delivering about twice the work per sprint after adopting it.</p>
-        </div>
-      </div>
+              </div>
 
       <div class="stats">
         <div class="stat">
@@ -577,7 +579,7 @@
     <div class="wrap">
       <div class="section-label"><h2>My role</h2></div>
       <div class="prose" style="max-width:70ch; margin-bottom:clamp(28px,5vw,44px)">
-        <p>A design system is a team sport, so it's worth being precise about what was mine. Around five squads built it while building SHL's new talent mobility platform. I owned it on the design side.</p>
+        <p>A design system is a team sport, so here is what was mine. About five squads built it alongside SHL's new talent mobility platform, and I owned it on the design side.</p>
       </div>
       <div class="ti-own">
         <div>
@@ -1124,7 +1126,7 @@
     <div class="wrap">
       <div class="section-label"><h2>Impact</h2></div>
 
-      <div class="gallery" style="margin-bottom:clamp(32px,5vw,56px)">
+      <div class="gallery gallery--ba" style="margin-bottom:clamp(32px,5vw,56px)">
         <div>
           <div class="frame" style="aspect-ratio:2642/1478"><img src="images/ti-legacy-iassess.webp" srcset="images/ti-legacy-iassess-800.webp 800w, images/ti-legacy-iassess.webp 2642w" sizes="(min-width: 1400px) 1232px, calc(100vw - 32px)" data-full="images/ti-legacy-iassess.webp" alt="Before: legacy assessment scheduling screen, green-branded, disconnected from every other product's visual language" width="2642" height="1478" loading="lazy" decoding="async"></div>
           <p class="figcap"><strong>Before</strong>: every product its own visual language, its own rules.</p>
@@ -1238,7 +1240,7 @@
         </div>
       </div>
       <div class="callout" style="max-width:66ch">
-        <p>Consistency is what builds trust: internally between teams, and externally for whoever uses what we ship. More than a component library, the system became the foundation the rest of SHL's Talent Intelligence platform builds on.</p>
+        <p>More than a component library, the system became the foundation the rest of SHL's Talent Intelligence platform builds on.</p>
       </div>
     </div>
   </section>
@@ -1306,7 +1308,7 @@
     els.forEach(el => io.observe(el));
   } else { els.forEach(el => el.classList.add('in')); }
 </script>
-<script src="site.js?v=10" defer></script>
+<script src="site.js?v=11" defer></script>
 <script src="lightbox.js" defer></script>
 </body>
 </html>

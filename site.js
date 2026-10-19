@@ -209,7 +209,7 @@
       if (Math.abs(mx - cx) + Math.abs(my - cy) > 0.4) moving = true;
       if (portrait) {
         var pb = portrait.getBoundingClientRect(), dx = mx - (pb.left + pb.width / 2), dy = my - (pb.top + pb.height / 2);
-        var tr = clamp(dx / 220, -3, 3), tx = clamp(dx / 260, -1.5, 1.5), ty = clamp(dy / 260, -1.5, 1.5);
+        var tr = clamp(dx / 900, -1, 1), tx = clamp(dx / 300, -3, 3), ty = clamp(dy / 300, -3, 3);
         rot += (tr - rot) * 0.06; px += (tx - px) * 0.06; py += (ty - py) * 0.06;
         portrait.style.setProperty('--r', rot.toFixed(2) + 'deg');
         pimg.style.setProperty('--px', px.toFixed(2) + 'px'); pimg.style.setProperty('--py', py.toFixed(2) + 'px');
@@ -245,6 +245,47 @@
   jumpState(); kick();
   addEventListener('load', jumpState);
   if ('ResizeObserver' in window) new ResizeObserver(jumpState).observe(document.body);
+
+
+  /* ---- design-system inventory: equal cards, long chip lists collapse to four rows ---- */
+  var tiers = [].slice.call(document.querySelectorAll('.ti-inv__tier'));
+  function collapseTiers() {
+    tiers.forEach(function (tier) {
+      var ul = tier.querySelector('.ti-chips'), btn = tier.querySelector('.ti-more');
+      if (!ul) return;
+      var open = btn && btn.getAttribute('aria-expanded') === 'true';
+      var lis = [].slice.call(ul.children);
+      lis.forEach(function (li) { li.classList.remove('is-hidden'); });
+      if (open) return;
+      var rows = [], hidden = 0;
+      lis.forEach(function (li) {
+        var top = li.offsetTop;
+        if (rows.indexOf(top) === -1) rows.push(top);
+        if (rows.length > 4) { li.classList.add('is-hidden'); hidden++; }
+      });
+      if (!hidden) { if (btn) btn.remove(); return; }
+      if (!btn) {
+        btn = document.createElement('button'); btn.type = 'button'; btn.className = 'ti-more'; btn.setAttribute('aria-expanded', 'false');
+        ul.insertAdjacentElement('afterend', btn);
+        btn.addEventListener('click', function () {
+          var o = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', o ? 'false' : 'true');
+          collapseTiers();
+        });
+      }
+      btn.textContent = '+' + hidden + ' more';
+      btn.dataset.n = hidden;
+    });
+    tiers.forEach(function (tier) {
+      var btn = tier.querySelector('.ti-more');
+      if (btn && btn.getAttribute('aria-expanded') === 'true') btn.textContent = 'Show less';
+    });
+  }
+  if (tiers.length) {
+    collapseTiers();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(collapseTiers);
+    var rto; addEventListener('resize', function () { clearTimeout(rto); rto = setTimeout(collapseTiers, 150); });
+  }
 
   /* ---- generic reveal for index sections ---- */
   var rv = document.querySelectorAll('[data-reveal]');

@@ -17,15 +17,16 @@
 <link rel="preload" href="fonts/newsreader-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="styles.css?v=10">
+<link rel="stylesheet" href="styles.css?v=11">
 <style>
 .jr{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:12px;counter-reset:j;margin:0;padding:0;list-style:none}
-.jr li{counter-increment:j;position:relative;border:1px solid var(--line-2);border-radius:10px;background:var(--paper);padding:16px 16px 14px}
+.jr li{min-width:0;counter-increment:j;position:relative;border:1px solid var(--line-2);border-radius:10px;background:var(--paper);padding:16px 16px 14px}
 .jr li::before{content:counter(j);display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--pc);color:var(--pc-text);font:600 .8rem var(--f-display);margin-bottom:10px}
 .jr b{display:block;font:600 .95rem var(--f-display);color:var(--ink);margin-bottom:4px}
 .jr span{font-size:.85rem;color:var(--muted);line-height:1.45;display:block}
 .jr li.loop{background:color-mix(in srgb,var(--pc) 9%,var(--paper));border-style:dashed;border-color:var(--pc)}
 .jr li.loop span{color:var(--pc-ink);font-weight:500}
+.jr--3{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:560px){.jr--3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .qgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px}
 .q{border-left:3px solid var(--pc);padding:4px 0 4px 16px}
 .q p{margin:0 0 8px;font:500 1.02rem/1.45 var(--f-display);color:var(--ink)}
@@ -87,7 +88,7 @@
 <li>Defined the core interaction: click a numbered marker on any live element, describe the change in plain language, watch it update.</li>
 <li>Shaped the information architecture: templates as layout families with their own pages, and one candidate workflow built from exactly one template.</li>
 <li>Worked with engineering on feasibility, and co-wrote the submission.</li></ul></div>
-<div><ol class="jr" style="grid-template-columns:repeat(auto-fit,minmax(130px,1fr))"><li class=""><b>Pattern discovery</b><span>Mapped the current journey.</span></li><li class=""><b>Research</b><span>Stakeholder interviews.</span></li><li class=""><b>Ideation</b><span>Options for removing the spec.</span></li><li class=""><b>Whiteboard</b><span>Template, page and workflow hierarchy.</span></li><li class=""><b>Wireframes</b><span>Editor, chat and preview.</span></li><li class=""><b>Prototype</b><span>Clickable end-to-end flow.</span></li></ol></div></div></div></section>
+<div><ol class="jr jr--3"><li class=""><b>Pattern discovery</b><span>Mapped the current journey.</span></li><li class=""><b>Research</b><span>Stakeholder interviews.</span></li><li class=""><b>Ideation</b><span>Options for removing the spec.</span></li><li class=""><b>Whiteboard</b><span>Template, page and workflow hierarchy.</span></li><li class=""><b>Wireframes</b><span>Editor, chat and preview.</span></li><li class=""><b>Prototype</b><span>Clickable end-to-end flow.</span></li></ol></div></div></div></section>
 <hr class="rule">
 <section class="section"><div class="wrap"><div class="section-label"><h2>The solution</h2></div><div class="prose" style="max-width:66ch;margin-bottom:clamp(24px,4vw,36px)"><p>Bob replaces the specification with a conversation. Clients describe their brand, see a live preview, review together and publish, in a loop that takes minutes instead of weeks.</p></div><div class="loopfig" style="margin-bottom:clamp(32px,5vw,56px)"><div><i>01</i><h4>Chat</h4><p>Paste a link, upload files or describe the brand in plain language.</p></div><div><i>02</i><h4>Preview</h4><p>See every page of the candidate journey update instantly.</p></div><div><i>03</i><h4>Collaborate</h4><p>Live presence, inline comments and follow mode, instead of email.</p></div><div><i>04</i><h4>Publish</h4><p>Export JSON into TC+ today, with native one-click publish next.</p></div></div><div class="gallery" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));margin-bottom:clamp(32px,5vw,56px)"><div><div class="frame" style="aspect-ratio:1172/586"><img src="images/bob-brand.webp" alt="Brand setup screen" width="1172" height="586" loading="lazy" decoding="async"></div><p class="figcap">Brand setup: a link, a file or a plain description. Bob extracts palette and typography.</p></div><div><div class="frame" style="aspect-ratio:1172/586"><img src="images/bob-templates.webp" alt="Template library" width="1172" height="586" loading="lazy" decoding="async"></div><p class="figcap">Template library: editing the palette updates every template preview live.</p></div><div><div class="frame" style="aspect-ratio:1172/586"><img src="images/bob-editor.webp" alt="Template editor with numbered markers" width="1172" height="586" loading="lazy" decoding="async"></div><p class="figcap">The editor: click a numbered marker and describe the change to BrandBot.</p></div><div><div class="frame" style="aspect-ratio:1172/586"><img src="images/bob-collab.webp" alt="Real-time collaboration and sharing" width="1172" height="586" loading="lazy" decoding="async"></div><p class="figcap">Share and collaborate: live presence, comments and permission levels.</p></div></div><div class="prose" style="max-width:66ch;margin-bottom:0"><p>Built-in WCAG checks run on every template, and drafts can be saved and refined without republishing. A typical prompt: <em>“Use navy blue theme with gold accents. Place logo top-right. Buttons should be rounded.”</em></p><div class="chips"><span>LLM · intent and brand rules</span><span>OCR · brand PDFs</span><span>Vision AI · logo colours</span><span>RAG · SHL branding guidance</span><span>Feedback loop</span></div></div></div></section>
 <hr class="rule">
@@ -123,7 +124,7 @@
     els.forEach(el => io.observe(el));
   } else { els.forEach(el => el.classList.add('in')); }
 </script>
-<script src="site.js?v=10" defer></script>
+<script src="site.js?v=11" defer></script>
 <script src="lightbox.js" defer></script>
 <script src="video-controls.js" defer></script>
 </body>

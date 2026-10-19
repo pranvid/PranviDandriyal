@@ -17,7 +17,7 @@
 <link rel="preload" href="fonts/newsreader-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="styles.css?v=10">
+<link rel="stylesheet" href="styles.css?v=11">
 <style>
   /* the dating funnel: 100 matches -> chats -> dates */
   .funnel {
@@ -109,6 +109,11 @@
   .stability text { font-family: var(--f-mono); font-size: 9px; fill: var(--muted); }
 
   .concept .prose h3 { line-height: 1.2; }
+  /* each concept: text, then (figure), then its hypothesis, all on one left-aligned column */
+  .concept .split, .concept .split--rev { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .concept .split--rev .split__media { order: 0; }
+  .concept .prose, .concept .split__media, .concept .hypos { max-width: 700px; }
+  .concept .hypos { align-self: start !important; }
 
   /* padded image frame for charts exported from other tools */
   .frame--padded { aspect-ratio: auto; padding: clamp(14px,2.4vw,24px); background: var(--paper); }
@@ -234,7 +239,7 @@
   <!-- HEADER -->
   <section class="case-head wrap">
     <a class="back" href="./#work">← All work</a>
-    <h1>Dating apps don't have a match problem. They have a <span class="hl">choice</span> problem.</h1>
+    <h1>Dating apps have a <span class="hl">choice</span> problem, not a match problem.</h1>
     <p class="case-head__sub">Most people on dating apps want a relationship, and most of them aren't finding one. Over three months, I researched why, combining a survey, fieldwork on the apps and a literature review. The research led to a concept that matches people on personality and rewards effort over volume.</p>
 
     <dl class="spec">
@@ -296,8 +301,8 @@
       <div class="split">
         <p class="lead-in">People go to dating apps to find a partner. The apps are designed to keep them swiping.</p>
         <div class="prose">
-          <p>Online dating is now the most common way couples in the US meet: a 2019 Stanford study found nearly 40% of couples first met online. Yet the leading apps match people mostly on photos, age and distance. Many people end up with plenty of matches and no real connection, and some start to feel like products on a shelf.</p>
-          <p>We started with a broad question: <strong>why is it so hard to find a compatible partner on apps built to do exactly that?</strong> We didn't want to start from a feature idea. We wanted to find the real problem first and let the research shape the product.</p>
+          <p>Online dating is now the most common way US couples meet: a 2019 Stanford study found nearly 40% first met online. Yet the leading apps match mostly on photos, age and distance, so many people end up with plenty of matches and no real connection.</p>
+          <p>We started with one question: <strong>why is it so hard to find a compatible partner on apps built to do exactly that?</strong> We wanted the research to find the real problem before we thought about features.</p>
           <h4>Who we designed for</h4>
           <p>People who want a meaningful relationship and are open to finding it through an app. Many have tried the current apps and felt let down, and they would put in more effort if it led to better matches.</p>
         </div>
@@ -463,9 +468,9 @@
 
       <div class="prose">
         <h4 style="margin-top:0">Too much choice</h4>
-        <p>In Iyengar and Lepper's well-known jam study, shoppers who were offered fewer options were happier with what they picked. Dating apps show the same effect. When the pool feels endless, every person feels replaceable. People spend less time on each profile, keep looking for someone "better" and ghost more easily, which is exactly what we saw in the field.</p>
+        <p>In Iyengar and Lepper's jam study, shoppers offered fewer options were happier with what they picked. Dating apps show the same effect: when the pool feels endless, every person feels replaceable, people spend less time on each profile and ghost more easily, which is exactly what we saw in the field.</p>
         <h4>The wrong way of comparing</h4>
-        <p>Finkel and colleagues describe how online daters compare many profiles side by side on traits like looks and height. Offline, people judge one person at a time, which is closer to how relationships actually work. Apps encourage people to choose on what they <em>think</em> they want rather than what actually matters to them. Filters make it worse: women filter out up to 70% of potential matches and men up to 55%, mostly on height and age.</p>
+        <p>Finkel and colleagues describe how online daters compare many profiles side by side on traits like looks and height, while offline people judge one person at a time, closer to how relationships actually work. Filters make it worse: women filter out up to 70% of potential matches and men up to 55%, mostly on height and age.</p>
         <h4>A cost to self-esteem</h4>
         <p>Research links the sense of endless options to lower self-esteem and more fear of being single. Getting few matches or constantly comparing yourself to others makes it worse, and the people who most want a relationship feel it the most.</p>
       </div>
@@ -868,7 +873,7 @@
             <li>Test filters in the live product to find which help without shutting people out.</li>
           </ul>
           <h4>What this project shows about how I work</h4>
-          <p>I look for the real problem before designing features. I check what people say against what they do, back findings with statistics and published research, and design for how the whole system behaves, not just individual screens.</p>
+          <p>I look for the real problem before designing features. I check what people say against what they do, back findings with data and research, and design for how the whole system behaves.</p>
         </div>
       </div>
     </div>
@@ -926,7 +931,7 @@
     els.forEach(el => io.observe(el));
   } else { els.forEach(el => el.classList.add('in')); }
 </script>
-<script src="site.js?v=10" defer></script>
+<script src="site.js?v=11" defer></script>
 <script src="lightbox.js" defer></script>
 </body>
 </html>
