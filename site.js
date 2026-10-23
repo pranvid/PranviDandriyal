@@ -175,7 +175,7 @@
     cur = document.createElement('div'); cur.className = 'cur'; cur.setAttribute('aria-hidden', 'true'); cur.innerHTML = '<span>View</span>';
     document.body.appendChild(cur); root.classList.add('cur-on');
   }
-  var portrait = document.querySelector('.portrait'), pimg = portrait && portrait.querySelector('img');
+  var portrait = document.querySelector('.halo'), pimg = portrait && portrait.querySelector('img');
   var mx = -100, my = -100, cx = -100, cy = -100, rot = 0, px = 0, py = 0, lastY = scrollY, vel = 0;
   var running = false, idleUntil = 0;
 
@@ -189,6 +189,8 @@
   addEventListener('pointermove', function (e) { mx = e.clientX; my = e.clientY; if (cur) { cur.classList.add('show'); tgt(e.target); } kick(); }, { passive: true });
   addEventListener('scroll', function () { if (cur && mx > 0) tgt(document.elementFromPoint(mx, my)); kick(); }, { passive: true });
   document.addEventListener('mouseleave', function () { if (cur) cur.classList.remove('show'); });
+
+  if (portrait) portrait.addEventListener('click', function () { portrait.classList.toggle('on'); });
 
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 
@@ -209,11 +211,11 @@
       if (Math.abs(mx - cx) + Math.abs(my - cy) > 0.4) moving = true;
       if (portrait) {
         var pb = portrait.getBoundingClientRect(), dx = mx - (pb.left + pb.width / 2), dy = my - (pb.top + pb.height / 2);
-        var tr = clamp(dx / 400, -2, 2), tx = clamp(dx / 400, -1.5, 1.5), ty = clamp(dy / 400, -1.5, 1.5);
-        rot += (tr - rot) * 0.06; px += (tx - px) * 0.06; py += (ty - py) * 0.06;
-        portrait.style.setProperty('--r', rot.toFixed(2) + 'deg');
+        var tx = clamp(dx / 90, -5, 5), ty = clamp(dy / 90, -4, 4);
+        px += (tx - px) * 0.08; py += (ty - py) * 0.08;
         pimg.style.setProperty('--px', px.toFixed(2) + 'px'); pimg.style.setProperty('--py', py.toFixed(2) + 'px');
-        if (Math.abs(tr - rot) > 0.02) moving = true;
+        portrait.style.setProperty('--dx', (-px * 1.6).toFixed(2) + 'px'); portrait.style.setProperty('--dy', (-py * 1.6).toFixed(2) + 'px');
+        if (Math.abs(tx - px) + Math.abs(ty - py) > 0.05) moving = true;
       }
     }
 

@@ -204,8 +204,14 @@ a { color: inherit; text-decoration: none; }
 .hero__cta .btn:hover { background: var(--pop); border-color: var(--pop); color: #0F0F0F; }
 .hero__cta .ul { display: inline-flex; align-items: center; min-height: 44px; background: linear-gradient(currentColor, currentColor) 0 calc(50% + .8em) / 0 1px no-repeat; background-origin: content-box; transition: background-size .25s; }
 .hero__cta .ul:hover { background-size: 100% 1px; }
-.portrait { display: inline-block; height: .84em; aspect-ratio: .6; border-radius: 999px; vertical-align: -.1em; margin-inline: .08em; background: var(--pop); position: relative; overflow: hidden; transform: rotate(var(--r, 0deg)); will-change: transform; }
-.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; transform: translate(var(--px, 0px), var(--py, 0px)) scale(1.08); }
+.halo { position: relative; width: 230px; justify-self: start; margin-top: 8px; cursor: default; }
+.halo::before { content: ""; position: absolute; left: 50%; top: 46%; width: 78%; aspect-ratio: 1; border-radius: 50%; background: var(--pop); transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, 0px))); }
+.halo img { position: relative; display: block; width: 100%; height: auto; filter: grayscale(1) contrast(1.06); transform: translate(var(--px, 0px), var(--py, 0px)); transition: filter .5s ease; }
+.halo:hover img, .halo.on img { filter: grayscale(0); }
+@media (min-width: 860px) {
+  .hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: center; gap: 48px; }
+  .halo { width: min(100%, 300px); justify-self: center; margin-top: 0; }
+}
 @media (min-width: 900px) { .hero h1 { max-width: 27ch; } .hero__lede { max-width: 52ch; } }
 
 /* word-by-word headline reveal (site.js) */
@@ -529,7 +535,7 @@ footer { background: transparent; }
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .row, .row::before, .row .t, .portrait, .nav a { transition: none !important; }
+  .row, .row::before, .row .t, .halo img, .nav a { transition: none !important; }
 }
 
 /* ---- Print / save as PDF -------------------------------------------- */
