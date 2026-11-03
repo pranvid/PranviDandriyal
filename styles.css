@@ -290,6 +290,10 @@ ul.idx { list-style: none; padding: 0; }
 .contact__links { display: flex; flex-wrap: wrap; gap: 4px 28px; margin-top: 28px; font-weight: 500; color: var(--ink); }
 .contact__links a { display: inline-flex; align-items: center; min-height: 44px; background: linear-gradient(currentColor, currentColor) 0 calc(50% + .75em) / 0 1px no-repeat; background-origin: content-box; transition: background-size .25s; }
 .contact__links a:hover { background-size: 100% 1px; }
+.contact__icons { display: flex; gap: 12px; margin-top: 28px; margin-left: -10px; }
+.contact__icons a { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; color: var(--ink); transition: background-color .2s, color .2s; }
+.contact__icons a:hover, .contact__icons a:focus-visible { background: var(--surface); color: var(--pop); }
+.contact__icons svg { width: 26px; height: 26px; }
 
 /* ---- Footer ----------------------------------------------------------- */
 footer { background: transparent; }
