@@ -297,6 +297,10 @@ footer { background: transparent; }
 .foot-legal span, .foot-legal a { font-size: var(--step--1); color: var(--muted); }
 .foot-legal a:hover { color: var(--ink); }
 .foot-legal a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-2); }
+.foot-icons { display: flex; gap: 4px; margin-right: -12px; }
+.foot-icons a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; color: var(--muted); text-decoration: none; transition: color .2s, background-color .2s; }
+.foot-icons a:hover, .foot-icons a:focus-visible { color: var(--ink); background: var(--surface); }
+.foot-icons svg { width: 20px; height: 20px; }
 
 /* =========================================================================
    Case study pages
