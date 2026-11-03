@@ -175,8 +175,7 @@
     cur = document.createElement('div'); cur.className = 'cur'; cur.setAttribute('aria-hidden', 'true'); cur.innerHTML = '<span>View</span>';
     document.body.appendChild(cur); root.classList.add('cur-on');
   }
-  var portrait = document.querySelector('.halo'), pimg = portrait && portrait.querySelector('img');
-  var mx = -100, my = -100, cx = -100, cy = -100, rot = 0, px = 0, py = 0, lastY = scrollY, vel = 0;
+  var mx = -100, my = -100, cx = -100, cy = -100, lastY = scrollY, vel = 0;
   var running = false, idleUntil = 0;
 
   function tgt(t) {
@@ -190,7 +189,23 @@
   addEventListener('scroll', function () { if (cur && mx > 0) tgt(document.elementFromPoint(mx, my)); kick(); }, { passive: true });
   document.addEventListener('mouseleave', function () { if (cur) cur.classList.remove('show'); });
 
-  if (portrait) portrait.addEventListener('click', function () { portrait.classList.toggle('on'); });
+  /* ---- hero tiles: a soft light follows the cursor; the line portrait's eyes follow it too and it blinks ---- */
+  [].slice.call(document.querySelectorAll('.tile')).forEach(function (t) {
+    if (fine && !rm) t.addEventListener('pointermove', function (e) { var r = t.getBoundingClientRect(); t.style.setProperty('--mx', (e.clientX - r.left) + 'px'); t.style.setProperty('--my', (e.clientY - r.top) + 'px'); }, { passive: true });
+  });
+  var av = document.querySelector('.av');
+  if (av && !rm) {
+    var pus = [].slice.call(av.querySelectorAll('.pu'));
+    if (fine) addEventListener('pointermove', function (e) {
+      var r = av.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+      var dx = e.clientX - (r.left + r.width * .5), dy = e.clientY - (r.top + r.height * .43), d = Math.sqrt(dx * dx + dy * dy) || 1, k = Math.min(1, d / 220) * (r.width / 400) * 4.4;
+      pus.forEach(function (p) { p.style.transform = 'translate(' + (dx / d * k).toFixed(2) + 'px,' + (dy / d * k * .7).toFixed(2) + 'px)'; });
+    }, { passive: true });
+    (function blink() {
+      if (!document.hidden) { av.classList.add('blink'); setTimeout(function () { av.classList.remove('blink'); }, 140); }
+      setTimeout(blink, 2800 + Math.random() * 3200);
+    })();
+  }
 
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 
@@ -209,14 +224,6 @@
     if (cur) {
       cx += (mx - cx) * 0.2; cy += (my - cy) * 0.2; cur.style.transform = 'translate(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px)';
       if (Math.abs(mx - cx) + Math.abs(my - cy) > 0.4) moving = true;
-      if (portrait) {
-        var pb = portrait.getBoundingClientRect(), dx = mx - (pb.left + pb.width / 2), dy = my - (pb.top + pb.height / 2);
-        var tx = clamp(dx / 90, -5, 5), ty = clamp(dy / 90, -4, 4);
-        px += (tx - px) * 0.08; py += (ty - py) * 0.08;
-        pimg.style.setProperty('--px', px.toFixed(2) + 'px'); pimg.style.setProperty('--py', py.toFixed(2) + 'px');
-        portrait.style.setProperty('--dx', (-px * 1.6).toFixed(2) + 'px'); portrait.style.setProperty('--dy', (-py * 1.6).toFixed(2) + 'px');
-        if (Math.abs(tx - px) + Math.abs(ty - py) > 0.05) moving = true;
-      }
     }
 
     /* subtle life in the scribbles: they lean toward the cursor, tilt with scroll speed,
