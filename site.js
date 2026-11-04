@@ -193,6 +193,22 @@
   addEventListener('scroll', function () { if (cur && mx > 0) tgt(document.elementFromPoint(mx, my)); kick(); }, { passive: true });
   document.addEventListener('mouseleave', function () { if (cur) cur.classList.remove('show'); });
 
+  /* ---- hero portrait: the gold glow behind it eases towards the cursor and the photo shifts a few pixels ---- */
+  var hv = document.querySelector('.hv'), hpt = hv && hv.querySelector('.hv-pt');
+  if (hpt && fine && !rm) {
+    hv.addEventListener('pointermove', function (e) {
+      var r = hpt.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+      hpt.style.setProperty('--gx', (Math.max(-1, Math.min(1, dx / 600)) * 38).toFixed(1) + 'px');
+      hpt.style.setProperty('--gy', (Math.max(-1, Math.min(1, dy / 400)) * 30).toFixed(1) + 'px');
+      if (e.target.closest && e.target.closest('.hv-pt')) {
+        hpt.style.setProperty('--ix', (-dx / r.width * 10).toFixed(1) + 'px');
+        hpt.style.setProperty('--iy', (-dy / r.height * 10).toFixed(1) + 'px');
+      }
+    }, { passive: true });
+    hpt.addEventListener('pointerleave', function () { hpt.style.setProperty('--ix', '0px'); hpt.style.setProperty('--iy', '0px'); });
+    hv.addEventListener('pointerleave', function () { hpt.style.setProperty('--gx', '0px'); hpt.style.setProperty('--gy', '0px'); });
+  }
+
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 
   function frame(now) {
