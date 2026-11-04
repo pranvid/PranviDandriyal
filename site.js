@@ -9,7 +9,7 @@
   var fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   /* ---- theme ---- */
-  function themeNow() { return root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  function themeNow() { return root.getAttribute('data-theme') || 'light'; }
   var tog = document.getElementById('tog');
   if (tog) {
     var sync = function () { tog.setAttribute('aria-pressed', themeNow() === 'dark'); };
