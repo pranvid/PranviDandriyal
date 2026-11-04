@@ -68,21 +68,25 @@
     var idx = 0;
     var mkw = function () { var w = document.createElement('span'); w.className = 'hw'; var inn = document.createElement('span'); inn.style.setProperty('--i', idx++); w.appendChild(inn); return { w: w, inn: inn }; };
     var lastInn = null;
-    [].slice.call(h1.childNodes).forEach(function (n) {
-      if (n.nodeType === 3) {
-        var txt = n.textContent, f = document.createDocumentFragment();
-        var pm = lastInn && txt.match(/^[.,;:!?)’”]+/);   /* keep trailing punctuation attached to the word before it */
-        if (pm) { lastInn.appendChild(document.createTextNode(pm[0])); txt = txt.slice(pm[0].length); }
-        txt.split(/(\s+)/).forEach(function (t) {
-          if (!t) return;
-          if (/^\s+$/.test(t)) { f.appendChild(document.createTextNode(' ')); lastInn = null; }
-          else { var o = mkw(); o.inn.textContent = t; f.appendChild(o.w); lastInn = o.inn; }
-        });
-        n.parentNode.replaceChild(f, n);
-      } else if (n.nodeType === 1 && !n.classList.contains('per')) {
-        var o = mkw(); n.parentNode.replaceChild(o.w, n); o.inn.appendChild(n); lastInn = o.inn;
-      }
-    });
+    (function walk(parent) {
+      [].slice.call(parent.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var txt = n.textContent, f = document.createDocumentFragment();
+          var pm = lastInn && txt.match(/^[.,;:!?)’”]+/);   /* keep trailing punctuation attached to the word before it */
+          if (pm) { lastInn.appendChild(document.createTextNode(pm[0])); txt = txt.slice(pm[0].length); }
+          txt.split(/(\s+)/).forEach(function (t) {
+            if (!t) return;
+            if (/^\s+$/.test(t)) { f.appendChild(document.createTextNode(' ')); lastInn = null; }
+            else { var o = mkw(); o.inn.textContent = t; f.appendChild(o.w); lastInn = o.inn; }
+          });
+          n.parentNode.replaceChild(f, n);
+        } else if (n.nodeType === 1 && n.classList.contains('ln')) {
+          lastInn = null; walk(n);                       /* a line wrapper: animate the words inside it */
+        } else if (n.nodeType === 1 && !n.classList.contains('per')) {
+          var o = mkw(); n.parentNode.replaceChild(o.w, n); o.inn.appendChild(n); lastInn = o.inn;
+        }
+      });
+    })(h1);
     h1.classList.add('h1-anim');
     requestAnimationFrame(function () { requestAnimationFrame(function () { h1.classList.add('go'); }); });
     setTimeout(function () { h1.classList.remove('h1-anim', 'go'); fit(); }, 1400);
