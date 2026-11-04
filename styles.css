@@ -211,7 +211,7 @@ a { color: inherit; text-decoration: none; }
 .hv h1 { margin: clamp(22px, 3vw, 40px) 0 0; font-family: var(--f-serif); font-weight: 400; font-size: clamp(2.4rem, .8rem + 4.5vw, 4.4rem); line-height: 1.08; letter-spacing: -.022em; color: var(--ink); text-wrap: balance; }
 .hv h1 .hl { font-style: italic; }
 .hv-lower { display: grid; gap: 24px 18px; margin-top: clamp(40px, 5vw, 72px); align-items: stretch; grid-template-columns: minmax(100px, 32%) minmax(0, 1fr); }
-.hv-pt { position: relative; --gx: 0px; --gy: 0px; --ix: 0px; --iy: 0px; }
+.hv-pt { position: relative; --gx: 0px; --gy: 0px; --ix: 0px; --iy: 0px; --rx: 0deg; --ry: 0deg; }
 /* two soft gold glows behind the photo: they drift on their own, follow the cursor a little, and swell on hover */
 .hv-pt::before, .hv-pt::after { content: ""; position: absolute; left: 50%; top: 50%; aspect-ratio: 1; z-index: -1; pointer-events: none; border-radius: 50%;
   translate: calc(-50% + var(--gx)) calc(-50% + var(--gy)); transition: translate 1s cubic-bezier(.2,.7,.2,1), scale .7s cubic-bezier(.2,.7,.2,1), opacity .5s; }
@@ -221,10 +221,10 @@ a { color: inherit; text-decoration: none; }
 .hv-pt:hover::after { scale: 1.25; opacity: 1; }
 @keyframes hv-drift-a { 0% { transform: translate(-7%, 5%) scale(.94); } 50% { transform: translate(5%, -6%) scale(1.08); } 100% { transform: translate(8%, 6%) scale(1); } }
 @keyframes hv-drift-b { 0% { transform: translate(12%, -10%) scale(1.05); } 50% { transform: translate(-10%, 8%) scale(.9); } 100% { transform: translate(-4%, -12%) scale(1.1); } }
-.hv-pt .win { position: relative; width: 100%; height: 100%; min-height: 190px; overflow: hidden; border-radius: 16px; box-shadow: 0 24px 44px -26px rgba(0,0,0,.6); transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s; }
-.hv-pt:hover .win { transform: translateY(-5px); box-shadow: 0 34px 54px -26px rgba(0,0,0,.7), 0 0 0 1px color-mix(in srgb, var(--pop) 40%, transparent); }
-.hv-pt img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 14%; transform: translate(var(--ix), var(--iy)) scale(1); transition: transform .7s cubic-bezier(.2,.7,.2,1); }
-.hv-pt:hover img { transform: translate(var(--ix), var(--iy)) scale(1.08); }
+.hv-pt .win { position: relative; width: 100%; height: 100%; min-height: 190px; overflow: hidden; border-radius: 16px; box-shadow: 0 24px 44px -26px rgba(0,0,0,.6); transform: perspective(800px) rotateX(var(--rx)) rotateY(var(--ry)); transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .5s; }
+.hv-pt:hover .win { transform: perspective(800px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(-5px); box-shadow: 0 34px 54px -26px rgba(0,0,0,.7), 0 0 0 1px color-mix(in srgb, var(--pop) 40%, transparent); }
+.hv-pt img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 14%; transform: translate(var(--ix), var(--iy)) scale(1.07); transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.hv-pt:hover img { transform: translate(var(--ix), var(--iy)) scale(1.12); }
 .hv-copy { display: flex; flex-direction: column; justify-content: center; gap: 22px; min-width: 0; }
 .hv-copy .hero__cta { flex-direction: column; align-items: flex-start; gap: 4px; }
 .hv-copy .btn { white-space: nowrap; padding: 0 18px; }
@@ -586,7 +586,8 @@ footer { background: transparent; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .row, .row::before, .row .t, .glass, .hv-pills li, .hv-pt .win, .hv-pt img, .hv-pt::before, .hv-pt::after, .nav a { transition: none !important; }
   .hv-pt::before, .hv-pt::after { animation: none; }
-  .hv-pt:hover .win, .hv-pt:hover img { transform: none; }
+  .hv-pt .win, .hv-pt:hover .win { transform: none; }
+  .hv-pt img, .hv-pt:hover img { transform: none; }
 }
 
 /* ---- Print / save as PDF -------------------------------------------- */
