@@ -206,8 +206,8 @@ a { color: inherit; text-decoration: none; }
 .hero__cta .ul:hover { background-size: 100% 1px; }
 .halo { position: relative; width: 230px; justify-self: start; margin-top: 8px; cursor: default; }
 .halo::before { content: ""; position: absolute; left: 50%; top: 46%; width: 78%; aspect-ratio: 1; border-radius: 50%; background: var(--pop); transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, 0px))); }
-.halo img { position: relative; display: block; width: 100%; height: auto; filter: grayscale(1) contrast(1.06); transform: translate(var(--px, 0px), var(--py, 0px)); transition: filter .5s ease; }
-.halo:hover img, .halo.on img { filter: grayscale(0); }
+.halo img { position: relative; display: block; width: 100%; height: auto; filter: grayscale(0); transform: translate(var(--px, 0px), var(--py, 0px)); transition: filter .5s ease; }
+.halo:hover img, .halo.on img { filter: grayscale(1) contrast(1.06); }
 @media (min-width: 860px) {
   .hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; gap: clamp(32px, 5vw, 72px); }
   .halo { width: min(100%, 300px); justify-self: center; margin-top: 0; }
