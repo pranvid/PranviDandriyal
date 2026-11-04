@@ -193,19 +193,27 @@
   addEventListener('scroll', function () { if (cur && mx > 0) tgt(document.elementFromPoint(mx, my)); kick(); }, { passive: true });
   document.addEventListener('mouseleave', function () { if (cur) cur.classList.remove('show'); });
 
-  /* ---- hero portrait: everything in the hero area follows the cursor a little ----
-     the gold glow eases towards it, the photo tilts and shifts toward it, and both settle back when it leaves ---- */
+  /* ---- hero portrait: everything in the hero area follows the cursor ----
+     the gold glow slides towards it, the photo tilts and shifts toward it, and both settle back when it leaves;
+     the glow also drifts a little as the page scrolls ---- */
   var hv = document.querySelector('.hv'), hpt = hv && hv.querySelector('.hv-pt');
-  if (hpt && fine && !rm) {
+  if (hpt && !rm) {
     var hset = function (k, v) { hpt.style.setProperty(k, v); };
-    hv.addEventListener('pointermove', function (e) {
-      var r = hpt.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
-      var nx = Math.max(-1, Math.min(1, dx / 520)), ny = Math.max(-1, Math.min(1, dy / 360));
-      hset('--gx', (nx * 90).toFixed(1) + 'px'); hset('--gy', (ny * 60).toFixed(1) + 'px');
-      hset('--ry', (nx * 7).toFixed(2) + 'deg'); hset('--rx', (-ny * 6).toFixed(2) + 'deg');
-      hset('--ix', (-nx * 5).toFixed(1) + 'px'); hset('--iy', (-ny * 5).toFixed(1) + 'px');
-    }, { passive: true });
-    hv.addEventListener('pointerleave', function () { ['--gx', '--gy', '--ix', '--iy'].forEach(function (k) { hset(k, '0px'); }); hset('--rx', '0deg'); hset('--ry', '0deg'); });
+    var hscroll = function () {
+      var y = Math.min(scrollY, 1400);
+      hset('--sx', (Math.sin(y / 240) * 46).toFixed(1) + 'px'); hset('--sy', (y * 0.32).toFixed(1) + 'px');
+    };
+    addEventListener('scroll', hscroll, { passive: true }); hscroll();
+    if (fine) {
+      hv.addEventListener('pointermove', function (e) {
+        var r = hpt.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+        var nx = Math.max(-1, Math.min(1, dx / 420)), ny = Math.max(-1, Math.min(1, dy / 300));
+        hset('--gx', (nx * 170).toFixed(1) + 'px'); hset('--gy', (ny * 120).toFixed(1) + 'px');
+        hset('--ry', (nx * 10).toFixed(2) + 'deg'); hset('--rx', (-ny * 8).toFixed(2) + 'deg');
+        hset('--ix', (-nx * 7).toFixed(1) + 'px'); hset('--iy', (-ny * 7).toFixed(1) + 'px');
+      }, { passive: true });
+      hv.addEventListener('pointerleave', function () { ['--gx', '--gy', '--ix', '--iy'].forEach(function (k) { hset(k, '0px'); }); hset('--rx', '0deg'); hset('--ry', '0deg'); });
+    }
   }
 
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
