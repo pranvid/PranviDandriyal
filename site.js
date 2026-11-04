@@ -193,24 +193,6 @@
   addEventListener('scroll', function () { if (cur && mx > 0) tgt(document.elementFromPoint(mx, my)); kick(); }, { passive: true });
   document.addEventListener('mouseleave', function () { if (cur) cur.classList.remove('show'); });
 
-  /* ---- hero tiles: a soft light follows the cursor; the line portrait's eyes follow it too and it blinks ---- */
-  [].slice.call(document.querySelectorAll('.tile')).forEach(function (t) {
-    if (fine && !rm) t.addEventListener('pointermove', function (e) { var r = t.getBoundingClientRect(); t.style.setProperty('--mx', (e.clientX - r.left) + 'px'); t.style.setProperty('--my', (e.clientY - r.top) + 'px'); }, { passive: true });
-  });
-  var av = document.querySelector('.av');
-  if (av && !rm) {
-    var pus = [].slice.call(av.querySelectorAll('.pu'));
-    if (fine) addEventListener('pointermove', function (e) {
-      var r = av.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
-      var dx = e.clientX - (r.left + r.width * .5), dy = e.clientY - (r.top + r.height * .43), d = Math.sqrt(dx * dx + dy * dy) || 1, k = Math.min(1, d / 220) * (r.width / 400) * 4.4;
-      pus.forEach(function (p) { p.style.transform = 'translate(' + (dx / d * k).toFixed(2) + 'px,' + (dy / d * k * .7).toFixed(2) + 'px)'; });
-    }, { passive: true });
-    (function blink() {
-      if (!document.hidden) { av.classList.add('blink'); setTimeout(function () { av.classList.remove('blink'); }, 140); }
-      setTimeout(blink, 2800 + Math.random() * 3200);
-    })();
-  }
-
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 
   function frame(now) {
