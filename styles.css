@@ -198,7 +198,7 @@ a { color: inherit; text-decoration: none; }
 /* ---- Hero ------------------------------------------------------------ */
 .hero { padding-block: clamp(56px, 9vw, 128px) clamp(40px, 6vw, 72px); }
 .hero h1 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(2rem, 1.2rem + 2.4vw, 2.9rem); line-height: 1.16; letter-spacing: -0.008em; color: var(--ink); max-width: 28ch; text-wrap: balance; margin: 0; }
-.hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; margin-top: clamp(28px, 3.4vw, 40px); font-weight: 500; }
+.hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; margin-top: 0; font-weight: 500; }
 .hero__cta .btn { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px; border: 1px solid var(--ink); border-radius: 999px; color: var(--ink); transition: background .2s, color .2s; }
 .hero__cta .btn:hover { background: var(--pop); border-color: var(--pop); color: #0F0F0F; }
 .hero__cta .ul { display: inline-flex; align-items: center; min-height: 44px; background: linear-gradient(currentColor, currentColor) 0 calc(50% + .8em) / 0 1px no-repeat; background-origin: content-box; transition: background-size .25s; }
@@ -210,19 +210,20 @@ a { color: inherit; text-decoration: none; }
 
 /* hero bento: tiles with a cursor-following light; the line portrait sits in the tall tile */
 .bento { display: grid; gap: 14px; }
-.tile { position: relative; border: 1px solid var(--line-2); border-radius: 20px; background: var(--surface); padding: clamp(22px, 2.6vw, 34px); overflow: hidden; transition: border-color .3s; }
+.bento { --tp: clamp(24px, 2.8vw, 36px); }
+.tile { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; border: 1px solid var(--line-2); border-radius: 20px; background: var(--surface); padding: var(--tp); overflow: hidden; transition: border-color .3s; }
 .tile::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--pop) 15%, transparent), transparent 70%); }
 .tile:hover { border-color: color-mix(in srgb, var(--pop) 70%, var(--line-2)); }
 .tile:hover::before { opacity: 1; }
 .t-a, .t-p { background: var(--paper); }
 .tile .k { font-size: var(--step--1); color: var(--muted); margin: 0; }
-.big { font-family: var(--f-serif); font-size: 64px; line-height: 1; color: var(--ink); margin: 0 0 8px; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 12px 0 0; padding: 0; }
+.big { font-family: var(--f-serif); font-size: 64px; line-height: 1; color: var(--ink); margin: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
 .chips li { border: 1px solid var(--line-2); background: var(--paper); border-radius: 99px; padding: 7px 13px; font-size: var(--step--1); font-weight: 500; color: var(--ink); }
-.t-p { display: flex; flex-direction: column; gap: 20px; padding-bottom: 0; }
+.t-p { gap: 28px; padding-bottom: 0; }
 .intro { position: relative; z-index: 1; }
-.hi { margin: 0; font-family: var(--f-serif); font-weight: 400; font-size: clamp(2rem, 1.2rem + 2.4vw, 2.9rem); line-height: 1.1; letter-spacing: -0.008em; color: var(--ink); }
-.role { margin: 10px 0 0; color: var(--muted); font-size: var(--step-0); }
+.hi { margin: 0; font-family: var(--f-serif); font-weight: 400; font-size: clamp(2rem, 1.2rem + 2.4vw, 2.9rem); line-height: 1.2; letter-spacing: 0; color: var(--ink); }
+.role { margin: 14px 0 0; color: var(--muted); font-size: var(--step-0); }
 .avw { width: min(100%, 220px); margin: auto auto -4px; }
 .av { display: block; width: 100%; height: auto; color: var(--ink); overflow: visible; }
 .av .bg { fill: var(--paper); }
@@ -233,7 +234,7 @@ a { color: inherit; text-decoration: none; }
   .bento { grid-template-columns: repeat(12, 1fr); grid-auto-rows: minmax(116px, auto); }
   .t-p { grid-column: 1 / 5; grid-row: 1 / 4; }
   .avw { width: min(100%, 360px); }
-  .t-a { grid-column: 5 / 13; grid-row: 1 / 3; display: flex; flex-direction: column; justify-content: center; }
+  .t-a { grid-column: 5 / 13; grid-row: 1 / 3; }
   .t-c { grid-column: 5 / 8; grid-row: 3; }
   .t-d { grid-column: 8 / 13; grid-row: 3; }
 }
